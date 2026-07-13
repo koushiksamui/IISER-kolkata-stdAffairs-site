@@ -290,7 +290,7 @@ p {
 }
 
 .access-tools .admin-btn {
-    background: var(--orange-500);
+    /* background: var(--orange-500); */
     color: var(--white);
     padding: 8px 14px;
     border-radius: 999px;
@@ -349,6 +349,7 @@ header.site-header {
     align-items: center;
     height: 84px;
     gap: var(--space-3);
+    padding-left: calc(var(--space-3) + 10px);
 }
 
 .brand {
@@ -356,6 +357,7 @@ header.site-header {
     align-items: center;
     gap: 12px;
     flex-wrap: wrap;
+    margin-left: 2px;
 }
 
 .brand-mark {
