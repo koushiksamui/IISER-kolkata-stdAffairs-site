@@ -31,8 +31,9 @@
                     <button id="fontReset" aria-label="Reset font size">A</button>
                     <button id="fontUp" aria-label="Increase font size">A+</button>
                 </div>
-                <button id="contrastToggle" aria-pressed="false"><i class="fa-solid fa-circle-half-stroke"></i> High
-                    Contrast</button>
+                <a href="#admin" class="admin-btn"><i class="fa-solid fa-user-lock" aria-hidden="true"></i>
+                    <span class="admin-label">Admin Login</span>
+                </a>
             </div>
         </div>
     </div>
@@ -41,21 +42,16 @@
     <header class="site-header">
         <div class="container header-inner">
             <div class="brand">
-                <div class="brand-mark" aria-hidden="true">IISER</div>
+                <div class="brand-mark" aria-hidden="true">
+                    <img src="images/logo.png" alt="">
+                </div>
                 <div class="brand-text">
-                    <div class="name">IISER</div>
-                    <div class="sub">Indian Institute of Science Education &amp; Research</div>
+                    <div class="name">Indian Institute of Science Education and Research Kolkata</div>
+                    <div class="sub">Office of Student Affairs</div>
                 </div>
             </div>
 
-            <div class="office-mark">
-                <div class="seal" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
-                <div class="label"><span class="label-full">Students' Affairs <span>Office</span></span><span
-                        class="label-short">SA Office</span></div>
-            </div>
-
             <div class="header-right">
-                <a href="#admin" class="admin-btn"><i class="fa-solid fa-lock"></i> <span>Admin Panel</span></a>
                 <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false"
                     aria-controls="mobileNav">
                     <i class="fa-solid fa-bars"></i>
@@ -87,12 +83,19 @@
                                 <li><a href="#"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
                             </ul>
                         </div>
+                    </div>
+                </li>
+
+                <li>
+                    <button class="nav-top" aria-expanded="false">Committees for Students <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega mega-compact">
                         <div class="mega-col">
                             <h4>Committees</h4>
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
-                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievances</a></li>
-                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti-Ragging</a></li>
+                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievance</a></li>
+                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a></li>
                             </ul>
                         </div>
                     </div>
@@ -174,7 +177,14 @@
                 <li><a href="#">Transport</a></li>
                 <li><a href="#">Student Achievements</a></li>
                 <li><a href="#">Clubs &amp; Societies</a></li>
-                <li><a href="#">ICC / Grievances / Anti-Ragging</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Committees for Students <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="#">ICC</a></li>
+                <li><a href="#">Grievance</a></li>
+                <li><a href="#">Anti Ragging</a></li>
             </ul>
         </details>
         <details>
@@ -257,9 +267,9 @@
                     <div class="announcement-panel" role="region">
                         <span class="hero-eyebrow">Updates &amp; Information</span>
                         <div class="tabs" role="tablist" aria-label="Announcements and Notices">
-                            <button role="tab" aria-selected="true" aria-controls="tab-announcements" id="tab-btn-ann"
+                            <button type="button" role="tab" aria-selected="true" aria-controls="tab-announcements" id="tab-btn-ann"
                                 class="tab-btn">Announcements</button>
-                            <button role="tab" aria-selected="false" aria-controls="tab-notices" id="tab-btn-not"
+                            <button type="button" role="tab" aria-selected="false" aria-controls="tab-notices" id="tab-btn-not"
                                 class="tab-btn">Notices &amp; Circulars</button>
                         </div>
 
@@ -374,7 +384,7 @@
         </section>
 
         <!-- ============ SAFETY & WELLBEING ============ -->
-        <section class="section safety-section" id="safety">
+        <section class="section safety-section" id="committees">
             <div class="container">
                 <div class="section-head">
                     <span class="eyebrow" style="color:var(--gold-500)">Your safety, our priority</span>
@@ -458,7 +468,9 @@
             <div class="footer-cols">
                 <div>
                     <div class="footer-brand">
-                        <div class="brand-mark" aria-hidden="true">IISER</div>
+                        <div class="brand-mark" aria-hidden="true">
+                    <img src="images/logo.png" alt="">
+                </div>
                         <span>Students' Affairs Office</span>
                     </div>
                     <p class="desc">Indian Institute of Science Education &amp; Research. Committed to the wellbeing,
@@ -655,29 +667,33 @@
 
         /* ================= ANNOUNCEMENT TABS ================= */
         (function () {
-            const tabList = document.querySelector('.tabs');
-            if (!tabList) return;
-            const tabs = tabList.querySelectorAll('[role="tab"]');
-            const panels = document.querySelectorAll('[role="tabpanel"]');
+            const annBtn = document.getElementById('tab-btn-ann');
+            const notBtn = document.getElementById('tab-btn-not');
+            const annPanel = document.getElementById('tab-announcements');
+            const notPanel = document.getElementById('tab-notices');
+            if (!annBtn || !notBtn || !annPanel || !notPanel) return;
 
-            function activateTab(tab) {
-                tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-                tab.setAttribute('aria-selected', 'true');
-                const target = tab.getAttribute('aria-controls');
-                panels.forEach(p => p.hidden = (p.id !== target));
-                tab.focus();
+            function setActive(which) {
+                const isAnnouncements = which === 'ann';
+                annBtn.setAttribute('aria-selected', String(isAnnouncements));
+                notBtn.setAttribute('aria-selected', String(!isAnnouncements));
+                annBtn.classList.toggle('active', isAnnouncements);
+                notBtn.classList.toggle('active', !isAnnouncements);
+                annPanel.hidden = !isAnnouncements;
+                notPanel.hidden = isAnnouncements;
             }
 
-            tabs.forEach((tab, idx) => {
-                tab.addEventListener('click', () => activateTab(tab));
-                tab.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowRight') { tabs[(idx + 1) % tabs.length].focus(); e.preventDefault(); }
-                    if (e.key === 'ArrowLeft') { tabs[(idx - 1 + tabs.length) % tabs.length].focus(); e.preventDefault(); }
-                    if (e.key === 'Home') { tabs[0].focus(); e.preventDefault(); }
-                    if (e.key === 'End') { tabs[tabs.length - 1].focus(); e.preventDefault(); }
-                    if (e.key === 'Enter' || e.key === ' ') { activateTab(document.activeElement); e.preventDefault(); }
-                });
+            annBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                setActive('ann');
             });
+
+            notBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                setActive('not');
+            });
+
+            setActive('ann');
         })();
     </script>
 
