@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Student Achievements — Students' Affairs Office, IISER</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+	<style>
+		.page-hero {
+			background: linear-gradient(135deg, var(--navy-950), var(--navy-800));
+			color: var(--white);
+			padding: var(--space-6) 0;
+		}
+
+		.page-hero h1 {
+			color: var(--white);
+			font-size: clamp(2rem, 3.5vw, 3rem);
+			margin-top: var(--space-2);
+			max-width: 14ch;
+		}
+
+		.page-hero p {
+			max-width: 56ch;
+			margin-top: var(--space-3);
+			color: rgba(255, 255, 255, .82);
+		}
+
+		.simple-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: var(--space-3);
+			padding: var(--space-6) 0;
+		}
+
+		.simple-card {
+			background: var(--white);
+			border: 1px solid var(--grey-300);
+			border-radius: var(--radius-lg);
+			padding: var(--space-3);
+			box-shadow: var(--shadow-sm);
+		}
+
+		.simple-card h2 {
+			font-size: 1.05rem;
+			margin-top: var(--space-2);
+		}
+
+		.simple-card p {
+			color: var(--grey-600);
+			margin-top: 8px;
+			font-size: .92rem;
+		}
+
+		@media (max-width: 900px) {
+			.simple-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<a href="#main" class="skip-link">Skip to main content</a>
+
+	<div class="access-bar">
+		<div class="container">
+			<div class="a-links">
+				<a href="../index.html#footer">Contact IISER</a>
+				<a href="../index.html#gallery">Media Centre</a>
+				<a href="../index.html#footer-sitemap">Sitemap</a>
+			</div>
+			<div class="access-tools">
+				<div class="font-adjust" role="group" aria-label="Adjust font size">
+					<button id="fontDown" aria-label="Decrease font size">A-</button>
+					<button id="fontReset" aria-label="Reset font size">A</button>
+					<button id="fontUp" aria-label="Increase font size">A+</button>
+				</div>
+				<button id="contrastToggle" aria-pressed="false"><i class="fa-solid fa-circle-half-stroke"></i> High
+					Contrast</button>
+			</div>
+		</div>
+	</div>
+
+	<header class="site-header">
+		<div class="container header-inner">
+			<a class="brand" href="../index.html">
+				<div class="brand-mark" aria-hidden="true">IISER</div>
+				<div class="brand-text">
+					<div class="name">IISER</div>
+					<div class="sub">Indian Institute of Science Education &amp; Research</div>
+				</div>
+			</a>
+
+			<div class="office-mark">
+				<div class="seal" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
+				<div class="label"><span class="label-full">Students' Affairs <span>Office</span></span><span
+						class="label-short">SA Office</span></div>
+			</div>
+
+			<div class="header-right">
+				<a href="#admin" class="admin-btn"><i class="fa-solid fa-lock"></i> <span>Admin Panel</span></a>
+				<button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false"
+					aria-controls="mobileNav">
+					<i class="fa-solid fa-bars"></i>
+				</button>
+			</div>
+		</div>
+
+		<nav class="main-nav" aria-label="Primary">
+			<ul class="nav-list">
+				<li><a href="../index.html">Home</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li class="open">
+					<button class="nav-top" aria-expanded="true">Services <i class="fa-solid fa-chevron-down"></i></button>
+					<div class="mega">
+						<div class="mega-col">
+							<h4>Living &amp; Community</h4>
+							<ul>
+								<li><a href="hostel-management.html"><i class="fa-solid fa-building"></i> Hostel Management</a></li>
+							</ul>
+						</div>
+						<div class="mega-col">
+							<h4>Engagement</h4>
+							<ul>
+								<li><a href="student-achievements.html" class="active" aria-current="page"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li><a href="hostel-management.html">Hostel</a></li>
+				<li><a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="scrim" id="scrim"></div>
+	<nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
+		<button class="close-drawer" id="closeDrawer" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+		<a href="../index.html">Home</a>
+		<a href="about.html">About Us</a>
+		<details open>
+			<summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
+			<ul>
+				<li><a href="hostel-management.html">Hostel Management</a></li>
+				<li><a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a></li>
+			</ul>
+		</details>
+		<a href="hostel-management.html">Hostel</a>
+		<a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a>
+	</nav>
+
+	<main id="main">
+		<section class="page-hero">
+			<div class="container">
+				<span class="eyebrow" style="color:var(--gold-500)">Student life</span>
+				<h1>Student Achievements</h1>
+				<p>Highlights, awards, publications, and milestones from IISER students. This page now has the same working navigation as the rest of the site.</p>
+			</div>
+		</section>
+
+		<section class="container simple-grid">
+			<article class="simple-card">
+				<span class="eyebrow">Recognition</span>
+				<h2>Academic awards</h2>
+				<p>Space reserved for scholarships, medals, and institutional honours.</p>
+			</article>
+			<article class="simple-card">
+				<span class="eyebrow">Research</span>
+				<h2>Publications &amp; conferences</h2>
+				<p>Space reserved for student papers, poster sessions, and symposium wins.</p>
+			</article>
+			<article class="simple-card">
+				<span class="eyebrow">Co-curricular</span>
+				<h2>Competitions &amp; outreach</h2>
+				<p>Space reserved for hackathons, debate wins, cultural achievements, and outreach work.</p>
+			</article>
+		</section>
+	</main>
+
+	<script>
+		document.querySelectorAll('.nav-list > li').forEach(li => {
+			const btn = li.querySelector('button.nav-top');
+			if (!btn) return;
+			btn.addEventListener('click', () => {
+				const isOpen = li.classList.toggle('open');
+				btn.setAttribute('aria-expanded', String(isOpen));
+				document.querySelectorAll('.nav-list > li.open').forEach(other => {
+					if (other === li) return;
+					other.classList.remove('open');
+					other.querySelector('button.nav-top')?.setAttribute('aria-expanded', 'false');
+				});
+			});
+		});
+
+		const hamburgerBtn = document.getElementById('hamburgerBtn');
+		const mobileNav = document.getElementById('mobileNav');
+		const scrim = document.getElementById('scrim');
+		const closeDrawer = document.getElementById('closeDrawer');
+		const openDrawer = () => { mobileNav.classList.add('open'); scrim.classList.add('open'); hamburgerBtn.setAttribute('aria-expanded', 'true'); };
+		const closeDrawerFn = () => { mobileNav.classList.remove('open'); scrim.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded', 'false'); };
+		hamburgerBtn.addEventListener('click', openDrawer);
+		closeDrawer.addEventListener('click', closeDrawerFn);
+		scrim.addEventListener('click', closeDrawerFn);
+	</script>
+</body>
+
+</html>
