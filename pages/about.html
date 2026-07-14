@@ -442,10 +442,7 @@
             background: var(--navy-900);
         }
 
-        .nav-list {
-            display: flex;
-            align-items: stretch;
-        }
+        .nav-list { display: flex; align-items: stretch; max-width: 1280px; margin: 0 auto; padding: 0 var(--space-3); }
 
         .nav-list>li {
             position: relative;
@@ -1291,10 +1288,11 @@
             </div>
         </div>
 
-        <!-- ============ MEGA NAVIGATION ============ -->
+                <!-- ============ MEGA NAVIGATION ============ -->
         <nav class="main-nav" aria-label="Primary">
             <ul class="nav-list">
-                <li><a href="about.html" class="active" aria-current="page">About Us</a></li>
+                <li><a href="../index.html" aria-label="Home"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="about.html">About Us</a></li>
 
                 <li>
                     <button class="nav-top" aria-expanded="false">Services <i
@@ -1303,7 +1301,7 @@
                         <div class="mega-col">
                             <h4>Living &amp; Community</h4>
                             <ul>
-                                <li><a href="hostel-management.html"><i class="fa-solid fa-building"></i> Hostel Management</a></li>
+                                <li><a href="hostel-management.html"><i class="fa-solid fa-building"></i>Hostel Management</a></li>
                                 <li><a href="#"><i class="fa-solid fa-users-gear"></i> SMC Information</a></li>
                                 <li><a href="#"><i class="fa-solid fa-bus"></i> Transport</a></li>
                             </ul>
@@ -1311,16 +1309,23 @@
                         <div class="mega-col">
                             <h4>Engagement</h4>
                             <ul>
-                                <li><a href="student-achievements.html"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
-                                <li><a href="#"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
+                                <li><a href="student-achievements.html"><i class="fa-solid fa-medal"></i>Student Achievements</a></li>
+                                <li><a href="clubs-societies.html"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
                             </ul>
                         </div>
+                    </div>
+                </li>
+
+                <li>
+                    <button class="nav-top" aria-expanded="false">Committees for Students <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega mega-compact">
                         <div class="mega-col">
                             <h4>Committees</h4>
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
-                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievances</a></li>
-                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti-Ragging</a></li>
+                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievance</a></li>
+                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1343,6 +1348,10 @@
                             <ul>
                                 <li><a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a></li>
                                 <li><a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a></li>
+                                <li><a href="#"><i class="fa-solid fa-dumbbell"></i> Gymnasium</a></li>
+                                <li><a href="#"><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a></li>
+                                <li><a href="#"><i class="fa-solid fa-building-columns"></i> Bank &amp; ATM</a></li>
+                                <li><a href="#"><i class="fa-solid fa-book-open"></i> Library Facilities</a></li>
                             </ul>
                         </div>
                         <div class="mega-col">
@@ -1389,7 +1398,8 @@
     <div class="scrim" id="scrim"></div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
         <button class="close-drawer" id="closeDrawer" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
-        <a href="about.html" class="active" aria-current="page">About Us</a>
+        <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html">About Us</a>
         <details>
             <summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
             <ul>
@@ -1397,8 +1407,15 @@
                 <li><a href="#">SMC Information</a></li>
                 <li><a href="#">Transport</a></li>
                 <li><a href="student-achievements.html">Student Achievements</a></li>
-                <li><a href="#">Clubs &amp; Societies</a></li>
-                <li><a href="#">ICC / Grievances / Anti-Ragging</a></li>
+                <li><a href="clubs-societies.html">Clubs &amp; Societies</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Committees for Students <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="#">ICC</a></li>
+                <li><a href="#">Grievance</a></li>
+                <li><a href="#">Anti Ragging</a></li>
             </ul>
         </details>
         <details>
@@ -1406,6 +1423,10 @@
             <ul>
                 <li><a href="#">Medical Unit / MCWC</a></li>
                 <li><a href="#">Sports Facilities</a></li>
+                <li><a href="#">Gymnasium</a></li>
+                <li><a href="#">Stationery Shop</a></li>
+                <li><a href="#">Bank &amp; ATM</a></li>
+                <li><a href="#">Library Facilities</a></li>
             </ul>
         </details>
         <a href="#">Scholarship &amp; Financial Aid</a>
