@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Achievements — Students' Affairs Office, IISER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ================= TOKENS (shared with main site) ================= */
+:root{
+  --navy-950:#071A33;
+  --navy-900:#0A2647;
+  --navy-800:#123A6B;
+  --navy-100:#E7EEF7;
+  --gold-500:#D4A537;
+  --gold-600:#B8862A;
+  --gold-100:#FBF1D9;
+  --orange-500:#E8721E;
+  --white:#FFFFFF;
+  --ink:#1C2733;
+  --grey-600:#5B6672;
+  --grey-300:#D8DEE6;
+  --grey-100:#F4F6F9;
+  --radius-sm:6px;
+  --radius-md:12px;
+  --radius-lg:20px;
+  --shadow-sm:0 1px 3px rgba(7,26,51,.08);
+  --shadow-md:0 8px 24px rgba(7,26,51,.10);
+  --shadow-lg:0 20px 48px rgba(7,26,51,.16);
+  --space-1:8px;
+  --space-2:16px;
+  --space-3:24px;
+  --space-4:32px;
+  --space-5:48px;
+  --space-6:64px;
+  --space-7:96px;
+  --font-display:'Poppins',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --dur:220ms;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+body.hc{
+  --navy-900:#000000;--navy-950:#000000;--gold-500:#FFD400;--gold-600:#FFD400;
+  --ink:#000000;--grey-600:#000000;--grey-100:#FFFFFF;--grey-300:#000000;--white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
+}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button,select,input,textarea{font-family:inherit;}
+button{cursor:pointer;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4{font-family:var(--font-display);margin:0;color:var(--navy-900);}
+p{margin:0;}
+.container{max-width:1280px;margin:0 auto;padding:0 var(--space-3);}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--gold-500);color:var(--navy-950);padding:10px 18px;font-weight:600;z-index:2000;border-radius:0 0 8px 0;}
+.skip-link:focus{left:0;}
+:focus-visible{outline:3px solid var(--orange-500);outline-offset:2px;}
+.eyebrow{font-family:var(--font-body);font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-600);display:inline-flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:22px;height:2px;background:var(--gold-500);display:inline-block;}
+.section{padding:var(--space-6) 0;}
+.section-head{max-width:640px;margin-bottom:var(--space-4);}
+.section-head h2{font-size:clamp(1.6rem,2.6vw,2.2rem);margin-top:var(--space-1);}
+.section-head p{color:var(--grey-600);margin-top:var(--space-2);}
+.section-alt{background:var(--grey-100);}
+.section-head.flex-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-3);max-width:none;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:2px solid transparent;font-weight:600;font-size:.95rem;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur) var(--ease);}
+.btn:hover{transform:translateY(-2px);}
+.btn-gold{background:var(--gold-500);color:var(--navy-950);box-shadow:var(--shadow-sm);}
+.btn-gold:hover{background:var(--gold-600);box-shadow:var(--shadow-md);}
+.btn-outline{background:transparent;border-color:rgba(255,255,255,.55);color:var(--white);}
+.btn-outline:hover{background:rgba(255,255,255,.12);border-color:var(--white);}
+.btn-navy{background:var(--navy-900);color:var(--white);}
+.btn-navy:hover{background:var(--navy-800);box-shadow:var(--shadow-md);}
+.btn-ghost{background:var(--white);border-color:var(--grey-300);color:var(--navy-900);}
+.btn-ghost:hover{border-color:var(--gold-500);}
+
+/* ============ ACCESSIBILITY BAR ============ */
+.access-bar{background:var(--navy-950);color:var(--white);font-size:.8rem;}
+.access-bar .container{display:flex;align-items:center;justify-content:space-between;height:36px;gap:var(--space-2);}
+.access-bar .a-links{display:flex;gap:var(--space-3);}
+.access-bar .a-links a{opacity:.85;}
+.access-bar .a-links a:hover{opacity:1;text-decoration:underline;}
+.access-tools{display:flex;align-items:center;gap:14px;}
+.access-tools button{background:transparent;border:1px solid rgba(255,255,255,.35);color:var(--white);border-radius:999px;padding:4px 10px;font-size:.72rem;display:flex;align-items:center;gap:6px;transition:background var(--dur) var(--ease);}
+.access-tools button:hover{background:rgba(255,255,255,.15);}
+.font-adjust{display:flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:2px;}
+.font-adjust button{border:none;width:22px;height:22px;padding:0;border-radius:50%;justify-content:center;}
+
+/* ============ HEADER ============ */
+header.site-header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:var(--shadow-sm);}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:84px;gap:var(--space-3);}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{width:48px;height:48px;border-radius:50%;background:conic-gradient(from 210deg,var(--navy-900),var(--navy-800) 40%,var(--gold-500) 100%);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-display);font-weight:800;font-size:.85rem;flex-shrink:0;}
+.brand-text .name{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--navy-900);line-height:1.15;}
+.brand-text .sub{font-size:.72rem;color:var(--grey-600);letter-spacing:.04em;}
+.office-mark{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;}
+.office-mark .seal{width:44px;height:44px;border-radius:50%;border:2px solid var(--gold-500);display:flex;align-items:center;justify-content:center;color:var(--navy-900);}
+.office-mark .label{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--navy-900);}
+.office-mark .label span{color:var(--gold-600);}
+.header-right{display:flex;justify-content:flex-end;align-items:center;gap:var(--space-3);}
+.admin-btn{background:var(--orange-500);color:var(--white);padding:10px 20px;border-radius:999px;font-weight:600;font-size:.85rem;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 16px rgba(232,114,30,.32);transition:transform var(--dur) var(--ease),background var(--dur) var(--ease);}
+.admin-btn:hover{background:#cf6414;transform:translateY(-2px);}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--navy-900);padding:8px;}
+
+/* ============ NAV / MEGA MENU ============ */
+nav.main-nav{background:var(--navy-900);}
+.nav-list{display:flex;align-items:stretch;}
+.nav-list>li{position:relative;}
+.nav-list>li>a,.nav-list>li>button.nav-top{display:flex;align-items:center;gap:6px;color:var(--white);font-weight:600;font-size:.88rem;padding:14px var(--space-2);background:none;border:none;height:100%;border-bottom:3px solid transparent;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.nav-list>li>a.active{background:var(--navy-800);border-bottom-color:var(--gold-500);}
+.nav-list>li>a:hover,.nav-list>li>button.nav-top:hover,.nav-list>li.open>button.nav-top{background:var(--navy-800);border-bottom-color:var(--gold-500);}
+.nav-top i.fa-chevron-down{font-size:.65rem;transition:transform var(--dur) var(--ease);}
+.nav-list>li.open .nav-top i.fa-chevron-down{transform:rotate(180deg);}
+.mega{position:absolute;top:100%;left:0;background:var(--white);min-width:640px;box-shadow:var(--shadow-lg);border-radius:0 0 var(--radius-md) var(--radius-md);padding:var(--space-4);display:none;grid-template-columns:repeat(3,1fr);gap:var(--space-4);border-top:3px solid var(--gold-500);}
+.nav-list>li.open .mega{display:grid;}
+.mega-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-600);margin-bottom:var(--space-2);}
+.mega-col ul li a{display:flex;align-items:center;gap:10px;padding:7px 0;color:var(--ink);font-size:.9rem;border-radius:var(--radius-sm);transition:color var(--dur) var(--ease),padding-left var(--dur) var(--ease);}
+.mega-col ul li a.active{color:var(--navy-900);font-weight:700;}
+.mega-col ul li a i{color:var(--navy-800);width:16px;text-align:center;}
+.mega-col ul li a:hover{color:var(--navy-900);padding-left:6px;font-weight:600;}
+
+/* ============ MOBILE DRAWER ============ */
+.mobile-nav{position:fixed;inset:0 0 0 auto;width:min(340px,86vw);background:var(--navy-950);color:var(--white);z-index:1500;transform:translateX(100%);transition:transform 320ms var(--ease);padding:var(--space-3);overflow-y:auto;}
+.mobile-nav.open{transform:translateX(0);}
+.mobile-nav .close-drawer{background:none;border:none;color:var(--white);font-size:1.3rem;margin-bottom:var(--space-3);}
+.mobile-nav details{border-bottom:1px solid rgba(255,255,255,.12);padding:10px 0;}
+.mobile-nav summary{font-weight:600;display:flex;justify-content:space-between;align-items:center;list-style:none;cursor:pointer;}
+.mobile-nav summary::-webkit-details-marker{display:none;}
+.mobile-nav ul{margin-top:8px;padding-left:var(--space-2);}
+.mobile-nav ul li a{display:block;padding:7px 0;font-size:.88rem;color:rgba(255,255,255,.82);}
+.mobile-nav ul li a.active{color:var(--gold-500);font-weight:700;}
+.mobile-nav>a{display:block;padding:12px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.12);}
+.scrim{position:fixed;inset:0;background:rgba(7,26,51,.5);z-index:1400;display:none;}
+.scrim.open{display:block;}
+
+/* ============ PAGE HERO ============ */
+.page-hero{position:relative;background:var(--navy-950);color:var(--white);overflow:hidden;}
+.page-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(212,165,55,.22),transparent 45%),radial-gradient(circle at 10% 90%,rgba(232,114,30,.14),transparent 40%);pointer-events:none;}
+.page-hero-inner{position:relative;z-index:1;padding:var(--space-6) 0 var(--space-5);}
+.breadcrumb{font-size:.82rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:8px;margin-bottom:var(--space-3);}
+.breadcrumb a{color:rgba(255,255,255,.85);}
+.breadcrumb a:hover{color:var(--gold-500);}
+.page-hero h1{color:var(--white);font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.15;margin-top:var(--space-2);max-width:20ch;}
+.page-hero p.lede{margin-top:var(--space-3);color:rgba(255,255,255,.82);font-size:1.05rem;max-width:60ch;}
+.hero-cta{display:flex;gap:var(--space-2);margin-top:var(--space-4);flex-wrap:wrap;}
+.hero-stats{display:flex;gap:var(--space-5);margin-top:var(--space-5);flex-wrap:wrap;}
+.hero-stat .num{font-family:var(--font-display);font-weight:800;font-size:2rem;color:var(--gold-500);}
+.hero-stat .lbl{font-size:.8rem;color:rgba(255,255,255,.65);margin-top:2px;}
+
+/* ============ SPOTLIGHT ============ */
+.spotlight{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);background:var(--navy-950);}
+.spotlight-photo{position:relative;min-height:340px;}
+.spotlight-photo img{width:100%;height:100%;object-fit:cover;}
+.spotlight-photo .badge{position:absolute;top:var(--space-2);left:var(--space-2);background:var(--gold-500);color:var(--navy-950);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;padding:6px 14px;border-radius:999px;display:flex;align-items:center;gap:6px;}
+.spotlight-body{padding:var(--space-5);color:var(--white);display:flex;flex-direction:column;justify-content:center;}
+.spotlight-body .cat{color:var(--gold-500);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+.spotlight-body h3{color:var(--white);font-size:1.6rem;margin-top:10px;line-height:1.25;}
+.spotlight-body p{color:rgba(255,255,255,.78);margin-top:var(--space-2);font-size:.98rem;max-width:56ch;}
+.spotlight-meta{display:flex;gap:var(--space-3);margin-top:var(--space-3);flex-wrap:wrap;}
+.spotlight-meta span{font-size:.85rem;color:rgba(255,255,255,.68);display:flex;align-items:center;gap:8px;}
+.spotlight-meta i{color:var(--gold-500);}
+
+/* ============ FILTER + ACHIEVEMENT GRID ============ */
+.filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--space-4);}
+.filter-chip{padding:9px 20px;border-radius:999px;border:1.5px solid var(--grey-300);background:var(--white);font-weight:600;font-size:.85rem;color:var(--grey-600);transition:all var(--dur) var(--ease);}
+.filter-chip:hover{border-color:var(--navy-800);color:var(--navy-900);}
+.filter-chip.active{background:var(--navy-900);border-color:var(--navy-900);color:var(--white);}
+.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);}
+.ach-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease);}
+.ach-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.ach-photo{aspect-ratio:16/10;position:relative;overflow:hidden;}
+.ach-photo img{width:100%;height:100%;object-fit:cover;transition:transform 500ms var(--ease);}
+.ach-card:hover .ach-photo img{transform:scale(1.06);}
+.ach-cat-tag{position:absolute;top:12px;left:12px;background:var(--navy-950);color:var(--white);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:5px 12px;border-radius:999px;}
+.ach-cat-tag.sports{background:var(--orange-500);}
+.ach-cat-tag.cultural{background:var(--gold-600);}
+.ach-cat-tag.research{background:var(--navy-800);}
+.ach-cat-tag.social{background:#2E7D4F;}
+.ach-body{padding:var(--space-3);}
+.ach-body h4{font-size:1rem;line-height:1.35;}
+.ach-body .student{display:flex;align-items:center;gap:10px;margin-top:var(--space-2);}
+.ach-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.ach-avatar img{width:100%;height:100%;object-fit:cover;}
+.ach-body .s-name{font-size:.85rem;font-weight:600;color:var(--navy-900);}
+.ach-body .s-batch{font-size:.72rem;color:var(--grey-600);}
+.ach-body .date{margin-left:auto;font-size:.72rem;color:var(--grey-600);}
+
+/* ============ YEARLY HIGHLIGHTS TIMELINE ============ */
+.timeline{position:relative;margin-top:var(--space-4);}
+.timeline::before{content:"";position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--grey-300);}
+.tl-item{position:relative;padding-left:56px;margin-bottom:var(--space-4);}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--navy-900);color:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:.8rem;border:3px solid var(--gold-500);z-index:1;}
+.tl-item h4{font-size:1.05rem;}
+.tl-item p{color:var(--grey-600);margin-top:6px;font-size:.92rem;max-width:64ch;}
+
+/* ============ WALL OF FAME ============ */
+.fame-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);}
+.fame-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-md);padding:var(--space-3);text-align:center;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.fame-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:var(--gold-500);}
+.fame-photo{width:76px;height:76px;border-radius:50%;overflow:hidden;margin:0 auto var(--space-2);border:3px solid var(--gold-100);}
+.fame-photo img{width:100%;height:100%;object-fit:cover;}
+.fame-card .name{font-weight:700;font-size:.92rem;color:var(--navy-900);}
+.fame-card .achievement{color:var(--grey-600);font-size:.8rem;margin-top:4px;}
+.fame-icon{color:var(--gold-600);margin-top:8px;font-size:1.1rem;}
+
+/* ============ SUBMIT FORM ============ */
+.submit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);align-items:start;}
+.submit-form{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm);}
+.form-row{margin-bottom:var(--space-3);}
+.form-row label{display:block;font-size:.82rem;font-weight:600;color:var(--navy-900);margin-bottom:6px;}
+.form-row input,.form-row select,.form-row textarea{width:100%;border:1.5px solid var(--grey-300);border-radius:var(--radius-sm);padding:11px 14px;font-size:.9rem;color:var(--ink);transition:border-color var(--dur) var(--ease);background:var(--white);}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--gold-500);outline:none;}
+.form-row textarea{resize:vertical;min-height:90px;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);}
+.upload-drop{border:1.5px dashed var(--grey-300);border-radius:var(--radius-sm);padding:var(--space-3);text-align:center;color:var(--grey-600);font-size:.85rem;transition:border-color var(--dur) var(--ease);}
+.upload-drop:hover{border-color:var(--gold-500);}
+.upload-drop i{font-size:1.3rem;color:var(--gold-600);margin-bottom:6px;display:block;}
+.submit-notes h3{font-size:1.15rem;}
+.submit-notes ul{margin-top:var(--space-2);}
+.submit-notes ul li{display:flex;gap:10px;font-size:.88rem;color:var(--grey-600);padding:8px 0;border-bottom:1px solid var(--grey-300);}
+.submit-notes ul li:last-child{border-bottom:none;}
+.submit-notes ul li i{color:var(--gold-600);margin-top:3px;}
+
+/* ============ TESTIMONIALS ============ */
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);}
+.quote-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);padding:var(--space-3);position:relative;}
+.quote-card::before{content:"\201C";font-family:var(--font-display);font-size:2.4rem;color:var(--gold-500);line-height:1;display:block;margin-bottom:4px;}
+.quote-card p{color:var(--ink);font-size:.92rem;line-height:1.6;}
+.quote-who{display:flex;align-items:center;gap:10px;margin-top:var(--space-3);}
+.quote-avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.quote-avatar img{width:100%;height:100%;object-fit:cover;}
+.quote-who .name{font-weight:700;font-size:.85rem;color:var(--navy-900);}
+.quote-who .tag{font-size:.72rem;color:var(--grey-600);}
+
+/* ============ CTA BAND ============ */
+.cta-band{background:linear-gradient(120deg,var(--navy-950),var(--navy-800));border-radius:var(--radius-lg);padding:var(--space-5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);color:var(--white);position:relative;overflow:hidden;}
+.cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 20%,rgba(212,165,55,.25),transparent 45%);}
+.cta-band h3{color:var(--white);font-size:1.4rem;position:relative;z-index:1;}
+.cta-band p{color:rgba(255,255,255,.75);margin-top:6px;position:relative;z-index:1;}
+.cta-actions{display:flex;gap:var(--space-2);position:relative;z-index:1;flex-wrap:wrap;}
+
+/* ============ FOOTER ============ */
+footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
+.footer-top{padding:var(--space-6) 0 var(--space-4);}
+.footer-cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:var(--space-4);}
+.footer-cols h4{color:var(--white);font-size:.85rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:var(--space-2);}
+.footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:var(--space-2);}
+.footer-brand .brand-mark{width:40px;height:40px;font-size:.7rem;}
+.footer-brand span{font-family:var(--font-display);font-weight:700;color:var(--white);font-size:.95rem;}
+.footer-cols p.desc{font-size:.85rem;line-height:1.6;max-width:34ch;}
+.footer-cols ul li{margin-bottom:10px;}
+.footer-cols ul li a{font-size:.85rem;transition:color var(--dur) var(--ease);}
+.footer-cols ul li a:hover{color:var(--gold-500);}
+.social-icons{display:flex;gap:10px;}
+.social-icons a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:background var(--dur) var(--ease);}
+.social-icons a:hover{background:var(--gold-500);color:var(--navy-950);}
+.gov-badges{display:flex;flex-direction:column;gap:8px;margin-top:var(--space-1);}
+.gov-badges a{display:flex;align-items:center;gap:8px;font-size:.82rem;}
+.gov-badges a i{color:var(--gold-500);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding:var(--space-2) 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-2);font-size:.8rem;}
+.footer-bottom .links{display:flex;gap:var(--space-3);flex-wrap:wrap;}
+.footer-bottom .links a:hover{color:var(--gold-500);}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1080px){
+  .spotlight{grid-template-columns:1fr;}
+  .spotlight-photo{min-height:260px;}
+  .ach-grid{grid-template-columns:repeat(2,1fr);}
+  .fame-grid{grid-template-columns:repeat(2,1fr);}
+  .submit-wrap{grid-template-columns:1fr;}
+  .quote-grid{grid-template-columns:1fr 1fr;}
+  .footer-cols{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:820px){
+  nav.main-nav{display:none;}
+  .hamburger{display:block;}
+  .office-mark{display:none;}
+  .header-inner{grid-template-columns:1fr auto;}
+  .admin-btn span{display:none;}
+  .admin-btn{padding:10px 14px;}
+  .access-bar .a-links{display:none;}
+  .ach-grid{grid-template-columns:1fr;}
+  .quote-grid{grid-template-columns:1fr;}
+  .cta-band{flex-direction:column;align-items:flex-start;}
+}
+@media (max-width:560px){
+  .fame-grid{grid-template-columns:1fr 1fr;}
+  .form-row-2{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============ ACCESSIBILITY UTILITY BAR ============ -->
+<div class="access-bar">
+  <div class="container">
+    <div class="a-links">
+      <a href="index.html#footer">Contact IISER</a>
+      <a href="index.html#gallery">Media Centre</a>
+      <a href="index.html#footer-sitemap">Sitemap</a>
+    </div>
+    <div class="access-tools">
+      <div class="font-adjust" role="group" aria-label="Adjust font size">
+        <button id="fontDown" aria-label="Decrease font size">A-</button>
+        <button id="fontReset" aria-label="Reset font size">A</button>
+        <button id="fontUp" aria-label="Increase font size">A+</button>
+      </div>
+      <button id="contrastToggle" aria-pressed="false"><i class="fa-solid fa-circle-half-stroke"></i> High Contrast</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-mark" aria-hidden="true">IISER</div>
+      <div class="brand-text">
+        <div class="name">IISER</div>
+        <div class="sub">Indian Institute of Science Education &amp; Research</div>
+      </div>
+    </a>
+
+    <div class="office-mark">
+      <div class="seal" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
+      <div class="label">Students' Affairs <span>Office</span></div>
+    </div>
+
+    <div class="header-right">
+      <a href="#admin" class="admin-btn"><i class="fa-solid fa-lock"></i> <span>Admin Panel</span></a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ============ MEGA NAVIGATION ============ -->
+  <nav class="main-nav" aria-label="Primary">
+    <ul class="nav-list">
+      <li><a href="about.html">About Us</a></li>
+
+      <li class="open">
+        <button class="nav-top" aria-expanded="true">Services <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="mega">
+          <div class="mega-col">
+            <h4>Living &amp; Community</h4>
+            <ul>
+              <li><a href="hostel-management.html"><i class="fa-solid fa-building"></i> Hostel Management</a></li>
+              <li><a href="#"><i class="fa-solid fa-users-gear"></i> SMC Information</a></li>
+              <li><a href="#"><i class="fa-solid fa-bus"></i> Transport</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Engagement</h4>
+            <ul>
+              <li><a href="student-achievements.html" class="active" aria-current="page"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
+              <li><a href="#"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Committees</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
+              <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievances</a></li>
+              <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti-Ragging</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <button class="nav-top" aria-expanded="false">Facilities <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="mega">
+          <div class="mega-col">
+            <h4>Health &amp; Wellbeing</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a></li>
+              <li><a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a></li>
+              <li><a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Sports</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a></li>
+              <li><a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp; Financial Aid</a></li>
+              <li><a href="#"><i class="fa-solid fa-briefcase"></i> Placement / CCD</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="#">SAC</a></li>
+      <li><a href="hostel-management.html">Hostel</a></li>
+
+      <li>
+        <button class="nav-top" aria-expanded="false">Resources <i class="fa-solid fa-chevron-down"></i></button>
+        <div class="mega">
+          <div class="mega-col">
+            <h4>Downloads</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-file-arrow-down"></i> Forms &amp; Downloads</a></li>
+              <li><a href="#"><i class="fa-solid fa-file-lines"></i> Circulars</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Guidelines</h4>
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-book"></i> Manuals</a></li>
+              <li><a href="#"><i class="fa-solid fa-gavel"></i> Policies</a></li>
+              <li><a href="#"><i class="fa-solid fa-list-check"></i> SOPs</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="scrim" id="scrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
+  <button class="close-drawer" id="closeDrawer" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  <a href="about.html">About Us</a>
+  <details open>
+    <summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
+    <ul>
+      <li><a href="hostel-management.html">Hostel Management</a></li>
+      <li><a href="#">SMC Information</a></li>
+      <li><a href="#">Transport</a></li>
+      <li><a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a></li>
+      <li><a href="#">Clubs &amp; Societies</a></li>
+      <li><a href="#">ICC / Grievances / Anti-Ragging</a></li>
+    </ul>
+  </details>
+  <details>
+    <summary>Facilities <i class="fa-solid fa-chevron-down"></i></summary>
+    <ul>
+      <li><a href="#">Medical Unit / MCWC</a></li>
+      <li><a href="#">Sports Facilities</a></li>
+    </ul>
+  </details>
+  <a href="#">Scholarship &amp; Financial Aid</a>
+  <a href="#">Placement / CCD</a>
+  <a href="#">SAC</a>
+  <a href="hostel-management.html">Hostel</a>
+  <details>
+    <summary>Resources <i class="fa-solid fa-chevron-down"></i></summary>
+    <ul>
+      <li><a href="#">Forms &amp; Downloads</a></li>
+      <li><a href="#">Manuals, Policies &amp; SOPs</a></li>
+    </ul>
+  </details>
+</nav>
+
+<main id="main">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <span>Student Achievements</span></div>
+    <span class="eyebrow" style="color:var(--gold-500)">Celebrating our students</span>
+    <h1>Student Achievements</h1>
+    <p class="lede">From national medals to peer-reviewed papers, from stage performances to community service — this is where we celebrate what IISER students accomplish, on campus and beyond.</p>
+
+    <div class="hero-cta">
+      <a href="#submit" class="btn btn-gold"><i class="fa-solid fa-award"></i> Submit Your Achievement</a>
+      <a href="#wall" class="btn btn-outline"><i class="fa-solid fa-star"></i> View Wall of Fame</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">340+</div><div class="lbl">Achievements logged this year</div></div>
+      <div class="hero-stat"><div class="num">28</div><div class="lbl">National &amp; international medals</div></div>
+      <div class="hero-stat"><div class="num">96</div><div class="lbl">Published research papers</div></div>
+      <div class="hero-stat"><div class="num">₹42L</div><div class="lbl">Scholarships &amp; grants won</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED SPOTLIGHT ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Achievement of the month</span>
+      <h2>Featured spotlight</h2>
+    </div>
+    <div class="spotlight">
+      <div class="spotlight-photo">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=700&q=80" alt="Student presenting research at an international conference">
+        <span class="badge"><i class="fa-solid fa-flask"></i> Research</span>
+      </div>
+      <div class="spotlight-body">
+        <span class="cat">International Recognition</span>
+        <h3>Final-year student wins Best Paper Award at the International Conference on Quantum Materials</h3>
+        <p>Ananya Bhattacharya (BS-MS, Batch of 2026) received the Best Paper Award for her work on topological insulators, competing against submissions from over 40 countries. Her research was conducted under the Physics department's condensed matter group.</p>
+        <div class="spotlight-meta">
+          <span><i class="fa-solid fa-user"></i> Ananya Bhattacharya, BS-MS 2026</span>
+          <span><i class="fa-solid fa-calendar"></i> June 2026</span>
+          <span><i class="fa-solid fa-location-dot"></i> Singapore</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS GRID ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head flex-head">
+      <div>
+        <span class="eyebrow">Recent achievements</span>
+        <h2>Browse by category</h2>
+      </div>
+    </div>
+
+    <div class="filter-bar" role="tablist" aria-label="Achievement filters">
+      <button class="filter-chip active" data-filter="all">All</button>
+      <button class="filter-chip" data-filter="academic">Academic</button>
+      <button class="filter-chip" data-filter="sports">Sports</button>
+      <button class="filter-chip" data-filter="cultural">Cultural</button>
+      <button class="filter-chip" data-filter="research">Research &amp; Innovation</button>
+      <button class="filter-chip" data-filter="social">Social Impact</button>
+    </div>
+
+    <div class="ach-grid" id="achGrid"></div>
+  </div>
+</section>
+
+<!-- ============ YEARLY HIGHLIGHTS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Year in review</span>
+      <h2>2025–26 highlights</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">Aug</div>
+        <h4>Inter-IISER Sports Meet — Overall Championship</h4>
+        <p>Our contingent brought home the overall trophy for the second consecutive year, with 14 gold medals across athletics, swimming, and badminton.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">Nov</div>
+        <h4>National Science Olympiad — 3 students shortlisted for international team</h4>
+        <p>Three undergraduates cleared the national camp for the International Physics and Chemistry Olympiad selection process.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">Feb</div>
+        <h4>Confluence Cultural Fest — Best Delegation, Zonal Round</h4>
+        <p>The cultural society's contingent won Best Delegation at the zonal inter-collegiate fest, sweeping street play and classical dance categories.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">May</div>
+        <h4>Student-led startup secures seed funding</h4>
+        <p>A biotech venture incubated at IISER's innovation cell closed a seed round to commercialize a low-cost water-quality sensor.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">Jun</div>
+        <h4>Best Paper Award at ICQM 2026</h4>
+        <p>Featured spotlight achievement — see above.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WALL OF FAME ============ -->
+<section class="section section-alt" id="wall">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Recognized this year</span>
+      <h2>Wall of Fame</h2>
+      <p>A running record of students who've represented IISER with distinction.</p>
+    </div>
+    <div class="fame-grid">
+      <div class="fame-card">
+        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70" alt=""></div>
+        <div class="name">Ananya Bhattacharya</div>
+        <div class="achievement">Best Paper, ICQM 2026</div>
+        <div class="fame-icon"><i class="fa-solid fa-trophy"></i></div>
+      </div>
+      <div class="fame-card">
+        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=70" alt=""></div>
+        <div class="name">Rohan Verma</div>
+        <div class="achievement">Gold, 400m — Inter-IISER Meet</div>
+        <div class="fame-icon"><i class="fa-solid fa-medal"></i></div>
+      </div>
+      <div class="fame-card">
+        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=70" alt=""></div>
+        <div class="name">Sneha Iyer</div>
+        <div class="achievement">National Physics Olympiad Camp</div>
+        <div class="fame-icon"><i class="fa-solid fa-star"></i></div>
+      </div>
+      <div class="fame-card">
+        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=70" alt=""></div>
+        <div class="name">Kabir Singh</div>
+        <div class="achievement">Founder, water-sensor startup</div>
+        <div class="fame-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUBMIT YOUR ACHIEVEMENT ============ -->
+<section class="section" id="submit">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Have something to share?</span>
+      <h2>Submit your achievement</h2>
+      <p>Tell us about a competition, publication, award, or milestone — we feature select submissions on this page and in the monthly SAO newsletter.</p>
+    </div>
+
+    <div class="submit-wrap">
+      <form class="submit-form" onsubmit="return false;">
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="studentName">Full name</label>
+            <input type="text" id="studentName" placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label for="studentBatch">Batch / programme</label>
+            <input type="text" id="studentBatch" placeholder="e.g. BS-MS 2027">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="achCategory">Category</label>
+          <select id="achCategory">
+            <option>Academic</option>
+            <option>Sports</option>
+            <option>Cultural</option>
+            <option>Research &amp; Innovation</option>
+            <option>Social Impact</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="achTitle">Achievement title</label>
+          <input type="text" id="achTitle" placeholder="e.g. Gold medal at National Chess Championship">
+        </div>
+        <div class="form-row">
+          <label for="achDesc">Tell us more</label>
+          <textarea id="achDesc" placeholder="Where, when, and what did this involve?"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Supporting photo or certificate</label>
+          <div class="upload-drop"><i class="fa-solid fa-cloud-arrow-up"></i>Drag a file here, or click to browse</div>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Submit for Review</button>
+      </form>
+
+      <div class="submit-notes">
+        <h3>How submissions are reviewed</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Submissions are reviewed by the SAO engagement team within 5 working days.</li>
+          <li><i class="fa-solid fa-circle-check"></i> Selected achievements are published on this page, the homepage notice widget, and social media.</li>
+          <li><i class="fa-solid fa-circle-check"></i> Outstanding achievements may be nominated for institute-level recognition at Convocation.</li>
+          <li><i class="fa-solid fa-circle-check"></i> Please include verifiable proof (certificate, publication link, or official result).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">In their words</span>
+      <h2>What students say</h2>
+    </div>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <p>Being featured on the Wall of Fame gave my research the visibility it needed — a recruiter actually reached out after seeing it.</p>
+        <div class="quote-who">
+          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=70" alt=""></div>
+          <div><div class="name">Ananya Bhattacharya</div><div class="tag">BS-MS, Physics</div></div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <p>The SAO helped coordinate travel and leave approvals for the national meet within days. That support made all the difference.</p>
+        <div class="quote-who">
+          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70" alt=""></div>
+          <div><div class="name">Rohan Verma</div><div class="tag">BS-MS, Biology</div></div>
+        </div>
+      </div>
+      <div class="quote-card">
+        <p>Submitting my startup's milestone here connected me with two mentors from the alumni network. Simple process, real impact.</p>
+        <div class="quote-who">
+          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=70" alt=""></div>
+          <div><div class="name">Kabir Singh</div><div class="tag">BS-MS, Chemistry</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h3>Know a student who deserves recognition?</h3>
+        <p>Nominate a peer, or explore clubs and societies that could help you get there.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#submit" class="btn btn-gold"><i class="fa-solid fa-award"></i> Nominate a Student</a>
+        <a href="#" class="btn btn-outline"><i class="fa-solid fa-masks-theater"></i> Explore Clubs &amp; Societies</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer" id="footer">
+  <div class="container footer-top">
+    <div class="footer-cols">
+      <div>
+        <div class="footer-brand">
+          <div class="brand-mark" aria-hidden="true">IISER</div>
+          <span>Students' Affairs Office</span>
+        </div>
+        <p class="desc">Indian Institute of Science Education &amp; Research. Committed to the wellbeing, safety and holistic growth of every student.</p>
+        <p class="desc" style="margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.55)">© 2026 IISER. All rights reserved.<br><a href="#">Privacy Policy</a> · <a href="#">Accessibility Statement</a></p>
+      </div>
+
+      <div id="footer-sitemap">
+        <h4>Feedback</h4>
+        <ul>
+          <li><a href="#">Share your feedback</a></li>
+          <li><a href="#">Suggest an improvement</a></li>
+          <li><a href="#">Report a website issue</a></li>
+          <li><a href="#">Student satisfaction survey</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <p class="desc" style="margin-top:14px;">Follow us for updates on events, deadlines and campus life.</p>
+      </div>
+
+      <div>
+        <h4>Government Links</h4>
+        <div class="gov-badges">
+          <a href="#"><i class="fa-solid fa-landmark"></i> Ministry of Education</a>
+          <a href="#"><i class="fa-solid fa-scroll"></i> UGC</a>
+          <a href="#"><i class="fa-solid fa-globe"></i> India.gov.in</a>
+          <a href="#"><i class="fa-solid fa-shield"></i> Digital India</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <div class="links">
+      <a href="#">Sitemap</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Contact: dosa@iiser.ac.in · 011-2345-600</a>
+    </div>
+    <div>Designed for accessibility · WCAG 2.1 AA compliant</div>
+  </div>
+</footer>
+
+<script>
+/* ================= MEGA MENU ================= */
+document.querySelectorAll('.nav-list > li').forEach(li=>{
+  const btn = li.querySelector('button.nav-top');
+  if(!btn) return;
+  btn.addEventListener('click', ()=>{
+    const isOpen = li.classList.contains('open');
+    document.querySelectorAll('.nav-list > li.open').forEach(o=>{o.classList.remove('open');o.querySelector('button.nav-top')?.setAttribute('aria-expanded','false');});
+    if(!isOpen){ li.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+document.addEventListener('click', (e)=>{
+  if(!e.target.closest('.nav-list > li')){
+    document.querySelectorAll('.nav-list > li.open').forEach(o=>{o.classList.remove('open');o.querySelector('button.nav-top')?.setAttribute('aria-expanded','false');});
+  }
+});
+
+/* ================= MOBILE DRAWER ================= */
+const hamburgerBtn=document.getElementById('hamburgerBtn'),mobileNav=document.getElementById('mobileNav'),scrim=document.getElementById('scrim'),closeDrawer=document.getElementById('closeDrawer');
+function openDrawer(){mobileNav.classList.add('open');scrim.classList.add('open');hamburgerBtn.setAttribute('aria-expanded','true');}
+function shutDrawer(){mobileNav.classList.remove('open');scrim.classList.remove('open');hamburgerBtn.setAttribute('aria-expanded','false');}
+hamburgerBtn.addEventListener('click',openDrawer);
+closeDrawer.addEventListener('click',shutDrawer);
+scrim.addEventListener('click',shutDrawer);
+
+/* ================= ACHIEVEMENTS DATA ================= */
+const achData=[
+  {cat:'academic',tag:'Academic',title:'All-India Rank 2 in Chemical Sciences GATE 2026',name:'Devika Menon',batch:'BS-MS 2026',date:'Mar 2026',img:'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=70',avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=70'},
+  {cat:'sports',tag:'Sports',title:'Gold medal, 400m sprint — Inter-IISER Sports Meet',name:'Rohan Verma',batch:'BS-MS 2027',date:'Aug 2025',img:'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
+  {cat:'cultural',tag:'Cultural',title:'Best Choreographer, Confluence Cultural Fest',name:'Ishaan Kapoor',batch:'BS-MS 2028',date:'Feb 2026',img:'https://images.unsplash.com/photo-1498243691581-8ee0c72c15ca?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
+  {cat:'research',tag:'Research',title:'Best Paper Award, International Conference on Quantum Materials',name:'Ananya Bhattacharya',batch:'BS-MS 2026',date:'Jun 2026',img:'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&q=70',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=70'},
+  {cat:'social',tag:'Social Impact',title:'Led a rural literacy drive reaching 300+ children',name:'Fatima Ansari',batch:'BS-MS 2027',date:'Dec 2025',img:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'},
+  {cat:'research',tag:'Research',title:'Seed funding secured for water-quality sensor startup',name:'Kabir Singh',batch:'BS-MS 2026',date:'May 2026',img:'https://images.unsplash.com/photo-1581091870622-2c9b0e2c6f4b?w=500&q=70',avatar:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=70'},
+  {cat:'academic',tag:'Academic',title:'Selected for National Physics Olympiad training camp',name:'Sneha Iyer',batch:'BS-MS 2028',date:'Nov 2025',img:'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'},
+  {cat:'sports',tag:'Sports',title:'State-level Chess Championship — Gold',name:'Arjun Nair',batch:'BS-MS 2029',date:'Jan 2026',img:'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
+  {cat:'cultural',tag:'Cultural',title:"Published debut poetry collection",name:'Meher Kaur',batch:'BS-MS 2027',date:'Apr 2026',img:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'}
+];
+const achGrid=document.getElementById('achGrid');
+function renderAch(filter){
+  achGrid.innerHTML='';
+  const items = filter==='all' ? achData : achData.filter(a=>a.cat===filter);
+  items.forEach(a=>{
+    const el=document.createElement('div');
+    el.className='ach-card';
+    el.innerHTML=`
+      <div class="ach-photo">
+        <img src="${a.img}" alt="${a.title}" loading="lazy">
+        <span class="ach-cat-tag ${a.cat}">${a.tag}</span>
+      </div>
+      <div class="ach-body">
+        <h4>${a.title}</h4>
+        <div class="student">
+          <div class="ach-avatar"><img src="${a.avatar}" alt=""></div>
+          <div><div class="s-name">${a.name}</div><div class="s-batch">${a.batch}</div></div>
+          <span class="date">${a.date}</span>
+        </div>
+      </div>`;
+    achGrid.appendChild(el);
+  });
+}
+renderAch('all');
+document.querySelectorAll('.filter-chip').forEach(chip=>{
+  chip.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+    chip.classList.add('active');
+    renderAch(chip.dataset.filter);
+  });
+});
+
+/* ================= ACCESSIBILITY: FONT SIZE ================= */
+let fontScale=100;
+function applyFont(){document.documentElement.style.fontSize=fontScale+'%';}
+document.getElementById('fontUp').addEventListener('click',()=>{fontScale=Math.min(130,fontScale+10);applyFont();});
+document.getElementById('fontDown').addEventListener('click',()=>{fontScale=Math.max(80,fontScale-10);applyFont();});
+document.getElementById('fontReset').addEventListener('click',()=>{fontScale=100;applyFont();});
+
+/* ================= ACCESSIBILITY: HIGH CONTRAST ================= */
+const contrastBtn=document.getElementById('contrastToggle');
+contrastBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('hc');
+  const pressed=document.body.classList.contains('hc');
+  contrastBtn.setAttribute('aria-pressed',pressed);
+});
+</script>
+
+</body>
+</html>
