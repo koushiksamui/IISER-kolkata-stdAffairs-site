@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Achievements — Students' Affairs Office, IISER</title>
+<title>Clubs & Societies — Students' Affairs Office, IISER</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -23,6 +23,8 @@
   --grey-600:#5B6672;
   --grey-300:#D8DEE6;
   --grey-100:#F4F6F9;
+  --green-600:#2E7D4F;
+  --green-100:#E7F5EC;
   --radius-sm:6px;
   --radius-md:12px;
   --radius-lg:20px;
@@ -82,6 +84,7 @@ p{margin:0;}
 .btn-navy:hover{background:var(--navy-800);box-shadow:var(--shadow-md);}
 .btn-ghost{background:var(--white);border-color:var(--grey-300);color:var(--navy-900);}
 .btn-ghost:hover{border-color:var(--gold-500);}
+.btn-sm{padding:9px 18px;font-size:.82rem;}
 
 /* ============ ACCESSIBILITY BAR ============ */
 .access-bar{background:var(--navy-950);color:var(--white);font-size:.8rem;}
@@ -169,78 +172,64 @@ nav.main-nav{background:var(--navy-900);}
 .spotlight-meta span{font-size:.85rem;color:rgba(255,255,255,.68);display:flex;align-items:center;gap:8px;}
 .spotlight-meta i{color:var(--gold-500);}
 
-/* ============ FILTER + ACHIEVEMENT GRID ============ */
+/* ============ FILTER + CLUB GRID ============ */
 .filter-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:var(--space-4);}
 .filter-chip{padding:9px 20px;border-radius:999px;border:1.5px solid var(--grey-300);background:var(--white);font-weight:600;font-size:.85rem;color:var(--grey-600);transition:all var(--dur) var(--ease);}
 .filter-chip:hover{border-color:var(--navy-800);color:var(--navy-900);}
 .filter-chip.active{background:var(--navy-900);border-color:var(--navy-900);color:var(--white);}
-.ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);}
-.ach-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease);}
-.ach-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
-.ach-photo{aspect-ratio:16/10;position:relative;overflow:hidden;}
-.ach-photo img{width:100%;height:100%;object-fit:cover;transition:transform 500ms var(--ease);}
-.ach-card:hover .ach-photo img{transform:scale(1.06);}
-.ach-cat-tag{position:absolute;top:12px;left:12px;background:var(--navy-950);color:var(--white);font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:5px 12px;border-radius:999px;}
-.ach-cat-tag.sports{background:var(--orange-500);}
-.ach-cat-tag.cultural{background:var(--gold-600);}
-.ach-cat-tag.research{background:var(--navy-800);}
-.ach-cat-tag.social{background:#2E7D4F;}
-.ach-body{padding:var(--space-3);}
-.ach-body h4{font-size:1rem;line-height:1.35;}
-.ach-body .student{display:flex;align-items:center;gap:10px;margin-top:var(--space-2);}
-.ach-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;flex-shrink:0;}
-.ach-avatar img{width:100%;height:100%;object-fit:cover;}
-.ach-body .s-name{font-size:.85rem;font-weight:600;color:var(--navy-900);}
-.ach-body .s-batch{font-size:.72rem;color:var(--grey-600);}
-.ach-body .date{margin-left:auto;font-size:.72rem;color:var(--grey-600);}
+.club-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);}
+.club-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);padding:var(--space-3);display:flex;flex-direction:column;gap:var(--space-2);transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease),border-color var(--dur) var(--ease);}
+.club-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:var(--gold-500);}
+.club-top{display:flex;align-items:flex-start;gap:12px;}
+.club-icon{width:52px;height:52px;border-radius:14px;background:var(--navy-100);color:var(--navy-900);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.club-icon.sports{background:#FCEBDD;color:var(--orange-500);}
+.club-icon.cultural{background:var(--gold-100);color:var(--gold-600);}
+.club-icon.social{background:var(--green-100);color:var(--green-600);}
+.club-titles{flex:1;}
+.club-titles h4{font-size:1.02rem;line-height:1.3;}
+.club-cat-tag{display:inline-block;margin-top:4px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-600);}
+.club-desc{color:var(--grey-600);font-size:.86rem;flex:1;}
+.club-meta{display:flex;flex-wrap:wrap;gap:12px;font-size:.78rem;color:var(--grey-600);padding-top:var(--space-2);border-top:1px solid var(--grey-300);}
+.club-meta span{display:flex;align-items:center;gap:6px;}
+.club-meta i{color:var(--gold-600);}
+.club-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
+.club-footer a{font-size:.82rem;font-weight:700;color:var(--navy-900);display:flex;align-items:center;gap:6px;}
+.club-footer a:hover{color:var(--gold-600);}
 
-/* ============ YEARLY HIGHLIGHTS TIMELINE ============ */
-.timeline{position:relative;margin-top:var(--space-4);}
-.timeline::before{content:"";position:absolute;left:19px;top:0;bottom:0;width:2px;background:var(--grey-300);}
-.tl-item{position:relative;padding-left:56px;margin-bottom:var(--space-4);}
-.tl-item:last-child{margin-bottom:0;}
-.tl-dot{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--navy-900);color:var(--gold-500);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:.8rem;border:3px solid var(--gold-500);z-index:1;}
-.tl-item h4{font-size:1.05rem;}
-.tl-item p{color:var(--grey-600);margin-top:6px;font-size:.92rem;max-width:64ch;}
+/* ============ EVENTS STRIP ============ */
+.events-list{display:flex;flex-direction:column;gap:var(--space-2);}
+.event-row{display:flex;align-items:center;gap:var(--space-3);background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-md);padding:var(--space-2) var(--space-3);transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease);}
+.event-row:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+.event-date{flex-shrink:0;width:64px;height:64px;border-radius:var(--radius-sm);background:var(--navy-900);color:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);}
+.event-date .d{font-size:1.3rem;font-weight:800;line-height:1;}
+.event-date .m{font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-500);margin-top:2px;}
+.event-info{flex:1;}
+.event-info h4{font-size:.95rem;}
+.event-info .meta{color:var(--grey-600);font-size:.8rem;margin-top:4px;display:flex;gap:14px;flex-wrap:wrap;}
+.event-info .meta span{display:flex;align-items:center;gap:6px;}
+.event-info .meta i{color:var(--gold-600);}
+.event-tag{flex-shrink:0;background:var(--gold-100);color:var(--gold-600);font-size:.72rem;font-weight:700;padding:5px 12px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em;}
 
-/* ============ WALL OF FAME ============ */
-.fame-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);}
-.fame-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-md);padding:var(--space-3);text-align:center;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease),border-color var(--dur) var(--ease);}
-.fame-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:var(--gold-500);}
-.fame-photo{width:76px;height:76px;border-radius:50%;overflow:hidden;margin:0 auto var(--space-2);border:3px solid var(--gold-100);}
-.fame-photo img{width:100%;height:100%;object-fit:cover;}
-.fame-card .name{font-weight:700;font-size:.92rem;color:var(--navy-900);}
-.fame-card .achievement{color:var(--grey-600);font-size:.8rem;margin-top:4px;}
-.fame-icon{color:var(--gold-600);margin-top:8px;font-size:1.1rem;}
+/* ============ START A CLUB PROCESS ============ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);position:relative;}
+.process-grid::before{content:"";position:absolute;top:24px;left:5%;right:5%;height:2px;background:var(--grey-300);z-index:0;}
+.process-step{position:relative;z-index:1;text-align:center;}
+.process-num{width:48px;height:48px;border-radius:50%;background:var(--white);border:3px solid var(--gold-500);color:var(--navy-900);font-family:var(--font-display);font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto var(--space-2);}
+.process-step h4{font-size:.92rem;}
+.process-step p{color:var(--grey-600);font-size:.8rem;margin-top:6px;}
 
-/* ============ SUBMIT FORM ============ */
-.submit-wrap{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);align-items:start;}
-.submit-form{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);padding:var(--space-4);box-shadow:var(--shadow-sm);}
-.form-row{margin-bottom:var(--space-3);}
-.form-row label{display:block;font-size:.82rem;font-weight:600;color:var(--navy-900);margin-bottom:6px;}
-.form-row input,.form-row select,.form-row textarea{width:100%;border:1.5px solid var(--grey-300);border-radius:var(--radius-sm);padding:11px 14px;font-size:.9rem;color:var(--ink);transition:border-color var(--dur) var(--ease);background:var(--white);}
-.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--gold-500);outline:none;}
-.form-row textarea{resize:vertical;min-height:90px;}
-.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);}
-.upload-drop{border:1.5px dashed var(--grey-300);border-radius:var(--radius-sm);padding:var(--space-3);text-align:center;color:var(--grey-600);font-size:.85rem;transition:border-color var(--dur) var(--ease);}
-.upload-drop:hover{border-color:var(--gold-500);}
-.upload-drop i{font-size:1.3rem;color:var(--gold-600);margin-bottom:6px;display:block;}
-.submit-notes h3{font-size:1.15rem;}
-.submit-notes ul{margin-top:var(--space-2);}
-.submit-notes ul li{display:flex;gap:10px;font-size:.88rem;color:var(--grey-600);padding:8px 0;border-bottom:1px solid var(--grey-300);}
-.submit-notes ul li:last-child{border-bottom:none;}
-.submit-notes ul li i{color:var(--gold-600);margin-top:3px;}
-
-/* ============ TESTIMONIALS ============ */
-.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);}
-.quote-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-lg);padding:var(--space-3);position:relative;}
-.quote-card::before{content:"\201C";font-family:var(--font-display);font-size:2.4rem;color:var(--gold-500);line-height:1;display:block;margin-bottom:4px;}
-.quote-card p{color:var(--ink);font-size:.92rem;line-height:1.6;}
-.quote-who{display:flex;align-items:center;gap:10px;margin-top:var(--space-3);}
-.quote-avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0;}
-.quote-avatar img{width:100%;height:100%;object-fit:cover;}
-.quote-who .name{font-weight:700;font-size:.85rem;color:var(--navy-900);}
-.quote-who .tag{font-size:.72rem;color:var(--grey-600);}
+/* ============ COUNCIL CONTACTS ============ */
+.staff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-2);}
+.staff-card{background:var(--white);border:1px solid var(--grey-300);border-radius:var(--radius-md);padding:var(--space-3);display:flex;flex-direction:column;gap:8px;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease);}
+.staff-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+.staff-top{display:flex;align-items:center;gap:12px;}
+.staff-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.staff-avatar img{width:100%;height:100%;object-fit:cover;}
+.staff-name{font-weight:700;font-size:.92rem;color:var(--navy-900);}
+.staff-role{font-size:.75rem;color:var(--grey-600);}
+.staff-actions{display:flex;gap:8px;margin-top:4px;}
+.staff-actions a{flex:1;text-align:center;font-size:.76rem;font-weight:600;border:1px solid var(--grey-300);border-radius:999px;padding:7px;color:var(--navy-900);transition:all var(--dur) var(--ease);}
+.staff-actions a:hover{background:var(--navy-900);color:var(--white);border-color:var(--navy-900);}
 
 /* ============ CTA BAND ============ */
 .cta-band{background:linear-gradient(120deg,var(--navy-950),var(--navy-800));border-radius:var(--radius-lg);padding:var(--space-5);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-3);color:var(--white);position:relative;overflow:hidden;}
@@ -275,10 +264,10 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
 @media (max-width:1080px){
   .spotlight{grid-template-columns:1fr;}
   .spotlight-photo{min-height:260px;}
-  .ach-grid{grid-template-columns:repeat(2,1fr);}
-  .fame-grid{grid-template-columns:repeat(2,1fr);}
-  .submit-wrap{grid-template-columns:1fr;}
-  .quote-grid{grid-template-columns:1fr 1fr;}
+  .club-grid{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);row-gap:var(--space-4);}
+  .process-grid::before{display:none;}
+  .staff-grid{grid-template-columns:repeat(2,1fr);}
   .footer-cols{grid-template-columns:1fr 1fr;}
 }
 @media (max-width:820px){
@@ -289,13 +278,13 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
   .admin-btn span{display:none;}
   .admin-btn{padding:10px 14px;}
   .access-bar .a-links{display:none;}
-  .ach-grid{grid-template-columns:1fr;}
-  .quote-grid{grid-template-columns:1fr;}
+  .club-grid{grid-template-columns:1fr;}
+  .event-row{flex-wrap:wrap;}
   .cta-band{flex-direction:column;align-items:flex-start;}
 }
 @media (max-width:560px){
-  .fame-grid{grid-template-columns:1fr 1fr;}
-  .form-row-2{grid-template-columns:1fr;}
+  .staff-grid{grid-template-columns:1fr;}
+  .process-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -365,8 +354,8 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
           <div class="mega-col">
             <h4>Engagement</h4>
             <ul>
-              <li><a href="student-achievements.html" class="active" aria-current="page"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
-              <li><a href="#"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
+              <li><a href="student-achievements.html"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
+              <li><a href="clubs-societies.html" class="active" aria-current="page"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
             </ul>
           </div>
           <div class="mega-col">
@@ -446,8 +435,8 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
       <li><a href="hostel-management.html">Hostel Management</a></li>
       <li><a href="#">SMC Information</a></li>
       <li><a href="#">Transport</a></li>
-      <li><a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a></li>
-      <li><a href="#">Clubs &amp; Societies</a></li>
+      <li><a href="student-achievements.html">Student Achievements</a></li>
+      <li><a href="clubs-societies.html" class="active" aria-current="page">Clubs &amp; Societies</a></li>
       <li><a href="#">ICC / Grievances / Anti-Ragging</a></li>
     </ul>
   </details>
@@ -476,21 +465,21 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
 <!-- ============ PAGE HERO ============ -->
 <section class="page-hero">
   <div class="container page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <span>Student Achievements</span></div>
-    <span class="eyebrow" style="color:var(--gold-500)">Celebrating our students</span>
-    <h1>Student Achievements</h1>
-    <p class="lede">From national medals to peer-reviewed papers, from stage performances to community service — this is where we celebrate what IISER students accomplish, on campus and beyond.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <span>Clubs &amp; Societies</span></div>
+    <span class="eyebrow" style="color:var(--gold-500)">Beyond the classroom</span>
+    <h1>Clubs &amp; Societies</h1>
+    <p class="lede">Over 60 student-run clubs and societies across technology, culture, the arts, sport, and social impact — every one of them a place to find your people.</p>
 
     <div class="hero-cta">
-      <a href="#submit" class="btn btn-gold"><i class="fa-solid fa-award"></i> Submit Your Achievement</a>
-      <a href="#wall" class="btn btn-outline"><i class="fa-solid fa-star"></i> View Wall of Fame</a>
+      <a href="#directory" class="btn btn-gold"><i class="fa-solid fa-compass"></i> Browse All Clubs</a>
+      <a href="#start" class="btn btn-outline"><i class="fa-solid fa-plus"></i> Start a New Club</a>
     </div>
 
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num">340+</div><div class="lbl">Achievements logged this year</div></div>
-      <div class="hero-stat"><div class="num">28</div><div class="lbl">National &amp; international medals</div></div>
-      <div class="hero-stat"><div class="num">96</div><div class="lbl">Published research papers</div></div>
-      <div class="hero-stat"><div class="num">₹42L</div><div class="lbl">Scholarships &amp; grants won</div></div>
+      <div class="hero-stat"><div class="num">62</div><div class="lbl">Active clubs &amp; societies</div></div>
+      <div class="hero-stat"><div class="num">4,100+</div><div class="lbl">Student memberships</div></div>
+      <div class="hero-stat"><div class="num">180+</div><div class="lbl">Events run per year</div></div>
+      <div class="hero-stat"><div class="num">6</div><div class="lbl">Broad categories</div></div>
     </div>
   </div>
 </section>
@@ -499,212 +488,168 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Achievement of the month</span>
+      <span class="eyebrow">Club of the month</span>
       <h2>Featured spotlight</h2>
     </div>
     <div class="spotlight">
       <div class="spotlight-photo">
-        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=700&q=80" alt="Student presenting research at an international conference">
-        <span class="badge"><i class="fa-solid fa-flask"></i> Research</span>
+        <img src="https://images.unsplash.com/photo-1581091870622-2c9b0e2c6f4b?w=700&q=80" alt="Robotics club members working on a robot prototype">
+        <span class="badge"><i class="fa-solid fa-microchip"></i> Technical</span>
       </div>
       <div class="spotlight-body">
-        <span class="cat">International Recognition</span>
-        <h3>Final-year student wins Best Paper Award at the International Conference on Quantum Materials</h3>
-        <p>Ananya Bhattacharya (BS-MS, Batch of 2026) received the Best Paper Award for her work on topological insulators, competing against submissions from over 40 countries. Her research was conducted under the Physics department's condensed matter group.</p>
+        <span class="cat">Technology &amp; Innovation</span>
+        <h3>Robotics &amp; Automation Society builds its first autonomous rover for Inter-IISER Tech Fest</h3>
+        <p>Founded in 2019, the Robotics &amp; Automation Society has grown to 140 active members. This semester, the team designed and built a fully autonomous rover that took second place at the Inter-IISER Tech Fest — entirely student-engineered, from chassis to control software.</p>
         <div class="spotlight-meta">
-          <span><i class="fa-solid fa-user"></i> Ananya Bhattacharya, BS-MS 2026</span>
-          <span><i class="fa-solid fa-calendar"></i> June 2026</span>
-          <span><i class="fa-solid fa-location-dot"></i> Singapore</span>
+          <span><i class="fa-solid fa-users"></i> 140 members</span>
+          <span><i class="fa-solid fa-calendar"></i> Meets Tuesdays &amp; Fridays</span>
+          <span><i class="fa-solid fa-location-dot"></i> Innovation Lab, Block C</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ ACHIEVEMENTS GRID ============ -->
-<section class="section section-alt">
+<!-- ============ CLUB DIRECTORY ============ -->
+<section class="section section-alt" id="directory">
   <div class="container">
     <div class="section-head flex-head">
       <div>
-        <span class="eyebrow">Recent achievements</span>
-        <h2>Browse by category</h2>
+        <span class="eyebrow">Find your community</span>
+        <h2>Club directory</h2>
       </div>
     </div>
 
-    <div class="filter-bar" role="tablist" aria-label="Achievement filters">
+    <div class="filter-bar" role="tablist" aria-label="Club filters">
       <button class="filter-chip active" data-filter="all">All</button>
-      <button class="filter-chip" data-filter="academic">Academic</button>
-      <button class="filter-chip" data-filter="sports">Sports</button>
+      <button class="filter-chip" data-filter="technical">Technical</button>
       <button class="filter-chip" data-filter="cultural">Cultural</button>
-      <button class="filter-chip" data-filter="research">Research &amp; Innovation</button>
+      <button class="filter-chip" data-filter="arts">Arts &amp; Literary</button>
       <button class="filter-chip" data-filter="social">Social Impact</button>
+      <button class="filter-chip" data-filter="sports">Sports</button>
+      <button class="filter-chip" data-filter="special">Special Interest</button>
     </div>
 
-    <div class="ach-grid" id="achGrid"></div>
+    <div class="club-grid" id="clubGrid"></div>
   </div>
 </section>
 
-<!-- ============ YEARLY HIGHLIGHTS ============ -->
+<!-- ============ UPCOMING EVENTS ============ -->
 <section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Year in review</span>
-      <h2>2025–26 highlights</h2>
+      <span class="eyebrow">What's coming up</span>
+      <h2>Upcoming club events</h2>
     </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot">Aug</div>
-        <h4>Inter-IISER Sports Meet — Overall Championship</h4>
-        <p>Our contingent brought home the overall trophy for the second consecutive year, with 14 gold medals across athletics, swimming, and badminton.</p>
+    <div class="events-list">
+      <div class="event-row">
+        <div class="event-date"><div class="d">18</div><div class="m">Jul</div></div>
+        <div class="event-info">
+          <h4>Robotics Society — Open Build Night</h4>
+          <div class="meta"><span><i class="fa-solid fa-clock"></i> 6:00 PM – 9:00 PM</span><span><i class="fa-solid fa-location-dot"></i> Innovation Lab, Block C</span></div>
+        </div>
+        <span class="event-tag">Technical</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot">Nov</div>
-        <h4>National Science Olympiad — 3 students shortlisted for international team</h4>
-        <p>Three undergraduates cleared the national camp for the International Physics and Chemistry Olympiad selection process.</p>
+      <div class="event-row">
+        <div class="event-date"><div class="d">21</div><div class="m">Jul</div></div>
+        <div class="event-info">
+          <h4>Dramatics Society — Auditions for Autumn Production</h4>
+          <div class="meta"><span><i class="fa-solid fa-clock"></i> 4:00 PM – 7:00 PM</span><span><i class="fa-solid fa-location-dot"></i> Amphitheatre</span></div>
+        </div>
+        <span class="event-tag">Cultural</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot">Feb</div>
-        <h4>Confluence Cultural Fest — Best Delegation, Zonal Round</h4>
-        <p>The cultural society's contingent won Best Delegation at the zonal inter-collegiate fest, sweeping street play and classical dance categories.</p>
+      <div class="event-row">
+        <div class="event-date"><div class="d">25</div><div class="m">Jul</div></div>
+        <div class="event-info">
+          <h4>Environment Collective — Campus Clean-Up Drive</h4>
+          <div class="meta"><span><i class="fa-solid fa-clock"></i> 7:00 AM – 9:00 AM</span><span><i class="fa-solid fa-location-dot"></i> Assembly at Main Gate</span></div>
+        </div>
+        <span class="event-tag">Social Impact</span>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot">May</div>
-        <h4>Student-led startup secures seed funding</h4>
-        <p>A biotech venture incubated at IISER's innovation cell closed a seed round to commercialize a low-cost water-quality sensor.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot">Jun</div>
-        <h4>Best Paper Award at ICQM 2026</h4>
-        <p>Featured spotlight achievement — see above.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WALL OF FAME ============ -->
-<section class="section section-alt" id="wall">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Recognized this year</span>
-      <h2>Wall of Fame</h2>
-      <p>A running record of students who've represented IISER with distinction.</p>
-    </div>
-    <div class="fame-grid">
-      <div class="fame-card">
-        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=70" alt=""></div>
-        <div class="name">Ananya Bhattacharya</div>
-        <div class="achievement">Best Paper, ICQM 2026</div>
-        <div class="fame-icon"><i class="fa-solid fa-trophy"></i></div>
-      </div>
-      <div class="fame-card">
-        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=70" alt=""></div>
-        <div class="name">Rohan Verma</div>
-        <div class="achievement">Gold, 400m — Inter-IISER Meet</div>
-        <div class="fame-icon"><i class="fa-solid fa-medal"></i></div>
-      </div>
-      <div class="fame-card">
-        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&q=70" alt=""></div>
-        <div class="name">Sneha Iyer</div>
-        <div class="achievement">National Physics Olympiad Camp</div>
-        <div class="fame-icon"><i class="fa-solid fa-star"></i></div>
-      </div>
-      <div class="fame-card">
-        <div class="fame-photo"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=70" alt=""></div>
-        <div class="name">Kabir Singh</div>
-        <div class="achievement">Founder, water-sensor startup</div>
-        <div class="fame-icon"><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="event-row">
+        <div class="event-date"><div class="d">02</div><div class="m">Aug</div></div>
+        <div class="event-info">
+          <h4>Photography Club — Golden Hour Walk &amp; Workshop</h4>
+          <div class="meta"><span><i class="fa-solid fa-clock"></i> 5:30 PM – 7:30 PM</span><span><i class="fa-solid fa-location-dot"></i> Campus Green Quadrangle</span></div>
+        </div>
+        <span class="event-tag">Arts &amp; Literary</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SUBMIT YOUR ACHIEVEMENT ============ -->
-<section class="section" id="submit">
+<!-- ============ START A CLUB ============ -->
+<section class="section section-alt" id="start">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">Have something to share?</span>
-      <h2>Submit your achievement</h2>
-      <p>Tell us about a competition, publication, award, or milestone — we feature select submissions on this page and in the monthly SAO newsletter.</p>
+      <span class="eyebrow">Got an idea?</span>
+      <h2>Start a new club or society</h2>
+      <p>Don't see something that fits? Here's how to officially register a new student body.</p>
     </div>
-
-    <div class="submit-wrap">
-      <form class="submit-form" onsubmit="return false;">
-        <div class="form-row-2">
-          <div class="form-row">
-            <label for="studentName">Full name</label>
-            <input type="text" id="studentName" placeholder="Your name">
-          </div>
-          <div class="form-row">
-            <label for="studentBatch">Batch / programme</label>
-            <input type="text" id="studentBatch" placeholder="e.g. BS-MS 2027">
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="achCategory">Category</label>
-          <select id="achCategory">
-            <option>Academic</option>
-            <option>Sports</option>
-            <option>Cultural</option>
-            <option>Research &amp; Innovation</option>
-            <option>Social Impact</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="achTitle">Achievement title</label>
-          <input type="text" id="achTitle" placeholder="e.g. Gold medal at National Chess Championship">
-        </div>
-        <div class="form-row">
-          <label for="achDesc">Tell us more</label>
-          <textarea id="achDesc" placeholder="Where, when, and what did this involve?"></textarea>
-        </div>
-        <div class="form-row">
-          <label>Supporting photo or certificate</label>
-          <div class="upload-drop"><i class="fa-solid fa-cloud-arrow-up"></i>Drag a file here, or click to browse</div>
-        </div>
-        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Submit for Review</button>
-      </form>
-
-      <div class="submit-notes">
-        <h3>How submissions are reviewed</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle-check"></i> Submissions are reviewed by the SAO engagement team within 5 working days.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Selected achievements are published on this page, the homepage notice widget, and social media.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Outstanding achievements may be nominated for institute-level recognition at Convocation.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Please include verifiable proof (certificate, publication link, or official result).</li>
-        </ul>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <h4>Gather Members</h4>
+        <p>Find at least 15 interested students and a faculty advisor willing to mentor the group.</p>
       </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <h4>Submit Proposal</h4>
+        <p>Fill out the club registration form with your charter, goals, and planned activities.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <h4>SAC Review</h4>
+        <p>The Students' Activity Council reviews the proposal for overlap and feasibility.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <h4>Get Recognized</h4>
+        <p>Approved clubs receive a budget allocation, a campus venue, and listing on this page.</p>
+      </div>
+    </div>
+    <div style="margin-top:var(--space-4);display:flex;gap:var(--space-2);flex-wrap:wrap;">
+      <a href="#" class="btn btn-navy"><i class="fa-solid fa-file-signature"></i> Download Registration Form</a>
+      <a href="#" class="btn btn-ghost"><i class="fa-solid fa-comments"></i> Talk to the SAC</a>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="section section-alt">
+<!-- ============ COUNCIL CONTACTS ============ -->
+<section class="section">
   <div class="container">
     <div class="section-head">
-      <span class="eyebrow">In their words</span>
-      <h2>What students say</h2>
+      <span class="eyebrow">Who to contact</span>
+      <h2>Students' Activity Council</h2>
     </div>
-    <div class="quote-grid">
-      <div class="quote-card">
-        <p>Being featured on the Wall of Fame gave my research the visibility it needed — a recruiter actually reached out after seeing it.</p>
-        <div class="quote-who">
-          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=70" alt=""></div>
-          <div><div class="name">Ananya Bhattacharya</div><div class="tag">BS-MS, Physics</div></div>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Aditi Rao</div><div class="staff-role">SAC General Secretary</div></div>
         </div>
+        <div class="staff-actions"><a href="mailto:sac.gensec@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></div>
       </div>
-      <div class="quote-card">
-        <p>The SAO helped coordinate travel and leave approvals for the national meet within days. That support made all the difference.</p>
-        <div class="quote-who">
-          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70" alt=""></div>
-          <div><div class="name">Rohan Verma</div><div class="tag">BS-MS, Biology</div></div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Nikhil Choudhary</div><div class="staff-role">Technical Clubs Coordinator</div></div>
         </div>
+        <div class="staff-actions"><a href="mailto:sac.tech@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></div>
       </div>
-      <div class="quote-card">
-        <p>Submitting my startup's milestone here connected me with two mentors from the alumni network. Simple process, real impact.</p>
-        <div class="quote-who">
-          <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=70" alt=""></div>
-          <div><div class="name">Kabir Singh</div><div class="tag">BS-MS, Chemistry</div></div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Priyanka Das</div><div class="staff-role">Cultural &amp; Arts Coordinator</div></div>
         </div>
+        <div class="staff-actions"><a href="mailto:sac.cultural@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Dr. Meera Nair</div><div class="staff-role">Faculty Advisor, SAC</div></div>
+        </div>
+        <div class="staff-actions"><a href="mailto:sac.advisor@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="tel:0112345695"><i class="fa-solid fa-phone"></i> Call</a></div>
       </div>
     </div>
   </div>
@@ -715,12 +660,12 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
   <div class="container">
     <div class="cta-band">
       <div>
-        <h3>Know a student who deserves recognition?</h3>
-        <p>Nominate a peer, or explore clubs and societies that could help you get there.</p>
+        <h3>Ready to get involved?</h3>
+        <p>Join a club this week, or bring your own idea to life with SAC support.</p>
       </div>
       <div class="cta-actions">
-        <a href="#submit" class="btn btn-gold"><i class="fa-solid fa-award"></i> Nominate a Student</a>
-        <a href="#" class="btn btn-outline"><i class="fa-solid fa-masks-theater"></i> Explore Clubs &amp; Societies</a>
+        <a href="#directory" class="btn btn-gold"><i class="fa-solid fa-compass"></i> Browse All Clubs</a>
+        <a href="index.html#footer" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact Us</a>
       </div>
     </div>
   </div>
@@ -810,47 +755,56 @@ hamburgerBtn.addEventListener('click',openDrawer);
 closeDrawer.addEventListener('click',shutDrawer);
 scrim.addEventListener('click',shutDrawer);
 
-/* ================= ACHIEVEMENTS DATA ================= */
-const achData=[
-  {cat:'academic',tag:'Academic',title:'All-India Rank 2 in Chemical Sciences GATE 2026',name:'Devika Menon',batch:'BS-MS 2026',date:'Mar 2026',img:'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=70',avatar:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=70'},
-  {cat:'sports',tag:'Sports',title:'Gold medal, 400m sprint — Inter-IISER Sports Meet',name:'Rohan Verma',batch:'BS-MS 2027',date:'Aug 2025',img:'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
-  {cat:'cultural',tag:'Cultural',title:'Best Choreographer, Confluence Cultural Fest',name:'Ishaan Kapoor',batch:'BS-MS 2028',date:'Feb 2026',img:'https://images.unsplash.com/photo-1498243691581-8ee0c72c15ca?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
-  {cat:'research',tag:'Research',title:'Best Paper Award, International Conference on Quantum Materials',name:'Ananya Bhattacharya',batch:'BS-MS 2026',date:'Jun 2026',img:'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&q=70',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=70'},
-  {cat:'social',tag:'Social Impact',title:'Led a rural literacy drive reaching 300+ children',name:'Fatima Ansari',batch:'BS-MS 2027',date:'Dec 2025',img:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'},
-  {cat:'research',tag:'Research',title:'Seed funding secured for water-quality sensor startup',name:'Kabir Singh',batch:'BS-MS 2026',date:'May 2026',img:'https://images.unsplash.com/photo-1581091870622-2c9b0e2c6f4b?w=500&q=70',avatar:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=70'},
-  {cat:'academic',tag:'Academic',title:'Selected for National Physics Olympiad training camp',name:'Sneha Iyer',batch:'BS-MS 2028',date:'Nov 2025',img:'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'},
-  {cat:'sports',tag:'Sports',title:'State-level Chess Championship — Gold',name:'Arjun Nair',batch:'BS-MS 2029',date:'Jan 2026',img:'https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=500&q=70',avatar:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=70'},
-  {cat:'cultural',tag:'Cultural',title:"Published debut poetry collection",name:'Meher Kaur',batch:'BS-MS 2027',date:'Apr 2026',img:'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&q=70',avatar:'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=70'}
+/* ================= CLUB DIRECTORY DATA ================= */
+const clubData=[
+  {cat:'technical',icon:'fa-microchip',name:'Robotics &amp; Automation Society',desc:'Building autonomous systems, from line-followers to competition-grade rovers.',members:'140',meets:'Tue &amp; Fri, 6 PM',venue:'Innovation Lab'},
+  {cat:'technical',icon:'fa-code',name:'Competitive Programming Club',desc:'Weekly contests, algorithm workshops, and ICPC team training.',members:'95',meets:'Wed, 7 PM',venue:'CS Lab 2'},
+  {cat:'cultural',icon:'fa-masks-theater',name:'Dramatics Society',desc:'Stage productions, street plays, and an annual original script showcase.',members:'80',meets:'Mon &amp; Thu, 5 PM',venue:'Amphitheatre'},
+  {cat:'cultural',icon:'fa-music',name:'Music &amp; Bands Collective',desc:'Indian classical, western bands, and open-mic nights every month.',members:'110',meets:'Sat, 4 PM',venue:'Music Room'},
+  {cat:'arts',icon:'fa-feather',name:'Literary &amp; Debating Society',desc:'Poetry slams, creative writing circles, and inter-collegiate debate meets.',members:'70',meets:'Tue, 6 PM',venue:'Seminar Hall 1'},
+  {cat:'arts',icon:'fa-camera',name:'Photography Club',desc:'Golden-hour walks, gear workshops, and an annual campus photo exhibit.',members:'88',meets:'Sun, 5:30 PM',venue:'Media Room'},
+  {cat:'social',icon:'fa-leaf',name:'Environment Collective',desc:'Campus sustainability audits, clean-up drives, and a student organic garden.',members:'64',meets:'Fri, 7 AM',venue:'Main Gate'},
+  {cat:'social',icon:'fa-hand-holding-heart',name:'Community Outreach Cell',desc:'Weekend teaching programmes at nearby government schools.',members:'102',meets:'Sat, 9 AM',venue:'Village Outreach Van'},
+  {cat:'sports',icon:'fa-futbol',name:'Football Club',desc:'Inter-hostel league organizer and Inter-IISER tournament squad.',members:'130',meets:'Daily, 6 AM',venue:'Sports Ground'},
+  {cat:'sports',icon:'fa-chess',name:'Chess &amp; Board Games Club',desc:'Casual play, rated tournaments, and a growing bridge circle.',members:'56',meets:'Wed, 8 PM',venue:'Student Common Room'},
+  {cat:'special',icon:'fa-flask',name:'Astronomy &amp; Skywatching Club',desc:'Telescope nights, eclipse-watch camps, and a working campus observatory.',members:'48',meets:'New Moon nights',venue:'Rooftop Observatory'},
+  {cat:'special',icon:'fa-utensils',name:'Culinary Exchange Club',desc:'Regional cooking workshops and a termly potluck across hostels.',members:'72',meets:'Sun, 4 PM',venue:'Mess Annexe'}
 ];
-const achGrid=document.getElementById('achGrid');
-function renderAch(filter){
-  achGrid.innerHTML='';
-  const items = filter==='all' ? achData : achData.filter(a=>a.cat===filter);
-  items.forEach(a=>{
+const catLabels={technical:'Technical',cultural:'Cultural',arts:'Arts &amp; Literary',social:'Social Impact',sports:'Sports',special:'Special Interest'};
+const iconClassByCat={technical:'',cultural:'cultural',arts:'cultural',social:'social',sports:'sports',special:''};
+const clubGrid=document.getElementById('clubGrid');
+function renderClubs(filter){
+  clubGrid.innerHTML='';
+  const items = filter==='all' ? clubData : clubData.filter(c=>c.cat===filter);
+  items.forEach(c=>{
     const el=document.createElement('div');
-    el.className='ach-card';
+    el.className='club-card';
     el.innerHTML=`
-      <div class="ach-photo">
-        <img src="${a.img}" alt="${a.title}" loading="lazy">
-        <span class="ach-cat-tag ${a.cat}">${a.tag}</span>
-      </div>
-      <div class="ach-body">
-        <h4>${a.title}</h4>
-        <div class="student">
-          <div class="ach-avatar"><img src="${a.avatar}" alt=""></div>
-          <div><div class="s-name">${a.name}</div><div class="s-batch">${a.batch}</div></div>
-          <span class="date">${a.date}</span>
+      <div class="club-top">
+        <div class="club-icon ${iconClassByCat[c.cat]}"><i class="fa-solid ${c.icon}"></i></div>
+        <div class="club-titles">
+          <h4>${c.name}</h4>
+          <span class="club-cat-tag">${catLabels[c.cat]}</span>
         </div>
+      </div>
+      <p class="club-desc">${c.desc}</p>
+      <div class="club-meta">
+        <span><i class="fa-solid fa-users"></i> ${c.members} members</span>
+        <span><i class="fa-solid fa-clock"></i> ${c.meets}</span>
+        <span><i class="fa-solid fa-location-dot"></i> ${c.venue}</span>
+      </div>
+      <div class="club-footer">
+        <a href="#">View club page <i class="fa-solid fa-arrow-right"></i></a>
       </div>`;
-    achGrid.appendChild(el);
+    clubGrid.appendChild(el);
   });
 }
-renderAch('all');
+renderClubs('all');
 document.querySelectorAll('.filter-chip').forEach(chip=>{
   chip.addEventListener('click',()=>{
     document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
     chip.classList.add('active');
-    renderAch(chip.dataset.filter);
+    renderClubs(chip.dataset.filter);
   });
 });
 
