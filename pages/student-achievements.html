@@ -113,7 +113,7 @@ header.site-header{position:sticky;top:0;z-index:1000;background:var(--white);bo
 
 /* ============ NAV / MEGA MENU ============ */
 nav.main-nav{background:var(--navy-900);}
-.nav-list{display:flex;align-items:stretch;}
+.nav-list { display: flex; align-items: stretch; max-width: 1280px; margin: 0 auto; padding: 0 var(--space-3); }
 .nav-list>li{position:relative;}
 .nav-list>li>a,.nav-list>li>button.nav-top{display:flex;align-items:center;gap:6px;color:var(--white);font-weight:600;font-size:.88rem;padding:14px var(--space-2);background:none;border:none;height:100%;border-bottom:3px solid transparent;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease);}
 .nav-list>li>a.active{background:var(--navy-800);border-bottom-color:var(--gold-500);}
@@ -346,130 +346,159 @@ footer.site-footer{background:var(--navy-950);color:rgba(255,255,255,.8);}
     </div>
   </div>
 
-  <!-- ============ MEGA NAVIGATION ============ -->
-  <nav class="main-nav" aria-label="Primary">
-    <ul class="nav-list">
-      <li><a href="about.html">About Us</a></li>
+          <!-- ============ MEGA NAVIGATION ============ -->
+        <nav class="main-nav" aria-label="Primary">
+            <ul class="nav-list">
+                <li><a href="../index.html" aria-label="Home"><i class="fa-solid fa-house"></i></a></li>
+                <li><a href="about.html">About Us</a></li>
 
-      <li class="open">
-        <button class="nav-top" aria-expanded="true">Services <i class="fa-solid fa-chevron-down"></i></button>
-        <div class="mega">
-          <div class="mega-col">
-            <h4>Living &amp; Community</h4>
-            <ul>
-              <li><a href="hostel-management.html"><i class="fa-solid fa-building"></i> Hostel Management</a></li>
-              <li><a href="#"><i class="fa-solid fa-users-gear"></i> SMC Information</a></li>
-              <li><a href="#"><i class="fa-solid fa-bus"></i> Transport</a></li>
-            </ul>
-          </div>
-          <div class="mega-col">
-            <h4>Engagement</h4>
-            <ul>
-              <li><a href="student-achievements.html" class="active" aria-current="page"><i class="fa-solid fa-medal"></i> Student Achievements</a></li>
-              <li><a href="#"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
-            </ul>
-          </div>
-          <div class="mega-col">
-            <h4>Committees</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
-              <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievances</a></li>
-              <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti-Ragging</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
+                <li>
+                    <button class="nav-top" aria-expanded="false">Services <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega">
+                        <div class="mega-col">
+                            <h4>Living &amp; Community</h4>
+                            <ul>
+                                <li><a href="hostel-management.html"><i class="fa-solid fa-building"></i>Hostel Management</a></li>
+                                <li><a href="#"><i class="fa-solid fa-users-gear"></i> SMC Information</a></li>
+                                <li><a href="#"><i class="fa-solid fa-bus"></i> Transport</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Engagement</h4>
+                            <ul>
+                                <li><a href="student-achievements.html"><i class="fa-solid fa-medal"></i>Student Achievements</a></li>
+                                <li><a href="clubs-societies.html"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
 
-      <li>
-        <button class="nav-top" aria-expanded="false">Facilities <i class="fa-solid fa-chevron-down"></i></button>
-        <div class="mega">
-          <div class="mega-col">
-            <h4>Health &amp; Wellbeing</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a></li>
-              <li><a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a></li>
-              <li><a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a></li>
-            </ul>
-          </div>
-          <div class="mega-col">
-            <h4>Sports</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a></li>
-              <li><a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a></li>
-            </ul>
-          </div>
-          <div class="mega-col">
-            <h4>Support</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp; Financial Aid</a></li>
-              <li><a href="#"><i class="fa-solid fa-briefcase"></i> Placement / CCD</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
+                <li>
+                    <button class="nav-top" aria-expanded="false">Committees for Students <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega mega-compact">
+                        <div class="mega-col">
+                            <h4>Committees</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
+                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievance</a></li>
+                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
 
-      <li><a href="#">SAC</a></li>
-      <li><a href="hostel-management.html">Hostel</a></li>
+                <li>
+                    <button class="nav-top" aria-expanded="false">Facilities <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega">
+                        <div class="mega-col">
+                            <h4>Health &amp; Wellbeing</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a></li>
+                                <li><a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a></li>
+                                <li><a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Sports</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a></li>
+                                <li><a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a></li>
+                                <li><a href="#"><i class="fa-solid fa-dumbbell"></i> Gymnasium</a></li>
+                                <li><a href="#"><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a></li>
+                                <li><a href="#"><i class="fa-solid fa-building-columns"></i> Bank &amp; ATM</a></li>
+                                <li><a href="#"><i class="fa-solid fa-book-open"></i> Library Facilities</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Support</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp; Financial
+                                        Aid</a></li>
+                                <li><a href="#"><i class="fa-solid fa-briefcase"></i> Placement / CCD</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
 
-      <li>
-        <button class="nav-top" aria-expanded="false">Resources <i class="fa-solid fa-chevron-down"></i></button>
-        <div class="mega">
-          <div class="mega-col">
-            <h4>Downloads</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-file-arrow-down"></i> Forms &amp; Downloads</a></li>
-              <li><a href="#"><i class="fa-solid fa-file-lines"></i> Circulars</a></li>
+                <li><a href="#">SAC</a></li>
+                <li><a href="hostel-management.html">Hostel</a></li>
+
+                <li>
+                    <button class="nav-top" aria-expanded="false">Resources <i
+                            class="fa-solid fa-chevron-down"></i></button>
+                    <div class="mega">
+                        <div class="mega-col">
+                            <h4>Downloads</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-file-arrow-down"></i> Forms &amp; Downloads</a>
+                                </li>
+                                <li><a href="#"><i class="fa-solid fa-file-lines"></i> Circulars</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-col">
+                            <h4>Guidelines</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa-solid fa-book"></i> Manuals</a></li>
+                                <li><a href="#"><i class="fa-solid fa-gavel"></i> Policies</a></li>
+                                <li><a href="#"><i class="fa-solid fa-list-check"></i> SOPs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
             </ul>
-          </div>
-          <div class="mega-col">
-            <h4>Guidelines</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-book"></i> Manuals</a></li>
-              <li><a href="#"><i class="fa-solid fa-gavel"></i> Policies</a></li>
-              <li><a href="#"><i class="fa-solid fa-list-check"></i> SOPs</a></li>
-            </ul>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </nav>
+        </nav>
 </header>
 
 <!-- ============ MOBILE DRAWER ============ -->
-<div class="scrim" id="scrim"></div>
-<nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
-  <button class="close-drawer" id="closeDrawer" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
-  <a href="about.html">About Us</a>
-  <details open>
-    <summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
-    <ul>
-      <li><a href="hostel-management.html">Hostel Management</a></li>
-      <li><a href="#">SMC Information</a></li>
-      <li><a href="#">Transport</a></li>
-      <li><a href="student-achievements.html" class="active" aria-current="page">Student Achievements</a></li>
-      <li><a href="#">Clubs &amp; Societies</a></li>
-      <li><a href="#">ICC / Grievances / Anti-Ragging</a></li>
-    </ul>
-  </details>
-  <details>
-    <summary>Facilities <i class="fa-solid fa-chevron-down"></i></summary>
-    <ul>
-      <li><a href="#">Medical Unit / MCWC</a></li>
-      <li><a href="#">Sports Facilities</a></li>
-    </ul>
-  </details>
-  <a href="#">Scholarship &amp; Financial Aid</a>
-  <a href="#">Placement / CCD</a>
-  <a href="#">SAC</a>
-  <a href="hostel-management.html">Hostel</a>
-  <details>
-    <summary>Resources <i class="fa-solid fa-chevron-down"></i></summary>
-    <ul>
-      <li><a href="#">Forms &amp; Downloads</a></li>
-      <li><a href="#">Manuals, Policies &amp; SOPs</a></li>
-    </ul>
-  </details>
-</nav>
+    <div class="scrim" id="scrim"></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile primary">
+        <button class="close-drawer" id="closeDrawer" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+        <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="about.html">About Us</a>
+        <details>
+            <summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="hostel-management.html">Hostel Management</a></li>
+                <li><a href="#">SMC Information</a></li>
+                <li><a href="#">Transport</a></li>
+                <li><a href="student-achievements.html">Student Achievements</a></li>
+                <li><a href="clubs-societies.html">Clubs &amp; Societies</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Committees for Students <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="#">ICC</a></li>
+                <li><a href="#">Grievance</a></li>
+                <li><a href="#">Anti Ragging</a></li>
+            </ul>
+        </details>
+        <details>
+            <summary>Facilities <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="#">Medical Unit / MCWC</a></li>
+                <li><a href="#">Sports Facilities</a></li>
+                <li><a href="#">Gymnasium</a></li>
+                <li><a href="#">Stationery Shop</a></li>
+                <li><a href="#">Bank &amp; ATM</a></li>
+                <li><a href="#">Library Facilities</a></li>
+            </ul>
+        </details>
+        <a href="#">Scholarship &amp; Financial Aid</a>
+        <a href="#">Placement / CCD</a>
+        <a href="#">SAC</a>
+        <a href="hostel-management.html">Hostel</a>
+        <details>
+            <summary>Resources <i class="fa-solid fa-chevron-down"></i></summary>
+            <ul>
+                <li><a href="#">Forms &amp; Downloads</a></li>
+                <li><a href="#">Manuals, Policies &amp; SOPs</a></li>
+            </ul>
+        </details>
+    </nav>
 
 <main id="main">
 

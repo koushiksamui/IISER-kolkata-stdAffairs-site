@@ -1,166 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Students' Affairs Office — IISER</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- ============ ACCESSIBILITY UTILITY BAR ============ -->
     <div class="access-bar">
-        <div class="container">
-            <div class="a-links">
-                <a href="#footer">Contact IISER</a>
-                <a href="#gallery">Media Centre</a>
-                <a href="#footer-sitemap">Sitemap</a>
-            </div>
-            <div class="access-tools">
-                <div class="font-adjust" role="group" aria-label="Adjust font size">
-                    <button id="fontDown" aria-label="Decrease font size">A-</button>
-                    <button id="fontReset" aria-label="Reset font size">A</button>
-                    <button id="fontUp" aria-label="Increase font size">A+</button>
-                </div>
-                <a href="#admin" class="admin-btn"><i class="fa-solid fa-user-lock" aria-hidden="true"></i>
-                </a>
-            </div>
+      <div class="container">
+        <div class="a-links">
+          <a href="#footer">IISER Kolkata Home</a>
+          <a href="#gallery">Media Centre</a>
+          <a href="#footer-sitemap">Sitemap</a>
         </div>
+        <div class="access-tools">
+          <div class="font-adjust" role="group" aria-label="Adjust font size">
+            <button id="fontDown" aria-label="Decrease font size">A-</button>
+            <button id="fontReset" aria-label="Reset font size">A</button>
+            <button id="fontUp" aria-label="Increase font size">A+</button>
+          </div>
+          <a href="#admin" class="admin-btn"
+            ><i class="fa-solid fa-lock" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- ============ HEADER ============ -->
     <header class="site-header">
-        <div class="container header-inner">
-            <div class="brand">
-                <div class="brand-mark" aria-hidden="true">
-                    <img src="images/logo.png" alt="">
-                </div>
-                <div class="brand-text">
-                    <div class="name">Indian Institute of Science Education and Research Kolkata</div>
-                    <div class="sub">Office of Student Affairs</div>
-                </div>
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <img src="images/logo.png" alt="" />
+          </div>
+          <div class="brand-text">
+            <div class="name">Office of Students' Affairs</div>
+            <div class="sub">
+              Indian Institute of Science Education and Research Kolkata
             </div>
-
-            <div class="header-right">
-                <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false"
-                    aria-controls="mobileNav">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
+          </div>
         </div>
 
-        <!-- ============ MEGA NAVIGATION ============ -->
-        <nav class="main-nav" aria-label="Primary">
-            <ul class="nav-list">
-                <li><a href="./pages/about.html">About Us</a></li>
+        <div class="header-right">
+          <button
+            class="hamburger"
+            id="hamburgerBtn"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileNav"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
 
-                <li>
-                    <button class="nav-top" aria-expanded="false">Services <i
-                            class="fa-solid fa-chevron-down"></i></button>
-                    <div class="mega">
-                        <div class="mega-col">
-                            <h4>Living &amp; Community</h4>
-                            <ul>
-                                <li><a href="./pages/hostel-management.html"><i class="fa-solid fa-building"></i>Hostel Management</a></li>
-                                <li><a href="./pages/smc-info.html"><i class="fa-solid fa-users-gear"></i> SMC Information</a></li>
-                                <li><a href="#"><i class="fa-solid fa-bus"></i> Transport</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Engagement</h4>
-                            <ul>
-                                <li><a href="./pages/student-achievements.html"><i class="fa-solid fa-medal"></i>Student Achievements</a></li>
-                                <li><a href="./pages/clubs-societies.html"><i class="fa-solid fa-masks-theater"></i> Clubs &amp; Societies</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+      <!-- ============ MEGA NAVIGATION ============ -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li>
+            <a href="./index.html" aria-label="Home"
+              ><i class="fa-solid fa-house"></i
+            ></a>
+          </li>
+          <li><a href="./pages/about.html">About Us</a></li>
 
-                <li>
-                    <button class="nav-top" aria-expanded="false">Committees for Students <i
-                            class="fa-solid fa-chevron-down"></i></button>
-                    <div class="mega mega-compact">
-                        <div class="mega-col">
-                            <h4>Committees</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
-                                <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievance</a></li>
-                                <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+          <li>
+            <button class="nav-top" aria-expanded="false">
+              Services <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="mega">
+              <div class="mega-col">
+                <h4>Living &amp; Community</h4>
+                <ul>
+                  <li>
+                    <a href="./pages/hostel-management.html"
+                      ><i class="fa-solid fa-building"></i>Hostel Management</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-users-gear"></i> SMC Information</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-bus"></i> Transport</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Engagement</h4>
+                <ul>
+                  <li>
+                    <a href="./pages/student-achievements.html"
+                      ><i class="fa-solid fa-medal"></i>Student Achievements</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./pages/clubs-societies.html"
+                      ><i class="fa-solid fa-masks-theater"></i> Clubs &amp;
+                      Societies</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
 
-                <li>
-                    <button class="nav-top" aria-expanded="false">Facilities <i
-                            class="fa-solid fa-chevron-down"></i></button>
-                    <div class="mega">
-                        <div class="mega-col">
-                            <h4>Health &amp; Wellbeing</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a></li>
-                                <li><a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a></li>
-                                <li><a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Sports</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a></li>
-                                <li><a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a></li>
-                                <li><a href="#"><i class="fa-solid fa-dumbbell"></i> Gymnasium</a></li>
-                                <li><a href="#"><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a></li>
-                                <li><a href="#"><i class="fa-solid fa-building-columns"></i> Bank &amp; ATM</a></li>
-                                <li><a href="#"><i class="fa-solid fa-book-open"></i> Library Facilities</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Support</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp; Financial
-                                        Aid</a></li>
-                                <li><a href="#"><i class="fa-solid fa-briefcase"></i> Placement / CCD</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+          <li>
+            <button class="nav-top" aria-expanded="false">
+              Committees for Students <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="mega mega-compact">
+              <div class="mega-col">
+                <h4>Committees</h4>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-scale-balanced"></i> ICC</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-handshake"></i> Grievance</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
 
-                <li><a href="#">SAC</a></li>
-                <li><a href="./pages/hostel-management.html">Hostel</a></li>
+          <li>
+            <button class="nav-top" aria-expanded="false">
+              Facilities <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="mega">
+              <div class="mega-col">
+                <h4>Health &amp; Wellbeing</h4>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-kit-medical"></i> Medical Unit</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a>
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-brain"></i> Counselling Services</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Sports</h4>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-futbol"></i> Sports Facilities</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-trophy"></i> Tournaments</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-dumbbell"></i> Gymnasium</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-building-columns"></i> Bank &amp;
+                      ATM</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-book-open"></i> Library
+                      Facilities</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Support</h4>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-graduation-cap"></i> Scholarship
+                      &amp; Financial Aid</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-briefcase"></i> Placement / CCD</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
 
-                <li>
-                    <button class="nav-top" aria-expanded="false">Resources <i
-                            class="fa-solid fa-chevron-down"></i></button>
-                    <div class="mega">
-                        <div class="mega-col">
-                            <h4>Downloads</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-file-arrow-down"></i> Forms &amp; Downloads</a>
-                                </li>
-                                <li><a href="#"><i class="fa-solid fa-file-lines"></i> Circulars</a></li>
-                            </ul>
-                        </div>
-                        <div class="mega-col">
-                            <h4>Guidelines</h4>
-                            <ul>
-                                <li><a href="#"><i class="fa-solid fa-book"></i> Manuals</a></li>
-                                <li><a href="#"><i class="fa-solid fa-gavel"></i> Policies</a></li>
-                                <li><a href="#"><i class="fa-solid fa-list-check"></i> SOPs</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+          <li><a href="#">SAC</a></li>
+          <li><a href="./pages/hostel-management.html">Hostel</a></li>
+
+          <li>
+            <button class="nav-top" aria-expanded="false">
+              Resources <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="mega">
+              <div class="mega-col">
+                <h4>Downloads</h4>
+                <ul>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-file-arrow-down"></i> Forms &amp;
+                      Downloads</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#"
+                      ><i class="fa-solid fa-file-lines"></i> Circulars</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Guidelines</h4>
+                <ul>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-book"></i> Manuals</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-gavel"></i> Policies</a>
+                  </li>
+                  <li>
+                    <a href="#"><i class="fa-solid fa-list-check"></i> SOPs</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <!-- ============ MOBILE DRAWER ============ -->
@@ -172,7 +280,7 @@
             <summary>Services <i class="fa-solid fa-chevron-down"></i></summary>
             <ul>
                 <li><a href="./pages/hostel-management.html">Hostel Management</a></li>
-                <li><a href="./pages/smc-info.html">SMC Information</a></li>
+                <li><a href="#">SMC Information</a></li>
                 <li><a href="#">Transport</a></li>
                 <li><a href="./pages/student-achievements.html">Student Achievements</a></li>
                 <li><a href="#">Clubs &amp; Societies</a></li>
@@ -211,491 +319,797 @@
     </nav>
 
     <main id="main">
-
-        <!-- ============ HERO ============ -->
-        <section class="hero">
-            <div class="container hero-grid">
-                <div class="hero-top">
-                    <div class="carousel" id="carousel">
-                        <button class="carousel-prev" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
-                        <div class="carousel-slide active"
-                            style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=900&q=80')">
-                            <div class="cap">Main Academic Block — Autumn Semester</div>
-                        </div>
-                        <div class="carousel-slide"
-                            style="background-image:url('https://cdn.itm.ac.in/2025/11/Top-MBA-Colleges-in-Thane.jpeg')">
-                            <div class="cap">Central Library &amp; Reading Halls</div>
-                        </div>
-                        <div class="carousel-slide"
-                            style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStETsfSROxiRNpWThCfCMA_v5db_Ry60P9EaLnsREXCQ&s=10')">
-                            <div class="cap">Student Residences at Dusk</div>
-                        </div>
-                        <div class="carousel-slide"
-                            style="background-image:url('https://www.iiserkol.ac.in/web/assets/images/banner/1766032594.png')">
-                            <div class="cap">Annual Cultural Fest, Confluence</div>
-                        </div>
-                        <div class="carousel-dots">
-                            <button class="active" aria-label="Slide 1"></button>
-                            <button aria-label="Slide 2"></button>
-                            <button aria-label="Slide 3"></button>
-                            <button aria-label="Slide 4"></button>
-                        </div>
-                        <button class="carousel-next" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
+      <!-- ============ HERO ============ -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-top">
+            <div class="carousel" id="carousel">
+              <button class="carousel-prev" aria-label="Previous slide">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <div
+                class="carousel-slide active"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1562774053-701939374585?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Main Academic Block — Autumn Semester</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1568667256549-094345857637?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Central Library &amp; Reading Halls</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Student Residences at Dusk</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Annual Cultural Fest, Confluence</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Campus Fitness Center &amp; Gym</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Outdoor Sports Complex &amp; Playground</div>
+              </div>
+              <div
+                class="carousel-slide"
+                style="
+                  background-image: url(&quot;https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
+                "
+              >
+                <div class="cap">Medical Center &amp; Hospital Facilities</div>
+              </div>
+              <div class="carousel-dots">
+                <button class="active" aria-label="Slide 1"></button>
+                <button aria-label="Slide 2"></button>
+                <button aria-label="Slide 3"></button>
+                <button aria-label="Slide 4"></button>
+                <button aria-label="Slide 5"></button>
+                <button aria-label="Slide 6"></button>
+                <button aria-label="Slide 7"></button>
+              </div>
+              <button class="carousel-next" aria-label="Next slide">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="hero-bottom-section">
-            <div class="hero-bottom">
-                    <div class="std-office-dtls">
-                        <span class="hero-eyebrow">Students' Affairs Office</span>
-                        <h1>Supporting every student's journey, <em>on and beyond campus.</em></h1>
-                        <p class="dosa-msg">"Our office exists so that every student at IISER finds the support, safety
-                            and community they need to thrive — academically and personally. Reach out any time; we are
-                            here for you."</p>
-                        <p class="dosa-sign"><strong>Prof. A. Krishnan</strong> · Dean of Students' Affairs</p>
+      <section class="hero-bottom-section">
+        <div class="hero-bottom">
+          <div class="std-office-dtls">
+            <span class="hero-eyebrow">Students' Affairs Office</span>
+            <h1>
+              Supporting every student's journey, <em>on and beyond campus.</em>
+            </h1>
+            <p class="dosa-msg">
+              "Our office exists so that every student at IISER finds the
+              support, safety and community they need to thrive — academically
+              and personally. Reach out any time; we are here for you."
+            </p>
+            <p class="dosa-sign">
+              <strong>Prof. Koushik Dutta</strong> · Dean of Students' Affairs
+            </p>
 
-                        <div class="hero-cta">
-                            <a href="#services" class="btn btn-gold"><i class="fa-solid fa-compass"></i> Explore
-                                Services</a>
-                            <a href="#footer" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact
-                                Us</a>
-                        </div>
-                    </div>
-                    <div class="announcement-panel" role="region">
-                        <span class="hero-eyebrow">Updates &amp; Information</span>
-                        <div class="tabs" role="tablist" aria-label="Announcements and Notices">
-                            <button type="button" role="tab" aria-selected="true" aria-controls="tab-announcements" id="tab-btn-ann"
-                                class="tab-btn">Announcements</button>
-                            <button type="button" role="tab" aria-selected="false" aria-controls="tab-notices" id="tab-btn-not"
-                                class="tab-btn">Notices &amp; Circulars</button>
-                        </div>
-
-                        <div id="tab-announcements" role="tabpanel" aria-labelledby="tab-btn-ann" class="tab-panel">
-                            <div class="panel-head">
-                                <span class="panel-label"><i class="fa-solid fa-bullhorn"></i> Important
-                                    Announcements</span>
-                                <a href="#">View all</a>
-                            </div>
-                            <ul class="announcement-list">
-                                <li>
-                                    <strong>Annual Tech Fest 2025</strong>
-                                    <span>Registrations are now open for Host Fest 2025. Participate and win.</span>
-                                    <time>May 20</time>
-                                </li>
-                                <li>
-                                    <strong>Hostel Allotment Notice</strong>
-                                    <span>New hostel allotment list for odd Semester 2025-26 is out. Check now.</span>
-                                    <time>May 18</time>
-                                </li>
-                                <li>
-                                    <strong>Scholarship Applications</strong>
-                                    <span>Last date to apply for Merit-cum-Means Scholarship is 25 July.</span>
-                                    <time>May 15</time>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div id="tab-notices" role="tabpanel" aria-labelledby="tab-btn-not" class="tab-panel" hidden>
-                            <div class="panel-head">
-                                <span class="panel-label"><i class="fa-solid fa-file-lines"></i> Notices &amp;
-                                    Circulars</span>
-                                <a href="#">View all</a>
-                            </div>
-                            <ul class="announcement-list notice-style">
-                                <li>
-                                    <strong>Semester exam schedule released</strong>
-                                    <span>End-term exam schedule published for the current semester. Check dates and
-                                        venues.</span>
-                                    <time>Jul 10</time>
-                                </li>
-                                <li>
-                                    <strong>Revised hostel curfew policy</strong>
-                                    <span>Updated guest and curfew policy for hostels — please read carefully.</span>
-                                    <time>Jul 08</time>
-                                </li>
-                                <li>
-                                    <strong>ICC orientation</strong>
-                                    <span>Orientation session for ICC scheduled for the incoming batch.</span>
-                                    <time>Jul 02</time>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-        </section>
-
-        <!-- ============ QUICK SERVICES ============ -->
-        <section class="section" id="services">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">What we offer</span>
-                    <h2>Services built around student life</h2>
-                    <p>From the day you move into your hostel room to the day you walk into placements — the Students'
-                        Affairs Office is your single point of contact.</p>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="ic"><i class="fa-solid fa-building"></i></div>
-                        <h4>Hostel Management</h4>
-                        <p>Room allotment, maintenance requests and warden contacts.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h4>Scholarship &amp; Financial Aid</h4>
-                        <p>Merit and need-based aid, application tracking and disbursal.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
-                        <h4>Placement / CCD</h4>
-                        <p>Career counselling, internship drives and recruiter tie-ups.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="ic"><i class="fa-solid fa-masks-theater"></i></div>
-                        <h4>Clubs &amp; Societies</h4>
-                        <p>60+ student bodies covering arts, tech, and outreach.</p>
-                    </div>
-                </div>
+            <div class="hero-cta">
+              <a href="#services" class="btn btn-gold"
+                ><i class="fa-solid fa-compass"></i> Explore Services</a
+              >
+              <a href="#footer" class="btn btn-outline"
+                ><i class="fa-solid fa-envelope"></i> Contact Us</a
+              >
             </div>
-        </section>
-
-        <!-- ============ GALLERY ============ -->
-        <section class="section section-alt" id="gallery">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow">Media Centre</span>
-                    <h2>Photo &amp; video gallery</h2>
-                    <p>Moments from campus life, hostels, events, sport and student-led activities.</p>
-                </div>
-
-                <div class="filter-bar" role="tablist" aria-label="Gallery filters">
-                    <button class="filter-chip active" data-filter="all">All</button>
-                    <button class="filter-chip" data-filter="campus">Campus</button>
-                    <button class="filter-chip" data-filter="hostels">Hostels</button>
-                    <button class="filter-chip" data-filter="events">Events</button>
-                    <button class="filter-chip" data-filter="sports">Sports</button>
-                    <button class="filter-chip" data-filter="activities">Student Activities</button>
-                </div>
-
-                <div class="gallery-grid" id="galleryGrid"></div>
+          </div>
+          <div class="announcement-panel" role="region">
+            <span class="hero-eyebrow">Updates &amp; Information</span>
+            <div
+              class="tabs"
+              role="tablist"
+              aria-label="Announcements and Notices"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="tab-announcements"
+                id="tab-btn-ann"
+                class="tab-btn"
+              >
+                Announcements
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="tab-notices"
+                id="tab-btn-not"
+                class="tab-btn"
+              >
+                Notices &amp; Circulars
+              </button>
             </div>
-        </section>
 
-        <!-- ============ SAFETY & WELLBEING ============ -->
-        <section class="section safety-section" id="committees">
-            <div class="container">
-                <div class="section-head">
-                    <span class="eyebrow" style="color:var(--gold-500)">Your safety, our priority</span>
-                    <h2 style="color:var(--white)">Safety &amp; Wellbeing</h2>
-                    <p style="color:rgba(255,255,255,.75)">Confidential support, rapid response and round-the-clock
-                        assistance whenever you need it.</p>
-                </div>
-
-                <div class="helpline-banner">
-                    <div class="hl-left">
-                        <div class="hl-icon"><i class="fa-solid fa-headset"></i></div>
-                        <div>
-                            <h3>24/7 Student Helpline</h3>
-                            <p>Confidential support for emergencies, distress or safety concerns</p>
-                        </div>
-                    </div>
-                    <a href="tel:1800111234" class="helpline-number"><i class="fa-solid fa-phone"></i> 1800-111-234</a>
-                </div>
-
-                <div class="safety-grid">
-                    <div class="safety-card">
-                        <div class="ic"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <h4>Internal Complaints Committee</h4>
-                        <p>Redressal of complaints related to sexual harassment, in strict confidence.</p>
-                        <a class="card-link" href="#">File a complaint <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <div class="safety-card">
-                        <div class="ic"><i class="fa-solid fa-brain"></i></div>
-                        <h4>Mental Health &amp; Counselling</h4>
-                        <p>Free, confidential one-on-one counselling and peer support groups.</p>
-                        <a class="card-link" href="#">Book a session <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <div class="safety-card report">
-                        <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
-                        <h4>Report Ragging</h4>
-                        <p>Zero-tolerance policy. Reports can be made anonymously, any time.</p>
-                        <a class="card-link" href="#">Report now <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <div class="safety-card">
-                        <div class="ic"><i class="fa-solid fa-kit-medical"></i></div>
-                        <h4>Medical Unit &amp; MCWC</h4>
-                        <p>On-campus clinic and the Medical Centre for Women's Care, open daily.</p>
-                        <a class="card-link" href="#">Clinic timings <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="contacts-strip">
-                    <div class="contact-pill">
-                        <div class="num-ic"><i class="fa-solid fa-truck-medical"></i></div>
-                        <div class="txt">
-                            <div class="role">Campus Ambulance</div><a href="tel:0112345678">011-2345-678</a>
-                        </div>
-                    </div>
-                    <div class="contact-pill">
-                        <div class="num-ic"><i class="fa-solid fa-user-shield"></i></div>
-                        <div class="txt">
-                            <div class="role">Chief Security Officer</div><a href="tel:0112345679">011-2345-679</a>
-                        </div>
-                    </div>
-                    <div class="contact-pill">
-                        <div class="num-ic"><i class="fa-solid fa-house-medical"></i></div>
-                        <div class="txt">
-                            <div class="role">Warden on Duty</div><a href="tel:0112345680">011-2345-680</a>
-                        </div>
-                    </div>
-                    <div class="contact-pill">
-                        <div class="num-ic"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                        <div class="txt">
-                            <div class="role">Counselling Cell</div><a href="tel:0112345681">011-2345-681</a>
-                        </div>
-                    </div>
-                </div>
+            <div
+              id="tab-announcements"
+              role="tabpanel"
+              aria-labelledby="tab-btn-ann"
+              class="tab-panel"
+            >
+              <div class="panel-head">
+                <span class="panel-label"
+                  ><i class="fa-solid fa-bullhorn"></i> Important
+                  Announcements</span
+                >
+                <a href="#">View all</a>
+              </div>
+              <ul class="announcement-list">
+                <li>
+                  <strong>Annual Tech Fest 2025</strong>
+                  <span
+                    >Registrations are now open for Host Fest 2025. Participate
+                    and win.</span
+                  >
+                  <time>May 20</time>
+                </li>
+                <li>
+                  <strong>Hostel Allotment Notice</strong>
+                  <span
+                    >New hostel allotment list for odd Semester 2025-26 is out.
+                    Check now.</span
+                  >
+                  <time>May 18</time>
+                </li>
+                <li>
+                  <strong>Scholarship Applications</strong>
+                  <span
+                    >Last date to apply for Merit-cum-Means Scholarship is 25
+                    July.</span
+                  >
+                  <time>May 15</time>
+                </li>
+              </ul>
             </div>
-        </section>
 
+            <div
+              id="tab-notices"
+              role="tabpanel"
+              aria-labelledby="tab-btn-not"
+              class="tab-panel"
+              hidden
+            >
+              <div class="panel-head">
+                <span class="panel-label"
+                  ><i class="fa-solid fa-file-lines"></i> Notices &amp;
+                  Circulars</span
+                >
+                <a href="#">View all</a>
+              </div>
+              <ul class="announcement-list notice-style">
+                <li>
+                  <strong>Semester exam schedule released</strong>
+                  <span
+                    >End-term exam schedule published for the current semester.
+                    Check dates and venues.</span
+                  >
+                  <time>Jul 10</time>
+                </li>
+                <li>
+                  <strong>Revised hostel curfew policy</strong>
+                  <span
+                    >Updated guest and curfew policy for hostels — please read
+                    carefully.</span
+                  >
+                  <time>Jul 08</time>
+                </li>
+                <li>
+                  <strong>ICC orientation</strong>
+                  <span
+                    >Orientation session for ICC scheduled for the incoming
+                    batch.</span
+                  >
+                  <time>Jul 02</time>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ QUICK SERVICES ============ -->
+      <section class="section" id="services">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">What we offer</span>
+            <h2>Services built around student life</h2>
+            <p>
+              From the day you move into your hostel room to the day you walk
+              into placements — the Students' Affairs Office is your single
+              point of contact.
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="ic"><i class="fa-solid fa-building"></i></div>
+              <h4>Hostel Management</h4>
+              <p>Room allotment, maintenance requests and warden contacts.</p>
+            </div>
+            <div class="service-card">
+              <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h4>Scholarship &amp; Financial Aid</h4>
+              <p>
+                Merit and need-based aid, application tracking and disbursal.
+              </p>
+            </div>
+            <div class="service-card">
+              <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
+              <h4>Placement / CCD</h4>
+              <p>
+                Career counselling, internship drives and recruiter tie-ups.
+              </p>
+            </div>
+            <div class="service-card">
+              <div class="ic"><i class="fa-solid fa-masks-theater"></i></div>
+              <h4>Clubs &amp; Societies</h4>
+              <p>60+ student bodies covering arts, tech, and outreach.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GALLERY ============ -->
+      <section class="section section-alt" id="gallery">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Media Centre</span>
+            <h2>Photo &amp; video gallery</h2>
+            <p>
+              Moments from campus life, hostels, events, sport and student-led
+              activities.
+            </p>
+          </div>
+
+          <div class="filter-bar" role="tablist" aria-label="Gallery filters">
+            <button class="filter-chip active" data-filter="all">All</button>
+            <button class="filter-chip" data-filter="campus">Campus</button>
+            <button class="filter-chip" data-filter="hostels">Hostels</button>
+            <button class="filter-chip" data-filter="events">Events</button>
+            <button class="filter-chip" data-filter="sports">Sports</button>
+            <button class="filter-chip" data-filter="activities">
+              Student Activities
+            </button>
+          </div>
+
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+      </section>
+
+      <!-- ============ SAFETY & WELLBEING ============ -->
+      <section class="section safety-section" id="committees">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow" style="color: var(--gold-500)"
+              >Your safety, our priority</span
+            >
+            <h2 style="color: var(--white)">Safety &amp; Wellbeing</h2>
+            <p style="color: rgba(255, 255, 255, 0.75)">
+              Confidential support, rapid response and round-the-clock
+              assistance whenever you need it.
+            </p>
+          </div>
+
+          <div class="safety-grid">
+            <div class="safety-card">
+              <div class="ic"><i class="fa-solid fa-scale-balanced"></i></div>
+              <h4>Internal Complaints Committee</h4>
+              <p>
+                Redressal of complaints related to sexual harassment, in strict
+                confidence.
+              </p>
+              <a class="card-link" href="#"
+                >File a complaint <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="safety-card">
+              <div class="ic"><i class="fa-solid fa-brain"></i></div>
+              <h4>Mental Health &amp; Counselling</h4>
+              <p>
+                Free, confidential one-on-one counselling and peer support
+                groups.
+              </p>
+              <a class="card-link" href="#"
+                >Book a session <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="safety-card report">
+              <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
+              <h4>Report Ragging</h4>
+              <p>
+                Zero-tolerance policy. Reports can be made anonymously, any
+                time.
+              </p>
+              <a class="card-link" href="#"
+                >Report now <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+            <div class="safety-card">
+              <div class="ic"><i class="fa-solid fa-kit-medical"></i></div>
+              <h4>Medical Unit &amp; MCWC</h4>
+              <p>
+                On-campus clinic and the Medical Centre for Women's Care, open
+                daily.
+              </p>
+              <a class="card-link" href="#"
+                >Clinic timings <i class="fa-solid fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="contacts-strip">
+            <div class="contact-pill">
+              <div class="num-ic">
+                <i class="fa-solid fa-truck-medical"></i>
+              </div>
+              <div class="txt">
+                <div class="role">Campus Ambulance</div>
+                <a href="tel:0112345678">011-2345-678</a>
+              </div>
+            </div>
+            <div class="contact-pill">
+              <div class="num-ic"><i class="fa-solid fa-user-shield"></i></div>
+              <div class="txt">
+                <div class="role">Chief Security Officer</div>
+                <a href="tel:0112345679">011-2345-679</a>
+              </div>
+            </div>
+            <div class="contact-pill">
+              <div class="num-ic">
+                <i class="fa-solid fa-house-medical"></i>
+              </div>
+              <div class="txt">
+                <div class="role">Warden on Duty</div>
+                <a href="tel:0112345680">011-2345-680</a>
+              </div>
+            </div>
+            <div class="contact-pill">
+              <div class="num-ic">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <div class="txt">
+                <div class="role">Counselling Cell</div>
+                <a href="tel:0112345681">011-2345-681</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- ============ FOOTER ============ -->
     <footer class="site-footer" id="footer">
-        <div class="container footer-top">
-            <div class="footer-cols">
-                <div>
-                    <div class="footer-brand">
-                        <div class="brand-mark" aria-hidden="true">
-                    <img src="images/logo.png" alt="">
-                </div>
-                        <span>Students' Affairs Office</span>
-                    </div>
-                    <p class="desc">Indian Institute of Science Education &amp; Research. Committed to the wellbeing,
-                        safety and holistic growth of every student.</p>
-                    <p class="desc" style="margin-top:14px;font-size:.78rem;color:rgba(255,255,255,.55)">© 2026 IISER.
-                        All rights reserved.<br><a href="#">Privacy Policy</a> · <a href="#">Accessibility Statement</a>
-                    </p>
-                </div>
-
-                <div id="footer-sitemap">
-                    <h4>Feedback</h4>
-                    <ul>
-                        <li><a href="#">Share your feedback</a></li>
-                        <li><a href="#">Suggest an improvement</a></li>
-                        <li><a href="#">Report a website issue</a></li>
-                        <li><a href="#">Student satisfaction survey</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4>Connect With Us</h4>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                    </div>
-                    <p class="desc" style="margin-top:14px;">Follow us for updates on events, deadlines and campus life.
-                    </p>
-                </div>
-
-                <div>
-                    <h4>Government Links</h4>
-                    <div class="gov-badges">
-                        <a href="#"><i class="fa-solid fa-landmark"></i> Ministry of Education</a>
-                        <a href="#"><i class="fa-solid fa-scroll"></i> UGC</a>
-                        <a href="#"><i class="fa-solid fa-globe"></i> India.gov.in</a>
-                        <a href="#"><i class="fa-solid fa-shield"></i> Digital India</a>
-                    </div>
-                </div>
+      <div class="container footer-top">
+        <div class="footer-cols">
+          <div>
+            <div class="footer-brand">
+              <div class="brand-mark" aria-hidden="true">
+                <img src="images/logo.png" alt="" />
+              </div>
+              <span>Students' Affairs Office</span>
             </div>
-        </div>
+            <p class="desc">
+              Indian Institute of Science Education &amp; Research. Committed to
+              the wellbeing, safety and holistic growth of every student.
+            </p>
+            <p
+              class="desc"
+              style="
+                margin-top: 14px;
+                font-size: 0.78rem;
+                color: rgba(255, 255, 255, 0.55);
+              "
+            >
+              © 2026 IISER. All rights reserved.<br /><a href="#"
+                >Privacy Policy</a
+              >
+              · <a href="#">Accessibility Statement</a>
+            </p>
+          </div>
 
-        <div class="container footer-bottom">
-            <div class="links">
-                <a href="#">Sitemap</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Contact: dosa@iiser.ac.in · 011-2345-600</a>
+          <div id="footer-sitemap">
+            <h4>Feedback</h4>
+            <ul>
+              <li><a href="#">Share your feedback</a></li>
+              <li><a href="#">Suggest an improvement</a></li>
+              <li><a href="#">Report a website issue</a></li>
+              <li><a href="#">Student satisfaction survey</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Connect With Us</h4>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="X / Twitter"
+                ><i class="fa-brands fa-x-twitter"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fa-brands fa-youtube"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
             </div>
-            <div>Designed for accessibility · WCAG 2.1 AA compliant</div>
+            <p class="desc" style="margin-top: 14px">
+              Follow us for updates on events, deadlines and campus life.
+            </p>
+          </div>
+
+          <div>
+            <h4>Government Links</h4>
+            <div class="gov-badges">
+              <a href="#"
+                ><i class="fa-solid fa-landmark"></i> Ministry of Education</a
+              >
+              <a href="#"><i class="fa-solid fa-scroll"></i> UGC</a>
+              <a href="#"><i class="fa-solid fa-globe"></i> India.gov.in</a>
+              <a href="#"><i class="fa-solid fa-shield"></i> Digital India</a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div class="links">
+          <a href="#">Sitemap</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Contact: dosa@iiser.ac.in · 011-2345-600</a>
+        </div>
+        <div>Designed for accessibility · WCAG 2.1 AA compliant</div>
+      </div>
     </footer>
 
     <!-- ============ LIGHTBOX ============ -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-        <div class="lightbox-inner">
-            <button class="lightbox-close" id="lbClose" aria-label="Close viewer"><i
-                    class="fa-solid fa-xmark"></i></button>
-            <button class="lightbox-nav prev" id="lbPrev" aria-label="Previous image"><i
-                    class="fa-solid fa-chevron-left"></i></button>
-            <img id="lbImg" src="" alt="">
-            <div class="lightbox-cap">
-                <span id="lbTitle"></span>
-                <span id="lbCat" style="color:var(--gold-500)"></span>
-            </div>
-            <button class="lightbox-nav next" id="lbNext" aria-label="Next image"><i
-                    class="fa-solid fa-chevron-right"></i></button>
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+    >
+      <div class="lightbox-inner">
+        <button class="lightbox-close" id="lbClose" aria-label="Close viewer">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button
+          class="lightbox-nav prev"
+          id="lbPrev"
+          aria-label="Previous image"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <img id="lbImg" src="" alt="" />
+        <div class="lightbox-cap">
+          <span id="lbTitle"></span>
+          <span id="lbCat" style="color: var(--gold-500)"></span>
         </div>
+        <button class="lightbox-nav next" id="lbNext" aria-label="Next image">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
 
     <script>
-        /* ================= MEGA MENU ================= */
-        document.querySelectorAll('.nav-list > li').forEach(li => {
-            const btn = li.querySelector('button.nav-top');
-            if (!btn) return;
-            btn.addEventListener('click', () => {
-                const isOpen = li.classList.contains('open');
-                document.querySelectorAll('.nav-list > li.open').forEach(o => { o.classList.remove('open'); o.querySelector('button.nav-top')?.setAttribute('aria-expanded', 'false'); });
-                if (!isOpen) { li.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-            });
+      /* ================= MEGA MENU ================= */
+      document.querySelectorAll(".nav-list > li").forEach((li) => {
+        const btn = li.querySelector("button.nav-top");
+        if (!btn) return;
+        btn.addEventListener("click", () => {
+          const isOpen = li.classList.contains("open");
+          document.querySelectorAll(".nav-list > li.open").forEach((o) => {
+            o.classList.remove("open");
+            o.querySelector("button.nav-top")?.setAttribute(
+              "aria-expanded",
+              "false",
+            );
+          });
+          if (!isOpen) {
+            li.classList.add("open");
+            btn.setAttribute("aria-expanded", "true");
+          }
         });
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-list > li')) {
-                document.querySelectorAll('.nav-list > li.open').forEach(o => { o.classList.remove('open'); o.querySelector('button.nav-top')?.setAttribute('aria-expanded', 'false'); });
-            }
-        });
-
-        /* ================= MOBILE DRAWER ================= */
-        const hamburgerBtn = document.getElementById('hamburgerBtn'), mobileNav = document.getElementById('mobileNav'), scrim = document.getElementById('scrim'), closeDrawer = document.getElementById('closeDrawer');
-        function openDrawer() { mobileNav.classList.add('open'); scrim.classList.add('open'); hamburgerBtn.setAttribute('aria-expanded', 'true'); }
-        function shutDrawer() { mobileNav.classList.remove('open'); scrim.classList.remove('open'); hamburgerBtn.setAttribute('aria-expanded', 'false'); }
-        hamburgerBtn.addEventListener('click', openDrawer);
-        closeDrawer.addEventListener('click', shutDrawer);
-        scrim.addEventListener('click', shutDrawer);
-
-        /* ================= CAROUSEL ================= */
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dots button');
-        let curSlide = 0, carouselTimer;
-        function showSlide(i) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[i].classList.add('active');
-            dots[i].classList.add('active');
-            curSlide = i;
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav-list > li")) {
+          document.querySelectorAll(".nav-list > li.open").forEach((o) => {
+            o.classList.remove("open");
+            o.querySelector("button.nav-top")?.setAttribute(
+              "aria-expanded",
+              "false",
+            );
+          });
         }
-        function nextSlide() { showSlide((curSlide + 1) % slides.length); }
-        function startCarousel() { carouselTimer = setInterval(nextSlide, 4500); }
-        dots.forEach((d, i) => d.addEventListener('click', () => { showSlide(i); clearInterval(carouselTimer); startCarousel(); }));
-        startCarousel();
+      });
 
-        /* Prev / Next buttons for carousel */
-        const prevBtn = document.querySelector('.carousel-prev');
-        const nextBtn = document.querySelector('.carousel-next');
+      /* ================= MOBILE DRAWER ================= */
+      const hamburgerBtn = document.getElementById("hamburgerBtn"),
+        mobileNav = document.getElementById("mobileNav"),
+        scrim = document.getElementById("scrim"),
+        closeDrawer = document.getElementById("closeDrawer");
+      function openDrawer() {
+        mobileNav.classList.add("open");
+        scrim.classList.add("open");
+        hamburgerBtn.setAttribute("aria-expanded", "true");
+      }
+      function shutDrawer() {
+        mobileNav.classList.remove("open");
+        scrim.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+      }
+      hamburgerBtn.addEventListener("click", openDrawer);
+      closeDrawer.addEventListener("click", shutDrawer);
+      scrim.addEventListener("click", shutDrawer);
+
+      /* ================= CAROUSEL ================= */
+      const slides = document.querySelectorAll(".carousel-slide");
+      const dots = document.querySelectorAll(".carousel-dots button");
+      let curSlide = 0,
+        carouselTimer;
+      function showSlide(i) {
+        slides.forEach((s) => s.classList.remove("active"));
+        dots.forEach((d) => d.classList.remove("active"));
+        slides[i].classList.add("active");
+        dots[i].classList.add("active");
+        curSlide = i;
+
+        const prevBtn = document.querySelector(".carousel-prev");
+        const nextBtn = document.querySelector(".carousel-next");
         if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => { showSlide((curSlide - 1 + slides.length) % slides.length); clearInterval(carouselTimer); startCarousel(); });
-            nextBtn.addEventListener('click', () => { nextSlide(); clearInterval(carouselTimer); startCarousel(); });
+          let prevIdx = (i - 1 + slides.length) % slides.length;
+          let nextIdx = (i + 1) % slides.length;
+          prevBtn.style.setProperty(
+            "--preview-bg",
+            slides[prevIdx].style.backgroundImage,
+          );
+          nextBtn.style.setProperty(
+            "--preview-bg",
+            slides[nextIdx].style.backgroundImage,
+          );
         }
+      }
+      showSlide(0);
+      function nextSlide() {
+        showSlide((curSlide + 1) % slides.length);
+      }
+      function startCarousel() {
+        carouselTimer = setInterval(nextSlide, 4500);
+      }
+      dots.forEach((d, i) =>
+        d.addEventListener("click", () => {
+          showSlide(i);
+          clearInterval(carouselTimer);
+          startCarousel();
+        }),
+      );
+      startCarousel();
 
-        /* ================= GALLERY DATA ================= */
-        const galleryData = [
-            { cat: 'campus', title: 'Academic Block Facade', img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=70' },
-            { cat: 'hostels', title: 'Hostel Common Room', img: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70' },
-            { cat: 'events', title: 'Confluence — Annual Fest', img: 'https://th.bing.com/th/id/OIP.poL7fUeJHXjfGz_hXYElFgHaFj?w=215&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3' },
-            { cat: 'sports', title: 'Inter-Hostel Athletics', img: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=70' },
-            { cat: 'campus', title: 'Central Library Reading Hall', img: 'https://th.bing.com/th/id/OIP.3CoxUvZNgaJn8brenDKpJwHaEO?w=279&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3' },
-            { cat: 'hostels', title: 'Student Residences at Dusk', img: 'https://th.bing.com/th/id/OIP.nY6pfY_xXLbGNI0pp8mw-wHaE8?w=249&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3' },
-            { cat: 'events', title: 'Convocation Ceremony', img: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70' },
-            { cat: 'sports', title: 'Basketball Court', img: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=70' },
-            { cat: 'activities', title: 'Cultural Society Rehearsal', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=70' },
-        ];
-        const galleryGrid = document.getElementById('galleryGrid');
-        function renderGallery(filter) {
-            galleryGrid.innerHTML = '';
-            const items = filter === 'all' ? galleryData : galleryData.filter(d => d.cat === filter);
-            items.forEach((d, i) => {
-                const el = document.createElement('div');
-                el.className = 'gallery-item';
-                el.dataset.index = galleryData.indexOf(d);
-                el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
+      /* Prev / Next buttons for carousel */
+      const prevBtn = document.querySelector(".carousel-prev");
+      const nextBtn = document.querySelector(".carousel-next");
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener("click", () => {
+          showSlide((curSlide - 1 + slides.length) % slides.length);
+          clearInterval(carouselTimer);
+          startCarousel();
+        });
+        nextBtn.addEventListener("click", () => {
+          nextSlide();
+          clearInterval(carouselTimer);
+          startCarousel();
+        });
+      }
+
+      /* ================= GALLERY DATA ================= */
+      const galleryData = [
+        {
+          cat: "campus",
+          title: "Academic Block Facade",
+          img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=70",
+        },
+        {
+          cat: "hostels",
+          title: "Hostel Common Room",
+          img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70",
+        },
+        {
+          cat: "events",
+          title: "Confluence — Annual Fest",
+          img: "https://th.bing.com/th/id/OIP.poL7fUeJHXjfGz_hXYElFgHaFj?w=215&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+        },
+        {
+          cat: "sports",
+          title: "Inter-Hostel Athletics",
+          img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=70",
+        },
+        {
+          cat: "campus",
+          title: "Central Library Reading Hall",
+          img: "https://th.bing.com/th/id/OIP.3CoxUvZNgaJn8brenDKpJwHaEO?w=279&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+        },
+        {
+          cat: "hostels",
+          title: "Student Residences at Dusk",
+          img: "https://th.bing.com/th/id/OIP.nY6pfY_xXLbGNI0pp8mw-wHaE8?w=249&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+        },
+        {
+          cat: "events",
+          title: "Convocation Ceremony",
+          img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70",
+        },
+        {
+          cat: "sports",
+          title: "Basketball Court",
+          img: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=70",
+        },
+        {
+          cat: "activities",
+          title: "Cultural Society Rehearsal",
+          img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=70",
+        },
+      ];
+      const galleryGrid = document.getElementById("galleryGrid");
+      function renderGallery(filter) {
+        galleryGrid.innerHTML = "";
+        const items =
+          filter === "all"
+            ? galleryData
+            : galleryData.filter((d) => d.cat === filter);
+        items.forEach((d, i) => {
+          const el = document.createElement("div");
+          el.className = "gallery-item";
+          el.dataset.index = galleryData.indexOf(d);
+          el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
       <div class="overlay"><div><div class="g-cat">${d.cat}</div><div class="g-title">${d.title}</div></div></div>`;
-                el.addEventListener('click', () => openLightbox(galleryData.indexOf(d)));
-                galleryGrid.appendChild(el);
-            });
+          el.addEventListener("click", () =>
+            openLightbox(galleryData.indexOf(d)),
+          );
+          galleryGrid.appendChild(el);
+        });
+      }
+      renderGallery("all");
+      document.querySelectorAll(".filter-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter-chip")
+            .forEach((c) => c.classList.remove("active"));
+          chip.classList.add("active");
+          renderGallery(chip.dataset.filter);
+        });
+      });
+
+      /* ================= LIGHTBOX ================= */
+      const lightbox = document.getElementById("lightbox"),
+        lbImg = document.getElementById("lbImg"),
+        lbTitle = document.getElementById("lbTitle"),
+        lbCat = document.getElementById("lbCat");
+      let lbIndex = 0;
+      function openLightbox(i) {
+        lbIndex = i;
+        updateLightbox();
+        lightbox.classList.add("open");
+      }
+      function updateLightbox() {
+        const d = galleryData[lbIndex];
+        lbImg.src = d.img.replace("w=600", "w=1200");
+        lbImg.alt = d.title;
+        lbTitle.textContent = d.title;
+        lbCat.textContent = d.cat;
+      }
+      document
+        .getElementById("lbClose")
+        .addEventListener("click", () => lightbox.classList.remove("open"));
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) lightbox.classList.remove("open");
+      });
+      document.getElementById("lbPrev").addEventListener("click", () => {
+        lbIndex = (lbIndex - 1 + galleryData.length) % galleryData.length;
+        updateLightbox();
+      });
+      document.getElementById("lbNext").addEventListener("click", () => {
+        lbIndex = (lbIndex + 1) % galleryData.length;
+        updateLightbox();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("open")) return;
+        if (e.key === "Escape") lightbox.classList.remove("open");
+        if (e.key === "ArrowLeft") document.getElementById("lbPrev").click();
+        if (e.key === "ArrowRight") document.getElementById("lbNext").click();
+      });
+
+      /* ================= ACCESSIBILITY: FONT SIZE ================= */
+      let fontScale = 100;
+      function applyFont() {
+        document.documentElement.style.fontSize = fontScale + "%";
+      }
+      document.getElementById("fontUp").addEventListener("click", () => {
+        fontScale = Math.min(130, fontScale + 10);
+        applyFont();
+      });
+      document.getElementById("fontDown").addEventListener("click", () => {
+        fontScale = Math.max(80, fontScale - 10);
+        applyFont();
+      });
+      document.getElementById("fontReset").addEventListener("click", () => {
+        fontScale = 100;
+        applyFont();
+      });
+
+      /* ================= ACCESSIBILITY: HIGH CONTRAST ================= */
+      const contrastBtn = document.getElementById("contrastToggle");
+      contrastBtn.addEventListener("click", () => {
+        document.body.classList.toggle("hc");
+        const pressed = document.body.classList.contains("hc");
+        contrastBtn.setAttribute("aria-pressed", pressed);
+      });
+
+      /* ================= ANNOUNCEMENT TABS ================= */
+      (function () {
+        const annBtn = document.getElementById("tab-btn-ann");
+        const notBtn = document.getElementById("tab-btn-not");
+        const annPanel = document.getElementById("tab-announcements");
+        const notPanel = document.getElementById("tab-notices");
+        if (!annBtn || !notBtn || !annPanel || !notPanel) return;
+
+        function setActive(which) {
+          const isAnnouncements = which === "ann";
+          annBtn.setAttribute("aria-selected", String(isAnnouncements));
+          notBtn.setAttribute("aria-selected", String(!isAnnouncements));
+          annBtn.classList.toggle("active", isAnnouncements);
+          notBtn.classList.toggle("active", !isAnnouncements);
+          annPanel.hidden = !isAnnouncements;
+          notPanel.hidden = isAnnouncements;
         }
-        renderGallery('all');
-        document.querySelectorAll('.filter-chip').forEach(chip => {
-            chip.addEventListener('click', () => {
-                document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-                chip.classList.add('active');
-                renderGallery(chip.dataset.filter);
-            });
+
+        annBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          setActive("ann");
         });
 
-        /* ================= LIGHTBOX ================= */
-        const lightbox = document.getElementById('lightbox'), lbImg = document.getElementById('lbImg'), lbTitle = document.getElementById('lbTitle'), lbCat = document.getElementById('lbCat');
-        let lbIndex = 0;
-        function openLightbox(i) {
-            lbIndex = i; updateLightbox(); lightbox.classList.add('open');
-        }
-        function updateLightbox() {
-            const d = galleryData[lbIndex];
-            lbImg.src = d.img.replace('w=600', 'w=1200');
-            lbImg.alt = d.title;
-            lbTitle.textContent = d.title;
-            lbCat.textContent = d.cat;
-        }
-        document.getElementById('lbClose').addEventListener('click', () => lightbox.classList.remove('open'));
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-        document.getElementById('lbPrev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); });
-        document.getElementById('lbNext').addEventListener('click', () => { lbIndex = (lbIndex + 1) % galleryData.length; updateLightbox(); });
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') lightbox.classList.remove('open');
-            if (e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
-            if (e.key === 'ArrowRight') document.getElementById('lbNext').click();
+        notBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          setActive("not");
         });
 
-        /* ================= ACCESSIBILITY: FONT SIZE ================= */
-        let fontScale = 100;
-        function applyFont() { document.documentElement.style.fontSize = fontScale + '%'; }
-        document.getElementById('fontUp').addEventListener('click', () => { fontScale = Math.min(130, fontScale + 10); applyFont(); });
-        document.getElementById('fontDown').addEventListener('click', () => { fontScale = Math.max(80, fontScale - 10); applyFont(); });
-        document.getElementById('fontReset').addEventListener('click', () => { fontScale = 100; applyFont(); });
-
-        /* ================= ACCESSIBILITY: HIGH CONTRAST ================= */
-        const contrastBtn = document.getElementById('contrastToggle');
-        contrastBtn.addEventListener('click', () => {
-            document.body.classList.toggle('hc');
-            const pressed = document.body.classList.contains('hc');
-            contrastBtn.setAttribute('aria-pressed', pressed);
-        });
-
-        /* ================= ANNOUNCEMENT TABS ================= */
-        (function () {
-            const annBtn = document.getElementById('tab-btn-ann');
-            const notBtn = document.getElementById('tab-btn-not');
-            const annPanel = document.getElementById('tab-announcements');
-            const notPanel = document.getElementById('tab-notices');
-            if (!annBtn || !notBtn || !annPanel || !notPanel) return;
-
-            function setActive(which) {
-                const isAnnouncements = which === 'ann';
-                annBtn.setAttribute('aria-selected', String(isAnnouncements));
-                notBtn.setAttribute('aria-selected', String(!isAnnouncements));
-                annBtn.classList.toggle('active', isAnnouncements);
-                notBtn.classList.toggle('active', !isAnnouncements);
-                annPanel.hidden = !isAnnouncements;
-                notPanel.hidden = isAnnouncements;
-            }
-
-            annBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                setActive('ann');
-            });
-
-            notBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                setActive('not');
-            });
-
-            setActive('ann');
-        })();
+        setActive("ann");
+      })();
     </script>
-
-</body>
-
+  </body>
 </html>
