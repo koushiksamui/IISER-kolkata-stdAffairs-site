@@ -1,0 +1,128 @@
+/* ===== About Us — page-specific styles ===== */
+
+/* Mission/vision 2-col grid */
+.mv-grid { grid-template-columns: 1fr 1fr; }
+
+/* Dean's message */
+.dosa-section {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: var(--space-5);
+  align-items: center;
+}
+.dosa-photo {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4/5;
+  position: relative;
+}
+.dosa-photo img { width: 100%; height: 100%; object-fit: cover; }
+.dosa-photo .plate {
+  position: absolute;
+  left: var(--space-2);
+  right: var(--space-2);
+  bottom: var(--space-2);
+  background: rgba(7, 26, 51, .85);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  color: var(--white);
+}
+.dosa-photo .plate .role {
+  font-size: .72rem;
+  color: var(--gold-500);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+.dosa-photo .plate .name { font-weight: 700; margin-top: 2px; }
+.dosa-quote {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--navy-900);
+  font-weight: 600;
+}
+.dosa-quote::before {
+  content: "\201C";
+  color: var(--gold-500);
+  font-size: 2.4rem;
+  display: block;
+  line-height: .5;
+  margin-bottom: 8px;
+}
+.dosa-body { margin-top: var(--space-3); color: var(--grey-600); }
+.dosa-body p + p { margin-top: 12px; }
+
+/* Values */
+.values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.value-card {
+  text-align: center;
+  padding: var(--space-4) var(--space-2);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  border: 1px solid var(--grey-300);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.value-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold-500); }
+.value-card .ic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold-100);
+  color: var(--gold-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto var(--space-2);
+}
+.value-card h4 { font-size: 1rem; }
+.value-card p { color: var(--grey-600); font-size: .85rem; margin-top: 8px; }
+
+/* Leadership team */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
+.team-card {
+  background: var(--white);
+  border: 1px solid var(--grey-300);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.team-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+.team-photo { aspect-ratio: 1/1; overflow: hidden; }
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-info { padding: var(--space-2) var(--space-2) var(--space-3); }
+.team-info .role { font-size: .7rem; color: var(--gold-600); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
+.team-info .name { font-weight: 700; margin-top: 3px; color: var(--navy-900); }
+.team-info .dept { color: var(--grey-600); font-size: .82rem; margin-top: 2px; }
+
+/* Org structure strip */
+.org-strip { display: flex; gap: var(--space-2); overflow-x: auto; padding-bottom: 8px; }
+.org-chip {
+  flex-shrink: 0;
+  background: var(--white);
+  border: 1px solid var(--grey-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: .88rem;
+  color: var(--navy-900);
+}
+.org-chip i { color: var(--gold-600); }
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .mv-grid { grid-template-columns: 1fr; }
+  .dosa-section { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+}

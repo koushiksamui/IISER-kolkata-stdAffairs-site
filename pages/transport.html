@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport — Students' Affairs Office, IISER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/transport.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div id="header-placeholder"></div>
+
+<div id="mobile-drawer-placeholder"></div>
+
+<main id="main">
+
+<!-- ============ PAGE HERO ============ -->
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <span>Transport</span></div>
+    <span class="eyebrow" style="color:var(--gold-500)">Getting around</span>
+    <h1>Transport</h1>
+    <p class="lede">Campus shuttles, city bus routes, railway and airport drops, and emergency transport — everything you need to get where you're going, safely and on time.</p>
+
+    <div class="hero-cta">
+      <a href="#routes" class="btn btn-gold"><i class="fa-solid fa-route"></i> View Routes &amp; Schedule</a>
+      <a href="#booking" class="btn btn-outline"><i class="fa-solid fa-calendar-check"></i> Book a Trip</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">6</div><div class="lbl">Active routes</div></div>
+      <div class="hero-stat"><div class="num">14</div><div class="lbl">Buses in the campus fleet</div></div>
+      <div class="hero-stat"><div class="num">3,200+</div><div class="lbl">Daily riders</div></div>
+      <div class="hero-stat"><div class="num">96%</div><div class="lbl">On-time performance</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUICK ACTIONS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Quick actions</span>
+      <h2>What would you like to do?</h2>
+    </div>
+    <div class="quick-grid">
+      <div class="quick-card">
+        <div class="ic"><i class="fa-solid fa-route"></i></div>
+        <h4>Bus Routes &amp; Schedule</h4>
+        <p>Timings and stops for every campus and city shuttle route.</p>
+        <a class="card-link" href="#routes">View schedules <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="quick-card">
+        <div class="ic"><i class="fa-solid fa-plane-departure"></i></div>
+        <h4>Airport / Railway Drop</h4>
+        <p>Book a scheduled drop to the airport or railway station.</p>
+        <a class="card-link" href="#booking">Book a trip <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="quick-card">
+        <div class="ic"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h4>Emergency Transport</h4>
+        <p>Request urgent transport for medical or safety emergencies.</p>
+        <a class="card-link" href="tel:0112345699">Call now <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="quick-card">
+        <div class="ic"><i class="fa-solid fa-id-card"></i></div>
+        <h4>Bus Pass &amp; Fares</h4>
+        <p>Semester passes, per-trip fares, and how to apply.</p>
+        <a class="card-link" href="#fares">View fares <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE TRACKER ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Right now</span>
+      <h2>Live bus tracker</h2>
+      <p>Approximate arrival times for buses currently on route — updates every 60 seconds during service hours.</p>
+    </div>
+    <div class="tracker-card">
+      <div class="tracker-head">
+        <h3><span class="live-dot"></span> Live — 4 buses on route</h3>
+        <span style="font-size:.78rem;color:rgba(255,255,255,.55)">Updated just now</span>
+      </div>
+      <div class="tracker-list">
+        <div class="tracker-row">
+          <div class="bus-icon"><i class="fa-solid fa-bus"></i></div>
+          <div class="info"><div class="route">Campus Shuttle — Loop A</div><div class="stop">Approaching Academic Block</div></div>
+          <div class="tracker-eta"><div class="mins">3 min</div><div class="lbl">ETA</div></div>
+        </div>
+        <div class="tracker-row">
+          <div class="bus-icon"><i class="fa-solid fa-bus"></i></div>
+          <div class="info"><div class="route">City Route A — Downtown</div><div class="stop">Departed Main Gate</div></div>
+          <div class="tracker-eta"><div class="mins">11 min</div><div class="lbl">ETA</div></div>
+        </div>
+        <div class="tracker-row">
+          <div class="bus-icon"><i class="fa-solid fa-bus"></i></div>
+          <div class="info"><div class="route">Railway Station Shuttle</div><div class="stop">At Hostel Circle</div></div>
+          <div class="tracker-eta"><div class="mins">6 min</div><div class="lbl">ETA</div></div>
+        </div>
+        <div class="tracker-row">
+          <div class="bus-icon"><i class="fa-solid fa-bus"></i></div>
+          <div class="info"><div class="route">Campus Shuttle — Loop B</div><div class="stop">Approaching Sports Complex</div></div>
+          <div class="tracker-eta"><div class="mins">2 min</div><div class="lbl">ETA</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROUTES & SCHEDULE ============ -->
+<section class="section" id="routes">
+  <div class="container">
+    <div class="section-head flex-head">
+      <div>
+        <span class="eyebrow">Where buses go</span>
+        <h2>Routes &amp; schedule</h2>
+      </div>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Route selector">
+      <button class="menu-tab active" data-route="loopA">Campus Shuttle — Loop A</button>
+      <button class="menu-tab" data-route="loopB">Campus Shuttle — Loop B</button>
+      <button class="menu-tab" data-route="cityA">City Route A — Downtown</button>
+      <button class="menu-tab" data-route="cityB">City Route B — Market</button>
+      <button class="menu-tab" data-route="rail">Railway Station Shuttle</button>
+      <button class="menu-tab" data-route="air">Airport Shuttle</button>
+    </div>
+
+    <div class="route-summary" id="routeSummary"></div>
+
+    <div class="menu-table-wrap">
+      <table class="menu-table">
+        <thead><tr><th>Stop</th><th>Arrival Time</th><th>Notes</th></tr></thead>
+        <tbody id="routeBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="section section-alt" id="booking">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Plan ahead</span>
+      <h2>Book intercity or special transport</h2>
+      <p>Airport and railway drops, group trips, and other special transport requests are scheduled 24 hours in advance.</p>
+    </div>
+
+    <div class="book-wrap">
+      <form class="book-form" onsubmit="return false;">
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="tripType">Trip type</label>
+            <select id="tripType">
+              <option>Airport Drop</option>
+              <option>Railway Station Drop</option>
+              <option>Group / Event Trip</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="tripDate">Date</label>
+            <input type="date" id="tripDate">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-row">
+            <label for="tripTime">Preferred time</label>
+            <input type="time" id="tripTime">
+          </div>
+          <div class="form-row">
+            <label for="tripPax">Number of passengers</label>
+            <input type="number" id="tripPax" min="1" placeholder="e.g. 2">
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="tripName">Full name &amp; hostel</label>
+          <input type="text" id="tripName" placeholder="e.g. Aditi Rao — GH1, Room 214">
+        </div>
+        <div class="form-row">
+          <label for="tripNotes">Additional notes</label>
+          <textarea id="tripNotes" placeholder="Flight/train number, luggage, or any other details"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Submit Booking Request</button>
+      </form>
+
+      <div class="book-notes">
+        <h3>Good to know</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Requests are confirmed by SMS/email within 4 hours during working hours.</li>
+          <li><i class="fa-solid fa-circle-check"></i> Airport/railway drops run on a shared-shuttle model — solo late-night trips may need a separate cab booking.</li>
+          <li><i class="fa-solid fa-circle-check"></i> Group trips for club events need approval from the SAC and 48 hours' notice.</li>
+          <li><i class="fa-solid fa-circle-check"></i> For genuine emergencies, call the Transport Helpline directly instead of using this form.</li>
+        </ul>
+        <span class="status-chip"><i class="fa-solid fa-circle"></i> 96% of requests confirmed within 4 hours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FARES & PASSES ============ -->
+<section class="section" id="fares">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Costs</span>
+      <h2>Fares &amp; passes</h2>
+      <p>Campus shuttles are free for all students. City and intercity routes are charged as below.</p>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="fee-table">
+        <thead>
+          <tr><th>Service</th><th>Per Trip</th><th>Monthly Pass</th><th>Semester Pass</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Campus Shuttle (Loop A / B)</td><td>Free</td><td>—</td><td>—</td></tr>
+          <tr><td>City Route A / B</td><td>₹15</td><td>₹350</td><td>₹1,800</td></tr>
+          <tr><td>Railway Station Shuttle</td><td>₹40</td><td>—</td><td>—</td></tr>
+          <tr><td>Airport Shuttle</td><td>₹250</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:var(--space-3);">
+      <a href="#" class="btn btn-navy"><i class="fa-solid fa-id-card"></i> Apply for a Bus Pass</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAFETY FEATURES ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Riding safely</span>
+      <h2>Safety on every trip</h2>
+    </div>
+    <div class="safety-mini-grid">
+      <div class="safety-mini-card">
+        <div class="ic"><i class="fa-solid fa-location-crosshairs"></i></div>
+        <h4>Live GPS Tracking</h4>
+        <p>Every bus is tracked in real time and visible on the live tracker above.</p>
+      </div>
+      <div class="safety-mini-card">
+        <div class="ic"><i class="fa-solid fa-id-badge"></i></div>
+        <h4>Verified Drivers</h4>
+        <p>All drivers undergo background verification and annual safety refreshers.</p>
+      </div>
+      <div class="safety-mini-card">
+        <div class="ic"><i class="fa-solid fa-person-shelter"></i></div>
+        <h4>Night Safety Escort</h4>
+        <p>Campus shuttles after 9 PM carry a designated safety marshal on board.</p>
+      </div>
+      <div class="safety-mini-card">
+        <div class="ic"><i class="fa-solid fa-bell"></i></div>
+        <h4>SOS Button</h4>
+        <p>Every bus has an SOS button wired directly to campus security dispatch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Who to contact</span>
+      <h2>Transport office</h2>
+    </div>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Mr. Sunil Patil</div><div class="staff-role">Transport Officer</div></div>
+        </div>
+        <div class="staff-actions"><a href="tel:0112345699"><i class="fa-solid fa-phone"></i> Call</a><a href="mailto:transport@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a></div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">24/7 Transport Helpline</div><div class="staff-role">Emergency &amp; after-hours requests</div></div>
+        </div>
+        <div class="staff-actions"><a href="tel:18001112345"><i class="fa-solid fa-phone"></i> Call</a><a href="#"><i class="fa-solid fa-comment"></i> WhatsApp</a></div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Ms. Kavita Joshi</div><div class="staff-role">Booking &amp; Scheduling Desk</div></div>
+        </div>
+        <div class="staff-actions"><a href="tel:0112345700"><i class="fa-solid fa-phone"></i> Call</a><a href="mailto:transport.booking@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a></div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-top">
+          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=70" alt=""></div>
+          <div><div class="staff-name">Campus Security Dispatch</div><div class="staff-role">On-bus SOS response</div></div>
+        </div>
+        <div class="staff-actions"><a href="tel:0112345679"><i class="fa-solid fa-phone"></i> Call</a><a href="index.html#safety"><i class="fa-solid fa-shield-halved"></i> Safety</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Common questions</span>
+      <h2>Transport FAQs</h2>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">How far in advance should I book an airport drop? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>At least 24 hours in advance, since drops run on a shared-shuttle schedule. For odd-hour flights, mention your flight time in the booking form so we can arrange the nearest slot.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Are campus shuttles really free? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Yes — Loop A and Loop B campus shuttles are free for all students, faculty, and staff with a valid ID card. Only city and intercity routes carry a fare.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What if I miss the last shuttle back to campus? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Call the 24/7 Transport Helpline — a backup vehicle can be arranged for stranded students, particularly after dark, at no extra cost.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I request a private cab for a personal emergency? <i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Yes. Genuine medical or safety emergencies are prioritized — call the Transport Helpline directly rather than using the booking form, so a vehicle can be dispatched immediately.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <div>
+        <h3>Need to get somewhere?</h3>
+        <p>Check the live tracker, book a trip, or reach the transport office directly.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#booking" class="btn btn-gold"><i class="fa-solid fa-calendar-check"></i> Book a Trip</a>
+        <a href="index.html#footer" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="footer-placeholder"></div>
+
+<script>
+/* ================= ROUTE DATA ================= */
+const routeData={
+  loopA:{
+    summary:[['fa-clock','Runs every 15 min, 7 AM – 11 PM'],['fa-route','Loops the residential &amp; academic zones'],['fa-bus','2 buses in rotation']],
+    stops:[
+      ['Main Gate','7:00 AM','Start of loop'],
+      ['Boys\' Hostels (BH1–BH3)','7:05 AM','—'],
+      ['Academic Block','7:12 AM','Peak-hour extra stop'],
+      ['Library','7:16 AM','—'],
+      ['Sports Complex','7:22 AM','—'],
+      ['Girls\' Hostels (GH1–GH2)','7:27 AM','—'],
+      ['Main Gate','7:32 AM','Loop repeats every 15 min']
+    ]
+  },
+  loopB:{
+    summary:[['fa-clock','Runs every 20 min, 7 AM – 11 PM'],['fa-route','Covers PG Block &amp; Innovation Lab'],['fa-bus','1 bus in rotation']],
+    stops:[
+      ['Main Gate','7:00 AM','Start of loop'],
+      ['PG Block','7:06 AM','—'],
+      ['Innovation Lab, Block C','7:12 AM','—'],
+      ['Medical Unit &amp; MCWC','7:16 AM','—'],
+      ['Central Cafeteria','7:20 AM','—'],
+      ['Main Gate','7:25 AM','Loop repeats every 20 min']
+    ]
+  },
+  cityA:{
+    summary:[['fa-clock','Departs every 45 min, 7 AM – 9 PM'],['fa-route','Campus to Downtown'],['fa-indian-rupee-sign','₹15 per trip']],
+    stops:[
+      ['Main Gate','7:00 AM','—'],
+      ['City Bus Stand','7:25 AM','—'],
+      ['Central Market','7:35 AM','—'],
+      ['Downtown Circle','7:45 AM','Terminus']
+    ]
+  },
+  cityB:{
+    summary:[['fa-clock','Departs every hour, 8 AM – 8 PM'],['fa-route','Campus to Local Market'],['fa-indian-rupee-sign','₹15 per trip']],
+    stops:[
+      ['Main Gate','8:00 AM','—'],
+      ['Riverside Road','8:15 AM','—'],
+      ['Local Market','8:30 AM','Terminus']
+    ]
+  },
+  rail:{
+    summary:[['fa-clock','6 scheduled trips daily'],['fa-route','Campus to Railway Station'],['fa-indian-rupee-sign','₹40 per trip']],
+    stops:[
+      ['Main Gate','6:00 AM','First trip'],
+      ['Hostel Circle','6:05 AM','—'],
+      ['Railway Station','6:35 AM','Terminus — repeats at 9 AM, 12 PM, 3 PM, 6 PM, 9 PM']
+    ]
+  },
+  air:{
+    summary:[['fa-clock','3 scheduled trips daily'],['fa-route','Campus to Airport'],['fa-indian-rupee-sign','₹250 per trip, booking required']],
+    stops:[
+      ['Main Gate','5:00 AM','First trip — book by 24 hrs prior'],
+      ['Hostel Circle','5:05 AM','—'],
+      ['Airport Terminal 1','6:15 AM','Terminus — repeats at 1 PM &amp; 8 PM']
+    ]
+  }
+};
+const routeBody=document.getElementById('routeBody');
+const routeSummary=document.getElementById('routeSummary');
+function renderRoute(key){
+  const r=routeData[key];
+  routeSummary.innerHTML='';
+  r.summary.forEach(s=>{
+    const span=document.createElement('span');
+    span.innerHTML=`<i class="fa-solid ${s[0]}"></i> ${s[1]}`;
+    routeSummary.appendChild(span);
+  });
+  routeBody.innerHTML='';
+  r.stops.forEach(s=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td><span class="stop-label"><i class="fa-solid fa-location-dot"></i>${s[0]}</span></td><td>${s[1]}</td><td>${s[2]}</td>`;
+    routeBody.appendChild(tr);
+  });
+}
+renderRoute('loopA');
+document.querySelectorAll('.menu-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    renderRoute(tab.dataset.route);
+  });
+});
+
+/* ================= FAQ ACCORDION ================= */
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>o.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+<script src="../layout/include.js"></script>
+
+</body>
+</html>
