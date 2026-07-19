@@ -1,0 +1,549 @@
+/* Faculty Page Styles */
+.faculty-page-wrapper {
+    background-color: var(--bg-light);
+    padding: 30px 0;
+    min-height: calc(100vh - 400px);
+}
+
+.faculty-header-wrapper {
+    margin-bottom: 30px;
+}
+
+.faculty-header-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary-forest, #1e293b);
+    margin-bottom: 12px;
+    padding-left: 16px;
+    border-left: 5px solid var(--accent-gold, #f59e0b);
+    line-height: 1.1;
+}
+
+.faculty-header-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted, #64748b);
+    margin-bottom: 0;
+}
+
+/* Quick Menu */
+.people-quick-menu-container {
+    margin-bottom: 40px;
+}
+
+.people-quick-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-menu-link {
+    display: block;
+    padding: 12px 20px;
+    background-color: #ffffff;
+    color: var(--text-muted);
+    border: 1px solid #cbd5e1;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.quick-menu-link:hover {
+    background-color: var(--bg-light-slate);
+    color: var(--primary-forest);
+    border-color: var(--primary-forest);
+}
+
+.quick-menu-link.active {
+    background-color: var(--accent-gold, #f59e0b);
+    color: #ffffff;
+    border-color: var(--accent-gold, #f59e0b);
+    box-shadow: 0 2px 4px rgba(30, 41, 59, 0.1);
+}
+
+/* Faculty Grid */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* Faculty Card */
+.faculty-card {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.faculty-card-img-wrapper {
+    width: 100%;
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    background-color: #e2e8f0;
+}
+
+.faculty-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+}
+
+
+.faculty-card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.faculty-card-name {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.faculty-card-designation {
+    color: var(--accent-emerald);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.faculty-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.faculty-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.faculty-contact-item i {
+    color: var(--primary-forest);
+    margin-top: 3px;
+    width: 16px;
+    text-align: center;
+}
+
+.faculty-contact-item a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.faculty-contact-item a:hover {
+    color: var(--accent-emerald);
+}
+
+
+
+.no-faculty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    color: #94a3b8;
+}
+
+.no-faculty i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.no-faculty h3 {
+    font-size: 1.5rem;
+    color: var(--primary-forest);
+    margin-bottom: 5px;
+}
+
+/* Faculty Details Page Styling */
+.faculty-details-container {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background-color: #f8fafc;
+}
+
+.faculty-details-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.faculty-details-sidebar {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+}
+
+.faculty-details-main {
+    flex: 0 0 calc(66.666% - 10px);
+    max-width: calc(66.666% - 10px);
+}
+
+@media (max-width: 991px) {
+    .faculty-details-sidebar,
+    .faculty-details-main {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Sidebar Profile Card */
+.profile-card-premium {
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f5f9;
+    position: sticky;
+    top: 100px; /* offset for sticky navbar */
+    z-index: 10;
+    overflow: hidden;
+    padding: 0;
+}
+
+.profile-avatar-container {
+    width: 100%;
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    background-color: #e2e8f0;
+}
+
+.profile-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+}
+
+.profile-card-premium:hover .profile-avatar-img {
+    transform: scale(1.05);
+}
+
+.profile-info-box {
+    background-color: #ffffff;
+    padding: 25px;
+    color: var(--text-dark);
+}
+
+.profile-title-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--primary-forest);
+    margin-top: 0;
+    margin-bottom: 6px;
+    line-height: 1.25;
+}
+
+.profile-title-designation {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent-emerald);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.profile-qualification {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.profile-department {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.profile-divider {
+    border: 0;
+    border-top: 1px solid #f1f5f9;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.profile-contact-list {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-contact-item-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.profile-contact-item-detail:last-child {
+    margin-bottom: 0;
+}
+
+.profile-contact-item-detail i {
+    color: var(--accent-emerald);
+    margin-top: 4px;
+    font-size: 1.05rem;
+    width: 20px;
+    text-align: center;
+}
+
+.profile-contact-item-detail a {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.2s;
+    word-break: break-all;
+}
+
+.profile-contact-item-detail a:hover {
+    color: var(--accent-emerald);
+    text-decoration: none;
+}
+
+.profile-joined-info {
+    margin-top: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* Detail Sections Cards */
+.details-section-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f1f5f9;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    scroll-margin-top: 140px;
+}
+
+.details-section-card:hover {
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+}
+
+.details-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--primary-forest);
+    margin: 0 0 15px 0;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent-gold);
+    line-height: 1.1;
+}
+
+/* Specific styling for Rich Text inside sections */
+.details-card-body {
+    font-size: 1.05rem;
+    color: #334155;
+    line-height: 1.7;
+}
+
+.details-card-body h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-forest);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.details-card-body h3:first-child {
+    margin-top: 0;
+}
+
+.details-card-body ul, 
+.details-card-body ol {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.details-card-body li {
+    margin-bottom: 8px;
+}
+
+.details-card-body p {
+    margin-bottom: 15px;
+}
+
+/* Profile Quick Navigation */
+.profile-quick-nav {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+    text-align: left;
+}
+
+.quick-nav-header {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    padding-left: 2px;
+}
+
+.quick-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quick-nav-item {
+    margin-bottom: 8px;
+}
+
+.quick-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.quick-nav-link i {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.quick-nav-link:hover {
+    background-color: rgba(34, 160, 101, 0.05);
+    color: var(--accent-emerald);
+    text-decoration: none;
+}
+
+.quick-nav-link:hover i {
+    transform: translateX(4px);
+    color: var(--accent-emerald);
+}
+
+/* Ensure smooth scrolling natively in CSS */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Add scroll margin to detail cards to account for sticky navbar */
+.details-section-card {
+    scroll-margin-top: 130px; /* sticky navbar (50px) + sticky quick menu (~80px) */
+}
+
+/* Sticky Quick Menu for Faculty Details */
+.faculty-details-container .people-quick-menu-container {
+    position: relative;
+    z-index: 100;
+    background-color: #f8fafc;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.main-navbar.navbar-sticky ~ .faculty-details-container .people-quick-menu-container {
+    position: sticky;
+    top: 50px; /* sits directly under the main sticky navbar */
+}
+
+/* Quill nested list and text indentation styles for frontend */
+.ql-editor ol, .ql-editor ul {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+.ql-editor ul > li,
+.ql-editor ol > li {
+    list-style-type: none !important;
+}
+.ql-editor li {
+    position: relative;
+}
+.ql-editor ul li:before,
+.ql-editor ol li:before {
+    content: "\2022  " !important; /* filled disc bullet */
+    display: inline-block !important;
+    white-space: nowrap !important;
+    width: 1.2em !important;
+    margin-right: 0.3em !important;
+    text-align: right !important;
+}
+.ql-editor ol li.ql-indent-1,
+.ql-editor ul li.ql-indent-1 {
+    padding-left: 1.5em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-1:before,
+.ql-snow .ql-editor ul li.ql-indent-1:before,
+.ql-editor ol li.ql-indent-1:before,
+.ql-editor ul li.ql-indent-1:before {
+    content: "\25CB  " !important; /* hollow circle */
+}
+.ql-editor ol li.ql-indent-2,
+.ql-editor ul li.ql-indent-2 {
+    padding-left: 3em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-2:before,
+.ql-snow .ql-editor ul li.ql-indent-2:before,
+.ql-editor ol li.ql-indent-2:before,
+.ql-editor ul li.ql-indent-2:before {
+    content: "\25AA  " !important; /* small square */
+}
+.ql-editor ol li.ql-indent-3,
+.ql-editor ul li.ql-indent-3 {
+    padding-left: 4.5em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-3:before,
+.ql-snow .ql-editor ul li.ql-indent-3:before,
+.ql-editor ol li.ql-indent-3:before,
+.ql-editor ul li.ql-indent-3:before {
+    content: "\2022  " !important; /* filled disc */
+}
+/* Indentation for non-list elements */
+.ql-editor p.ql-indent-1, .ql-editor div.ql-indent-1 {
+    padding-left: 1.5em !important;
+}
+.ql-editor p.ql-indent-2, .ql-editor div.ql-indent-2 {
+    padding-left: 3em !important;
+}
+.ql-editor p.ql-indent-3, .ql-editor div.ql-indent-3 {
+    padding-left: 4.5em !important;
+}

@@ -1,0 +1,610 @@
+/* 
+ * Faculty Management Page Styles
+ * SiSAS-IITG Admin Portal
+ */
+
+/* Main Header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.page-header-left h1 {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--primary-forest);
+  line-height: 1.15;
+}
+
+.page-header-left p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.btn-primary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--accent-emerald);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(34, 160, 101, 0.3);
+}
+
+.btn-primary-action:hover {
+  transform: translateY(-2px);
+  background: #1e8f5a;
+  box-shadow: 0 6px 20px rgba(34, 160, 101, 0.45);
+}
+
+/* Tabs Navigation */
+.page-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--bg-slate);
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--primary-forest);
+}
+
+.tab-btn.active {
+  color: var(--primary-forest);
+}
+
+.tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-emerald);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Form Card */
+.form-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 30px;
+  overflow: hidden;
+  display: none;
+}
+
+.form-card.active {
+  display: block;
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-card-header {
+  padding: 18px 24px;
+  background-color: var(--bg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-card-header h3 {
+  font-size: 1.25rem;
+  color: var(--primary-forest);
+  margin: 0;
+}
+
+.btn-close-form {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-close-form:hover {
+  color: #ef4444;
+}
+
+.form-card-body {
+  padding: 30px;
+}
+
+/* Two Column Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-category-header {
+  grid-column: 1 / -1;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-forest);
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--bg-slate);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 0 3px rgba(34, 160, 101, 0.1);
+  background-color: var(--white);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Photo Upload Specifics */
+.photo-upload-group {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.photo-preview {
+  width: 150px;
+  aspect-ratio: 5 / 6;
+  border-radius: 8px;
+  border: 2px dashed rgba(0, 0, 0, 0.15);
+  background-color: var(--bg-slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-preview i {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* Password Field Specifics */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper .form-control {
+  padding-right: 45px;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.btn-toggle-password:hover {
+  color: var(--primary-forest);
+}
+
+.password-hints {
+  margin-top: 10px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 0.8rem;
+  color: var(--text-dark);
+}
+
+.password-hints strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--primary-forest);
+}
+
+.password-hints ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.password-hints li {
+  margin-bottom: 3px;
+  color: var(--text-muted);
+}
+
+/* Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.btn-cancel {
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.btn-submit {
+  background-color: var(--primary-forest);
+  color: var(--white);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: var(--accent-gold);
+  color: var(--primary-forest);
+}
+
+/* Data Table */
+.data-table-wrapper {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.data-table-header {
+  padding: 18px 24px;
+  background-color: var(--bg-cream);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.data-table-header h3 {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box i {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+}
+
+.search-box input {
+  padding: 8px 12px 8px 32px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  width: 250px;
+  transition: all 0.2s;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent-emerald);
+  box-shadow: 0 0 0 3px rgba(34, 160, 101, 0.1);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.data-table th {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  background-color: #fafafa;
+}
+
+.data-table td {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  vertical-align: middle;
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tr:hover {
+  background-color: rgba(34, 160, 101, 0.02);
+}
+
+/* Table specific styling */
+.td-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.td-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: var(--bg-slate);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.td-name {
+  font-weight: 700;
+  color: var(--primary-forest);
+  display: block;
+}
+
+.td-type {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-continuing {
+  background-color: rgba(34, 160, 101, 0.1);
+  color: var(--accent-emerald);
+}
+
+.status-left {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.status-transferred {
+  background-color: rgba(224, 159, 62, 0.1);
+  color: #b45309;
+}
+
+.status-retired {
+  background-color: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+}
+
+/* Action buttons */
+.action-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-edit {
+  background-color: rgba(34, 160, 101, 0.1);
+  color: var(--accent-emerald);
+}
+
+.btn-edit:hover {
+  background-color: var(--accent-emerald);
+  color: var(--white);
+}
+
+.btn-delete {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.btn-delete:hover {
+  background-color: #ef4444;
+  color: var(--white);
+}
+
+/* Hide scrollbar for modals but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.record-status-draft {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+}
+
+.record-status-final {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: #0ea5e9;
+}
+
+/* Quill nested list and text indentation styles for admin panel */
+.ql-editor ol, .ql-editor ul {
+  padding-left: 1.5em !important;
+  margin-bottom: 1em !important;
+}
+.ql-editor ul > li,
+.ql-editor ol > li {
+  list-style-type: none !important;
+}
+.ql-editor li {
+  position: relative !important;
+}
+.ql-editor ul li:before,
+.ql-editor ol li:before {
+  content: "\2022  " !important; /* filled disc bullet */
+  display: inline-block !important;
+  white-space: nowrap !important;
+  width: 1.2em !important;
+  margin-right: 0.3em !important;
+  text-align: right !important;
+}
+.ql-editor ol li.ql-indent-1,
+.ql-editor ul li.ql-indent-1 {
+  padding-left: 1.5em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-1:before,
+.ql-snow .ql-editor ul li.ql-indent-1:before,
+.ql-editor ol li.ql-indent-1:before,
+.ql-editor ul li.ql-indent-1:before {
+  content: "\25CB  " !important; /* hollow circle */
+}
+.ql-editor ol li.ql-indent-2,
+.ql-editor ul li.ql-indent-2 {
+  padding-left: 3em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-2:before,
+.ql-snow .ql-editor ul li.ql-indent-2:before,
+.ql-editor ol li.ql-indent-2:before,
+.ql-editor ul li.ql-indent-2:before {
+  content: "\25AA  " !important; /* small square */
+}
+.ql-editor ol li.ql-indent-3,
+.ql-editor ul li.ql-indent-3 {
+  padding-left: 4.5em !important;
+}
+.ql-snow .ql-editor ol li.ql-indent-3:before,
+.ql-snow .ql-editor ul li.ql-indent-3:before,
+.ql-editor ol li.ql-indent-3:before,
+.ql-editor ul li.ql-indent-3:before {
+  content: "\2022  " !important; /* filled disc */
+}
+/* Indentation for non-list elements */
+.ql-editor p.ql-indent-1, .ql-editor div.ql-indent-1 {
+  padding-left: 1.5em !important;
+}
+.ql-editor p.ql-indent-2, .ql-editor div.ql-indent-2 {
+  padding-left: 3em !important;
+}
+.ql-editor p.ql-indent-3, .ql-editor div.ql-indent-3 {
+  padding-left: 4.5em !important;
+}

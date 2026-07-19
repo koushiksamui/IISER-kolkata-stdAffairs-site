@@ -1,0 +1,48 @@
+.sisas-breadcrumb-container {
+  background-color: var(--primary-forest, #0b3b27);
+  padding: 8px 0;
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  /* Optional: Gold border to separate from the main white navbar */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); 
+  border-bottom: 2px solid var(--accent-gold, #e09f3e);
+}
+
+.sisas-breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sisas-breadcrumb li {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sisas-breadcrumb li a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sisas-breadcrumb li a:hover {
+  text-decoration: none;
+}
+
+.sisas-breadcrumb li.active {
+  font-weight: 600;
+}
+
+/* The separator */
+.sisas-breadcrumb li + li::before {
+  content: "\f105"; /* FontAwesome fa-angle-right */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin: 0 8px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+}

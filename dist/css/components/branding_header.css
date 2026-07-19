@@ -1,0 +1,175 @@
+/* Main Branding Header Styles */
+.main-header-brand {
+  background-color: var(--white);
+  padding: 15px 0;
+  border-bottom: 2px solid var(--bg-light-slate);
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.iitg-logo {
+  height: 75px;
+  width: auto;
+  object-fit: contain;
+}
+
+.sisas-logo-placeholder {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, var(--primary-forest), var(--accent-emerald));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.2rem;
+  font-family: var(--font-heading);
+  box-shadow: var(--shadow-sm);
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-hindi {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+}
+
+.title-english {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--primary-forest);
+  line-height: 1.2;
+}
+
+.title-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--accent-emerald);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.header-right-badges {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  padding: 8px 15px;
+  background-color: var(--bg-light-slate);
+  border-radius: 20px;
+  font-weight: 600;
+  color: var(--primary-forest);
+}
+
+.header-badge i {
+  color: var(--accent-gold);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 991px) {
+  .brand-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 15px;
+  }
+
+  .logo-block {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .header-right-badges {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .iitg-logo {
+    height: 50px;
+  }
+
+  .title-hindi {
+    font-size: 0.8rem;
+  }
+
+  .title-english {
+    font-size: 1.1rem;
+  }
+
+  .title-sub {
+    font-size: 0.7rem;
+  }
+}
+/* Global Search Trigger in Header */
+.global-search-trigger {
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-light-slate, #f8fafc);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 30px;
+  padding: 8px 16px;
+  gap: 12px;
+  cursor: text;
+  transition: all 0.2s ease;
+  min-width: 260px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.global-search-trigger:hover {
+  background-color: var(--white);
+  border-color: var(--accent-emerald);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+}
+
+.global-search-trigger i {
+  color: var(--primary-forest);
+  font-size: 1rem;
+}
+
+.global-search-trigger .search-placeholder {
+  color: #64748b;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.global-search-trigger .search-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--white);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: monospace;
+  font-weight: 600;
+}
+

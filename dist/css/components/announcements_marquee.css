@@ -1,0 +1,110 @@
+/* Horizontal Announcements Marquee Styles */
+.announcements-marquee-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-forest);
+  color: var(--white);
+  border-bottom: 2px solid var(--accent-gold);
+  height: 42px;
+  overflow: hidden;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  z-index: 99;
+  position: relative;
+}
+
+.marquee-label {
+  background-color: var(--accent-gold);
+  color: var(--primary-forest);
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  font-size: 0.9rem;
+}
+
+.marquee-label i {
+  margin-right: 8px;
+}
+
+.marquee-content-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-scroll-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee-slide 35s linear infinite;
+}
+
+.marquee-scroll-text:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: inline-block;
+  padding-right: 50px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+}
+
+.marquee-item a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  outline: none; /* remove black border on click */
+}
+
+.marquee-item a:hover,
+.marquee-item a:focus {
+  color: var(--accent-gold);
+}
+
+.badge-new {
+  background-color: #d9534f;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 8px;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+@keyframes marquee-slide {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .marquee-label {
+    padding: 0 12px;
+    font-size: 0.8rem;
+  }
+  
+  .marquee-label i {
+    margin-right: 5px;
+  }
+
+  .announcements-marquee-wrapper {
+    font-size: 0.85rem;
+    height: 38px;
+  }
+}

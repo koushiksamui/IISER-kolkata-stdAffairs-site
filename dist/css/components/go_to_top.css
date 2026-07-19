@@ -1,0 +1,36 @@
+/* Go to Top Button Styles */
+.go-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--accent-emerald);
+  color: var(--white);
+  border: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: var(--transition-smooth);
+}
+
+.go-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.go-to-top-btn:hover {
+  background-color: var(--accent-gold);
+  color: var(--primary-forest);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-lg);
+}

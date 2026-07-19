@@ -1,0 +1,77 @@
+/* Top Access Bar Styles */
+.top-bar {
+  background-color: var(--primary-forest);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  padding: 6px 0; /* Slightly increased padding */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: var(--font-body);
+}
+
+.top-bar .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.top-bar a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  margin-right: 15px;
+}
+
+.top-bar a:hover {
+  color: var(--accent-gold);
+}
+
+.top-bar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
+
+.top-bar-social a {
+  margin-right: 12px;
+  font-size: 0.85rem; /* Reduced icon size */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .top-bar {
+    text-align: center;
+  }
+  
+  .top-bar .col-md-6 {
+    text-align: center !important;
+    margin-bottom: 8px; /* Added spacing between rows */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Spaces out the links nicely */
+  }
+
+  .top-bar-right {
+    justify-content: center;
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .top-bar-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Balanced gap */
+  }
+
+  .top-bar-social a {
+    margin: 0;
+    font-size: 0.8rem; /* Proportional to the 0.85rem text links */
+  }
+
+  .top-bar a:not(.top-bar-social a) {
+    display: inline-block;
+    margin: 0; /* Margin handled by gap */
+    font-size: 0.85rem;
+  }
+}

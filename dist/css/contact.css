@@ -1,0 +1,80 @@
+/* 
+ * Contact Page Specific Stylesheet
+ * School for Interdisciplinary Studies & Sustainability (SiSAS), IIT Guwahati
+ */
+
+.contact-section-container {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.contact-get-in-touch-title {
+    color: #000000;
+    font-weight: 700;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    font-family: var(--font-heading);
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.contact-item-icon {
+    margin-top: 4px;
+    color: #000000;
+    font-size: 1.4rem;
+    width: 30px;
+    text-align: center;
+}
+
+.contact-item-content {
+    margin-left: 15px;
+}
+
+.contact-item-title {
+    margin: 0 0 5px 0;
+    color: #000000;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.contact-item-text {
+    margin: 0;
+    color: #000000;
+    line-height: 1.6;
+}
+
+.contact-item-text a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: var(--transition-smooth);
+}
+
+.contact-item-text a:hover {
+    color: #555555;
+    text-decoration: none;
+}
+
+.map-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--bg-light-slate);
+}
+
+.map-iframe {
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 400px;
+}
