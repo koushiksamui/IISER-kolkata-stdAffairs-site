@@ -1,6 +1,6 @@
 <?php
 /**
- * SiSAS-IITG Admin Dashboard
+ * Admin Dashboard
  * Main entry point for the admin portal. Requires active admin session.
  */
 
@@ -8,7 +8,7 @@ require_once '../api/admin_auth.php';
 requireAdmin('login.html');
 
 // Fetch session data
-$adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
+$adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iiserkol.ac.in';
 $adminDisplay = isset($_SESSION['admin_display_name']) ? $_SESSION['admin_display_name'] : ucfirst(explode('@', $adminEmail)[0]);
 $loginTime    = isset($_SESSION['admin_login_time']) ? date('d M Y, h:i A', $_SESSION['admin_login_time']) : 'N/A';
 
@@ -22,57 +22,16 @@ if ($hour < 12) {
     $greeting = 'Good evening';
 }
 
-// Attempt DB connection and fetch dashboard stats
+// Static dashboard stats (Database queries temporarily disabled)
 $lastLoginDb = 'N/A';
-$totalResearchGroups = 0;
-$totalFacultyStaff = 0;
-$totalNotices = 0;
-$totalPublications = 0;
+$totalResearchGroups = 12; // Static placeholder
+$totalFacultyStaff = 45;   // Static placeholder
+$totalNotices = 18;        // Static placeholder
+$totalPublications = 104;  // Static placeholder
+
+// Static Chart Data
 $chartLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-$chartData = [0, 0, 0, 0, 0, 0, 0];
-
-$dbPath = __DIR__ . '/../php_utils/_dbConnect.php';
-if (file_exists($dbPath)) {
-    include_once $dbPath;
-    if (isset($conn)) {
-        $safeEmail = mysqli_real_escape_string($conn, $adminEmail);
-        $role = isset($_SESSION['admin_role']) ? $_SESSION['admin_role'] : 'admin';
-        if ($role === 'faculty') {
-            $res = mysqli_query($conn, "SELECT last_logged_in AS last_login FROM `faculties` WHERE email = '$safeEmail' LIMIT 1");
-        } else {
-            $res = mysqli_query($conn, "SELECT last_login FROM `admin` WHERE email = '$safeEmail' LIMIT 1");
-        }
-        if ($res && $row = mysqli_fetch_assoc($res)) {
-            $lastLoginDb = $row['last_login'] ? date('d M Y, h:i A', strtotime($row['last_login'])) : 'First login';
-        }
-
-        // Fetch Dashboard Stats
-        $res = mysqli_query($conn, "SELECT COUNT(*) FROM verticals");
-        $totalResearchGroups = $res ? mysqli_fetch_array($res)[0] : 0;
-
-        $res = mysqli_query($conn, "SELECT (SELECT COUNT(*) FROM faculties) + (SELECT COUNT(*) FROM staffs)");
-        $totalFacultyStaff = $res ? mysqli_fetch_array($res)[0] : 0;
-
-        $res = mysqli_query($conn, "SELECT COUNT(*) FROM notices");
-        $totalNotices = $res ? mysqli_fetch_array($res)[0] : 0;
-
-        $res = mysqli_query($conn, "SELECT COUNT(*) FROM publications");
-        $totalPublications = $res ? mysqli_fetch_array($res)[0] : 0;
-
-        // Fetch Chart Data (Activity Logs over last 7 days)
-        $chartLabels = [];
-        $chartData = [];
-        for ($i = 6; $i >= 0; $i--) {
-            $date = date('Y-m-d', strtotime("-$i days"));
-            $displayDate = date('D', strtotime("-$i days"));
-            $chartLabels[] = $displayDate;
-            
-            $res = mysqli_query($conn, "SELECT COUNT(*) FROM activity_logs WHERE DATE(created_at) = '$date'");
-            $count = $res ? mysqli_fetch_array($res)[0] : 0;
-            $chartData[] = (int)$count;
-        }
-    }
-}
+$chartData = [5, 12, 8, 15, 10, 3, 2];
 $chartLabelsJson = json_encode($chartLabels);
 $chartDataJson = json_encode($chartData);
 ?>
@@ -81,8 +40,8 @@ $chartDataJson = json_encode($chartData);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard &mdash; SiSAS-IITG Admin</title>
-    <meta name="description" content="SiSAS-IITG Administration Dashboard — manage content, faculty, research, and site settings.">
+    <title>Dashboard &mdash; Admin</title>
+    <meta name="description" content="Administration Dashboard — manage content, faculty, research, and site settings.">
     <meta name="robots" content="noindex, nofollow">
 
     <!-- Google Fonts -->
@@ -125,7 +84,7 @@ $chartDataJson = json_encode($chartData);
             <div class="welcome-banner animate-stagger delay-1">
                 <div class="welcome-info">
                     <h1><?php echo $greeting; ?>, <?php echo htmlspecialchars($adminDisplay); ?> 👋</h1>
-                    <p>Here's what's happening with the <span>SiSAS-IITG</span> portal today.</p>
+                    <p>Here's what's happening with the <span>Admin</span> portal today.</p>
                 </div>
                 <div class="last-login-tag">
                     <span>Last Login</span>

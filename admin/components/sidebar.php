@@ -17,7 +17,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <div class="sidebar-brand">
         <img src="../dist/img/iitg-logo.png" alt="IIT Guwahati Logo" class="sidebar-brand-logo">
         <div class="sidebar-brand-text">
-            SiSAS CMS
+            IISER DOSA CMS
         </div>
     </div>
 
@@ -59,121 +59,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </li>
 
             <li class="sidebar-menu-item">
-                <a href="verticals.php" class="sidebar-menu-link <?php echo ($currentPage === 'verticals.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-microscope"></i>
-                    <span class="link-label">Verticals</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="courses.php" class="sidebar-menu-link <?php echo ($currentPage === 'courses.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-book"></i>
-                    <span class="link-label">Courses</span>
-                </a>
-            </li>
-
-            <li class="sidebar-menu-item">
-                <a href="research_labs.php" class="sidebar-menu-link <?php echo ($currentPage === 'research_labs.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-flask"></i>
-                    <span class="link-label">Research Labs</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
                 <a href="forms_downloads.php" class="sidebar-menu-link <?php echo ($currentPage === 'forms_downloads.php') ? 'active' : ''; ?>">
                     <i class="fa-solid fa-file-pdf"></i>
                     <span class="link-label">Forms & Downloads</span>
-                </a>
-            </li>
-        </ul>
-
-        <!-- People Section -->
-        <p class="sidebar-category-header">People</p>
-        <ul class="sidebar-menu-list">
-            <li class="sidebar-menu-item">
-                <a href="head.php" class="sidebar-menu-link <?php echo ($currentPage === 'head.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-user-tie"></i>
-                    <span class="link-label">Heads of School</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="faculty.php" class="sidebar-menu-link <?php echo ($currentPage === 'faculty.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                    <span class="link-label">Faculty</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="staffs.php" class="sidebar-menu-link <?php echo ($currentPage === 'staffs.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-users"></i>
-                    <span class="link-label">Staff</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="students.php" class="sidebar-menu-link <?php echo ($currentPage === 'students.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-user-graduate"></i>
-                    <span class="link-label">Students</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="commitees.php" class="sidebar-menu-link <?php echo ($currentPage === 'commitees.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-users-gear"></i>
-                    <span class="link-label">Commitees</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="committee_roles.php" class="sidebar-menu-link <?php echo ($currentPage === 'committee_roles.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-tags"></i>
-                    <span class="link-label">Committee Roles</span>
-                </a>
-            </li>
-        </ul>
-
-        <!-- Research Section -->
-        <p class="sidebar-category-header">Research</p>
-        <ul class="sidebar-menu-list">
-            <li class="sidebar-menu-item">
-                <a href="publications.php" class="sidebar-menu-link <?php echo ($currentPage === 'publications.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-book-open"></i>
-                    <span class="link-label">Publications</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="invited_talks.php" class="sidebar-menu-link <?php echo ($currentPage === 'invited_talks.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-microphone-lines"></i>
-                    <span class="link-label">Invited Talks</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="patents.php" class="sidebar-menu-link <?php echo ($currentPage === 'patents.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-certificate"></i>
-                    <span class="link-label">Patents</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="projects.php" class="sidebar-menu-link <?php echo ($currentPage === 'projects.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-diagram-project"></i>
-                    <span class="link-label">Projects</span>
-                </a>
-            </li>
-        </ul>
-
-        <!-- Events section -->
-        <p class="sidebar-category-header">Events</p>
-        <ul class="sidebar-menu-list">
-            <li class="sidebar-menu-item">
-                <a href="seminars.php" class="sidebar-menu-link <?php echo ($currentPage === 'seminars.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    <span class="link-label">Seminars & Colloquium</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="workshops.php" class="sidebar-menu-link <?php echo ($currentPage === 'workshops.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-users-gear"></i>
-                    <span class="link-label">Workshops & Conferences</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="events.php" class="sidebar-menu-link <?php echo ($currentPage === 'events.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <span class="link-label">Events</span>
                 </a>
             </li>
         </ul>
@@ -191,12 +79,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 <a href="videos.php" class="sidebar-menu-link <?php echo ($currentPage === 'videos.php') ? 'active' : ''; ?>">
                     <i class="fa-solid fa-play"></i>
                     <span class="link-label">Videos</span>
-                </a>
-            </li>
-            <li class="sidebar-menu-item">
-                <a href="event_media.php" class="sidebar-menu-link <?php echo ($currentPage === 'event_media.php') ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-images"></i>
-                    <span class="link-label">Event Media Archives</span>
                 </a>
             </li>
             <li class="sidebar-menu-item">
