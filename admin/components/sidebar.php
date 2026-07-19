@@ -15,7 +15,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 
     <!-- Brand / Logo Area -->
     <div class="sidebar-brand">
-        <img src="../dist/img/iitg-logo.png" alt="IIT Guwahati Logo" class="sidebar-brand-logo">
+        <img src="../images/logo.png" alt="IISER Kolkata Logo" class="sidebar-brand-logo">
         <div class="sidebar-brand-text">
             IISER DOSA CMS
         </div>
