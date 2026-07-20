@@ -17,7 +17,7 @@
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <div id="header-placeholder"></div>
+  <?php include __DIR__ . '/../components/navbar.php'; ?>
 
   <div id="mobile-drawer-placeholder"></div>
   <main id="main">
@@ -440,7 +440,7 @@
     </section>
   </main>
 
-  <div id="footer-placeholder"></div>
+  <?php include __DIR__ . '/../components/footer.php'; ?>
   <script>
     /* ================= COMMITTEE TAB SWITCHER ================= */
     document.querySelectorAll('.committee-tab').forEach(tab => {

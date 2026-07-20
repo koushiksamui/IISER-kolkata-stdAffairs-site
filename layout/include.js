@@ -119,9 +119,8 @@
   }
 
   Promise.all([
-    loadPartial("header.html", "header-placeholder"),
-    loadPartial("mobile-drawer.html", "mobile-drawer-placeholder"),
-    loadPartial("footer.html", "footer-placeholder"),
+
+    loadPartial("mobile-drawer.html", "mobile-drawer-placeholder")
   ])
     .then(function () {
       initMegaMenu();

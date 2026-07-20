@@ -1,10 +1,10 @@
+<?php $BASE_URL = $BASE_URL ?? '../'; ?>
 <!-- ============ ACCESSIBILITY UTILITY BAR ============ -->
 <div class="access-bar">
   <div class="container">
     <div class="a-links">
-      <a href="%%BASE%%index.html#footer">Contact IISER</a>
-      <a href="%%BASE%%index.html#gallery">Media Centre</a>
-      <a href="%%BASE%%index.html#footer-sitemap">Sitemap</a>
+      <a href="https://www.iiserkol.ac.in" target="_blank">IISER Kolkata Home</a>
+      <a href="<?php echo $BASE_URL; ?>index.php#footer-sitemap">Sitemap</a>
     </div>
     <div class="access-tools">
       <div class="font-adjust" role="group" aria-label="Adjust font size">
@@ -15,8 +15,7 @@
       <button id="contrastToggle" aria-pressed="false">
         <i class="fa-solid fa-circle-half-stroke"></i> High Contrast
       </button>
-      <a href="%%BASE%%admin/login.html" class="admin-btn"
-        ><i class="fa-solid fa-lock" aria-hidden="true"></i>
+      <a href="<?php echo $BASE_URL; ?>admin/login.php" class="admin-btn"><i class="fa-solid fa-lock" aria-hidden="true"></i>
       </a>
     </div>
   </div>
@@ -26,9 +25,9 @@
 <header class="site-header">
   <div class="container header-inner">
     <div class="brand">
-      <a class="brand" href="%%BASE%%index.html">
+      <a class="brand" href="<?php echo $BASE_URL; ?>index.php">
         <div class="brand-mark" aria-hidden="true">
-          <img src="%%BASE%%images/logo.png" alt="" />
+          <img src="<?php echo $BASE_URL; ?>images/logo.png" alt="" />
         </div>
         <div class="brand-text">
           <div class="name">Office of Students' Affairs</div>
@@ -45,8 +44,7 @@
         id="hamburgerBtn"
         aria-label="Open menu"
         aria-expanded="false"
-        aria-controls="mobileNav"
-      >
+        aria-controls="mobileNav">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
@@ -56,9 +54,7 @@
   <nav class="main-nav" aria-label="Primary">
     <ul class="nav-list">
       <li>
-        <a href="%%BASE%%index.html" aria-label="Home"
-          ><i class="fa-solid fa-house"></i
-        ></a>
+        <a href="<?php echo $BASE_URL; ?>index.php" aria-label="Home"><i class="fa-solid fa-house"></i></a>
       </li>
       <li>
         <button class="nav-top" aria-expanded="false">
@@ -68,9 +64,15 @@
           <div class="mega-col">
             <h4>Who We Are</h4>
             <ul>
-              <li><a href="%%BASE%%pages/about.html"><i class="fa-solid fa-circle-info"></i> About</a></li>
-              <li><a href="%%BASE%%pages/message-director.html"><i class="fa-solid fa-user-tie"></i> Message from the Director</a></li>
-              <li><a href="%%BASE%%pages/message-deans.html"><i class="fa-solid fa-users"></i> Message from the Deans</a></li>
+              <li>
+                <a href="<?php echo $BASE_URL; ?>pages/about.php"><i class="fa-solid fa-circle-info"></i> About</a>
+              </li>
+              <li>
+                <a href="<?php echo $BASE_URL; ?>pages/message-deans.php"><i class="fa-solid fa-users"></i> Message from the Deans</a>
+              </li>
+              <li>
+                <a href="<?php echo $BASE_URL; ?>pages/campus-map.php"><i class="fa-solid fa-users"></i> Campus Map</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -85,19 +87,13 @@
             <h4>Living &amp; Community</h4>
             <ul>
               <li>
-                <a href="%%BASE%%pages/hostel-management.html"
-                  ><i class="fa-solid fa-building"></i>Hostel Management</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/hostel-management.php"><i class="fa-solid fa-building"></i>Hostel Management</a>
               </li>
               <li>
-                <a href="%%BASE%%pages/smc-info.html"
-                  ><i class="fa-solid fa-users-gear"></i> SMC Information</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/smc-info.php"><i class="fa-solid fa-users-gear"></i> SMC Information</a>
               </li>
               <li>
-                <a href="%%BASE%%pages/transport.html"
-                  ><i class="fa-solid fa-bus"></i>Transport</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/transport.php"><i class="fa-solid fa-bus"></i>Transport</a>
               </li>
             </ul>
           </div>
@@ -105,15 +101,11 @@
             <h4>Engagement</h4>
             <ul>
               <li>
-                <a href="%%BASE%%pages/student-achievements.html"
-                  ><i class="fa-solid fa-medal"></i>Student Achievements</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/student-achievements.php"><i class="fa-solid fa-medal"></i>Student Achievements</a>
               </li>
               <li>
-                <a href="%%BASE%%pages/clubs-societies.html"
-                  ><i class="fa-solid fa-masks-theater"></i> Clubs &amp;
-                  Societies</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/clubs-societies.php"><i class="fa-solid fa-masks-theater"></i> Clubs &amp;
+                  Societies</a>
               </li>
             </ul>
           </div>
@@ -143,17 +135,13 @@
             <h4>Health &amp; Wellbeing</h4>
             <ul>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-kit-medical"></i> Medical Unit</a
-                >
+                <a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a>
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-brain"></i> Counselling Services</a
-                >
+                <a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a>
               </li>
             </ul>
           </div>
@@ -161,9 +149,7 @@
             <h4>Sports</h4>
             <ul>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-futbol"></i> Sports Facilities</a
-                >
+                <a href="#"><i class="fa-solid fa-futbol"></i> Sports Facilities</a>
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-trophy"></i> Tournaments</a>
@@ -172,20 +158,14 @@
                 <a href="#"><i class="fa-solid fa-dumbbell"></i> Gymnasium</a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a
-                >
+                <a href="#"><i class="fa-solid fa-pen-ruler"></i> Stationery Shop</a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-building-columns"></i> Bank &amp;
-                  ATM</a
-                >
+                <a href="#"><i class="fa-solid fa-building-columns"></i> Bank &amp;
+                  ATM</a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-book-open"></i> Library Facilities</a
-                >
+                <a href="#"><i class="fa-solid fa-book-open"></i> Library Facilities</a>
               </li>
             </ul>
           </div>
@@ -193,25 +173,23 @@
             <h4>Support</h4>
             <ul>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp;
-                  Financial Aid</a
-                >
+                <a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholarship &amp;
+                  Financial Aid</a>
               </li>
               <li>
-                <a href="#"
-                  ><i class="fa-solid fa-briefcase"></i> Placement / CCD</a
-                >
+                <a href="#"><i class="fa-solid fa-briefcase"></i> Placement / CCD</a>
               </li>
             </ul>
           </div>
         </div>
       </li>
 
-      <li><a href="%%BASE%%pages/committees.html">Committees</a></li>
+      <li><a href="<?php echo $BASE_URL; ?>pages/committees.php">Committees</a></li>
 
       <li><a href="#">SAC</a></li>
-      <li><a href="%%BASE%%pages/hostel-management.html">Hostel</a></li>
+      <li><a href="<?php echo $BASE_URL; ?>pages/hostel-management.php">Hostel</a></li>
+
+      <li><a href="<?php echo $BASE_URL; ?>pages/notices.php">Notices</a></li>
 
       <li>
         <button class="nav-top" aria-expanded="false">
@@ -222,10 +200,8 @@
             <h4>Downloads</h4>
             <ul>
               <li>
-                <a href="%%BASE%%pages/forms_downloads.html"
-                  ><i class="fa-solid fa-file-arrow-down"></i> Forms &amp;
-                  Downloads</a
-                >
+                <a href="<?php echo $BASE_URL; ?>pages/forms_downloads.php"><i class="fa-solid fa-file-arrow-down"></i> Forms &amp;
+                  Downloads</a>
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-file-lines"></i> Circulars</a>
@@ -258,10 +234,10 @@
             <h4>Media</h4>
             <ul>
               <li>
-                <a href="%%BASE%%pages/photo_gallery.html"><i class="fa-solid fa-camera"></i> Photo Gallery</a>
+                <a href="<?php echo $BASE_URL; ?>pages/photo_gallery.php"><i class="fa-solid fa-camera"></i> Photo Gallery</a>
               </li>
               <li>
-                <a href="%%BASE%%pages/video_gallery.html"><i class="fa-solid fa-video"></i> Video Gallery</a>
+                <a href="<?php echo $BASE_URL; ?>pages/video_gallery.php"><i class="fa-solid fa-video"></i> Video Gallery</a>
               </li>
             </ul>
           </div>

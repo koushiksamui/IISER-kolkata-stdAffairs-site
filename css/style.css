@@ -487,50 +487,60 @@ nav.main-nav {
   top: 100%;
   left: 0;
   background: var(--white);
-  width: max-content;
-  min-width: 0;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
-  padding: var(--space-4);
+  padding: 24px 32px;
   display: none;
   grid-auto-flow: column;
-  grid-auto-columns: max-content;
-  gap: var(--space-4);
-  border-top: 3px solid var(--gold-500);
+  gap: 32px;
+  border: 1px solid var(--grey-200);
+  border-top: 4px solid var(--gold-500);
+  z-index: 100;
+}
+
+@keyframes megaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .nav-list > li.open .mega {
   display: grid;
+  animation: megaFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.mega-compact {
-  grid-auto-columns: minmax(190px, max-content);
-}
 
 .mega-col h4 {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--gold-600);
-  margin-bottom: var(--space-2);
+  letter-spacing: 0.05em;
+  color: var(--navy-900);
+  font-weight: 700;
+  border-bottom: 2px solid var(--grey-300);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .mega-col {
-  width: max-content;
+  width: 280px; /* Wider column width so long text (like Facilities) fits */
 }
 
 .mega-col ul li a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 7px 0;
-  color: var(--ink);
-  font-size: 0.9rem;
-  white-space: nowrap;
+  gap: 12px;
+  padding: 8px 12px;
+  margin-left: -12px; /* Pull back to align icon with text above */
+  color: var(--grey-600);
+  font-size: 0.95rem;
+  font-weight: 500;
   border-radius: var(--radius-sm);
-  transition:
-    color var(--dur) var(--ease),
-    padding-left var(--dur) var(--ease);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease, color 0.2s ease;
 }
 
 .mega-col ul li a i {
@@ -541,8 +551,8 @@ nav.main-nav {
 
 .mega-col ul li a:hover {
   color: var(--navy-900);
-  padding-left: 6px;
-  font-weight: 600;
+  background: var(--grey-100);
+  transform: translateX(4px);
 }
 
 .mobile-nav {
@@ -2090,14 +2100,15 @@ textarea {
 }
 .breadcrumb {
   font-size: .82rem;
-  color: rgba(255, 255, 255, .6);
+  color: rgba(255, 255, 255, .4);
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: var(--space-3);
 }
-.breadcrumb a { color: rgba(255, 255, 255, .85); }
-.breadcrumb a:hover { color: var(--gold-500); }
+.breadcrumb a { color: rgba(255, 255, 255, .6); }
+.breadcrumb a:hover { color: var(--white); }
+.breadcrumb span { color: var(--gold-500); font-weight: 500; }
 .page-hero h1 {
   color: var(--white);
   font-size: clamp(2rem, 3.6vw, 2.9rem);

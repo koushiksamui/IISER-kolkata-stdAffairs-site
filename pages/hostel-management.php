@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 
 <a href="#main" class="skip-link">Skip to main content</a>
 
-<div id="header-placeholder"></div>
+<?php include __DIR__ . '/../components/navbar.php'; ?>
 
 <div id="mobile-drawer-placeholder"></div>
 
@@ -316,7 +316,7 @@
 
 </main>
 
-<div id="footer-placeholder"></div>
+<?php include __DIR__ . '/../components/footer.php'; ?>
 
 <script>
 /* ================= HOSTEL DIRECTORY DATA ================= */

@@ -17,7 +17,7 @@
 
     <a href="#main" class="skip-link">Skip to main content</a>
 
-    <div id="header-placeholder"></div>
+    <?php include __DIR__ . '/../components/navbar.php'; ?>
 
     <div id="mobile-drawer-placeholder"></div>
 
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div id="footer-placeholder"></div>
+    <?php include __DIR__ . '/../components/footer.php'; ?>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="../layout/include.js"></script>

@@ -16,7 +16,8 @@
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-  <div id="header-placeholder"></div>
+  <?php $BASE_URL = './';
+  include __DIR__ . '/components/navbar.php'; ?>
 
   <div id="mobile-drawer-placeholder"></div>
 
@@ -236,7 +237,7 @@
     </section>
   </main>
 
-  <div id="footer-placeholder"></div>
+  <?php include __DIR__ . '/components/footer.php'; ?>
 
   <!-- ============ LIGHTBOX ============ -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
@@ -265,17 +266,17 @@
       .then(data => {
         const slidesContainer = document.getElementById('carousel-slides-container');
         const dotsContainer = document.getElementById('carousel-dots-container');
-        
+
         if (data.success && data.banners && data.banners.length > 0) {
           slidesContainer.innerHTML = '';
           dotsContainer.innerHTML = '';
-          
+
           data.banners.forEach((banner, idx) => {
             // Slide
             const slide = document.createElement('div');
             slide.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
             slide.style.backgroundImage = `url('${banner.image_path}')`;
-            
+
             // Inner Content
             let innerHTML = `<div class="cap">${banner.title}</div>`;
             if (banner.description) {
@@ -284,7 +285,7 @@
             if (banner.button_text && banner.button_link) {
               innerHTML += `<a href="${banner.button_link}" class="btn btn-gold" style="margin-top: 16px; display: inline-block; padding: 6px 16px; font-size: 0.85rem;">${banner.button_text}</a>`;
             }
-            
+
             // Wrapper for cap content so it styles nicely
             slide.innerHTML = `<div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">${innerHTML}</div>`;
             slidesContainer.appendChild(slide);
@@ -295,10 +296,10 @@
             if (idx === 0) dot.className = 'active';
             dotsContainer.appendChild(dot);
           });
-          
+
           document.querySelector('.carousel-prev').style.display = 'block';
           document.querySelector('.carousel-next').style.display = 'block';
-          
+
           initCarousel();
         } else {
           document.getElementById('carousel').style.display = 'none';
@@ -312,7 +313,8 @@
     function initCarousel() {
       const slides = document.querySelectorAll(".carousel-slide");
       const dots = document.querySelectorAll(".carousel-dots button");
-      let curSlide = 0, carouselTimer;
+      let curSlide = 0,
+        carouselTimer;
 
       function showSlide(i) {
         slides.forEach((s) => s.classList.remove("active"));
@@ -375,36 +377,36 @@
     ]).then(([photoRes, videoRes]) => {
       if (photoRes.success && photoRes.galleries) {
         photoRes.galleries.forEach(g => {
-           let cover = g.cover_image ? g.cover_image : 'https://placehold.co/600x400?text=No+Image';
-           let src = cover.match(/^https?:\/\//) ? cover : cover;
-           allMediaData.push({
-             type: 'photos',
-             cat: 'Photo Gallery',
-             title: g.title,
-             img: src,
-             count: g.image_count + ' Photos'
-           });
+          let cover = g.cover_image ? g.cover_image : 'https://placehold.co/600x400?text=No+Image';
+          let src = cover.match(/^https?:\/\//) ? cover : cover;
+          allMediaData.push({
+            type: 'photos',
+            cat: 'Photo Gallery',
+            title: g.title,
+            img: src,
+            count: g.image_count + ' Photos'
+          });
         });
       }
-      
+
       if (videoRes.success && videoRes.videos) {
         videoRes.videos.forEach(v => {
-           let thumbnail = '';
-           if (v.video_type === 'youtube' && v.video_url) {
-               const match = v.video_url.match(/\/embed\/([^?&]+)/);
-               if (match && match[1]) {
-                   thumbnail = `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
-               }
-           }
-           if (!thumbnail) thumbnail = 'https://placehold.co/600x400?text=Video';
-           
-           allMediaData.push({
-             type: 'videos',
-             cat: 'Video',
-             title: v.caption || 'Untitled Video',
-             img: thumbnail,
-             count: 'Video'
-           });
+          let thumbnail = '';
+          if (v.video_type === 'youtube' && v.video_url) {
+            const match = v.video_url.match(/\/embed\/([^?&]+)/);
+            if (match && match[1]) {
+              thumbnail = `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+            }
+          }
+          if (!thumbnail) thumbnail = 'https://placehold.co/600x400?text=Video';
+
+          allMediaData.push({
+            type: 'videos',
+            cat: 'Video',
+            title: v.caption || 'Untitled Video',
+            img: thumbnail,
+            count: 'Video'
+          });
         });
       }
 
@@ -414,28 +416,28 @@
     function renderGallery(filter) {
       galleryGrid.innerHTML = "";
       const items = filter === "all" ? allMediaData : allMediaData.filter(d => d.type === filter);
-      
+
       if (items.length === 0) {
-         galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--grey-500); padding: 40px 0;">No media found.</div>';
-         return;
+        galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--grey-500); padding: 40px 0;">No media found.</div>';
+        return;
       }
-      
+
       items.forEach((d) => {
         const el = document.createElement("div");
         el.className = "gallery-item";
-        
+
         let playIcon = d.type === 'videos' ? '<div class="play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 3rem; opacity: 0.8; z-index: 10; pointer-events: none;"><i class="fa-solid fa-play"></i></div>' : '';
 
         el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
         ${playIcon}
         <div class="overlay"><div><div class="g-cat">${d.count}</div><div class="g-title">${d.title}</div></div></div>`;
-        
+
         el.addEventListener("click", () => {
-           if(d.type === 'videos') {
-               window.location.href = 'pages/video_gallery.html';
-           } else {
-               openLightbox(allMediaData.indexOf(d));
-           }
+          if (d.type === 'videos') {
+            window.location.href = 'pages/video_gallery.html';
+          } else {
+            openLightbox(allMediaData.indexOf(d));
+          }
         });
         galleryGrid.appendChild(el);
       });
@@ -455,11 +457,13 @@
       lbTitle = document.getElementById("lbTitle"),
       lbCat = document.getElementById("lbCat");
     let lbIndex = 0;
+
     function openLightbox(i) {
       lbIndex = i;
       updateLightbox();
       lightbox.classList.add("open");
     }
+
     function updateLightbox() {
       const d = allMediaData[lbIndex];
       lbImg.src = d.img.replace("w=600", "w=1200");
@@ -476,14 +480,20 @@
     document.getElementById("lbPrev").addEventListener("click", () => {
       // Find previous photo
       let prev = lbIndex - 1;
-      while(prev >= 0 && allMediaData[prev].type !== 'photos') prev--;
-      if (prev >= 0) { lbIndex = prev; updateLightbox(); }
+      while (prev >= 0 && allMediaData[prev].type !== 'photos') prev--;
+      if (prev >= 0) {
+        lbIndex = prev;
+        updateLightbox();
+      }
     });
     document.getElementById("lbNext").addEventListener("click", () => {
       // Find next photo
       let next = lbIndex + 1;
-      while(next < allMediaData.length && allMediaData[next].type !== 'photos') next++;
-      if (next < allMediaData.length) { lbIndex = next; updateLightbox(); }
+      while (next < allMediaData.length && allMediaData[next].type !== 'photos') next++;
+      if (next < allMediaData.length) {
+        lbIndex = next;
+        updateLightbox();
+      }
     });
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("open")) return;
@@ -493,7 +503,7 @@
     });
 
     /* ================= DYNAMIC NOTICES ================= */
-    (function () {
+    (function() {
       const container = document.getElementById("dynamic-notices-container");
       if (!container) return;
 
@@ -512,7 +522,10 @@
               const typeName = notice.type === 'other' ? notice.other_type_name : notice.type;
 
               const dateObj = new Date(notice.created_at);
-              const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+              const dateStr = dateObj.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+              });
 
               let actionsHTML = '';
               if (notice.pdf_path) {

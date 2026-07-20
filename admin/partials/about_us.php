@@ -7,23 +7,34 @@ if (empty($_SESSION['admin_logged_in'])) {
 ?>
 <style>
     /* Quill Custom Styling - WYSIWYG Experience */
+    #auEditor .ql-editor {
+        text-align: justify;
+    }
+
     #auEditor .ql-editor h1,
     #auEditor .ql-editor h2,
-    #auEditor .ql-editor h3 {
-        border-left: 4px solid #f59e0b;
-        padding-left: 12px;
-        color: #1a1a1a;
+    #auEditor .ql-editor h3,
+    #auEditor .ql-editor h4 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        color: #333;
         font-weight: 600;
+        border-left: 5px solid var(--accent-gold, #e09f3e);
+        padding-left: 12px;
     }
 
     #auEditor .ql-editor h1:first-child,
     #auEditor .ql-editor h2:first-child,
-    #auEditor .ql-editor h3:first-child {
+    #auEditor .ql-editor h3:first-child,
+    #auEditor .ql-editor h4:first-child {
         margin-top: 0;
     }
 
     #auEditor .ql-editor p {
-        color: #333;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 1rem;
     }
 </style>
 
@@ -167,7 +178,7 @@ if (empty($_SESSION['admin_logged_in'])) {
                 toolbar: {
                     container: [
                         [{
-                            'header': [1, 2, 3, 4, false]
+                            'header': [2, false]
                         }],
                         ['bold', 'italic', 'underline', 'strike'],
                         [{
@@ -245,12 +256,22 @@ if (empty($_SESSION['admin_logged_in'])) {
             if (content) {
                 var $temp = $('<div>').html(content);
                 $temp.find('h1, h2, h3, h4').css({
-                    'border-left': '4px solid #f59e0b',
-                    'padding-left': '12px',
-                    'color': '#1a1a1a',
-                    'font-weight': '600'
+                    'font-size': '2.5rem',
+                    'margin-bottom': '0.5rem',
+                    'color': 'var(--text-dark, #333)',
+                    'font-weight': '600',
+                    'border-left': 'none',
+                    'padding-left': '0'
                 });
                 $temp.find('h1:first-child, h2:first-child, h3:first-child, h4:first-child').css('margin-top', '0');
+                
+                $temp.find('p').css({
+                    'font-size': '1.1rem',
+                    'line-height': '1.6',
+                    'color': 'var(--text-muted, #666)',
+                    'margin-bottom': '1rem',
+                    'text-align': 'justify'
+                });
                 content = $temp.html();
             }
 

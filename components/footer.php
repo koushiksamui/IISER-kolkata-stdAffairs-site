@@ -1,3 +1,4 @@
+<?php $BASE_URL = $BASE_URL ?? '../'; ?>
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer" id="footer">
   <div class="container footer-top">
@@ -5,7 +6,7 @@
       <div>
         <div class="footer-brand">
           <div class="brand-mark" aria-hidden="true">
-            <img src="%%BASE%%images/logo.png" alt="" />
+            <img src="<?php echo $BASE_URL; ?>images/logo.png" alt="" />
           </div>
           <span>Students' Affairs Office</span>
         </div>
