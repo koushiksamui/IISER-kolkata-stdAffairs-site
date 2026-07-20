@@ -112,20 +112,6 @@
         </div>
       </li>
 
-      <!-- <li>
-        <button class="nav-top" aria-expanded="false">Committees for Students <i class="fa-solid fa-chevron-down"></i></button>
-        <div class="mega mega-compact">
-          <div class="mega-col">
-            <h4>Committees</h4>
-            <ul>
-              <li><a href="#"><i class="fa-solid fa-scale-balanced"></i> ICC</a></li>
-              <li><a href="#"><i class="fa-solid fa-handshake"></i> Grievance</a></li>
-              <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Anti Ragging</a></li>
-            </ul>
-          </div>
-        </div>
-      </li> -->
-
       <li>
         <button class="nav-top" aria-expanded="false">
           Facilities <i class="fa-solid fa-chevron-down"></i>
