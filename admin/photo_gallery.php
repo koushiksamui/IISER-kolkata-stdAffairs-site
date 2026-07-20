@@ -487,7 +487,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 }
 
                 res.data.forEach((img, index) => {
-                    const imgSrc = '../' + img.image_path;
+                    const imgSrc = img.image_path.match(/^https?:\/\//) ? img.image_path : '../' + img.image_path;
                     const card = $(`
                         <div class="banner-item-card" data-id="${img.id}" style="border: none; background: transparent; box-shadow: none;">
                             <div class="banner-thumbnail-wrap" style="height: 240px; cursor: pointer; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">

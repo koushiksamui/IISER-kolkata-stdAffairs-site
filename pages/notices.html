@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices & Updates — Students' Affairs Office, IISER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <div id="header-placeholder"></div>
+
+    <div id="mobile-drawer-placeholder"></div>
+
+    <main id="main">
+
+        <!-- ============ PAGE HERO ============ -->
+        <section class="page-hero">
+            <div class="container page-hero-inner">
+                <div class="breadcrumb"><a href="../index.html">Home</a> <i class="fa-solid fa-chevron-right"
+                        style="font-size:.6rem"></i> <span>Notices</span></div>
+                <span class="eyebrow" style="color:var(--gold-500)">Stay Updated</span>
+                <h1>Notices & Updates</h1>
+                <p class="lede">All the latest announcements, circulars, and updates from the Students' Affairs Office.</p>
+            </div>
+        </section>
+
+        <!-- ============ NOTICES FEED ============ -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <ul class="announcement-list notice-style" id="full-notices-container" style="margin-top: 48px;">
+                    <li>
+                        <div style="display: flex; align-items: center; justify-content: center; padding: 64px 0;">
+                            <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 3rem; color: var(--gold-500);"></i>
+                        </div>
+                    </li>
+                </ul>
+                <div id="pagination-controls" style="text-align: center; margin-top: 32px; display: none;">
+                    <button class="btn btn-outline" id="load-more-btn">Load More</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../layout/include.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("full-notices-container");
+            const loadMoreBtn = document.getElementById("load-more-btn");
+            const paginationControls = document.getElementById("pagination-controls");
+            
+            let currentPage = 1;
+            const limit = 20;
+
+            function loadNotices(page) {
+                fetch(`../api/notices.php?action=get_notices&public_only=1&limit=${limit}&page=${page}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (page === 1) container.innerHTML = '';
+                        
+                        if (data.success && data.data && data.data.length > 0) {
+                            data.data.forEach(notice => {
+                                let badgeStyle = 'display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 12px;';
+                                if (notice.type === 'circular') badgeStyle += ' background: #eff6ff; color: #1d4ed8;';
+                                else if (notice.type === 'event') badgeStyle += ' background: #f0fdf4; color: #15803d;';
+                                else if (notice.type === 'alert') badgeStyle += ' background: #fef2f2; color: #b91c1c;';
+                                else badgeStyle += ' background: #f8fafc; color: #334155;';
+                                
+                                const typeName = notice.type === 'other' ? notice.other_type_name : notice.type;
+                                const dateObj = new Date(notice.created_at);
+                                const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                                let actionsHTML = '';
+                                if (notice.pdf_path) {
+                                    actionsHTML += `<a href="../${notice.pdf_path}" target="_blank" style="margin-right: 12px; font-size: 0.9rem; color: #b45309; text-decoration: none; font-weight: 500;"><i class="fa-solid fa-file-pdf"></i> Download PDF</a>`;
+                                }
+                                if (notice.link) {
+                                    actionsHTML += `<a href="${notice.link}" target="_blank" style="font-size: 0.9rem; color: #2563eb; text-decoration: none; font-weight: 500;"><i class="fa-solid fa-link"></i> External Link</a>`;
+                                }
+
+                                const li = document.createElement('li');
+                                li.innerHTML = `
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                                        <div>
+                                            <span style="${badgeStyle}">${typeName}</span>
+                                            <strong style="display: block; font-size: 1.2rem; margin-bottom: 8px; color: #0f172a;">${notice.title}</strong>
+                                            <div style="margin-top: 12px;">
+                                                ${actionsHTML}
+                                            </div>
+                                        </div>
+                                        <time style="font-size: 0.9rem; color: #64748b; white-space: nowrap; margin-left: 24px; font-weight: 500;">${dateStr}</time>
+                                    </div>
+                                `;
+                                container.appendChild(li);
+                            });
+
+                            if (data.total > page * limit) {
+                                paginationControls.style.display = 'block';
+                            } else {
+                                paginationControls.style.display = 'none';
+                            }
+                        } else if (page === 1) {
+                            container.innerHTML = '<li style="text-align: center; color: var(--grey-500); padding: 40px;">No New Updates or Notices</li>';
+                            paginationControls.style.display = 'none';
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Failed to load notices:', err);
+                        if (page === 1) {
+                            container.innerHTML = '<li style="text-align: center; color: var(--grey-500); padding: 40px;">No New Updates or Notices</li>';
+                        }
+                    });
+            }
+
+            loadNotices(currentPage);
+
+            loadMoreBtn.addEventListener("click", () => {
+                currentPage++;
+                loadNotices(currentPage);
+            });
+        });
+    </script>
+</body>
+</html>

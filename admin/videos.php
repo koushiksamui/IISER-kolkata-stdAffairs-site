@@ -357,7 +357,9 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                     const embedUrl = getYoutubeEmbedUrl(v.video_url);
                     playerHtml = `<iframe src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 } else {
-                    playerHtml = `<video src="../${v.video_url}" controls preload="metadata"></video>`;
+                    playerHtml = `<video controls controlsList="nodownload" style="max-height: 200px; width: 100%; border-radius: 8px; background: #000;">
+                                      <source src="../api/stream_video.php?file=${encodeURIComponent(v.video_url)}" type="video/mp4">
+                                  </video>`;
                 }
 
                 const card = $(`
@@ -515,7 +517,9 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             $preview.empty().css('display', 'flex');
 
             const fileURL = URL.createObjectURL(file);
-            const videoEl = $(`<video src="${fileURL}" controls style="width:100%; max-height:250px; border-radius:8px;"></video>`);
+            const videoEl = $(`<video controls controlsList="nodownload" style="width:100%; max-height:250px; border-radius:8px;">
+                                   <source src="${fileURL}" type="${file.type || 'video/mp4'}">
+                               </video>`);
 
             const info = $('<p style="margin-top:10px; font-weight:600; color:#10b981;">').text('Selected: ' + file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)');
 

@@ -13,9 +13,10 @@ header('Content-Type: application/json');
 
 // ── Allowed page slugs (whitelist for security) ───────────────────────────────
 $ALLOWED_PAGES = [
-    'about_us'      => 'About Us',
-    'contact_us'    => 'Contact Us',
-    'head_message'  => 'Message from the Head',
+    'about_us'         => 'About Us',
+    'contact_us'       => 'Contact Us',
+    'director_message' => 'Message from the Director',
+    'deans_message'    => 'Message from the Deans',
 ];
 
 // ── Storage directory ─────────────────────────────────────────────────────────
@@ -96,8 +97,19 @@ switch ($action) {
             exit;
         }
 
-        $filePath = $dataDir . $slug . '.html';
-        $content  = file_exists($filePath) ? file_get_contents($filePath) : '';
+        require_once __DIR__ . '/../php_utils/_dbConnect.php';
+
+        // Check if the slug maps to a valid table for page content
+        $valid_tables = ['about_us', 'director_message', 'deans_message'];
+        $content = '';
+        if (in_array($slug, $valid_tables)) {
+            $query = "SELECT content FROM `$slug` ORDER BY id DESC LIMIT 1";
+            $result = mysqli_query($conn, $query);
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $content = $row['content'] ?? '';
+            }
+        }
 
         echo json_encode([
             'success' => true,
@@ -117,195 +129,73 @@ switch ($action) {
             exit;
         }
 
-        $filePath = $dataDir . $slug . '.html';
-        $result   = file_put_contents($filePath, $content);
+        require_once __DIR__ . '/../php_utils/_dbConnect.php';
+        
+        $valid_tables = ['about_us', 'director_message', 'deans_message'];
+        if (!in_array($slug, $valid_tables)) {
+            echo json_encode(['success' => false, 'message' => 'Slug is not configured for database storage.']);
+            exit;
+        }
 
-        if ($result === false) {
-            echo json_encode(['success' => false, 'message' => 'Failed to save content. Check directory permissions.']);
+        $content_safe = mysqli_real_escape_string($conn, $content);
+        $updated_by_safe = mysqli_real_escape_string($conn, $_SESSION['admin_email'] ?? 'admin');
+
+        $query = "SELECT id FROM `$slug` ORDER BY id DESC LIMIT 1";
+        $result = mysqli_query($conn, $query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $updateQuery = "UPDATE `$slug` SET content = '$content_safe', updated_by = '$updated_by_safe' ORDER BY id DESC LIMIT 1";
+            $dbResult = mysqli_query($conn, $updateQuery);
         } else {
-            require_once __DIR__ . '/../php_utils/_dbConnect.php';
-            logActivity($conn, 'Page Content', 'UPDATE', "Updated static HTML page: $slug");
+            $insertQuery = "INSERT INTO `$slug` (content, updated_by) VALUES ('$content_safe', '$updated_by_safe')";
+            $dbResult = mysqli_query($conn, $insertQuery);
+        }
+
+        if (!$dbResult) {
+            echo json_encode(['success' => false, 'message' => 'Failed to save to database: ' . mysqli_error($conn)]);
+        } else {
+            logActivity($conn, 'Page Content', 'UPDATE', "Updated page: $slug");
             echo json_encode([
                 'success'   => true,
                 'message'   => $ALLOWED_PAGES[$slug] . ' content saved successfully.',
                 'slug'      => $slug,
                 'saved_at'  => date('Y-m-d H:i:s'),
+                'updated_by' => $updated_by_safe
             ]);
         }
         break;
 
     // ── GET all page metadata ─────────────────────────────────────────────────
     case 'get_all_pages':
+        require_once __DIR__ . '/../php_utils/_dbConnect.php';
         $pages = [];
+        $valid_tables = ['about_us', 'director_message', 'deans_message'];
+
         foreach ($ALLOWED_PAGES as $slug => $label) {
-            $filePath     = $dataDir . $slug . '.html';
+            $has_content = false;
+            $updated_at = null;
+
+            if (in_array($slug, $valid_tables)) {
+                $query = "SELECT content, last_updated FROM `$slug` ORDER BY id DESC LIMIT 1";
+                $result = mysqli_query($conn, $query);
+                if ($result && mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $has_content = !empty(trim($row['content']));
+                    $updated_at = $row['last_updated'];
+                }
+            }
+
             $pages[] = [
                 'slug'       => $slug,
                 'label'      => $label,
-                'has_content'=> file_exists($filePath) && filesize($filePath) > 0,
-                'updated_at' => file_exists($filePath) ? date('Y-m-d H:i:s', filemtime($filePath)) : null,
+                'has_content'=> $has_content,
+                'updated_at' => $updated_at,
             ];
         }
         echo json_encode(['success' => true, 'pages' => $pages]);
         break;
 
-    // ── GET Message from Head ──────────────────────────────────────────
-    case 'get_head_message':
-        require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
-        $defaults = ['content' => ''];
-        
-        $createTableQuery = "CREATE TABLE IF NOT EXISTS head_message (
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            content LONGTEXT,
-            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            updated_by VARCHAR(100) DEFAULT NULL
-        )";
-        mysqli_query($conn, $createTableQuery);
 
-        $query = "SELECT content, last_updated, updated_by FROM head_message ORDER BY id DESC LIMIT 1";
-        $result = mysqli_query($conn, $query);
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $data = [
-                'content' => $row['content'] ? $row['content'] : '',
-                'last_updated' => $row['last_updated'] ? $row['last_updated'] : '',
-                'updated_by' => $row['updated_by'] ? $row['updated_by'] : ''
-            ];
-        } else {
-            $data = $defaults;
-        }
-        echo json_encode(['success' => true, 'data' => $data]);
-        break;
-
-    // ── SAVE Message from Head ─────────────────────────────────────────
-    case 'save_head_message':
-        require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
-        $createTableQuery = "CREATE TABLE IF NOT EXISTS head_message (
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            content LONGTEXT,
-            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            updated_by VARCHAR(100) DEFAULT NULL
-        )";
-        mysqli_query($conn, $createTableQuery);
-
-        $content = isset($_POST['content']) ? $_POST['content'] : '';
-        $query = "SELECT content FROM head_message ORDER BY id DESC LIMIT 1";
-        $result = mysqli_query($conn, $query);
-        
-        $content_safe = mysqli_real_escape_string($conn, $content);
-        $updated_by_safe = mysqli_real_escape_string($conn, $_SESSION['admin_email'] ?? 'admin');
-
-        if ($result && mysqli_num_rows($result) > 0) {
-            $updateQuery = "UPDATE head_message SET content = '$content_safe', updated_by = '$updated_by_safe' ORDER BY id DESC LIMIT 1";
-            $dbResult = mysqli_query($conn, $updateQuery);
-        } else {
-            $insertQuery = "INSERT INTO head_message (content, updated_by) VALUES ('$content_safe', '$updated_by_safe')";
-            $dbResult = mysqli_query($conn, $insertQuery);
-        }
-
-        if (!$dbResult) {
-            echo json_encode(['success' => false, 'message' => 'Failed to save to database: ' . mysqli_error($conn)]);
-        } else {
-            logActivity($conn, 'Page Content', 'UPDATE', "Updated Message from Head");
-            echo json_encode([
-                'success'  => true,
-                'message'  => 'Message from the Head saved successfully.',
-                'saved_at' => date('Y-m-d H:i:s'),
-                'updated_by' => $updated_by_safe
-            ]);
-        }
-        break;
-
-    // ── GET About Us structured JSON ──────────────────────────────────────────
-    case 'get_about_us':
-        require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
-        $defaults = ['content' => ''];
-        
-        // Ensure table exists before querying
-        $createTableQuery = "CREATE TABLE IF NOT EXISTS about_us (
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            content LONGTEXT,
-            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            updated_by VARCHAR(100) DEFAULT NULL
-        )";
-        mysqli_query($conn, $createTableQuery);
-
-        // Ensure columns exist for backward compatibility
-        $checkCol = mysqli_query($conn, "SHOW COLUMNS FROM about_us LIKE 'last_updated'");
-        if ($checkCol && mysqli_num_rows($checkCol) == 0) {
-            mysqli_query($conn, "ALTER TABLE about_us ADD COLUMN last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
-            mysqli_query($conn, "ALTER TABLE about_us ADD COLUMN updated_by VARCHAR(100) DEFAULT NULL");
-        }
-
-        $query = "SELECT content, last_updated, updated_by FROM about_us ORDER BY id DESC LIMIT 1";
-        $result = mysqli_query($conn, $query);
-        if ($result && mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $data = [
-                'content' => $row['content'] ? $row['content'] : '',
-                'last_updated' => $row['last_updated'] ? $row['last_updated'] : '',
-                'updated_by' => $row['updated_by'] ? $row['updated_by'] : ''
-            ];
-        } else {
-            $data = $defaults;
-        }
-        echo json_encode(['success' => true, 'data' => $data]);
-        break;
-
-    // ── SAVE About Us structured JSON ─────────────────────────────────────────
-    case 'save_about_us':
-        require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
-        // Ensure table exists
-        $createTableQuery = "CREATE TABLE IF NOT EXISTS about_us (
-            id INT(11) AUTO_INCREMENT PRIMARY KEY,
-            content LONGTEXT,
-            last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            updated_by VARCHAR(100) DEFAULT NULL
-        )";
-        mysqli_query($conn, $createTableQuery);
-
-        // Ensure columns exist for backward compatibility
-        $checkCol = mysqli_query($conn, "SHOW COLUMNS FROM about_us LIKE 'last_updated'");
-        if ($checkCol && mysqli_num_rows($checkCol) == 0) {
-            mysqli_query($conn, "ALTER TABLE about_us ADD COLUMN last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP");
-            mysqli_query($conn, "ALTER TABLE about_us ADD COLUMN updated_by VARCHAR(100) DEFAULT NULL");
-        }
-
-        $content = isset($_POST['content']) ? $_POST['content'] : '';
-        
-        // Fetch existing data
-        $query = "SELECT content FROM about_us ORDER BY id DESC LIMIT 1";
-        $result = mysqli_query($conn, $query);
-        
-        $content_safe = mysqli_real_escape_string($conn, $content);
-        $updated_by_safe = mysqli_real_escape_string($conn, $_SESSION['admin_email'] ?? 'admin');
-
-        if ($result && mysqli_num_rows($result) > 0) {
-            // Update existing row
-            $updateQuery = "UPDATE about_us SET content = '$content_safe', updated_by = '$updated_by_safe' ORDER BY id DESC LIMIT 1";
-            $dbResult = mysqli_query($conn, $updateQuery);
-        } else {
-            // Insert new row
-            $insertQuery = "INSERT INTO about_us (content, updated_by) VALUES ('$content_safe', '$updated_by_safe')";
-            $dbResult = mysqli_query($conn, $insertQuery);
-        }
-
-        if (!$dbResult) {
-            echo json_encode(['success' => false, 'message' => 'Failed to save to database: ' . mysqli_error($conn)]);
-        } else {
-            logActivity($conn, 'Page Content', 'UPDATE', "Updated About Us structured content");
-            echo json_encode([
-                'success'  => true,
-                'message'  => 'About Us content saved to database successfully.',
-                'saved_at' => date('Y-m-d H:i:s'),
-                'updated_by' => $updated_by_safe
-            ]);
-        }
-        break;
 
     // ── GET Contact Us structured JSON ───────────────────────────────────────
     case 'get_contact_us':

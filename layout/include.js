@@ -103,6 +103,21 @@
     });
   }
 
+  function initGoToTop() {
+    var goToTopBtn = document.getElementById("goToTopBtn");
+    if (!goToTopBtn) return;
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        goToTopBtn.classList.add("show");
+      } else {
+        goToTopBtn.classList.remove("show");
+      }
+    });
+    goToTopBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   Promise.all([
     loadPartial("header.html", "header-placeholder"),
     loadPartial("mobile-drawer.html", "mobile-drawer-placeholder"),
@@ -112,6 +127,7 @@
       initMegaMenu();
       initMobileDrawer();
       initAccessibility();
+      initGoToTop();
       document.dispatchEvent(new CustomEvent("layout:ready"));
     })
     .catch(function (err) {

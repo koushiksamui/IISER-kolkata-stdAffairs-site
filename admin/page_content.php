@@ -95,11 +95,19 @@ requireAdmin('login.html');
                         </button>
 
                         <button class="page-tab-btn"
-                            data-partial="partials/head_message.php"
-                            data-slug="head_message"
-                            id="tab-head_message" role="tab" aria-selected="false">
-                            <i class="fa-solid fa-comment-dots"></i>
-                            Message from the Head
+                            data-partial="partials/director_message.php"
+                            data-slug="director_message"
+                            id="tab-director_message" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-user-tie"></i>
+                            Message from the Director
+                        </button>
+
+                        <button class="page-tab-btn"
+                            data-partial="partials/deans_message.php"
+                            data-slug="deans_message"
+                            id="tab-deans_message" role="tab" aria-selected="false">
+                            <i class="fa-solid fa-users"></i>
+                            Message from the Deans
                         </button>
 
                     </div>
@@ -163,7 +171,7 @@ requireAdmin('login.html');
 
                 // Fetch the partial via AJAX
                 $.ajax({
-                    url: partial,
+                    url: partial + "?v=" + new Date().getTime(),
                     type: 'GET',
                     success: function(html) {
                         $loading.hide();

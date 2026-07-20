@@ -1,457 +1,319 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Students' Affairs Office — IISER</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
 
-  <body>
-    <a href="#main" class="skip-link">Skip to main content</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Students' Affairs Office — IISER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
 
-    <div id="header-placeholder"></div>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-    <div id="mobile-drawer-placeholder"></div>
+  <div id="header-placeholder"></div>
 
-    <main id="main">
-      <!-- ============ HERO ============ -->
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-top">
-            <div class="carousel" id="carousel">
-              <button class="carousel-prev" aria-label="Previous slide">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <div
-                class="carousel-slide active"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1562774053-701939374585?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Main Academic Block — Autumn Semester</div>
+  <div id="mobile-drawer-placeholder"></div>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-top">
+          <div class="carousel" id="carousel">
+            <button class="carousel-prev" aria-label="Previous slide" style="display:none;">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div id="carousel-slides-container">
+              <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--gold-500); font-size: 2rem;">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
               </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1568667256549-094345857637?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Central Library &amp; Reading Halls</div>
-              </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Student Residences at Dusk</div>
-              </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Annual Cultural Fest, Confluence</div>
-              </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Campus Fitness Center &amp; Gym</div>
-              </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Outdoor Sports Complex &amp; Playground</div>
-              </div>
-              <div
-                class="carousel-slide"
-                style="
-                  background-image: url(&quot;https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&amp;w=1920&amp;auto=format&amp;fit=crop&quot;);
-                "
-              >
-                <div class="cap">Medical Center &amp; Hospital Facilities</div>
-              </div>
-              <div class="carousel-dots">
-                <button class="active" aria-label="Slide 1"></button>
-                <button aria-label="Slide 2"></button>
-                <button aria-label="Slide 3"></button>
-                <button aria-label="Slide 4"></button>
-                <button aria-label="Slide 5"></button>
-                <button aria-label="Slide 6"></button>
-                <button aria-label="Slide 7"></button>
-              </div>
-              <button class="carousel-next" aria-label="Next slide">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="hero-bottom-section">
-        <div class="hero-bottom">
-          <div class="std-office-dtls">
-            <span class="hero-eyebrow">Students' Affairs Office</span>
-            <h1>
-              Supporting every student's journey, <em>on and beyond campus.</em>
-            </h1>
-            <p class="dosa-msg">
-              "Our office exists so that every student at IISER finds the
-              support, safety and community they need to thrive — academically
-              and personally. Reach out any time; we are here for you."
-            </p>
-            <p class="dosa-sign">
-              <strong>Prof. Koushik Dutta</strong> · Dean of Students' Affairs
-            </p>
-
-            <div class="hero-cta">
-              <a href="#services" class="btn btn-gold"
-                ><i class="fa-solid fa-compass"></i> Explore Services</a
-              >
-              <a href="#footer" class="btn btn-outline"
-                ><i class="fa-solid fa-envelope"></i> Contact Us</a
-              >
+            <div class="carousel-dots" id="carousel-dots-container">
             </div>
-          </div>
-          <div class="announcement-panel" role="region">
-            <span class="hero-eyebrow">Updates &amp; Information</span>
-            <div
-              class="tabs"
-              role="tablist"
-              aria-label="Announcements and Notices"
-            >
-              <button
-                type="button"
-                role="tab"
-                aria-selected="true"
-                aria-controls="tab-announcements"
-                id="tab-btn-ann"
-                class="tab-btn"
-              >
-                Announcements
-              </button>
-              <button
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab-notices"
-                id="tab-btn-not"
-                class="tab-btn"
-              >
-                Notices &amp; Circulars
-              </button>
-            </div>
-
-            <div
-              id="tab-announcements"
-              role="tabpanel"
-              aria-labelledby="tab-btn-ann"
-              class="tab-panel"
-            >
-              <div class="panel-head">
-                <span class="panel-label"
-                  ><i class="fa-solid fa-bullhorn"></i> Important
-                  Announcements</span
-                >
-                <a href="#">View all</a>
-              </div>
-              <ul class="announcement-list">
-                <li>
-                  <strong>Annual Tech Fest 2025</strong>
-                  <span
-                    >Registrations are now open for Host Fest 2025. Participate
-                    and win.</span
-                  >
-                  <time>May 20</time>
-                </li>
-                <li>
-                  <strong>Hostel Allotment Notice</strong>
-                  <span
-                    >New hostel allotment list for odd Semester 2025-26 is out.
-                    Check now.</span
-                  >
-                  <time>May 18</time>
-                </li>
-                <li>
-                  <strong>Scholarship Applications</strong>
-                  <span
-                    >Last date to apply for Merit-cum-Means Scholarship is 25
-                    July.</span
-                  >
-                  <time>May 15</time>
-                </li>
-              </ul>
-            </div>
-
-            <div
-              id="tab-notices"
-              role="tabpanel"
-              aria-labelledby="tab-btn-not"
-              class="tab-panel"
-              hidden
-            >
-              <div class="panel-head">
-                <span class="panel-label"
-                  ><i class="fa-solid fa-file-lines"></i> Notices &amp;
-                  Circulars</span
-                >
-                <a href="#">View all</a>
-              </div>
-              <ul class="announcement-list notice-style">
-                <li>
-                  <strong>Semester exam schedule released</strong>
-                  <span
-                    >End-term exam schedule published for the current semester.
-                    Check dates and venues.</span
-                  >
-                  <time>Jul 10</time>
-                </li>
-                <li>
-                  <strong>Revised hostel curfew policy</strong>
-                  <span
-                    >Updated guest and curfew policy for hostels — please read
-                    carefully.</span
-                  >
-                  <time>Jul 08</time>
-                </li>
-                <li>
-                  <strong>ICC orientation</strong>
-                  <span
-                    >Orientation session for ICC scheduled for the incoming
-                    batch.</span
-                  >
-                  <time>Jul 02</time>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ QUICK SERVICES ============ -->
-      <section class="section" id="services">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">What we offer</span>
-            <h2>Services built around student life</h2>
-            <p>
-              From the day you move into your hostel room to the day you walk
-              into placements — the Students' Affairs Office is your single
-              point of contact.
-            </p>
-          </div>
-          <div class="services-grid">
-            <div class="service-card">
-              <div class="ic"><i class="fa-solid fa-building"></i></div>
-              <h4>Hostel Management</h4>
-              <p>Room allotment, maintenance requests and warden contacts.</p>
-            </div>
-            <div class="service-card">
-              <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
-              <h4>Scholarship &amp; Financial Aid</h4>
-              <p>
-                Merit and need-based aid, application tracking and disbursal.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
-              <h4>Placement / CCD</h4>
-              <p>
-                Career counselling, internship drives and recruiter tie-ups.
-              </p>
-            </div>
-            <div class="service-card">
-              <div class="ic"><i class="fa-solid fa-masks-theater"></i></div>
-              <h4>Clubs &amp; Societies</h4>
-              <p>60+ student bodies covering arts, tech, and outreach.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ GALLERY ============ -->
-      <section class="section section-alt" id="gallery">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow">Media Centre</span>
-            <h2>Photo &amp; video gallery</h2>
-            <p>
-              Moments from campus life, hostels, events, sport and student-led
-              activities.
-            </p>
-          </div>
-
-          <div class="filter-bar" role="tablist" aria-label="Gallery filters">
-            <button class="filter-chip active" data-filter="all">All</button>
-            <button class="filter-chip" data-filter="campus">Campus</button>
-            <button class="filter-chip" data-filter="hostels">Hostels</button>
-            <button class="filter-chip" data-filter="events">Events</button>
-            <button class="filter-chip" data-filter="sports">Sports</button>
-            <button class="filter-chip" data-filter="activities">
-              Student Activities
+            <button class="carousel-next" aria-label="Next slide" style="display:none;">
+              <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
-
-          <div class="gallery-grid" id="galleryGrid"></div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ============ SAFETY & WELLBEING ============ -->
-      <section class="section safety-section" id="committees">
-        <div class="container">
-          <div class="section-head">
-            <span class="eyebrow" style="color: var(--gold-500)"
-              >Your safety, our priority</span
-            >
-            <h2 style="color: var(--white)">Safety &amp; Wellbeing</h2>
-            <p style="color: rgba(255, 255, 255, 0.75)">
-              Confidential support, rapid response and round-the-clock
-              assistance whenever you need it.
+    <section class="hero-bottom-section">
+      <div class="hero-bottom">
+        <div class="std-office-dtls">
+          <span class="hero-eyebrow">Students' Affairs Office</span>
+          <h1>
+            Supporting every student's journey, <em>on and beyond campus.</em>
+          </h1>
+          <p class="dosa-msg">
+            "Our office exists so that every student at IISER finds the
+            support, safety and community they need to thrive — academically
+            and personally. Reach out any time; we are here for you."
+          </p>
+          <p class="dosa-sign">
+            <strong>Prof. Koushik Dutta</strong> · Dean of Students' Affairs
+          </p>
+
+          <div class="hero-cta">
+            <a href="#services" class="btn btn-gold"><i class="fa-solid fa-compass"></i> Explore Services</a>
+            <a href="#footer" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact Us</a>
+          </div>
+        </div>
+        <div class="announcement-panel" role="region">
+          <span class="hero-eyebrow">Updates &amp; Information</span>
+          <div class="panel-head" style="margin-top: 16px;">
+            <span class="panel-label"><i class="fa-solid fa-bullhorn"></i> Latest Notices & Updates</span>
+            <a href="pages/notices.html">View all</a>
+          </div>
+          <ul class="announcement-list notice-style" id="dynamic-notices-container">
+            <li>
+              <div style="display: flex; align-items: center; justify-content: center; padding: 32px 0;">
+                <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--gold-500);"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ QUICK SERVICES ============ -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">What we offer</span>
+          <h2>Services built around student life</h2>
+          <p>
+            From the day you move into your hostel room to the day you walk
+            into placements — the Students' Affairs Office is your single
+            point of contact.
+          </p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="ic"><i class="fa-solid fa-building"></i></div>
+            <h4>Hostel Management</h4>
+            <p>Room allotment, maintenance requests and warden contacts.</p>
+          </div>
+          <div class="service-card">
+            <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h4>Scholarship &amp; Financial Aid</h4>
+            <p>
+              Merit and need-based aid, application tracking and disbursal.
             </p>
           </div>
-
-          <div class="safety-grid">
-            <div class="safety-card">
-              <div class="ic"><i class="fa-solid fa-scale-balanced"></i></div>
-              <h4>Internal Complaints Committee</h4>
-              <p>
-                Redressal of complaints related to sexual harassment, in strict
-                confidence.
-              </p>
-              <a class="card-link" href="#"
-                >File a complaint <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-            <div class="safety-card">
-              <div class="ic"><i class="fa-solid fa-brain"></i></div>
-              <h4>Mental Health &amp; Counselling</h4>
-              <p>
-                Free, confidential one-on-one counselling and peer support
-                groups.
-              </p>
-              <a class="card-link" href="#"
-                >Book a session <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-            <div class="safety-card report">
-              <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
-              <h4>Report Ragging</h4>
-              <p>
-                Zero-tolerance policy. Reports can be made anonymously, any
-                time.
-              </p>
-              <a class="card-link" href="#"
-                >Report now <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
-            <div class="safety-card">
-              <div class="ic"><i class="fa-solid fa-kit-medical"></i></div>
-              <h4>Medical Unit &amp; MCWC</h4>
-              <p>
-                On-campus clinic and the Medical Centre for Women's Care, open
-                daily.
-              </p>
-              <a class="card-link" href="#"
-                >Clinic timings <i class="fa-solid fa-arrow-right"></i
-              ></a>
-            </div>
+          <div class="service-card">
+            <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
+            <h4>Placement / CCD</h4>
+            <p>
+              Career counselling, internship drives and recruiter tie-ups.
+            </p>
           </div>
-
-          <div class="contacts-strip">
-            <div class="contact-pill">
-              <div class="num-ic">
-                <i class="fa-solid fa-truck-medical"></i>
-              </div>
-              <div class="txt">
-                <div class="role">Campus Ambulance</div>
-                <a href="tel:0112345678">011-2345-678</a>
-              </div>
-            </div>
-            <div class="contact-pill">
-              <div class="num-ic"><i class="fa-solid fa-user-shield"></i></div>
-              <div class="txt">
-                <div class="role">Chief Security Officer</div>
-                <a href="tel:0112345679">011-2345-679</a>
-              </div>
-            </div>
-            <div class="contact-pill">
-              <div class="num-ic">
-                <i class="fa-solid fa-house-medical"></i>
-              </div>
-              <div class="txt">
-                <div class="role">Warden on Duty</div>
-                <a href="tel:0112345680">011-2345-680</a>
-              </div>
-            </div>
-            <div class="contact-pill">
-              <div class="num-ic">
-                <i class="fa-solid fa-hand-holding-heart"></i>
-              </div>
-              <div class="txt">
-                <div class="role">Counselling Cell</div>
-                <a href="tel:0112345681">011-2345-681</a>
-              </div>
-            </div>
+          <div class="service-card">
+            <div class="ic"><i class="fa-solid fa-masks-theater"></i></div>
+            <h4>Clubs &amp; Societies</h4>
+            <p>60+ student bodies covering arts, tech, and outreach.</p>
           </div>
         </div>
-      </section>
-    </main>
-
-    <div id="footer-placeholder"></div>
-
-    <!-- ============ LIGHTBOX ============ -->
-    <div
-      class="lightbox"
-      id="lightbox"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Image viewer"
-    >
-      <div class="lightbox-inner">
-        <button class="lightbox-close" id="lbClose" aria-label="Close viewer">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-        <button
-          class="lightbox-nav prev"
-          id="lbPrev"
-          aria-label="Previous image"
-        >
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <img id="lbImg" src="" alt="" />
-        <div class="lightbox-cap">
-          <span id="lbTitle"></span>
-          <span id="lbCat" style="color: var(--gold-500)"></span>
-        </div>
-        <button class="lightbox-nav next" id="lbNext" aria-label="Next image">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
       </div>
-    </div>
+    </section>
 
-    <script>
-      /* ================= CAROUSEL ================= */
+    <!-- ============ GALLERY ============ -->
+    <section class="section section-alt" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Media Centre</span>
+          <h2>Photo &amp; video gallery</h2>
+          <p>
+            Moments from campus life, hostels, events, sport and student-led
+            activities.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Gallery filters">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="photos">Photos</button>
+          <button class="filter-chip" data-filter="videos">Videos</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ SAFETY & WELLBEING ============ -->
+    <section class="section safety-section" id="committees">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow" style="color: var(--gold-500)">Your safety, our priority</span>
+          <h2 style="color: var(--white)">Safety &amp; Wellbeing</h2>
+          <p style="color: rgba(255, 255, 255, 0.75)">
+            Confidential support, rapid response and round-the-clock
+            assistance whenever you need it.
+          </p>
+        </div>
+
+        <div class="safety-grid">
+          <div class="safety-card">
+            <div class="ic"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h4>Internal Complaints Committee</h4>
+            <p>
+              Redressal of complaints related to sexual harassment, in strict
+              confidence.
+            </p>
+            <a class="card-link" href="#">File a complaint <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="safety-card">
+            <div class="ic"><i class="fa-solid fa-brain"></i></div>
+            <h4>Mental Health &amp; Counselling</h4>
+            <p>
+              Free, confidential one-on-one counselling and peer support
+              groups.
+            </p>
+            <a class="card-link" href="#">Book a session <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="safety-card report">
+            <div class="ic"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4>Report Ragging</h4>
+            <p>
+              Zero-tolerance policy. Reports can be made anonymously, any
+              time.
+            </p>
+            <a class="card-link" href="#">Report now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+          <div class="safety-card">
+            <div class="ic"><i class="fa-solid fa-kit-medical"></i></div>
+            <h4>Medical Unit &amp; MCWC</h4>
+            <p>
+              On-campus clinic and the Medical Centre for Women's Care, open
+              daily.
+            </p>
+            <a class="card-link" href="#">Clinic timings <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="contacts-strip">
+          <div class="contact-pill">
+            <div class="num-ic">
+              <i class="fa-solid fa-truck-medical"></i>
+            </div>
+            <div class="txt">
+              <div class="role">Campus Ambulance</div>
+              <a href="tel:0112345678">011-2345-678</a>
+            </div>
+          </div>
+          <div class="contact-pill">
+            <div class="num-ic"><i class="fa-solid fa-user-shield"></i></div>
+            <div class="txt">
+              <div class="role">Chief Security Officer</div>
+              <a href="tel:0112345679">011-2345-679</a>
+            </div>
+          </div>
+          <div class="contact-pill">
+            <div class="num-ic">
+              <i class="fa-solid fa-house-medical"></i>
+            </div>
+            <div class="txt">
+              <div class="role">Warden on Duty</div>
+              <a href="tel:0112345680">011-2345-680</a>
+            </div>
+          </div>
+          <div class="contact-pill">
+            <div class="num-ic">
+              <i class="fa-solid fa-hand-holding-heart"></i>
+            </div>
+            <div class="txt">
+              <div class="role">Counselling Cell</div>
+              <a href="tel:0112345681">011-2345-681</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lbClose" aria-label="Close viewer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="lightbox-nav prev" id="lbPrev" aria-label="Previous image">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <img id="lbImg" src="" alt="" />
+      <div class="lightbox-cap">
+        <span id="lbTitle"></span>
+        <span id="lbCat" style="color: var(--gold-500)"></span>
+      </div>
+      <button class="lightbox-nav next" id="lbNext" aria-label="Next image">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    /* ================= DYNAMIC CAROUSEL ================= */
+    fetch('api/banners.php?action=get_banners')
+      .then(res => res.json())
+      .then(data => {
+        const slidesContainer = document.getElementById('carousel-slides-container');
+        const dotsContainer = document.getElementById('carousel-dots-container');
+        
+        if (data.success && data.banners && data.banners.length > 0) {
+          slidesContainer.innerHTML = '';
+          dotsContainer.innerHTML = '';
+          
+          data.banners.forEach((banner, idx) => {
+            // Slide
+            const slide = document.createElement('div');
+            slide.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
+            slide.style.backgroundImage = `url('${banner.image_path}')`;
+            
+            // Inner Content
+            let innerHTML = `<div class="cap">${banner.title}</div>`;
+            if (banner.description) {
+              innerHTML += `<p style="color: white; margin-top: 8px; font-size: 0.9rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); max-width: 600px;">${banner.description}</p>`;
+            }
+            if (banner.button_text && banner.button_link) {
+              innerHTML += `<a href="${banner.button_link}" class="btn btn-gold" style="margin-top: 16px; display: inline-block; padding: 6px 16px; font-size: 0.85rem;">${banner.button_text}</a>`;
+            }
+            
+            // Wrapper for cap content so it styles nicely
+            slide.innerHTML = `<div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">${innerHTML}</div>`;
+            slidesContainer.appendChild(slide);
+
+            // Dot
+            const dot = document.createElement('button');
+            dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+            if (idx === 0) dot.className = 'active';
+            dotsContainer.appendChild(dot);
+          });
+          
+          document.querySelector('.carousel-prev').style.display = 'block';
+          document.querySelector('.carousel-next').style.display = 'block';
+          
+          initCarousel();
+        } else {
+          document.getElementById('carousel').style.display = 'none';
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load banners:', err);
+        document.getElementById('carousel').style.display = 'none';
+      });
+
+    function initCarousel() {
       const slides = document.querySelectorAll(".carousel-slide");
       const dots = document.querySelectorAll(".carousel-dots button");
-      let curSlide = 0,
-        carouselTimer;
+      let curSlide = 0, carouselTimer;
+
       function showSlide(i) {
         slides.forEach((s) => s.classList.remove("active"));
         dots.forEach((d) => d.classList.remove("active"));
@@ -464,23 +326,20 @@
         if (prevBtn && nextBtn) {
           let prevIdx = (i - 1 + slides.length) % slides.length;
           let nextIdx = (i + 1) % slides.length;
-          prevBtn.style.setProperty(
-            "--preview-bg",
-            slides[prevIdx].style.backgroundImage,
-          );
-          nextBtn.style.setProperty(
-            "--preview-bg",
-            slides[nextIdx].style.backgroundImage,
-          );
+          prevBtn.style.setProperty("--preview-bg", slides[prevIdx].style.backgroundImage);
+          nextBtn.style.setProperty("--preview-bg", slides[nextIdx].style.backgroundImage);
         }
       }
       showSlide(0);
+
       function nextSlide() {
         showSlide((curSlide + 1) % slides.length);
       }
+
       function startCarousel() {
         carouselTimer = setInterval(nextSlide, 4500);
       }
+
       dots.forEach((d, i) =>
         d.addEventListener("click", () => {
           showSlide(i);
@@ -490,7 +349,6 @@
       );
       startCarousel();
 
-      /* Prev / Next buttons for carousel */
       const prevBtn = document.querySelector(".carousel-prev");
       const nextBtn = document.querySelector(".carousel-next");
       if (prevBtn && nextBtn) {
@@ -505,155 +363,192 @@
           startCarousel();
         });
       }
+    }
 
-      /* ================= GALLERY DATA ================= */
-      const galleryData = [
-        {
-          cat: "campus",
-          title: "Academic Block Facade",
-          img: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600&q=70",
-        },
-        {
-          cat: "hostels",
-          title: "Hostel Common Room",
-          img: "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=600&q=70",
-        },
-        {
-          cat: "events",
-          title: "Confluence — Annual Fest",
-          img: "https://th.bing.com/th/id/OIP.poL7fUeJHXjfGz_hXYElFgHaFj?w=215&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-        },
-        {
-          cat: "sports",
-          title: "Inter-Hostel Athletics",
-          img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&q=70",
-        },
-        {
-          cat: "campus",
-          title: "Central Library Reading Hall",
-          img: "https://th.bing.com/th/id/OIP.3CoxUvZNgaJn8brenDKpJwHaEO?w=279&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-        },
-        {
-          cat: "hostels",
-          title: "Student Residences at Dusk",
-          img: "https://th.bing.com/th/id/OIP.nY6pfY_xXLbGNI0pp8mw-wHaE8?w=249&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
-        },
-        {
-          cat: "events",
-          title: "Convocation Ceremony",
-          img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&q=70",
-        },
-        {
-          cat: "sports",
-          title: "Basketball Court",
-          img: "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=70",
-        },
-        {
-          cat: "activities",
-          title: "Cultural Society Rehearsal",
-          img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=70",
-        },
-      ];
-      const galleryGrid = document.getElementById("galleryGrid");
-      function renderGallery(filter) {
-        galleryGrid.innerHTML = "";
-        const items =
-          filter === "all"
-            ? galleryData
-            : galleryData.filter((d) => d.cat === filter);
-        items.forEach((d, i) => {
-          const el = document.createElement("div");
-          el.className = "gallery-item";
-          el.dataset.index = galleryData.indexOf(d);
-          el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
-      <div class="overlay"><div><div class="g-cat">${d.cat}</div><div class="g-title">${d.title}</div></div></div>`;
-          el.addEventListener("click", () =>
-            openLightbox(galleryData.indexOf(d)),
-          );
-          galleryGrid.appendChild(el);
+    /* ================= DYNAMIC GALLERY ================= */
+    const galleryGrid = document.getElementById("galleryGrid");
+    let allMediaData = [];
+
+    Promise.all([
+      fetch('api/public_gallery.php?action=get_photos').then(r => r.json()).catch(() => ({})),
+      fetch('api/public_gallery.php?action=get_videos').then(r => r.json()).catch(() => ({}))
+    ]).then(([photoRes, videoRes]) => {
+      if (photoRes.success && photoRes.galleries) {
+        photoRes.galleries.forEach(g => {
+           let cover = g.cover_image ? g.cover_image : 'https://placehold.co/600x400?text=No+Image';
+           let src = cover.match(/^https?:\/\//) ? cover : cover;
+           allMediaData.push({
+             type: 'photos',
+             cat: 'Photo Gallery',
+             title: g.title,
+             img: src,
+             count: g.image_count + ' Photos'
+           });
         });
       }
+      
+      if (videoRes.success && videoRes.videos) {
+        videoRes.videos.forEach(v => {
+           let thumbnail = '';
+           if (v.video_type === 'youtube' && v.video_url) {
+               const match = v.video_url.match(/\/embed\/([^?&]+)/);
+               if (match && match[1]) {
+                   thumbnail = `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+               }
+           }
+           if (!thumbnail) thumbnail = 'https://placehold.co/600x400?text=Video';
+           
+           allMediaData.push({
+             type: 'videos',
+             cat: 'Video',
+             title: v.caption || 'Untitled Video',
+             img: thumbnail,
+             count: 'Video'
+           });
+        });
+      }
+
       renderGallery("all");
-      document.querySelectorAll(".filter-chip").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          document
-            .querySelectorAll(".filter-chip")
-            .forEach((c) => c.classList.remove("active"));
-          chip.classList.add("active");
-          renderGallery(chip.dataset.filter);
-        });
-      });
+    });
 
-      /* ================= LIGHTBOX ================= */
-      const lightbox = document.getElementById("lightbox"),
-        lbImg = document.getElementById("lbImg"),
-        lbTitle = document.getElementById("lbTitle"),
-        lbCat = document.getElementById("lbCat");
-      let lbIndex = 0;
-      function openLightbox(i) {
-        lbIndex = i;
-        updateLightbox();
-        lightbox.classList.add("open");
+    function renderGallery(filter) {
+      galleryGrid.innerHTML = "";
+      const items = filter === "all" ? allMediaData : allMediaData.filter(d => d.type === filter);
+      
+      if (items.length === 0) {
+         galleryGrid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--grey-500); padding: 40px 0;">No media found.</div>';
+         return;
       }
-      function updateLightbox() {
-        const d = galleryData[lbIndex];
-        lbImg.src = d.img.replace("w=600", "w=1200");
-        lbImg.alt = d.title;
-        lbTitle.textContent = d.title;
-        lbCat.textContent = d.cat;
-      }
-      document
-        .getElementById("lbClose")
-        .addEventListener("click", () => lightbox.classList.remove("open"));
-      lightbox.addEventListener("click", (e) => {
-        if (e.target === lightbox) lightbox.classList.remove("open");
-      });
-      document.getElementById("lbPrev").addEventListener("click", () => {
-        lbIndex = (lbIndex - 1 + galleryData.length) % galleryData.length;
-        updateLightbox();
-      });
-      document.getElementById("lbNext").addEventListener("click", () => {
-        lbIndex = (lbIndex + 1) % galleryData.length;
-        updateLightbox();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("open")) return;
-        if (e.key === "Escape") lightbox.classList.remove("open");
-        if (e.key === "ArrowLeft") document.getElementById("lbPrev").click();
-        if (e.key === "ArrowRight") document.getElementById("lbNext").click();
-      });
+      
+      items.forEach((d) => {
+        const el = document.createElement("div");
+        el.className = "gallery-item";
+        
+        let playIcon = d.type === 'videos' ? '<div class="play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 3rem; opacity: 0.8; z-index: 10; pointer-events: none;"><i class="fa-solid fa-play"></i></div>' : '';
 
-      /* ================= ANNOUNCEMENT TABS ================= */
-      (function () {
-        const annBtn = document.getElementById("tab-btn-ann");
-        const notBtn = document.getElementById("tab-btn-not");
-        const annPanel = document.getElementById("tab-announcements");
-        const notPanel = document.getElementById("tab-notices");
-        if (!annBtn || !notBtn || !annPanel || !notPanel) return;
-
-        function setActive(which) {
-          const isAnnouncements = which === "ann";
-          annBtn.setAttribute("aria-selected", String(isAnnouncements));
-          notBtn.setAttribute("aria-selected", String(!isAnnouncements));
-          annBtn.classList.toggle("active", isAnnouncements);
-          notBtn.classList.toggle("active", !isAnnouncements);
-          annPanel.hidden = !isAnnouncements;
-          notPanel.hidden = isAnnouncements;
-        }
-
-        annBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          setActive("ann");
+        el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
+        ${playIcon}
+        <div class="overlay"><div><div class="g-cat">${d.count}</div><div class="g-title">${d.title}</div></div></div>`;
+        
+        el.addEventListener("click", () => {
+           if(d.type === 'videos') {
+               window.location.href = 'pages/video_gallery.html';
+           } else {
+               openLightbox(allMediaData.indexOf(d));
+           }
         });
+        galleryGrid.appendChild(el);
+      });
+    }
 
-        notBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          setActive("not");
+    document.querySelectorAll(".filter-chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".filter-chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        renderGallery(chip.dataset.filter);
+      });
+    });
+
+    /* ================= LIGHTBOX ================= */
+    const lightbox = document.getElementById("lightbox"),
+      lbImg = document.getElementById("lbImg"),
+      lbTitle = document.getElementById("lbTitle"),
+      lbCat = document.getElementById("lbCat");
+    let lbIndex = 0;
+    function openLightbox(i) {
+      lbIndex = i;
+      updateLightbox();
+      lightbox.classList.add("open");
+    }
+    function updateLightbox() {
+      const d = allMediaData[lbIndex];
+      lbImg.src = d.img.replace("w=600", "w=1200");
+      lbImg.alt = d.title;
+      lbTitle.textContent = d.title;
+      lbCat.textContent = d.cat;
+    }
+    document
+      .getElementById("lbClose")
+      .addEventListener("click", () => lightbox.classList.remove("open"));
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) lightbox.classList.remove("open");
+    });
+    document.getElementById("lbPrev").addEventListener("click", () => {
+      // Find previous photo
+      let prev = lbIndex - 1;
+      while(prev >= 0 && allMediaData[prev].type !== 'photos') prev--;
+      if (prev >= 0) { lbIndex = prev; updateLightbox(); }
+    });
+    document.getElementById("lbNext").addEventListener("click", () => {
+      // Find next photo
+      let next = lbIndex + 1;
+      while(next < allMediaData.length && allMediaData[next].type !== 'photos') next++;
+      if (next < allMediaData.length) { lbIndex = next; updateLightbox(); }
+    });
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") lightbox.classList.remove("open");
+      if (e.key === "ArrowLeft") document.getElementById("lbPrev").click();
+      if (e.key === "ArrowRight") document.getElementById("lbNext").click();
+    });
+
+    /* ================= DYNAMIC NOTICES ================= */
+    (function () {
+      const container = document.getElementById("dynamic-notices-container");
+      if (!container) return;
+
+      fetch('api/notices.php?action=get_notices&public_only=1&limit=2')
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data && data.data.length > 0) {
+            container.innerHTML = '';
+            data.data.forEach(notice => {
+              let badgeStyle = 'display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;';
+              if (notice.type === 'circular') badgeStyle += ' background: #eff6ff; color: #1d4ed8;';
+              else if (notice.type === 'event') badgeStyle += ' background: #f0fdf4; color: #15803d;';
+              else if (notice.type === 'alert') badgeStyle += ' background: #fef2f2; color: #b91c1c;';
+              else badgeStyle += ' background: #f8fafc; color: #334155;';
+
+              const typeName = notice.type === 'other' ? notice.other_type_name : notice.type;
+
+              const dateObj = new Date(notice.created_at);
+              const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+              let actionsHTML = '';
+              if (notice.pdf_path) {
+                actionsHTML += `<a href="${notice.pdf_path}" target="_blank" style="margin-right: 12px; font-size: 0.9rem; color: #fbbf24; text-decoration: none;"><i class="fa-solid fa-file-pdf"></i> PDF</a>`;
+              }
+              if (notice.link) {
+                actionsHTML += `<a href="${notice.link}" target="_blank" style="font-size: 0.9rem; color: #60a5fa; text-decoration: none;"><i class="fa-solid fa-link"></i> Link</a>`;
+              }
+
+              const li = document.createElement('li');
+              li.style.position = 'relative';
+              li.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                  <div>
+                    <span style="${badgeStyle}">${typeName}</span>
+                    <strong style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 1.05rem; margin-bottom: 4px; color: #ffffff;" title="${notice.title}">${notice.title}</strong>
+                    <div style="margin-top: 8px;">
+                      ${actionsHTML}
+                    </div>
+                  </div>
+                  <time style="font-size: 0.85rem; color: rgba(255,255,255,0.7); white-space: nowrap; margin-left: 16px;">${dateStr}</time>
+                </div>
+              `;
+              container.appendChild(li);
+            });
+          } else {
+            container.innerHTML = '<li style="text-align: center; color: var(--white); padding: 32px 0;">No New Updates or Notices</li>';
+          }
+        })
+        .catch(err => {
+          console.error('Failed to load notices:', err);
+          container.innerHTML = '<li style="text-align: center; color: var(--white); padding: 32px 0;">No New Updates or Notices</li>';
         });
+    })();
+  </script>
+  <script src="layout/include.js"></script>
+</body>
 
-        setActive("ann");
-      })();
-    </script>
-    <script src="layout/include.js"></script>
-  </body>
 </html>

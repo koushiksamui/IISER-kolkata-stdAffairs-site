@@ -68,16 +68,22 @@ function uploadMultiplePhotos()
         $tmp_name = is_array($files['tmp_name']) ? $files['tmp_name'][$i] : $files['tmp_name'];
         $error = is_array($files['error']) ? $files['error'][$i] : $files['error'];
 
-        if ($error !== UPLOAD_ERR_OK) continue;
+        if ($error !== UPLOAD_ERR_OK) {
+            throw new Exception("File upload error code: $error on file $name");
+        }
 
         $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
         $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
         
-        if (!in_array($ext, $allowed)) continue;
+        if (!in_array($ext, $allowed)) {
+            throw new Exception("Invalid file extension: $ext");
+        }
 
         $newName = 'gallery_' . time() . '_' . uniqid() . '.' . $ext;
         if (move_uploaded_file($tmp_name, $uploadDir . $newName)) {
             $uploadedPaths[] = 'dist/img/galleries/' . $newName; // Relative path from root
+        } else {
+            throw new Exception("Failed to move uploaded file: $name");
         }
     }
 
@@ -101,7 +107,8 @@ switch ($action) {
                 $imgQ = mysqli_query($conn, "SELECT image_path FROM photo_gallery_images WHERE gallery_id = $galId ORDER BY display_order ASC, id ASC LIMIT 5");
                 $imgs = [];
                 while ($imgRow = mysqli_fetch_assoc($imgQ)) {
-                    $imgs[] = '../' . $imgRow['image_path'];
+                    $path = $imgRow['image_path'];
+                    $imgs[] = preg_match('/^https?:\/\//', $path) ? $path : '../' . $path;
                 }
                 $row['images'] = $imgs;
                 $row['cover_image'] = !empty($imgs) ? $imgs[0] : null;

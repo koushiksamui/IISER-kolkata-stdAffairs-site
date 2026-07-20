@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message from the Director — Students' Affairs Office, IISER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+</head>
+
+<body>
+
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <div id="header-placeholder"></div>
+
+    <div id="mobile-drawer-placeholder"></div>
+
+    <main id="main">
+
+        <!-- ============ PAGE HERO ============ -->
+        <section class="page-hero">
+            <div class="container page-hero-inner">
+                <div class="breadcrumb"><a href="../index.html">Home</a> <i class="fa-solid fa-chevron-right"
+                        style="font-size:.6rem"></i> <span>Message from the Director</span></div>
+                <span class="eyebrow" style="color:var(--gold-500)">Leadership</span>
+                <h1>Message from the Director</h1>
+            </div>
+        </section>
+
+        <!-- ============ MESSAGE CONTENT ============ -->
+        <section class="section">
+            <div class="container">
+                <div id="dynamic-content-container">
+                    <div style="text-align:center; padding:40px;">
+                        <i class="fa-solid fa-circle-notch fa-spin fa-2x" style="color:var(--primary-forest)"></i>
+                        <p style="margin-top:10px;">Loading content...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../layout/include.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: '../api/page_content.php',
+                type: 'GET',
+                dataType: 'json',
+                data: { action: 'get_page', slug: 'director_message' },
+                success: function(response) {
+                    if (response.success && response.content) {
+                        $('#dynamic-content-container').html(response.content);
+                    } else {
+                        $('#dynamic-content-container').html('<p>Content is currently unavailable.</p>');
+                    }
+                },
+                error: function() {
+                    $('#dynamic-content-container').html('<p>Error loading content.</p>');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

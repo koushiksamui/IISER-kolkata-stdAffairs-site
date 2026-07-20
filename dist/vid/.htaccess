@@ -1,0 +1,10 @@
+<IfModule mod_mime.c>
+    AddType video/mp4 .mp4
+    AddType video/webm .webm
+    AddType video/ogg .ogv
+</IfModule>
+<IfModule mod_headers.c>
+    <FilesMatch "\.(mp4|webm|ogv)$">
+        Header set Content-Disposition "inline"
+    </FilesMatch>
+</IfModule>

@@ -216,24 +216,15 @@ if (empty($_SESSION['admin_logged_in'])) {
             });
         }
 
-        // Load Data
         function loadData() {
             $.ajax({
                 url: API,
                 type: 'GET',
                 dataType: 'json',
-                data: {
-                    action: 'get_about_us'
-                },
+                data: { action: 'get_page', slug: SLUG },
                 success: function(r) {
-                    if (r.success && r.data) {
-                        quill.root.innerHTML = r.data.content || '';
-
-                        if (r.data.last_updated) {
-                            var dateStr = formatDateTime(r.data.last_updated);
-                            var userStr = r.data.updated_by ? ' by ' + r.data.updated_by : '';
-                            $('#aboutLastSaved span').text('Last updated: ' + dateStr + userStr);
-                        }
+                    if (r.success) {
+                        quill.root.innerHTML = r.content || '';
                     }
                 }
             });
@@ -245,14 +236,12 @@ if (empty($_SESSION['admin_logged_in'])) {
             $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Saving…');
 
             var formData = new FormData($('#aboutUsForm')[0]);
-            formData.append('action', 'save_about_us');
+            formData.append('action', 'save_page');
+            formData.append('slug', SLUG);
 
-            // Get content from Quill
             var content = quill.root.innerHTML;
-            // If empty, Quill often leaves an empty paragraph like <p><br></p>
             if (content === '<p><br></p>') content = '';
 
-            // Inject inline styles into headings before saving to database
             if (content) {
                 var $temp = $('<div>').html(content);
                 $temp.find('h1, h2, h3, h4').css({
@@ -278,11 +267,8 @@ if (empty($_SESSION['admin_logged_in'])) {
                     $btn.prop('disabled', false).html('<i class="fa-solid fa-cloud-arrow-up"></i> Save About Us');
                     if (r.success) {
                         window.showToast && showToast('success', r.message);
-
                         var dateStr = formatDateTime(r.saved_at);
-                        var userStr = r.updated_by ? ' by ' + r.updated_by : '';
-                        $('#aboutLastSaved span').text('Last updated: ' + dateStr + userStr);
-
+                        $('#aboutLastSaved span').text('Last updated: ' + dateStr);
                         $('#aboutSavedBadge').fadeIn(200).delay(2500).fadeOut(400);
                     } else {
                         window.showToast && showToast('error', r.message || 'Save failed.');

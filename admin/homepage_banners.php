@@ -610,7 +610,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                     var isActive = parseInt(banner.is_active) === 1;
                     var hasButton = banner.button_text && banner.button_text.trim() !== '';
                     var desc = banner.description ? banner.description : '<em style="opacity:0.5;">No description</em>';
-                    var imgSrc = '../' + banner.image_path;
+                    var imgSrc = banner.image_path.match(/^https?:\/\//) ? banner.image_path : '../' + banner.image_path;
 
                     var metaChips = '';
                     if (hasButton) {
