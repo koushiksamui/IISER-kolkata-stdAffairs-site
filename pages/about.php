@@ -64,7 +64,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     <main id="main">
 
         <!-- ============ PAGE HERO ============ -->
-        <section class="page-hero about-hero">
+        <section class="page-hero page-hero-banner">
             <div class="container page-hero-inner">
                 <?php
                 $breadcrumbTitle = 'About Us';

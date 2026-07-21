@@ -1,460 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMC Information — Students' Affairs Office, IISER</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/smc-info.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMC Information — Students' Affairs Office, IISER</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/smc-info.css">
+  <link rel="stylesheet" href="../css/hostel-management.css">
 </head>
+
 <body>
 
-<a href="#main" class="skip-link">Skip to main content</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-<?php include __DIR__ . '/../components/navbar.php'; ?>
+  <?php include __DIR__ . '/../components/navbar.php'; ?>
 
-<div id="mobile-drawer-placeholder"></div>
+  <div id="mobile-drawer-placeholder"></div>
 
-<main id="main">
+  <main id="main">
 
-<!-- ============ PAGE HERO ============ -->
-<section class="page-hero">
-  <div class="container page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <a href="index.html#services">Services</a> <i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i> <span>SMC Information</span></div>
-    <span class="eyebrow" style="color:var(--gold-500)">Student Mess Committee</span>
-    <h1>SMC Information</h1>
-    <p class="lede">The Student Mess Committee (SMC) is the student-led body that oversees mess quality, menus, and hygiene across all hostel dining halls — and the channel for every meal-related concern you have.</p>
+    <!-- ============ PAGE HERO ============ -->
+    <section class="page-hero page-hero-banner">
+      <div class="container page-hero-inner">
+        <?php
+        $breadcrumbs = [
+          ['title' => 'Home', 'url' => '../index.html'],
+          ['title' => 'Services', 'url' => '../index.html#services'],
+          ['title' => 'SMC Information']
+        ];
+        include __DIR__ . '/../components/breadcrumb.php';
+        ?>
+        <h1 class="hero-title">SMC Information</h1>
+        <p class="lede hero-subtitle">Students' Monitored Canteen — A unique, student-monitored, non-profit dining facility at IISER Kolkata.</p>
 
-    <div class="hero-cta">
-      <a href="#menu" class="btn btn-gold"><i class="fa-solid fa-utensils"></i> View Weekly Menu</a>
-      <a href="#feedback" class="btn btn-outline"><i class="fa-solid fa-comment-dots"></i> Give Feedback</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="num">5</div><div class="lbl">Mess halls across campus</div></div>
-      <div class="hero-stat"><div class="num">11,000+</div><div class="lbl">Meals served per day</div></div>
-      <div class="hero-stat"><div class="num">4.3/5</div><div class="lbl">Average satisfaction score</div></div>
-      <div class="hero-stat"><div class="num">Monthly</div><div class="lbl">Menu review cycle</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHAT IS SMC ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Who we are</span>
-      <h2>What the SMC does</h2>
-      <p>Elected student representatives from every hostel work alongside the mess contractor and SAO to keep dining fair, hygienic, and responsive to student input.</p>
-    </div>
-    <div class="mv-grid">
-      <div class="mv-card">
-        <div class="ic"><i class="fa-solid fa-clipboard-check"></i></div>
-        <h3>Menu &amp; Quality Oversight</h3>
-        <p>Reviews and approves the weekly menu, monitors ingredient quality, and runs monthly tasting panels with student volunteers.</p>
-      </div>
-      <div class="mv-card">
-        <div class="ic"><i class="fa-solid fa-broom"></i></div>
-        <h3>Hygiene Audits</h3>
-        <p>Conducts surprise kitchen inspections and publishes hygiene scores for every mess hall on this page.</p>
-      </div>
-      <div class="mv-card">
-        <div class="ic"><i class="fa-solid fa-comments"></i></div>
-        <h3>Feedback &amp; Grievances</h3>
-        <p>Collects and escalates student feedback, food safety complaints, and billing disputes to the mess contractor and SAO.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WEEKLY MENU ============ -->
-<section class="section section-alt" id="menu">
-  <div class="container">
-    <div class="section-head flex-head">
-      <div>
-        <span class="eyebrow">This week's menu</span>
-        <h2>Mess menu</h2>
-      </div>
-    </div>
-
-    <div class="menu-tabs" role="tablist" aria-label="Day selector">
-      <button class="menu-tab active" data-day="mon">Monday</button>
-      <button class="menu-tab" data-day="tue">Tuesday</button>
-      <button class="menu-tab" data-day="wed">Wednesday</button>
-      <button class="menu-tab" data-day="thu">Thursday</button>
-      <button class="menu-tab" data-day="fri">Friday</button>
-      <button class="menu-tab" data-day="sat">Saturday</button>
-      <button class="menu-tab" data-day="sun">Sunday</button>
-    </div>
-
-    <div class="menu-table-wrap">
-      <table class="menu-table">
-        <thead><tr><th>Meal</th><th>Menu</th><th>Timing</th></tr></thead>
-        <tbody id="menuBody"></tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ============ MESS HALL DIRECTORY ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Where you eat</span>
-      <h2>Mess hall directory</h2>
-      <p>Each mess hall publishes its own hygiene score, updated after every SMC inspection.</p>
-    </div>
-    <div class="hall-grid">
-      <div class="hall-card">
-        <div class="hall-photo">
-          <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&q=70" alt="North Mess dining hall">
-          <span class="hall-tag">North Mess</span>
+        <div class="hero-cta" style="margin-top: 1rem;">
+          <a href="https://studentmess.iiserkol.ac.in" target="_blank" class="btn btn-gold"><i class="fa-solid fa-credit-card"></i> Recharge Account</a>
+          <a onclick="document.getElementById('facilities').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(document.querySelectorAll('#smcSidebar .tab-btn')[2]);" style="cursor: pointer;" class="btn btn-outline"><i class="fa-solid fa-utensils"></i> Dining Facilities</a>
         </div>
-        <div class="hall-body">
-          <h4>North Mess — BH1 &amp; BH2</h4>
-          <div class="hall-meta">
-            <span><i class="fa-solid fa-users"></i> Serves 3,600 students</span>
-            <span><i class="fa-solid fa-clock"></i> 7 AM – 10 PM</span>
+      </div>
+    </section>
+
+    <!-- ============ SMC SECTIONS LAYOUT ============ -->
+    <section class="section">
+      <div class="container hostel-layout">
+
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-menu" id="smcSidebar" style="position: sticky; top: 100px; height: fit-content;">
+          <button class="tab-btn active" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(this);"><i class="fa-solid fa-circle-info"></i> Overview</button>
+          <button class="tab-btn" onclick="document.getElementById('core-features').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(this);"><i class="fa-solid fa-star"></i> Core Features</button>
+          <button class="tab-btn" onclick="document.getElementById('recharge').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(this);"><i class="fa-solid fa-money-bill-wave"></i> Activation &amp; Recharge</button>
+          <button class="tab-btn" onclick="document.getElementById('facilities').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(this);"><i class="fa-solid fa-utensils"></i> Campus Dining</button>
+          <button class="tab-btn" onclick="document.getElementById('escalation').scrollIntoView({behavior:'smooth', block:'start'}); updateActive(this);"><i class="fa-solid fa-headset"></i> Escalation Matrix</button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="tab-content" style="display:flex; flex-direction:column;">
+
+          <!-- SMC Image Carousel -->
+          <div class="hostel-carousel">
+            <img src="../images/Food court and canteen/0416_D.JPG" class="carousel-img active" alt="SMC View 1" loading="lazy">
+            <img src="../images/Food court and canteen/0421_D.JPG" class="carousel-img" alt="SMC View 1" loading="lazy">
+            <img src="../images/Food court and canteen/0456_D.JPG" class="carousel-img" alt="SMC View 1" loading="lazy">
           </div>
-          <div class="hygiene-badge">
-            <span class="hygiene-score"><i class="fa-solid fa-shield-heart"></i> 4.5/5 Hygiene</span>
-            <a href="#" style="font-size:.78rem;font-weight:700;color:var(--gold-600)">Inspection report</a>
+
+          <!-- ============ OVERVIEW ============ -->
+          <div class="content-box" id="overview" style="scroll-margin-top: 100px;">
+            <h2>Introduction to SMC</h2>
+            <p>The <strong>Students' Monitored Canteen (SMC)</strong> is the official dining system of IISER Kolkata. It is a unique, student-monitored, non-profit dining facility designed to provide affordable and high-quality meals to the student community.</p>
+            <p>The SMC is entirely managed by elected student representatives in coordination with the institute administration, ensuring transparency, regular quality checks, and menus that cater to diverse dietary preferences.</p>
           </div>
-        </div>
-      </div>
-      <div class="hall-card">
-        <div class="hall-photo">
-          <img src="https://images.unsplash.com/photo-1567521464027-f127ff144326?w=500&q=70" alt="South Mess dining hall">
-          <span class="hall-tag">South Mess</span>
-        </div>
-        <div class="hall-body">
-          <h4>South Mess — BH3</h4>
-          <div class="hall-meta">
-            <span><i class="fa-solid fa-users"></i> Serves 1,800 students</span>
-            <span><i class="fa-solid fa-clock"></i> 7 AM – 10 PM</span>
+
+          <!-- ============ CORE FEATURES ============ -->
+          <div class="content-box" id="core-features" style="scroll-margin-top: 100px;">
+            <h2>How the SMC works</h2>
+            <p>The Students' Monitored Canteen takes pride in being a system unique to IISER Kolkata, providing a highly flexible and affordable dining experience.</p>
+
+            <div class="indent-group" style="margin-top: 20px;">
+              <p><strong><i class="fa-solid fa-wallet" style="margin-right: 8px;"></i>Prepaid Wallet System:</strong> SMC operates on a cashless prepaid model linked directly to your Institute ID Card. Simply tap your ID to pay for meals. No cash handling required.</p>
+
+              <p><strong><i class="fa-solid fa-pizza-slice" style="margin-right: 8px;"></i>Pay-As-You-Eat Model:</strong> You are charged only for the food you actually consume. There is no compulsory fixed monthly deduction. If you skip a meal, no money is deducted!</p>
+
+              <p><strong><i class="fa-solid fa-tags" style="margin-right: 8px;"></i>Non-Profit Student Pricing:</strong> Students receive access to non-profit rates, ensuring affordable meals. (Note: Outsiders must pay higher rates using cash or debit/credit cards).</p>
+            </div>
           </div>
-          <div class="hygiene-badge">
-            <span class="hygiene-score"><i class="fa-solid fa-shield-heart"></i> 4.2/5 Hygiene</span>
-            <a href="#" style="font-size:.78rem;font-weight:700;color:var(--gold-600)">Inspection report</a>
+
+          <!-- ============ RECHARGE & ACTIVATION ============ -->
+          <div class="content-box" id="recharge" style="scroll-margin-top: 100px;">
+            <h2>Account Activation &amp; Recharge</h2>
+            <p>Before you can enjoy SMC's student rates, you need to activate and fund your mess account.</p>
+
+            <div class="indent-group" style="margin-top: 20px;">
+              <p><strong><i class="fa-solid fa-power-off" style="margin-right: 8px;"></i>1. Account Activation:</strong> After completing institute registration and receiving your Wi-Fi User ID and Password, visit the Students' Monitored Canteen with your Institute ID card to activate your mess account.</p>
+
+              <p><strong><i class="fa-solid fa-money-bill-wave" style="margin-right: 8px;"></i>2. Initial Recharge:</strong> We recommend an initial recharge of <strong>₹1000–₹2500</strong>. You can pay via ATM Card, Debit Card, or Credit Card. Once activated, you can add funds whenever needed.</p>
+
+              <p><strong><i class="fa-solid fa-laptop" style="margin-right: 8px;"></i>3. Online Management:</strong> Recharge your wallet online at anytime via <a href="https://studentmess.iiserkol.ac.in" target="_blank" style="color: blue;">studentmess.iiserkol.ac.in</a>. Keep an eye on your balance!</p>
+
+              <p><strong><i class="fa-solid fa-triangle-exclamation" style="margin-right: 8px;"></i>4. Minimum Balance Policy:</strong> If your available balance falls below <strong>₹50</strong>, your mess account will be temporarily blocked. You must recharge the account before you can continue using SMC services. Until you receive your ID card, you can pay directly at the cash counter.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="hall-card">
-        <div class="hall-photo">
-          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&q=70" alt="Garden Mess dining hall">
-          <span class="hall-tag">Garden Mess</span>
-        </div>
-        <div class="hall-body">
-          <h4>Garden Mess — GH1 &amp; GH2</h4>
-          <div class="hall-meta">
-            <span><i class="fa-solid fa-users"></i> Serves 2,900 students</span>
-            <span><i class="fa-solid fa-clock"></i> 7 AM – 10 PM</span>
+
+          <!-- ============ OTHER DINING FACILITIES ============ -->
+          <div class="content-box" id="facilities" style="scroll-margin-top: 100px;">
+            <h2>Campus Dining Options</h2>
+            <p>IISER Kolkata provides a wide range of dining options integrated with your hostel life to cater to all tastes and timings.</p>
+
+            <div class="indent-group" style="margin-top: 20px;">
+              <p><strong><i class="fa-solid fa-utensils" style="margin-right: 8px;"></i>Main SMC:</strong> The primary dining facility serving students with non-profit, high-quality daily meals.</p>
+
+              <p><strong><i class="fa-solid fa-moon" style="margin-right: 8px;"></i>Night Canteen:</strong> Located at Nivedita Hall, the night canteen serves snacks and meals late into the night for those studying late.</p>
+
+              <p><strong><i class="fa-solid fa-mug-hot" style="margin-right: 8px;"></i>Food Court &amp; Cafés:</strong> Explore the Food Court near the Lecture Hall Complex for breakfast, lunch, and snacks, or visit the two cafés located inside the RC/TRC.</p>
+
+              <p><strong><i class="fa-solid fa-store" style="margin-right: 8px;"></i>Basement Shops:</strong> The canteen basement offers a variety of stores selling cakes, cold drinks, daily essentials, and educational materials.</p>
+
+              <p><strong><i class="fa-solid fa-cookie-bite" style="margin-right: 8px;"></i>Vending Machines:</strong> Smart vending machines are installed across the hostels, SAC Building, and RC for instant snacks and beverages 24/7.</p>
+            </div>
           </div>
-          <div class="hygiene-badge">
-            <span class="hygiene-score"><i class="fa-solid fa-shield-heart"></i> 4.6/5 Hygiene</span>
-            <a href="#" style="font-size:.78rem;font-weight:700;color:var(--gold-600)">Inspection report</a>
+
+          <!-- ============ ADMINISTRATION & ESCALATION ============ -->
+          <div class="content-box" id="escalation" style="scroll-margin-top: 100px;">
+            <h2>Administration &amp; Escalation Matrix</h2>
+            <p>For any issues concerning food quality, hygiene, health, or mess services, please follow this escalation path.</p>
+
+            <div class="indent-group" style="margin-top: 20px;">
+              <p><strong>Step 1 - Students' Mess Committee &amp; SAC GS:</strong> Your first point of contact for day-to-day dining concerns, food quality, and hygiene.</p>
+
+              <p><strong>Step 2 - Mess Managers:</strong> Contact the respective Mess Manager for unresolved operational issues within a specific hall.</p>
+
+              <p><strong>Step 3 - Assistant Warden (Mess):</strong> Dr. Debananda Roy oversees maintenance and mess operations at the warden level.</p>
+
+              <p><strong>Step 4 - Warden &amp; Chief Warden:</strong> For severe or completely unresolved issues, escalate to the Warden and finally the Chief Warden.</p>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="hall-card">
-        <div class="hall-photo">
-          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&q=70" alt="Scholars' Mess dining hall">
-          <span class="hall-tag">Scholars' Mess</span>
-        </div>
-        <div class="hall-body">
-          <h4>Scholars' Mess — PG Block</h4>
-          <div class="hall-meta">
-            <span><i class="fa-solid fa-users"></i> Serves 1,200 students</span>
-            <span><i class="fa-solid fa-clock"></i> 7 AM – 11 PM</span>
-          </div>
-          <div class="hygiene-badge">
-            <span class="hygiene-score"><i class="fa-solid fa-shield-heart"></i> 4.4/5 Hygiene</span>
-            <a href="#" style="font-size:.78rem;font-weight:700;color:var(--gold-600)">Inspection report</a>
-          </div>
-        </div>
-      </div>
-      <div class="hall-card">
-        <div class="hall-photo">
-          <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=70" alt="Central Cafeteria dining hall">
-          <span class="hall-tag">Cafeteria</span>
-        </div>
-        <div class="hall-body">
-          <h4>Central Cafeteria — Academic Block</h4>
-          <div class="hall-meta">
-            <span><i class="fa-solid fa-users"></i> Walk-in, all students</span>
-            <span><i class="fa-solid fa-clock"></i> 8 AM – 8 PM</span>
-          </div>
-          <div class="hygiene-badge">
-            <span class="hygiene-score"><i class="fa-solid fa-shield-heart"></i> 4.3/5 Hygiene</span>
-            <a href="#" style="font-size:.78rem;font-weight:700;color:var(--gold-600)">Inspection report</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ FEEDBACK & COMPLAINTS ============ -->
-<section class="section section-alt" id="feedback">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Tell us how we're doing</span>
-      <h2>Mess feedback &amp; complaints</h2>
-      <p>Rate a meal, flag a hygiene concern, or raise a billing dispute — the SMC reviews every submission at its weekly meeting.</p>
-    </div>
-
-    <div class="fb-wrap">
-      <form class="fb-form" onsubmit="return false;">
-        <div class="form-row">
-          <label for="messHall">Mess hall</label>
-          <select id="messHall">
-            <option>North Mess — BH1 &amp; BH2</option>
-            <option>South Mess — BH3</option>
-            <option>Garden Mess — GH1 &amp; GH2</option>
-            <option>Scholars' Mess — PG Block</option>
-            <option>Central Cafeteria</option>
-          </select>
         </div>
-        <div class="form-row">
-          <label>Overall rating</label>
-          <div class="rating-group">
-            <label class="rating-opt"><input type="radio" name="rating"><span>★</span></label>
-            <label class="rating-opt"><input type="radio" name="rating"><span>★★</span></label>
-            <label class="rating-opt"><input type="radio" name="rating" checked><span>★★★</span></label>
-            <label class="rating-opt"><input type="radio" name="rating"><span>★★★★</span></label>
-            <label class="rating-opt"><input type="radio" name="rating"><span>★★★★★</span></label>
-          </div>
-        </div>
-        <div class="form-row">
-          <label for="fbCategory">Type of feedback</label>
-          <select id="fbCategory">
-            <option>Menu suggestion</option>
-            <option>Food quality</option>
-            <option>Hygiene concern</option>
-            <option>Billing / fee issue</option>
-            <option>Staff behaviour</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="fbDesc">Details</label>
-          <textarea id="fbDesc" placeholder="Tell us what happened, and when..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;"><i class="fa-solid fa-paper-plane"></i> Submit Feedback</button>
-      </form>
+      </div>
+    </section>
 
-      <div class="fb-notes">
-        <h3>How feedback is handled</h3>
-        <ul>
-          <li><i class="fa-solid fa-circle-check"></i> Hygiene and food-safety complaints are escalated to the contractor within 24 hours.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Menu suggestions are discussed at the SMC's weekly meeting with hostel representatives.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Billing disputes are routed to the Hostel Administrative Office for resolution.</li>
-          <li><i class="fa-solid fa-circle-check"></i> Aggregated ratings are published monthly on this page for transparency.</li>
-        </ul>
-        <span class="satisfaction-chip"><i class="fa-solid fa-circle"></i> 412 feedback entries this semester</span>
-      </div>
-    </div>
-  </div>
-</section>
+    <script>
+      function updateActive(btn) {
+        document.querySelectorAll('#smcSidebar .tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
 
-<!-- ============ SMC STRUCTURE / REPRESENTATIVES ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Who to contact</span>
-      <h2>SMC representatives</h2>
-    </div>
-    <div class="staff-grid">
-      <div class="staff-card">
-        <div class="staff-top">
-          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=120&q=70" alt=""></div>
-          <div><div class="staff-name">Devika Menon</div><div class="staff-role">SMC Chairperson</div></div>
-        </div>
-        <div class="staff-actions"><a href="mailto:smc.chair@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="tel:0112345696"><i class="fa-solid fa-phone"></i> Call</a></div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-top">
-          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=120&q=70" alt=""></div>
-          <div><div class="staff-name">Arjun Nair</div><div class="staff-role">North Mess Representative</div></div>
-        </div>
-        <div class="staff-actions"><a href="mailto:smc.north@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="tel:0112345697"><i class="fa-solid fa-phone"></i> Call</a></div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-top">
-          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&q=70" alt=""></div>
-          <div><div class="staff-name">Meher Kaur</div><div class="staff-role">Garden Mess Representative</div></div>
-        </div>
-        <div class="staff-actions"><a href="mailto:smc.garden@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="tel:0112345698"><i class="fa-solid fa-phone"></i> Call</a></div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-top">
-          <div class="staff-avatar"><img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&q=70" alt=""></div>
-          <div><div class="staff-name">Mr. Anil Deshmukh</div><div class="staff-role">Hostel Administrative Officer (Liaison)</div></div>
-        </div>
-        <div class="staff-actions"><a href="mailto:hostel.admin@iiser.ac.in"><i class="fa-solid fa-envelope"></i> Email</a><a href="tel:0112345692"><i class="fa-solid fa-phone"></i> Call</a></div>
-      </div>
-    </div>
-  </div>
-</section>
+      /* ================= CAROUSEL LOGIC ================= */
+      const carouselImgs = document.querySelectorAll('.carousel-img');
+      if (carouselImgs.length > 1) {
+        let currentImgIndex = 0;
+        setInterval(() => {
+          carouselImgs[currentImgIndex].classList.remove('active');
+          currentImgIndex = (currentImgIndex + 1) % carouselImgs.length;
+          carouselImgs[currentImgIndex].classList.add('active');
+        }, 4000);
+      }
+    </script>
+  </main>
 
-<!-- ============ NOTICES / MEETING MINUTES ============ -->
-<section class="section section-alt">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Stay informed</span>
-      <h2>Meeting minutes &amp; notices</h2>
-    </div>
-    <div class="notice-panel">
-      <div class="notice-row">
-        <div class="notice-icon"><i class="fa-solid fa-file-lines"></i></div>
-        <div class="txt"><h4>SMC Meeting Minutes — July 2026</h4><div class="meta">Published 10 Jul 2026</div></div>
-        <a class="dl" href="#"><i class="fa-solid fa-download"></i> Download</a>
-      </div>
-      <div class="notice-row">
-        <div class="notice-icon"><i class="fa-solid fa-bullhorn"></i></div>
-        <div class="txt"><h4>Revised mess timings for exam week</h4><div class="meta">Published 08 Jul 2026</div></div>
-        <a class="dl" href="#"><i class="fa-solid fa-download"></i> Download</a>
-      </div>
-      <div class="notice-row">
-        <div class="notice-icon"><i class="fa-solid fa-file-lines"></i></div>
-        <div class="txt"><h4>SMC Meeting Minutes — June 2026</h4><div class="meta">Published 05 Jun 2026</div></div>
-        <a class="dl" href="#"><i class="fa-solid fa-download"></i> Download</a>
-      </div>
-      <div class="notice-row">
-        <div class="notice-icon"><i class="fa-solid fa-shield-heart"></i></div>
-        <div class="txt"><h4>Quarterly hygiene audit results published</h4><div class="meta">Published 28 May 2026</div></div>
-        <a class="dl" href="#"><i class="fa-solid fa-download"></i> Download</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <?php include __DIR__ . '/../components/footer.php'; ?>
 
-<!-- ============ FAQ ============ -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Common questions</span>
-      <h2>SMC FAQs</h2>
-    </div>
-    <div class="faq-list" id="faqList">
-      <div class="faq-item">
-        <button class="faq-q">How is the mess fee calculated? <i class="fa-solid fa-plus"></i></button>
-        <div class="faq-a"><p>Mess fees are billed as a fixed advance per semester alongside your hostel fee, based on a per-meal rate approved jointly by the SMC and the contractor at the start of each academic year.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">Can I get a refund for missed meals? <i class="fa-solid fa-plus"></i></button>
-        <div class="faq-a"><p>Students on approved medical leave or official institute travel for 5+ consecutive days can apply for a pro-rated mess rebate through their hostel warden.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">How do I become an SMC representative? <i class="fa-solid fa-plus"></i></button>
-        <div class="faq-a"><p>Representatives are elected by residents of each hostel at the start of every academic year. Nominations open alongside hostel council elections — watch the notice board for dates.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">What if I have a specific dietary requirement? <i class="fa-solid fa-plus"></i></button>
-        <div class="faq-a"><p>All mess halls offer a daily vegetarian and non-vegetarian option, and a dedicated Jain/no-onion-garlic counter. For medical dietary needs, contact your mess hall's SMC representative directly.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+  <script>
+    scrim.addEventListener('click', shutDrawer);
 
-<!-- ============ CTA BAND ============ -->
-<section class="section">
-  <div class="container">
-    <div class="cta-band">
-      <div>
-        <h3>Have a mess-related concern?</h3>
-        <p>Reach your hostel's SMC representative directly, or explore hostel management resources.</p>
-      </div>
-      <div class="cta-actions">
-        <a href="#feedback" class="btn btn-gold"><i class="fa-solid fa-comment-dots"></i> Give Feedback</a>
-        <a href="hostel-management.html" class="btn btn-outline"><i class="fa-solid fa-building"></i> Hostel Management</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<?php include __DIR__ . '/../components/footer.php'; ?>
-
-<script>
-scrim.addEventListener('click',shutDrawer);
-
-/* ================= WEEKLY MENU DATA ================= */
-const menuData={
-  mon:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Poha, boiled eggs, sprouts, toast, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Rajma, jeera rice, roti, mixed veg, curd, salad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Samosa, chai, biscuits',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Paneer butter masala, dal fry, roti, rice, gulab jamun',time:'7:30 – 10:00 PM'}
-  ],
-  tue:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Idli, sambar, coconut chutney, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Chole, steamed rice, roti, aloo gobi, curd, salad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Vada pav, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Chicken curry / soya curry, dal, rice, roti, fruit custard',time:'7:30 – 10:00 PM'}
-  ],
-  wed:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Aloo paratha, curd, pickle, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Dal makhani, jeera rice, roti, bhindi masala, salad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Bread pakora, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Egg curry / mixed veg kofta, dal, rice, roti, kheer',time:'7:30 – 10:00 PM'}
-  ],
-  thu:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Upma, banana, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Kadhi pakora, rice, roti, seasonal sabzi, salad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Sandwich, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Fish curry / mushroom masala, dal, rice, roti, halwa',time:'7:30 – 10:00 PM'}
-  ],
-  fri:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Chole bhature, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Rajma chawal, roti, cabbage sabzi, curd, salad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Pav bhaji, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Mutton curry / chana masala, dal, rice, roti, ice cream',time:'7:30 – 10:00 PM'}
-  ],
-  sat:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Dosa, sambar, chutney, tea/coffee',time:'7:00 – 9:30 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Special thali — dal, sabzi, rice, roti, sweet, papad',time:'12:00 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Chaat counter, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Biryani (veg/non-veg), raita, salan, shrikhand',time:'7:30 – 10:00 PM'}
-  ],
-  sun:[
-    {meal:'Breakfast',icon:'fa-mug-hot',items:'Chole kulche, lassi',time:'8:00 – 10:00 AM'},
-    {meal:'Lunch',icon:'fa-utensils',items:'Paneer tikka masala, jeera rice, roti, salad, gulab jamun',time:'12:30 – 2:30 PM'},
-    {meal:'Snacks',icon:'fa-cookie-bite',items:'Momos, chai',time:'4:30 – 6:00 PM'},
-    {meal:'Dinner',icon:'fa-bowl-food',items:'Live pasta counter, garlic bread, brownie',time:'7:30 – 10:00 PM'}
-  ]
-};
-const menuBody=document.getElementById('menuBody');
-function renderMenu(day){
-  menuBody.innerHTML='';
-  menuData[day].forEach(m=>{
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td><span class="meal-label"><i class="fa-solid ${m.icon}"></i>${m.meal}</span></td><td>${m.items}</td><td>${m.time}</td>`;
-    menuBody.appendChild(tr);
-  });
-}
-renderMenu('mon');
-document.querySelectorAll('.menu-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.menu-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    renderMenu(tab.dataset.day);
-  });
-});
-
-/* ================= FAQ ACCORDION ================= */
-document.querySelectorAll('.faq-item').forEach(item=>{
-  item.querySelector('.faq-q').addEventListener('click',()=>{
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o=>o.classList.remove('open'));
-    if(!wasOpen) item.classList.add('open');
-  });
-});
-</script>
-<script src="../layout/include.js"></script>
+    // No additional scripts required for this page
+  </script>
+  <script src="../layout/include.js"></script>
 
 </body>
+
 </html>

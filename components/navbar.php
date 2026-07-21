@@ -121,10 +121,10 @@
             <h4>Health &amp; Wellbeing</h4>
             <ul>
               <li>
-                <a href="#"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a>
+                <a href="<?php echo $BASE_URL; ?>pages/medical-unit.php"><i class="fa-solid fa-kit-medical"></i> Medical Unit</a>
               </li>
               <li>
-                <a href="#"><i class="fa-solid fa-heart-pulse"></i> MCWC</a>
+                <a href="<?php echo $BASE_URL; ?>pages/mcwc.php"><i class="fa-solid fa-heart-pulse"></i> MCWC</a>
               </li>
               <li>
                 <a href="#"><i class="fa-solid fa-brain"></i> Counselling Services</a>
@@ -173,7 +173,6 @@
       <li><a href="<?php echo $BASE_URL; ?>pages/committees.php">Committees</a></li>
 
       <li><a href="#">SAC</a></li>
-      <li><a href="<?php echo $BASE_URL; ?>pages/hostel-management.php">Hostel</a></li>
 
       <li><a href="<?php echo $BASE_URL; ?>pages/notices.php">Notices</a></li>
 

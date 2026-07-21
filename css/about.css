@@ -209,37 +209,6 @@
   }
 }
 
-/* ===== About Hero Enhancements ===== */
-.about-hero .page-hero-inner {
-  padding-top: var(--space-4);
-  padding-bottom: var(--space-4);
-  padding-left: var(--space-3);
-  padding-right: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.about-hero .breadcrumb,
-.about-hero .hero-title,
-.about-hero .hero-subtitle,
-.about-hero .hero-stats {
-  margin: 0 !important;
-}
-.about-hero .hero-title {
-  max-width: none;
-  background: linear-gradient(135deg, #ffffff, var(--gold-500));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-}
-.about-hero .hero-subtitle {
-  max-width: 650px;
-  font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.95);
-  line-height: 1.5;
-}
-
 /* Dynamic content headers */
 .about-text h1,
 .about-text h2,
