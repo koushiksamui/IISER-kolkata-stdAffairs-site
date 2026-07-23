@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SiSAS-IITG Page Content API
  * Reads and saves static page content stored as HTML files.
@@ -6,7 +7,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('../admin/login.html');
+requireAdmin('../admin/login.php');
 require_once __DIR__ . '/../php_utils/_logger.php';
 
 header('Content-Type: application/json');
@@ -40,14 +41,14 @@ switch ($action) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = __DIR__ . '/../dist/img/pages/inline/';
             if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
-            
+
             $file = $_FILES['image'];
-            
+
             // 1. Type validation (MIME type)
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $file['tmp_name']);
             finfo_close($finfo);
-            
+
             $allowedMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
             if (!in_array($mimeType, $allowedMimes)) {
                 echo json_encode(['success' => false, 'message' => 'Invalid file type. Only JPG, PNG, WEBP, and GIF are allowed.']);
@@ -62,12 +63,12 @@ switch ($action) {
             }
             $width = $imgInfo[0];
             $height = $imgInfo[1];
-            
+
             if ($width < 1140 || $width > 2280) {
                 echo json_encode(['success' => false, 'message' => 'Image width must be between 1140px and 2280px.']);
                 exit;
             }
-            
+
             $ratio = $width / $height;
             if (abs($ratio - 2.0) > 0.05) { // 5% tolerance
                 echo json_encode(['success' => false, 'message' => 'Image must have a 2:1 aspect ratio (e.g., 1600x800).']);
@@ -130,7 +131,7 @@ switch ($action) {
         }
 
         require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
+
         $valid_tables = ['about_us', 'director_message', 'deans_message'];
         if (!in_array($slug, $valid_tables)) {
             echo json_encode(['success' => false, 'message' => 'Slug is not configured for database storage.']);
@@ -188,7 +189,7 @@ switch ($action) {
             $pages[] = [
                 'slug'       => $slug,
                 'label'      => $label,
-                'has_content'=> $has_content,
+                'has_content' => $has_content,
                 'updated_at' => $updated_at,
             ];
         }
@@ -200,13 +201,13 @@ switch ($action) {
     // ── GET Contact Us structured JSON ───────────────────────────────────────
     case 'get_contact_us':
         require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
+
         $defaults = [
             'office_address' => '',
             'email_address' => '',
             'phone_number' => ''
         ];
-        
+
         // Ensure table exists before querying
         $createTableQuery = "CREATE TABLE IF NOT EXISTS contact_us (
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -246,7 +247,7 @@ switch ($action) {
     // ── SAVE Contact Us structured JSON ──────────────────────────────────────
     case 'save_contact_us':
         require_once __DIR__ . '/../php_utils/_dbConnect.php';
-        
+
         // Ensure table exists
         $createTableQuery = "CREATE TABLE IF NOT EXISTS contact_us (
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -269,11 +270,11 @@ switch ($action) {
         $office_address = isset($_POST['office_address']) ? $_POST['office_address'] : '';
         $email_address = isset($_POST['email_address']) ? $_POST['email_address'] : '';
         $phone_number = isset($_POST['phone_number']) ? $_POST['phone_number'] : '';
-        
+
         // Fetch existing data
         $query = "SELECT id FROM contact_us ORDER BY id DESC LIMIT 1";
         $result = mysqli_query($conn, $query);
-        
+
         $office_address_safe = mysqli_real_escape_string($conn, $office_address);
         $email_address_safe = mysqli_real_escape_string($conn, $email_address);
         $phone_number_safe = mysqli_real_escape_string($conn, $phone_number);

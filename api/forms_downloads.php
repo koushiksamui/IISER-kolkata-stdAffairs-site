@@ -14,16 +14,20 @@ if ($action === 'get_forms') {
     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
     $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 10;
     $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, trim($_GET['search'])) : '';
-    $type = isset($_GET['type']) ? mysqli_real_escape_string($conn, trim($_GET['type'])) : '';
-    
+    $type = isset($_GET['type']) ? mysqli_real_escape_string($conn, trim($_GET['type'])) : 'Public';
+    $public_only = isset($_GET['public_only']) ? intval($_GET['public_only']) : 0;
+
     $offset = ($page - 1) * $limit;
-    
+
     $whereClause = "1=1";
     if ($search !== '') {
         $whereClause .= " AND (title LIKE '%$search%')";
     }
     if ($type !== '') {
         $whereClause .= " AND display_type = '$type'";
+    }
+    if ($public_only) {
+        $whereClause .= " AND (visible_from <= CURDATE() OR visible_from IS NULL) AND (visible_upto IS NULL OR visible_upto >= CURDATE())";
     }
 
     $countQuery = "SELECT COUNT(*) as total FROM forms_downloads WHERE $whereClause";
@@ -34,7 +38,7 @@ if ($action === 'get_forms') {
         $total = intval($row['total']);
     }
 
-    $query = "SELECT id, title, files, visible_from, visible_upto, display_type FROM forms_downloads WHERE $whereClause ORDER BY id DESC LIMIT $limit OFFSET $offset";
+    $query = "SELECT id, title, files, visible_from, visible_upto, display_type, created_at FROM forms_downloads WHERE $whereClause ORDER BY created_at DESC, id DESC LIMIT $limit OFFSET $offset";
     $res = mysqli_query($conn, $query);
 
     $data = [];
@@ -45,7 +49,7 @@ if ($action === 'get_forms') {
         }
     }
 
-    echo json_encode(['success' => true, 'data' => $data, 'total' => $total]);
+    echo json_encode(['success' => true, 'data' => $data, 'total' => $total, 'page' => $page, 'limit' => $limit]);
     exit;
 }
 
@@ -55,7 +59,7 @@ if ($action === 'save_form') {
     $visible_from = isset($_POST['visible_from']) ? mysqli_real_escape_string($conn, trim($_POST['visible_from'])) : '';
     $visible_upto = isset($_POST['visible_upto']) && !empty($_POST['visible_upto']) ? "'" . mysqli_real_escape_string($conn, trim($_POST['visible_upto'])) . "'" : 'NULL';
     $display_type = isset($_POST['display_type']) ? mysqli_real_escape_string($conn, trim($_POST['display_type'])) : 'Public';
-    
+
     $existingFiles = isset($_POST['existing_files']) ? json_decode($_POST['existing_files'], true) : [];
     if (!is_array($existingFiles)) {
         $existingFiles = [];
@@ -71,7 +75,7 @@ if ($action === 'save_form') {
     if (!is_dir($uploadDir)) {
         mkdir($uploadDir, 0777, true);
     }
-    
+
     $uploadedFiles = [];
     if (isset($_FILES['new_files'])) {
         $files = $_FILES['new_files'];
@@ -124,7 +128,7 @@ if ($action === 'save_form') {
 
 if ($action === 'delete_form') {
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
-    
+
     // fetch files to delete from disk
     $q = "SELECT files FROM forms_downloads WHERE id = $id";
     $res = mysqli_query($conn, $q);
@@ -148,4 +152,3 @@ if ($action === 'delete_form') {
 }
 
 echo json_encode(['success' => false, 'message' => 'Invalid action.']);
-?>

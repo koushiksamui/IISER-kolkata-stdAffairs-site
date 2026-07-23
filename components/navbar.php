@@ -172,7 +172,7 @@
 
       <li><a href="<?php echo $BASE_URL; ?>pages/committees.php">Committees</a></li>
 
-      <li><a href="#">SAC</a></li>
+      <li><a href="<?php echo $BASE_URL; ?>pages/sac.php">SAC</a></li>
 
       <li><a href="<?php echo $BASE_URL; ?>pages/notices.php">Notices</a></li>
 

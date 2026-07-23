@@ -9,10 +9,8 @@ header('Content-Type: application/json');
 $action = isset($_GET['action']) ? trim($_GET['action']) : '';
 
 if ($action === 'get_photos') {
-    // Fetch all galleries and their first image as a thumbnail
     $query = "
-        SELECT g.id, g.title, 
-               (SELECT image_path FROM photo_gallery_images i WHERE i.gallery_id = g.id ORDER BY display_order ASC, id ASC LIMIT 1) as cover_image,
+        SELECT g.id, g.title, g.created_at,
                (SELECT COUNT(*) FROM photo_gallery_images i WHERE i.gallery_id = g.id) as image_count
         FROM photo_galleries g
         ORDER BY g.created_at DESC
@@ -21,10 +19,40 @@ if ($action === 'get_photos') {
     $galleries = [];
     if ($result) {
         while ($row = mysqli_fetch_assoc($result)) {
+            $galId = intval($row['id']);
+            // Limit card preview slideshow images to 4 for ultra-fast initial payload
+            $imgQ = mysqli_query($conn, "SELECT image_path FROM photo_gallery_images WHERE gallery_id = $galId ORDER BY display_order ASC, id ASC LIMIT 4");
+            $images = [];
+            if ($imgQ) {
+                while ($imgRow = mysqli_fetch_assoc($imgQ)) {
+                    $path = $imgRow['image_path'];
+                    $images[] = preg_match('/^https?:\/\//', $path) ? $path : '../' . $path;
+                }
+            }
+            $row['images'] = $images;
+            $row['cover_image'] = !empty($images) ? $images[0] : null;
             $galleries[] = $row;
         }
     }
     echo json_encode(['success' => true, 'galleries' => $galleries]);
+    exit;
+} elseif ($action === 'get_gallery_images') {
+    $gallery_id = isset($_GET['gallery_id']) ? intval($_GET['gallery_id']) : 0;
+    
+    $gRes = mysqli_query($conn, "SELECT id, title, created_at FROM photo_galleries WHERE id = $gallery_id");
+    $gallery = $gRes ? mysqli_fetch_assoc($gRes) : null;
+    
+    $query = "SELECT id, image_path, display_order FROM photo_gallery_images WHERE gallery_id = $gallery_id ORDER BY display_order ASC, id ASC";
+    $result = mysqli_query($conn, $query);
+    $images = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $path = $row['image_path'];
+            $row['image_path'] = preg_match('/^https?:\/\//', $path) ? $path : '../' . $path;
+            $images[] = $row;
+        }
+    }
+    echo json_encode(['success' => true, 'gallery' => $gallery, 'images' => $images]);
     exit;
 } elseif ($action === 'get_all_images') {
     $query = "

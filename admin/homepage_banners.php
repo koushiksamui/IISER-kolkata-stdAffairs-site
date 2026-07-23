@@ -6,7 +6,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
 $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);

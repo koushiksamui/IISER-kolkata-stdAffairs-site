@@ -11,6 +11,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
 <body>
@@ -67,16 +68,20 @@
           </div>
         </div>
         <div class="announcement-panel" role="region">
-          <span class="hero-eyebrow">Updates &amp; Information</span>
-          <div class="panel-head" style="margin-top: 16px;">
-            <span class="panel-label"><i class="fa-solid fa-bullhorn"></i> Latest Notices & Updates</span>
-            <a href="pages/notices.html">View all</a>
+          <div class="panel-head">
+            <span class="panel-label">
+              <i class="fa-solid fa-bullhorn"></i> Latest Announcements <span class="live-pulse-dot" id="live-pulse-dot" title="Live Updates" style="display: none;"></span>
+            </span>
+            <a href="pages/notices.php" class="view-all-btn">
+              View All <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
           </div>
-          <ul class="announcement-list notice-style" id="dynamic-notices-container">
-            <li>
-              <div style="display: flex; align-items: center; justify-content: center; padding: 32px 0;">
-                <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--gold-500);"></i>
-              </div>
+          <div class="notice-type-tabs" id="notice-type-tabs">
+            <button class="notice-tab-btn active" data-type="">All</button>
+          </div>
+          <ul class="announcement-list" id="dynamic-notices-container">
+            <li style="text-align: center; padding: 32px 0;">
+              <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: #fbbf24;"></i>
             </li>
           </ul>
         </div>
@@ -88,44 +93,83 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">What we offer</span>
-          <h2>Services built around student life</h2>
+          <h2>Essential Student Services</h2>
           <p>
-            From the day you move into your hostel room to the day you walk
-            into placements — the Students' Affairs Office is your single
-            point of contact.
+            We are here to support you outside the classroom. From your hostel stay to campus transport and student clubs, we've got you covered throughout your journey.
           </p>
         </div>
         <div class="services-grid">
-          <div class="service-card">
+          <a href="pages/hostel-management.php" class="service-card" style="text-decoration: none; color: inherit; display: block;">
             <div class="ic"><i class="fa-solid fa-building"></i></div>
-            <h4>Hostel Management</h4>
+            <h4>Hostels</h4>
             <p>Room allotment, maintenance requests and warden contacts.</p>
-          </div>
-          <div class="service-card">
-            <div class="ic"><i class="fa-solid fa-graduation-cap"></i></div>
-            <h4>Scholarship &amp; Financial Aid</h4>
-            <p>
-              Merit and need-based aid, application tracking and disbursal.
-            </p>
-          </div>
-          <div class="service-card">
-            <div class="ic"><i class="fa-solid fa-briefcase"></i></div>
-            <h4>Placement / CCD</h4>
-            <p>
-              Career counselling, internship drives and recruiter tie-ups.
-            </p>
-          </div>
-          <div class="service-card">
+          </a>
+          <a href="pages/smc-info.php" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+            <div class="ic"><i class="fa-solid fa-utensils"></i></div>
+            <h4>Student Monitored Canteen</h4>
+            <p>Details about the student monitored canteen.</p>
+          </a>
+          <a href="pages/transport.php" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+            <div class="ic"><i class="fa-solid fa-bus"></i></div>
+            <h4>Transport</h4>
+            <p>Campus bus schedules, routes, and transport services.</p>
+          </a>
+          <a href="pages/student-achievements.php" class="service-card" style="text-decoration: none; color: inherit; display: block;">
+            <div class="ic"><i class="fa-solid fa-medal"></i></div>
+            <h4>Student Achievements</h4>
+            <p>Celebrating academic, sports, and cultural successes.</p>
+          </a>
+          <a href="pages/clubs-societies.php" class="service-card" style="text-decoration: none; color: inherit; display: block;">
             <div class="ic"><i class="fa-solid fa-masks-theater"></i></div>
             <h4>Clubs &amp; Societies</h4>
             <p>60+ student bodies covering arts, tech, and outreach.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOSAIC GALLERY ============ -->
+    <section class="section section-alt" id="mosaic-gallery">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Campus Life</span>
+          <h2>A Glimpse of IISER Kolkata</h2>
+          <p>
+            Explore the vibrant life, events, and everyday moments of our students inside the campus.
+          </p>
+        </div>
+
+        <div class="mosaic-grid">
+          <div class="mosaic-item mosaic-large">
+            <img src="images/Clubs/club-img7.jpg" alt="Campus Life" loading="lazy">
+          </div>
+          <div class="mosaic-item mosaic-tall">
+            <img src="images/Clubs/club-img2.jpg" alt="Student Activities" loading="lazy">
+          </div>
+          <div class="mosaic-item mosaic-wide">
+            <img src="images/Clubs/club-img3.jpg" alt="Sports" loading="lazy">
+          </div>
+          <div class="mosaic-item">
+            <img src="images/Clubs/club-img4.jpg" alt="Club Event" loading="lazy">
+          </div>
+          <div class="mosaic-item">
+            <img src="images/Clubs/club-img5.jpg" alt="Cultural Event" loading="lazy">
+          </div>
+          <div class="mosaic-item mosaic-wide">
+            <img src="images/Clubs/club-img6.jpg" alt="Festivals" loading="lazy">
+          </div>
+          <div class="mosaic-item">
+            <img src="images/Clubs/club-img8.jpg" alt="Performances" loading="lazy">
+          </div>
+          <div class="mosaic-item mosaic-wide">
+            <img src="images/Clubs/club-img10.jpg" alt="Gatherings" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
     <!-- ============ GALLERY ============ -->
-    <section class="section section-alt" id="gallery">
+    <section class="section" id="gallery">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Media Centre</span>
@@ -142,12 +186,12 @@
           <button class="filter-chip" data-filter="videos">Videos</button>
         </div>
 
-        <div class="gallery-grid" id="galleryGrid"></div>
+        <div class="albums-grid" id="galleryGrid"></div>
       </div>
     </section>
 
     <!-- ============ SAFETY & WELLBEING ============ -->
-    <section class="section safety-section" id="committees">
+    <section class="section safety-section section-alt" id="committees">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow" style="color: var(--gold-500)">Your safety, our priority</span>
@@ -239,31 +283,46 @@
 
   <?php include __DIR__ . '/components/footer.php'; ?>
 
-  <!-- ============ LIGHTBOX ============ -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" id="lbClose" aria-label="Close viewer">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <button class="lightbox-nav prev" id="lbPrev" aria-label="Previous image">
+  <!-- ============ LIGHTBOX MODAL ============ -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+    <!-- Floating Top Left Title & Counter -->
+    <div class="lightbox-top-left">
+      <h3 class="lightbox-title-text" id="lbAlbumTitle">Media</h3>
+      <div class="lightbox-counter" id="lbCounter">Photo 1 of 1</div>
+    </div>
+
+    <!-- Floating Top Right Close Button -->
+    <button class="lightbox-close-btn" id="lbCloseBtn" aria-label="Close image viewer">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <div class="lightbox-body" style="padding-top: 80px; padding-bottom: 40px;">
+      <button class="lightbox-nav-btn prev-btn" id="lbPrevBtn" aria-label="Previous photo">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <img id="lbImg" src="" alt="" />
-      <div class="lightbox-cap">
-        <span id="lbTitle"></span>
-        <span id="lbCat" style="color: var(--gold-500)"></span>
+      
+      <div id="lbMediaContainer" style="flex: 1; display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 0; width: 100%;">
+         <img class="lightbox-main-img" id="lbMainImg" src="" alt="Gallery Image" decoding="async">
+         <div id="lbVideoPlayer" style="display: none; width: 100%; max-width: 1100px; box-shadow: 0 16px 50px rgba(0,0,0,0.7); border-radius: 12px; overflow: hidden; background: #000;"></div>
       </div>
-      <button class="lightbox-nav next" id="lbNext" aria-label="Next image">
+
+      <button class="lightbox-nav-btn next-btn" id="lbNextBtn" aria-label="Next photo">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
+    </div>
+
+    <div class="lightbox-thumbnails" id="lbThumbnails">
+      <!-- Dynamic thumbnails -->
     </div>
   </div>
 
   <script>
     /* ================= DYNAMIC CAROUSEL ================= */
-    fetch('api/banners.php?action=get_banners')
-      .then(res => res.json())
-      .then(data => {
+    $.ajax({
+        url: 'api/banners.php?action=get_banners',
+        method: 'GET',
+        dataType: 'json'
+      }).done(data => {
         const slidesContainer = document.getElementById('carousel-slides-container');
         const dotsContainer = document.getElementById('carousel-dots-container');
 
@@ -278,16 +337,16 @@
             slide.style.backgroundImage = `url('${banner.image_path}')`;
 
             // Inner Content
-            let innerHTML = `<div class="cap">${banner.title}</div>`;
+            let innerHTML = `<h2 class="carousel-title">${banner.title}</h2>`;
             if (banner.description) {
-              innerHTML += `<p style="color: white; margin-top: 8px; font-size: 0.9rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.8); max-width: 600px;">${banner.description}</p>`;
+              innerHTML += `<p class="carousel-subtitle">${banner.description}</p>`;
             }
             if (banner.button_text && banner.button_link) {
-              innerHTML += `<a href="${banner.button_link}" class="btn btn-gold" style="margin-top: 16px; display: inline-block; padding: 6px 16px; font-size: 0.85rem;">${banner.button_text}</a>`;
+              innerHTML += `<a href="${banner.button_link}" class="btn btn-gold carousel-btn">${banner.button_text} <i class="fa-solid fa-arrow-right-long" style="margin-left: 6px;"></i></a>`;
             }
 
             // Wrapper for cap content so it styles nicely
-            slide.innerHTML = `<div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">${innerHTML}</div>`;
+            slide.innerHTML = `<div class="carousel-content-wrapper">${innerHTML}</div>`;
             slidesContainer.appendChild(slide);
 
             // Dot
@@ -305,7 +364,7 @@
           document.getElementById('carousel').style.display = 'none';
         }
       })
-      .catch(err => {
+      .fail((jqXHR, textStatus, err) => {
         console.error('Failed to load banners:', err);
         document.getElementById('carousel').style.display = 'none';
       });
@@ -372,39 +431,42 @@
     let allMediaData = [];
 
     Promise.all([
-      fetch('api/public_gallery.php?action=get_photos').then(r => r.json()).catch(() => ({})),
-      fetch('api/public_gallery.php?action=get_videos').then(r => r.json()).catch(() => ({}))
+      $.ajax({
+        url: 'api/public_gallery.php?action=get_photos',
+        method: 'GET',
+        dataType: 'json'
+      }).catch(() => ({})),
+      $.ajax({
+        url: 'api/public_gallery.php?action=get_videos',
+        method: 'GET',
+        dataType: 'json'
+      }).catch(() => ({}))
     ]).then(([photoRes, videoRes]) => {
       if (photoRes.success && photoRes.galleries) {
         photoRes.galleries.forEach(g => {
-          let cover = g.cover_image ? g.cover_image : 'https://placehold.co/600x400?text=No+Image';
-          let src = cover.match(/^https?:\/\//) ? cover : cover;
+          let cover = g.cover_image ?
+            (g.cover_image.match(/^https?:\/\//) ? g.cover_image : g.cover_image.replace(/^\.\.\//, '')) :
+            'https://placehold.co/600x400?text=No+Image';
+
           allMediaData.push({
             type: 'photos',
             cat: 'Photo Gallery',
+            gallery_id: g.id,
             title: g.title,
-            img: src,
-            count: g.image_count + ' Photos'
+            img: cover,
+            count: (g.image_count || 0) + ' Photos'
           });
         });
       }
 
       if (videoRes.success && videoRes.videos) {
         videoRes.videos.forEach(v => {
-          let thumbnail = '';
-          if (v.video_type === 'youtube' && v.video_url) {
-            const match = v.video_url.match(/\/embed\/([^?&]+)/);
-            if (match && match[1]) {
-              thumbnail = `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
-            }
-          }
-          if (!thumbnail) thumbnail = 'https://placehold.co/600x400?text=Video';
-
           allMediaData.push({
             type: 'videos',
             cat: 'Video',
             title: v.caption || 'Untitled Video',
-            img: thumbnail,
+            video_type: v.video_type,
+            video_url: v.video_url,
             count: 'Video'
           });
         });
@@ -423,20 +485,63 @@
       }
 
       items.forEach((d) => {
-        const el = document.createElement("div");
-        el.className = "gallery-item";
+        const el = document.createElement("a");
+        el.className = "album-card-link";
+        el.href = "javascript:void(0)";
 
-        let playIcon = d.type === 'videos' ? '<div class="play" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 3rem; opacity: 0.8; z-index: 10; pointer-events: none;"><i class="fa-solid fa-play"></i></div>' : '';
+        let mediaHtml = '';
+        if (d.type === 'photos') {
+            mediaHtml = `
+                <img class="album-cover-img" src="${d.img}" alt="${d.title}" loading="lazy">
+                <div class="album-count-badge"><i class="fa-solid fa-images"></i> ${d.count}</div>
+            `;
+        } else {
+            let playerHtml = '';
+            if (d.video_type === 'youtube') {
+                let videoId = '';
+                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                const match = d.video_url.match(regExp);
+                if (match && match[2].length === 11) {
+                    videoId = match[2];
+                }
+                const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : d.video_url;
+                playerHtml = `<iframe src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; pointer-events: none;"></iframe>`;
+            } else {
+                playerHtml = `<video style="width: 100%; height: 100%; object-fit: cover; background: #000; pointer-events: none;">
+                                  <source src="api/stream_video.php?file=${encodeURIComponent(d.video_url)}" type="video/mp4">
+                              </video>`;
+            }
+            mediaHtml = `
+                ${playerHtml}
+                <!-- Invisible overlay to capture clicks instead of the player -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 5;"></div>
+                <div class="album-count-badge" style="z-index: 10;">
+                    <i class="fa-solid fa-play"></i> Video
+                </div>
+            `;
+        }
 
-        el.innerHTML = `<img src="${d.img}" alt="${d.title}" loading="lazy">
-        ${playIcon}
-        <div class="overlay"><div><div class="g-cat">${d.count}</div><div class="g-title">${d.title}</div></div></div>`;
+        let metaText = d.type === 'photos' ? `${d.count} &bull; Click to open album` : 'Click to watch in Video Gallery';
+
+        el.innerHTML = `
+            <div class="album-card" style="cursor: pointer;">
+                <div class="album-media" style="position: relative;">
+                    ${mediaHtml}
+                </div>
+                <div class="album-details">
+                    <h3 class="album-title">${d.title}</h3>
+                    <div class="album-meta-text">${metaText}</div>
+                </div>
+            </div>
+        `;
 
         el.addEventListener("click", () => {
-          if (d.type === 'videos') {
-            window.location.href = 'pages/video_gallery.html';
+          if (d.type === 'photos' && d.gallery_id) {
+            window.location.href = 'pages/photo_gallery_details.php?id=' + d.gallery_id;
           } else {
-            openLightbox(allMediaData.indexOf(d));
+            const videoOnlyData = allMediaData.filter(m => m.type === 'videos');
+            const videoIndex = videoOnlyData.indexOf(d);
+            openLightbox(videoIndex, videoOnlyData);
           }
         });
         galleryGrid.appendChild(el);
@@ -451,116 +556,338 @@
       });
     });
 
-    /* ================= LIGHTBOX ================= */
-    const lightbox = document.getElementById("lightbox"),
-      lbImg = document.getElementById("lbImg"),
-      lbTitle = document.getElementById("lbTitle"),
-      lbCat = document.getElementById("lbCat");
-    let lbIndex = 0;
+    /* ================= LIGHTBOX MODAL ================= */
+    const modal = document.getElementById("lightboxModal");
+    const lbMainImg = document.getElementById("lbMainImg");
+    const lbVideoPlayer = document.getElementById("lbVideoPlayer");
+    const lbAlbumTitle = document.getElementById("lbAlbumTitle");
+    const lbCounter = document.getElementById("lbCounter");
+    const lbThumbnails = document.getElementById("lbThumbnails");
 
-    function openLightbox(i) {
-      lbIndex = i;
-      updateLightbox();
-      lightbox.classList.add("open");
+    let currentImageIndex = 0;
+    let lbActiveArray = [];
+
+    window.openLightbox = function(idx, array = allMediaData) {
+      lbActiveArray = array;
+      if (!lbActiveArray || lbActiveArray.length === 0) return;
+      currentImageIndex = idx;
+
+      renderThumbnailsOnce();
+      changeImage(currentImageIndex);
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    };
+
+    function closeModal() {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+      lbVideoPlayer.innerHTML = '';
     }
 
-    function updateLightbox() {
-      const d = allMediaData[lbIndex];
-      lbImg.src = d.img.replace("w=600", "w=1200");
-      lbImg.alt = d.title;
-      lbTitle.textContent = d.title;
-      lbCat.textContent = d.cat;
+    function renderThumbnailsOnce() {
+      lbThumbnails.innerHTML = '';
+      lbActiveArray.forEach((d, idx) => {
+        const thumb = document.createElement('img');
+        if (d.type === 'videos') {
+           if (d.video_type === 'youtube') {
+              const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+              const match = d.video_url.match(regExp);
+              thumb.src = match && match[2].length === 11 ? `https://img.youtube.com/vi/${match[2]}/default.jpg` : 'https://placehold.co/200x200?text=Video';
+           } else {
+              thumb.src = 'https://placehold.co/200x200?text=Video';
+           }
+        } else {
+           thumb.src = d.img.replace("w=600", "w=200");
+        }
+        thumb.loading = "lazy";
+        thumb.decoding = "async";
+        thumb.className = `lightbox-thumb ${idx === currentImageIndex ? 'active' : ''}`;
+        thumb.onclick = (e) => {
+          e.stopPropagation();
+          changeImage(idx);
+        };
+        lbThumbnails.appendChild(thumb);
+      });
     }
-    document
-      .getElementById("lbClose")
-      .addEventListener("click", () => lightbox.classList.remove("open"));
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) lightbox.classList.remove("open");
+
+    function changeImage(newIndex) {
+      if (lbActiveArray === allMediaData) {
+        if (newIndex < 0) newIndex = allMediaData.length - 1;
+        if (newIndex >= allMediaData.length) newIndex = 0;
+      } else {
+        const totalImgs = lbActiveArray.length;
+        if (newIndex < 0) newIndex = totalImgs - 1;
+        if (newIndex >= totalImgs) newIndex = 0;
+      }
+
+      const oldIndex = currentImageIndex;
+      currentImageIndex = newIndex;
+
+      const currentObj = lbActiveArray[currentImageIndex];
+      lbAlbumTitle.textContent = currentObj.title;
+      lbCounter.textContent = currentObj.cat;
+
+      if (currentObj.type === 'videos') {
+          lbMainImg.style.display = 'none';
+          lbVideoPlayer.style.display = 'block';
+          
+          let embedUrl = '';
+          if (currentObj.video_type === 'youtube') {
+              let videoId = '';
+              const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+              const match = currentObj.video_url.match(regExp);
+              if (match && match[2].length === 11) {
+                  videoId = match[2];
+              }
+              embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : currentObj.video_url;
+              lbVideoPlayer.innerHTML = `<iframe width="100%" style="aspect-ratio: 16/9; max-height: 85vh;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+          } else {
+              lbVideoPlayer.innerHTML = `<video style="width: 100%; max-height: 85vh; outline: none; background: #000;" controls autoplay controlsList="nodownload"><source src="api/stream_video.php?file=${encodeURIComponent(currentObj.video_url)}" type="video/mp4"></video>`;
+          }
+      } else {
+          lbVideoPlayer.style.display = 'none';
+          lbVideoPlayer.innerHTML = '';
+          lbMainImg.style.display = 'block';
+          lbMainImg.src = currentObj.img.replace("w=600", "w=1200");
+      }
+
+      // Instant thumbnail active class switch
+      const thumbs = lbThumbnails.querySelectorAll('.lightbox-thumb');
+      if (thumbs.length > 0) {
+        if (thumbs[oldIndex]) thumbs[oldIndex].classList.remove('active');
+        if (thumbs[currentImageIndex]) {
+          thumbs[currentImageIndex].classList.add('active');
+          thumbs[currentImageIndex].scrollIntoView({
+            behavior: 'auto',
+            inline: 'center',
+            block: 'nearest'
+          });
+        }
+      }
+    }
+
+    document.getElementById("lbCloseBtn").addEventListener("click", closeModal);
+    modal.addEventListener("click", e => {
+      if (e.target === modal) closeModal();
     });
-    document.getElementById("lbPrev").addEventListener("click", () => {
-      // Find previous photo
-      let prev = lbIndex - 1;
-      while (prev >= 0 && allMediaData[prev].type !== 'photos') prev--;
-      if (prev >= 0) {
-        lbIndex = prev;
-        updateLightbox();
+
+    document.getElementById("lbPrevBtn").addEventListener("click", e => {
+      e.stopPropagation();
+      changeImage(currentImageIndex - 1);
+    });
+
+    document.getElementById("lbNextBtn").addEventListener("click", e => {
+      e.stopPropagation();
+      changeImage(currentImageIndex + 1);
+    });
+
+    // Instant Keyboard Navigation
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("active")) return;
+      if (e.key === "Escape") closeModal();
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        changeImage(currentImageIndex - 1);
+      }
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        changeImage(currentImageIndex + 1);
       }
     });
-    document.getElementById("lbNext").addEventListener("click", () => {
-      // Find next photo
-      let next = lbIndex + 1;
-      while (next < allMediaData.length && allMediaData[next].type !== 'photos') next++;
-      if (next < allMediaData.length) {
-        lbIndex = next;
-        updateLightbox();
-      }
-    });
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("open")) return;
-      if (e.key === "Escape") lightbox.classList.remove("open");
-      if (e.key === "ArrowLeft") document.getElementById("lbPrev").click();
-      if (e.key === "ArrowRight") document.getElementById("lbNext").click();
+
+    const mosaicMediaData = [];
+    document.querySelectorAll('.mosaic-item img').forEach((img, idx) => {
+      img.style.cursor = 'zoom-in';
+      mosaicMediaData.push({
+        img: img.src,
+        title: img.alt,
+        cat: 'Campus Life'
+      });
+      img.addEventListener('click', () => {
+        openLightbox(idx, mosaicMediaData);
+      });
     });
 
     /* ================= DYNAMIC NOTICES ================= */
     (function() {
       const container = document.getElementById("dynamic-notices-container");
+      const tabsContainer = document.getElementById("notice-type-tabs");
       if (!container) return;
 
-      fetch('api/notices.php?action=get_notices&public_only=1&limit=2')
-        .then(res => res.json())
-        .then(data => {
+      // Mouse drag and wheel to scroll on notice tabs
+      if (tabsContainer) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        tabsContainer.addEventListener('mousedown', (e) => {
+          isDown = true;
+          tabsContainer.style.cursor = 'grabbing';
+          startX = e.pageX - tabsContainer.offsetLeft;
+          scrollLeft = tabsContainer.scrollLeft;
+        });
+        tabsContainer.addEventListener('mouseleave', () => {
+          isDown = false;
+          tabsContainer.style.cursor = '';
+        });
+        tabsContainer.addEventListener('mouseup', () => {
+          isDown = false;
+          tabsContainer.style.cursor = '';
+        });
+        tabsContainer.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - tabsContainer.offsetLeft;
+          const walk = (x - startX) * 2;
+          tabsContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        tabsContainer.addEventListener('wheel', (e) => {
+          if (e.deltaY !== 0) {
+            e.preventDefault();
+            tabsContainer.scrollLeft += e.deltaY;
+          }
+        }, {
+          passive: false
+        });
+      }
+
+      let currentSelectedType = '';
+
+      function getCategoryIcon(cat) {
+        const c = cat.toLowerCase();
+        if (c.includes('academic')) return 'fa-graduation-cap';
+        if (c.includes('circular')) return 'fa-file-lines';
+        if (c.includes('event')) return 'fa-calendar-day';
+        if (c.includes('alert') || c.includes('disciplinary')) return 'fa-shield-halved';
+        if (c.includes('finance') || c.includes('fee')) return 'fa-coins';
+        return 'fa-folder-open';
+      }
+
+      // Fetch Category Tabs
+      if (tabsContainer) {
+        $.ajax({
+          url: 'api/notices.php?action=get_categories',
+          method: 'GET',
+          dataType: 'json'
+        }).done(data => {
+          if (data.success && data.categories && data.categories.length > 0) {
+            data.categories.forEach(cat => {
+              const icon = getCategoryIcon(cat);
+              const btn = document.createElement('button');
+              btn.className = 'notice-tab-btn';
+              btn.dataset.type = cat;
+              btn.innerHTML = `<i class="fa-solid ${icon}"></i> ${cat}`;
+              tabsContainer.appendChild(btn);
+            });
+            bindNoticeTabClicks();
+          }
+        });
+      }
+
+      function bindNoticeTabClicks() {
+        const tabBtns = document.querySelectorAll('#notice-type-tabs .notice-tab-btn');
+        tabBtns.forEach(btn => {
+          btn.onclick = () => {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentSelectedType = btn.dataset.type || '';
+            fetchIndexNotices(currentSelectedType);
+          };
+        });
+      }
+
+      function fetchIndexNotices(typeFilter = '') {
+        container.innerHTML = `
+          <li style="text-align: center; padding: 32px 0;">
+            <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: #fbbf24;"></i>
+          </li>
+        `;
+
+        let url = 'api/notices.php?action=get_notices&public_only=1&limit=15';
+        if (typeFilter) {
+          url += '&type=' + encodeURIComponent(typeFilter);
+        }
+
+        $.ajax({
+          url: url,
+          method: 'GET',
+          dataType: 'json'
+        }).done(data => {
           if (data.success && data.data && data.data.length > 0) {
             container.innerHTML = '';
+            let hasNewNotice = false;
             data.data.forEach(notice => {
-              let badgeStyle = 'display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; margin-bottom: 8px;';
-              if (notice.type === 'circular') badgeStyle += ' background: #eff6ff; color: #1d4ed8;';
-              else if (notice.type === 'event') badgeStyle += ' background: #f0fdf4; color: #15803d;';
-              else if (notice.type === 'alert') badgeStyle += ' background: #fef2f2; color: #b91c1c;';
-              else badgeStyle += ' background: #f8fafc; color: #334155;';
+              const rawDate = notice.created_at ? notice.created_at.replace(' ', 'T') : '';
+              const dateObj = rawDate ? new Date(rawDate) : new Date();
+              const dateStr = !isNaN(dateObj.getTime()) ?
+                dateObj.toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                }) :
+                '';
 
-              const typeName = notice.type === 'other' ? notice.other_type_name : notice.type;
-
-              const dateObj = new Date(notice.created_at);
-              const dateStr = dateObj.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric'
-              });
-
-              let actionsHTML = '';
+              let actionsHTML = [];
               if (notice.pdf_path) {
-                actionsHTML += `<a href="${notice.pdf_path}" target="_blank" style="margin-right: 12px; font-size: 0.9rem; color: #fbbf24; text-decoration: none;"><i class="fa-solid fa-file-pdf"></i> PDF</a>`;
+                actionsHTML.push(`<a href="${notice.pdf_path}" target="_blank"><i class="fa-solid fa-file-pdf" style="margin-right: 4px;"></i>View Document</a>`);
               }
               if (notice.link) {
-                actionsHTML += `<a href="${notice.link}" target="_blank" style="font-size: 0.9rem; color: #60a5fa; text-decoration: none;"><i class="fa-solid fa-link"></i> Link</a>`;
+                actionsHTML.push(`<a href="${notice.link}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square" style="margin-right: 4px;"></i>Open Link</a>`);
               }
+              let actionsString = actionsHTML.join(' <span style="color: rgba(255,255,255,0.35);">&bull;</span> ');
+
+              const now = new Date();
+              const diffMs = now - dateObj;
+              const diffDays = diffMs / (1000 * 60 * 60 * 24);
+              const isNew = !isNaN(diffDays) && diffDays >= 0 && diffDays <= 7;
+              if (isNew) hasNewNotice = true;
+              const newBadge = isNew ? '<span class="notice-badge-new">NEW</span>' : '';
 
               const li = document.createElement('li');
-              li.style.position = 'relative';
               li.innerHTML = `
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                  <div>
-                    <span style="${badgeStyle}">${typeName}</span>
-                    <strong style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 1.05rem; margin-bottom: 4px; color: #ffffff;" title="${notice.title}">${notice.title}</strong>
-                    <div style="margin-top: 8px;">
-                      ${actionsHTML}
-                    </div>
+                <div class="notice-row">
+                  <div class="notice-title" title="${notice.title}">
+                    ${notice.title}${newBadge}
                   </div>
-                  <time style="font-size: 0.85rem; color: rgba(255,255,255,0.7); white-space: nowrap; margin-left: 16px;">${dateStr}</time>
+                  <div class="notice-meta">
+                    <span><i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>${dateStr}</span>
+                    ${actionsString ? `<span style="color: rgba(255,255,255,0.4);">&bull;</span> ${actionsString}` : ''}
+                  </div>
                 </div>
               `;
               container.appendChild(li);
             });
+
+            const pulseDot = document.getElementById('live-pulse-dot');
+            if (pulseDot) {
+              pulseDot.style.display = hasNewNotice ? 'inline-block' : 'none';
+            }
           } else {
-            container.innerHTML = '<li style="text-align: center; color: var(--white); padding: 32px 0;">No New Updates or Notices</li>';
+            container.innerHTML = `
+              <li style="text-align: center; color: rgba(255,255,255,0.6); padding: 40px 0;">
+                <i class="fa-solid fa-clipboard-list" style="font-size: 2.5rem; margin-bottom: 10px; opacity: 0.4;"></i>
+                <p style="margin: 0; font-size: 0.95rem;">No notices found for this category.</p>
+              </li>
+            `;
           }
-        })
-        .catch(err => {
+        }).fail((jqXHR, textStatus, err) => {
           console.error('Failed to load notices:', err);
-          container.innerHTML = '<li style="text-align: center; color: var(--white); padding: 32px 0;">No New Updates or Notices</li>';
+          container.innerHTML = `
+            <li style="text-align: center; color: rgba(255,255,255,0.6); padding: 40px 0;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.2rem; margin-bottom: 10px; opacity: 0.5; color: #ef4444;"></i>
+              <p style="margin: 0; font-size: 0.95rem;">Unable to load notices. Please try again later.</p>
+            </li>
+          `;
         });
+      }
+
+      // Initial load
+      fetchIndexNotices();
     })();
   </script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="layout/include.js"></script>
 </body>
 

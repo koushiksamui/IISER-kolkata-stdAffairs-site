@@ -5,7 +5,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
 $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
@@ -33,7 +33,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
     <!-- Shared Admin Stylesheet -->
     <link rel="stylesheet" href="../dist/css/admin/dashboard.css">
-    
+
     <style>
         /* Page Header */
         .page-header {
@@ -44,6 +44,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             gap: 14px;
             margin-bottom: 28px;
         }
+
         .page-header-left h1 {
             font-family: var(--font-heading, 'Outfit', sans-serif);
             font-size: 1.65rem;
@@ -52,6 +53,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             line-height: 1.15;
             margin: 0;
         }
+
         .page-header-left p {
             font-size: 0.92rem;
             color: var(--text-muted, #718096);
@@ -65,13 +67,15 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             padding: 40px;
             max-width: 480px;
             margin: 40px auto;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
+
         .settings-card-header {
             text-align: center;
             margin-bottom: 30px;
         }
+
         .settings-card-header .icon-circle {
             width: 64px;
             height: 64px;
@@ -84,20 +88,24 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             font-size: 1.5rem;
             margin: 0 auto 16px auto;
         }
+
         .settings-card-header h3 {
             margin: 0;
             font-size: 1.4rem;
             color: var(--text-dark);
             font-weight: 700;
         }
+
         .settings-card-header p {
             margin: 8px 0 0 0;
             color: var(--text-muted);
             font-size: 0.95rem;
         }
+
         .form-group {
             margin-bottom: 24px;
         }
+
         .form-label {
             display: block;
             margin-bottom: 8px;
@@ -105,16 +113,19 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             color: #4b5563;
             font-size: 0.9rem;
         }
+
         .input-group {
             position: relative;
         }
-        .input-group > i {
+
+        .input-group>i {
             position: absolute;
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
             color: #9ca3af;
         }
+
         .form-control {
             width: 100%;
             padding: 14px 16px 14px 44px;
@@ -126,9 +137,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             background: #f9fafb;
             transition: all 0.2s ease;
         }
+
         .form-control.has-toggle {
             padding-right: 46px;
         }
+
         .input-group .toggle-password {
             position: absolute;
             right: 16px;
@@ -143,9 +156,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             transition: color 0.2s;
             outline: none;
         }
+
         .input-group .toggle-password:hover {
             color: #4b5563;
         }
+
         .password-hint {
             display: block;
             margin-top: 8px;
@@ -153,15 +168,19 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             color: #6b7280;
             line-height: 1.4;
         }
+
         .form-control:focus {
             outline: none;
             border-color: #3b82f6;
             background: #fff;
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
-        .form-control:focus + i, .input-group:focus-within i {
+
+        .form-control:focus+i,
+        .input-group:focus-within i {
             color: #3b82f6;
         }
+
         .btn-submit {
             background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
@@ -178,19 +197,23 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             align-items: center;
             gap: 8px;
         }
+
         .btn-submit:hover {
             transform: translateY(-1px);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
         }
+
         .btn-submit:active {
             transform: translateY(0);
         }
+
         .btn-submit:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
+
         /* Toast Notifications */
         .toast-container {
             position: fixed;
@@ -223,17 +246,34 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             opacity: 1;
         }
 
-        .toast-success { border-left-color: var(--accent-emerald); }
-        .toast-error { border-left-color: var(--status-red); }
-        .toast-info { border-left-color: var(--accent-blue); }
+        .toast-success {
+            border-left-color: var(--accent-emerald);
+        }
+
+        .toast-error {
+            border-left-color: var(--status-red);
+        }
+
+        .toast-info {
+            border-left-color: var(--accent-blue);
+        }
 
         .toast-icon {
             font-size: 1.4rem;
             margin-right: 14px;
         }
-        .toast-success .toast-icon { color: var(--accent-emerald); }
-        .toast-error .toast-icon { color: var(--status-red); }
-        .toast-info .toast-icon { color: var(--accent-blue); }
+
+        .toast-success .toast-icon {
+            color: var(--accent-emerald);
+        }
+
+        .toast-error .toast-icon {
+            color: var(--status-red);
+        }
+
+        .toast-info .toast-icon {
+            color: var(--accent-blue);
+        }
 
         .toast-message {
             flex: 1;
@@ -253,7 +293,9 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             transition: color 0.2s;
         }
 
-        .toast-close:hover { color: var(--text-dark); }
+        .toast-close:hover {
+            color: var(--text-dark);
+        }
     </style>
 </head>
 
@@ -365,7 +407,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 const fd = new FormData(this);
                 const $btn = $('#submitBtn');
                 const origHtml = $btn.html();
-                
+
                 $btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Updating...');
 
                 $.ajax({
@@ -395,4 +437,5 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
     </script>
     <script src="../dist/js/admin_toast.js"></script>
 </body>
+
 </html>

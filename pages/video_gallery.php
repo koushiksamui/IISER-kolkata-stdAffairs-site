@@ -24,20 +24,24 @@
     <main id="main">
 
         <!-- ============ PAGE HERO ============ -->
-        <section class="page-hero">
+        <section class="page-hero page-hero-banner">
             <div class="container page-hero-inner">
-                <div class="breadcrumb"><a href="../index.html">Home</a> <i class="fa-solid fa-chevron-right"
-                        style="font-size:.6rem"></i> <span>Video Gallery</span></div>
-                <span class="eyebrow" style="color:var(--gold-500)">Gallery</span>
-                <h1>Video Gallery</h1>
-                <p class="lede">Explore campus life, research talks, and cultural events through our videos.</p>
+                <?php
+                $breadcrumbs = [
+                    ['title' => 'Home', 'url' => '../index.html'],
+                    ['title' => 'Video Gallery']
+                ];
+                include __DIR__ . '/../components/breadcrumb.php';
+                ?>
+                <h1 class="hero-title">Video Gallery</h1>
+                <p class="lede hero-subtitle">Explore campus life, research talks, and cultural events through our videos.</p>
             </div>
         </section>
 
         <!-- ============ VIDEO CONTENT ============ -->
         <section class="section section-alt">
             <div class="container">
-                <div class="gallery-grid" id="videoGalleryGrid">
+                <div class="albums-grid" id="videoGalleryGrid">
                     <!-- Dynamic rendering goes here -->
                 </div>
             </div>
@@ -46,15 +50,21 @@
     </main>
 
     <!-- ============ VIDEO LIGHTBOX ============ -->
-    <div class="lightbox" id="videoLightbox">
-        <button class="lightbox-close" id="vlClose" aria-label="Close lightbox">
+    <div class="lightbox-modal" id="videoLightbox" role="dialog" aria-modal="true">
+        <!-- Floating Top Left Title -->
+        <div class="lightbox-top-left">
+            <h3 class="lightbox-title-text" id="vlTitle">Video</h3>
+        </div>
+
+        <!-- Floating Top Right Close Button -->
+        <button class="lightbox-close-btn" id="vlClose" aria-label="Close video viewer">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <div class="lightbox-video-container" id="vlVideoContainer" style="width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-            <!-- Player gets injected here -->
-        </div>
-        <div class="lightbox-cap" style="text-align: center; margin-top: 15px;">
-            <span id="vlTitle" style="font-size: 1.2rem; font-weight: 600;"></span>
+
+        <div class="lightbox-body" style="padding: 20px;">
+            <div class="lightbox-video-container" id="vlVideoContainer" style="width: 100%; max-width: 1100px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7); border-radius: 12px; overflow: hidden; background: #000; margin: auto;">
+                <!-- Player gets injected here -->
+            </div>
         </div>
     </div>
 
@@ -72,29 +82,40 @@
                 success: function(res) {
                     const grid = $('#videoGalleryGrid');
                     grid.empty();
-                    
+
                     if (res.success && res.videos && res.videos.length > 0) {
                         videosData = res.videos;
                         res.videos.forEach(function(v, index) {
-                            let thumbnail = '';
-                            if (v.video_type === 'youtube' && v.video_url) {
-                                // Extract youtube ID to get thumbnail
-                                const match = v.video_url.match(/\/embed\/([^?&]+)/);
-                                if (match && match[1]) {
-                                    thumbnail = `https://img.youtube.com/vi/${match[1]}/maxresdefault.jpg`;
+                            let playerHtml = '';
+                            if (v.video_type === 'youtube') {
+                                let videoId = '';
+                                const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+                                const match = v.video_url.match(regExp);
+                                if (match && match[2].length === 11) {
+                                    videoId = match[2];
                                 }
+                                const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : v.video_url;
+                                playerHtml = `<iframe src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width: 100%; height: 100%; pointer-events: none;"></iframe>`;
+                            } else {
+                                playerHtml = `<video style="width: 100%; height: 100%; object-fit: cover; background: #000; pointer-events: none;">
+                                                  <source src="../api/stream_video.php?file=${encodeURIComponent(v.video_url)}" type="video/mp4">
+                                              </video>`;
                             }
-                            if (!thumbnail) thumbnail = 'https://placehold.co/600x400?text=Video';
 
                             const html = `
-                                <div class="gallery-item" onclick="openVideoLightbox(${index})">
-                                    <img src="${thumbnail}" alt="${v.caption}" loading="lazy">
-                                    <div class="overlay">
-                                        <div>
-                                            <div class="g-title">${v.caption || 'Untitled Video'}</div>
+                                <div class="album-card" onclick="openVideoLightbox(${index})" style="cursor: pointer;">
+                                    <div class="album-media" style="position: relative;">
+                                        ${playerHtml}
+                                        <!-- Invisible overlay to capture clicks instead of the player -->
+                                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 5;"></div>
+                                        <div class="album-count-badge" style="z-index: 10;">
+                                            <i class="fa-solid fa-play"></i> Video
                                         </div>
                                     </div>
-                                    <div class="play"><i class="fa-solid fa-play"></i></div>
+                                    <div class="album-details">
+                                        <h3 class="album-title">${v.caption || 'Untitled Video'}</h3>
+                                        <div class="album-meta-text">Click to watch video</div>
+                                    </div>
                                 </div>
                             `;
                             grid.append(html);
@@ -125,27 +146,31 @@
                     } else if (match) {
                         embedUrl += (embedUrl.includes('?') ? '&' : '?') + 'autoplay=1';
                     }
-                    container.html(`<iframe width="100%" height="500" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 8px;"></iframe>`);
+                    container.html(`<iframe width="100%" style="aspect-ratio: 16/9; max-height: 85vh;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
                 } else {
                     // Prepend ../ because we are in pages/
-                    container.html(`<video width="100%" style="max-height: 80vh; border-radius: 8px;" controls autoplay controlsList="nodownload"><source src="../api/stream_video.php?file=${encodeURIComponent(v.video_url)}" type="video/mp4">Your browser does not support the video tag.</video>`);
+                    container.html(`<video width="100%" style="max-height: 85vh; outline: none;" controls autoplay controlsList="nodownload"><source src="../api/stream_video.php?file=${encodeURIComponent(v.video_url)}" type="video/mp4">Your browser does not support the video tag.</video>`);
                 }
 
                 $('#vlTitle').text(v.caption || 'Untitled Video');
-                $('#videoLightbox').addClass('open');
+                $('#videoLightbox').addClass('active');
+                $('body').css('overflow', 'hidden');
             };
 
             function closeVideoLightbox() {
-                $('#videoLightbox').removeClass('open');
+                $('#videoLightbox').removeClass('active');
                 $('#vlVideoContainer').empty(); // Stop playing
+                $('body').css('overflow', '');
             }
 
             $('#vlClose').click(closeVideoLightbox);
             $('#videoLightbox').click(function(e) {
-                if (e.target === this) closeVideoLightbox();
+                if (e.target === this || $(e.target).closest('.lightbox-body').length && !$(e.target).closest('#vlVideoContainer').length) {
+                    closeVideoLightbox();
+                }
             });
             $(document).keydown(function(e) {
-                if (e.key === "Escape" && $('#videoLightbox').hasClass('open')) {
+                if (e.key === "Escape" && $('#videoLightbox').hasClass('active')) {
                     closeVideoLightbox();
                 }
             });

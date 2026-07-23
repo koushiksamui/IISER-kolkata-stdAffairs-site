@@ -1,10 +1,11 @@
 <?php
+
 /**
  * SiSAS-IITG Admin — Photo Gallery Management
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
@@ -12,11 +13,12 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery Management &mdash; SiSAS-IITG Admin</title>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +35,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
     <!-- Shared Admin Stylesheet -->
     <link rel="stylesheet" href="../dist/css/admin/dashboard.css">
-    
+
     <!-- Homepage Banners Stylesheet (Reused for Gallery images layout) -->
     <link rel="stylesheet" href="../dist/css/admin/homepage_banners.css">
 
@@ -49,12 +51,13 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             transition: color 0.2s;
             cursor: pointer;
         }
+
         .header-back-link:hover {
             color: var(--accent-blue);
         }
 
 
-        
+
         /* Custom Button Styles for Gallery Form */
         #submitGalleryBtn {
             background-color: #27ae60;
@@ -69,9 +72,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             gap: 8px;
             cursor: pointer;
         }
+
         #submitGalleryBtn:hover {
             background-color: #219653;
         }
+
         #cancelGalleryFormBtn {
             background-color: #f8f9fa;
             color: #333;
@@ -85,11 +90,13 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             gap: 8px;
             cursor: pointer;
         }
+
         #cancelGalleryFormBtn:hover {
             background-color: #e2e8f0;
         }
     </style>
 </head>
+
 <body>
     <div class="admin-layout" id="adminLayout">
         <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -127,14 +134,14 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                             <form id="galleryForm" enctype="multipart/form-data">
                                 <input type="hidden" name="action" value="save_gallery">
                                 <input type="hidden" name="id" id="galleryId" value="0">
-                                
+
                                 <div class="form-grid" style="margin-bottom: 25px;">
                                     <div class="form-group full-width">
                                         <label class="form-label" for="galleryTitle" style="font-weight: 700; color: #374151;">Gallery Title *</label>
                                         <input type="text" name="title" id="galleryTitle" class="form-control" required placeholder="e.g. Convocation 2026" style="padding: 10px; border-radius: 6px; border: 1px solid #d1d5db;">
                                     </div>
                                 </div>
-                                
+
                                 <!-- Image Drop Zone -->
                                 <div class="image-drop-zone" id="imageDropZone" style="margin-bottom: 25px;">
                                     <input type="file" name="images[]" id="galleryImageInput" accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" multiple>
@@ -143,7 +150,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                     <p class="drop-zone-sub">or click to browse &mdash; JPEG, PNG, WebP, GIF</p>
                                     <div class="drop-zone-preview" id="dropZonePreview" style="display:none; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;"></div>
                                 </div>
-                                
+
                                 <div class="form-submit-row" style="display: flex; gap: 15px;">
                                     <button type="submit" id="submitGalleryBtn">
                                         <i class="fa-solid fa-check"></i> Save Gallery
@@ -174,7 +181,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 <!-- VIEW 2: MANAGE IMAGES -->
                 <div id="viewImages" style="display: none;">
                     <a class="header-back-link" id="backToGalleriesBtn"><i class="fa-solid fa-arrow-left"></i> Back to Galleries</a>
-                    
+
                     <div class="page-header" style="margin-bottom: 30px;">
                         <div class="page-header-left">
                             <h1><i class="fa-solid fa-images" style="color:var(--accent-emerald);margin-right:10px;font-size:1.5rem;"></i> Manage Images</h1>
@@ -202,7 +209,18 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                             <form id="uploadImagesForm" enctype="multipart/form-data">
                                 <input type="hidden" name="action" value="upload_images">
                                 <input type="hidden" name="gallery_id" id="uploadGalleryId" value="0">
-                                
+
+                                <div style="background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; display: flex; gap: 12px; align-items: flex-start;">
+                                    <i class="fa-solid fa-circle-info" style="font-size: 1.2rem; color: #3b82f6; margin-top: 2px;"></i>
+                                    <div>
+                                        <strong style="display: block; font-size: 0.9rem; margin-bottom: 4px;">Photo Upload Guidelines for Admin:</strong>
+                                        <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
+                                            <li>Maximum allowed size per image is <strong>5 MB</strong>.</li>
+                                            <li>Supported file types: <code>.jpg</code>, <code>.jpeg</code>, <code>.png</code>, <code>.webp</code>, <code>.gif</code>.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="image-drop-zone" id="uploadImageDropZone" style="margin-bottom: 25px;">
                                     <input type="file" name="images[]" id="uploadImageInput" accept="image/jpeg,image/jpg,image/png,image/webp,image/gif" multiple required>
                                     <div class="drop-zone-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
@@ -210,7 +228,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                     <p class="drop-zone-sub">or click to browse &mdash; JPEG, PNG, WebP, GIF</p>
                                     <div class="drop-zone-preview" id="uploadDropZonePreview" style="display:none; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;"></div>
                                 </div>
-                                
+
                                 <div class="form-submit-row">
                                     <button type="submit" class="btn-submit" id="submitImagesBtn">
                                         <i class="fa-solid fa-cloud-arrow-up"></i> Upload Images
@@ -268,8 +286,10 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         // --- GALLERIES LOGIC ---
 
         function loadGalleries() {
-            $.getJSON(API_URL, { action: 'get_galleries' }, function(res) {
-                if(res.success) {
+            $.getJSON(API_URL, {
+                action: 'get_galleries'
+            }, function(res) {
+                if (res.success) {
                     galleriesData = res.data;
                     renderGalleries();
                 } else {
@@ -283,13 +303,13 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         function renderGalleries() {
             shuffleIntervals.forEach(clearInterval);
             shuffleIntervals = [];
-            
+
             const container = $('#galleriesGrid');
             container.empty();
 
             $('#galleriesCountBadge').text(galleriesData.length);
 
-            if(galleriesData.length === 0) {
+            if (galleriesData.length === 0) {
                 container.html(`
                     <div class="banners-empty-state">
                         <i class="fa-solid fa-images"></i>
@@ -303,10 +323,10 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             galleriesData.forEach(g => {
                 const coverSrc = g.cover_image ? g.cover_image : '';
                 const imagesJson = g.images ? JSON.stringify(g.images).replace(/"/g, '&quot;') : '[]';
-                
-                const coverHtml = coverSrc 
-                    ? `<img src="${coverSrc}" class="shuffling-img" data-images="${imagesJson}" data-index="0" alt="Cover" loading="lazy" draggable="false" style="cursor:pointer; opacity:1; transition: opacity 0.3s ease, transform 0.4s ease;" onclick="openGallery(${g.id})">` 
-                    : `<div style="width:100%; height:100%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#cbd5e1; font-size:3rem; cursor:pointer;" onclick="openGallery(${g.id})"><i class="fa-solid fa-image"></i></div>`;
+
+                const coverHtml = coverSrc ?
+                    `<img src="${coverSrc}" class="shuffling-img" data-images="${imagesJson}" data-index="0" alt="Cover" loading="lazy" draggable="false" style="cursor:pointer; opacity:1; transition: opacity 0.3s ease, transform 0.4s ease;" onclick="openGallery(${g.id})">` :
+                    `<div style="width:100%; height:100%; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#cbd5e1; font-size:3rem; cursor:pointer;" onclick="openGallery(${g.id})"><i class="fa-solid fa-image"></i></div>`;
 
                 const card = $(`
                     <div class="banner-item-card" data-id="${g.id}">
@@ -355,7 +375,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                             }, 5000);
                             shuffleIntervals.push(interval);
                         }
-                    } catch(e) {
+                    } catch (e) {
                         console.error('Error parsing shuffling images', e);
                     }
                 }
@@ -393,19 +413,24 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         window.editGallery = function(id) {
             const g = galleriesData.find(x => x.id == id);
-            if(!g) return;
+            if (!g) return;
             $('#galleryId').val(g.id);
             $('#galleryTitle').val(g.title);
             $('#imageDropZone').hide();
             $('#galleryFormCard').addClass('visible');
             $('#galleryFormTitle').html('<i class="fa-solid fa-pen" style="color:var(--accent-blue);"></i> Edit Gallery');
-            $('.main-panel').animate({ scrollTop: 0 }, 300);
+            $('.main-panel').animate({
+                scrollTop: 0
+            }, 300);
         };
 
         window.deleteGallery = function(id) {
-            if(!confirm('Are you sure you want to delete this gallery? All images inside it will be permanently deleted.')) return;
-            $.post(API_URL, { action: 'delete_gallery', id: id }, function(res) {
-                if(res.success) {
+            if (!confirm('Are you sure you want to delete this gallery? All images inside it will be permanently deleted.')) return;
+            $.post(API_URL, {
+                action: 'delete_gallery',
+                id: id
+            }, function(res) {
+                if (res.success) {
                     showToast('success', res.message);
                     loadGalleries();
                 } else {
@@ -422,9 +447,14 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Saving...');
 
             $.ajax({
-                url: API_URL, type: 'POST', data: fd, processData: false, contentType: false, dataType: 'json',
+                url: API_URL,
+                type: 'POST',
+                data: fd,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
                 success: function(res) {
-                    if(res.success) {
+                    if (res.success) {
                         showToast('success', res.message);
                         closeGalleryForm();
                         loadGalleries();
@@ -432,7 +462,9 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                         showToast('error', res.message);
                     }
                 },
-                complete: function() { btn.prop('disabled', false).html(orig); }
+                complete: function() {
+                    btn.prop('disabled', false).html(orig);
+                }
             });
         });
 
@@ -443,13 +475,15 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             $('#uploadGalleryId').val(id);
             $('#viewGalleries').hide();
             $('#viewImages').fadeIn();
-            
+
             // Set title temporarily
             const g = galleriesData.find(x => x.id == id);
             $('#currentGalleryTitle').text(g ? g.title : 'Loading...');
-            
+
             loadImages();
-            $('.main-panel').animate({ scrollTop: 0 }, 300);
+            $('.main-panel').animate({
+                scrollTop: 0
+            }, 300);
         };
 
         $('#backToGalleriesBtn').click(function() {
@@ -460,7 +494,10 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         });
 
         function loadImages() {
-            $.getJSON(API_URL, { action: 'get_images', gallery_id: currentGalleryId }, function(res) {
+            $.getJSON(API_URL, {
+                action: 'get_images',
+                gallery_id: currentGalleryId
+            }, function(res) {
                 const container = $('#imagesGrid');
                 container.empty();
 
@@ -472,7 +509,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 if (res.gallery_title) {
                     $('#currentGalleryTitle').text(res.gallery_title);
                 }
-                
+
                 $('#imagesCountBadge').text(res.data.length);
 
                 if (res.data.length === 0) {
@@ -533,6 +570,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         // Upload Logic
         let selectedFiles = [];
+
         function resetFormImagePreview() {
             selectedFiles = [];
             $('#galleryImageInput').val('');
@@ -571,7 +609,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         $('#galleryImageInput').on('change', function() {
             const files = Array.from(this.files);
             selectedFiles = [];
-            
+
             if (files.length === 0) {
                 renderPreviews();
                 return;
@@ -601,11 +639,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             e.stopPropagation();
             const index = $(this).data('index');
             selectedFiles.splice(index, 1);
-            
+
             const dt = new DataTransfer();
             selectedFiles.forEach(f => dt.items.add(f.file));
             $('#galleryImageInput')[0].files = dt.files;
-            
+
             renderPreviews();
         });
 
@@ -629,15 +667,42 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         $('#uploadImagesForm').submit(function(e) {
             e.preventDefault();
+            const fileInput = $('#uploadImageInput')[0];
+            const files = fileInput ? fileInput.files : [];
+
+            if (!files || files.length === 0) {
+                showToast('error', 'Please select at least one image to upload.');
+                return;
+            }
+
+            const MAX_SINGLE_FILE_BYTES = 5 * 1024 * 1024; // 5 MB max per image
+            let totalBytes = 0;
+
+            for (let i = 0; i < files.length; i++) {
+                if (files[i].size > MAX_SINGLE_FILE_BYTES) {
+                    const fileSizeMB = (files[i].size / (1024 * 1024)).toFixed(2);
+                    showToast('error', `Image "${files[i].name}" (${fileSizeMB} MB) exceeds the maximum allowed size of 5 MB per image.`);
+                    return;
+                }
+                totalBytes += files[i].size;
+            }
+
+            const totalMB = (totalBytes / (1024 * 1024)).toFixed(2);
+
             const fd = new FormData(this);
             const btn = $('#submitImagesBtn');
             const orig = btn.html();
-            btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Uploading...');
+            btn.prop('disabled', true).html(`<i class="fa-solid fa-spinner fa-spin"></i> Uploading ${files.length} Photos (${totalMB} MB)...`);
 
             $.ajax({
-                url: API_URL, type: 'POST', data: fd, processData: false, contentType: false, dataType: 'json',
+                url: API_URL,
+                type: 'POST',
+                data: fd,
+                processData: false,
+                contentType: false,
+                dataType: 'json',
                 success: function(res) {
-                    if(res.success) {
+                    if (res.success) {
                         showToast('success', res.message);
                         closeImagesForm();
                         loadImages();
@@ -647,9 +712,22 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX Error:", xhr.responseText);
-                    showToast('error', 'Server Error: ' + error + '. Please check console.');
+                    let errMsg = 'Upload failed. Please try again.';
+                    if (xhr.status === 413 || (xhr.responseText && xhr.responseText.includes('exceeds the limit'))) {
+                        errMsg = 'Batch size limit exceeded. Please upload photos in smaller batches.';
+                    } else if (xhr.responseText) {
+                        try {
+                            const parsed = JSON.parse(xhr.responseText);
+                            if (parsed.message) errMsg = parsed.message;
+                        } catch (e) {
+                            errMsg = 'Server Error: ' + error;
+                        }
+                    }
+                    showToast('error', errMsg);
                 },
-                complete: function() { btn.prop('disabled', false).html(orig); }
+                complete: function() {
+                    btn.prop('disabled', false).html(orig);
+                }
             });
         });
 
@@ -660,8 +738,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             const orig = btn.html();
             btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin"></i> Deleting...');
 
-            $.post(API_URL, { action: 'delete_all_images', gallery_id: currentGalleryId }, function(res) {
-                if(res.success) {
+            $.post(API_URL, {
+                action: 'delete_all_images',
+                gallery_id: currentGalleryId
+            }, function(res) {
+                if (res.success) {
                     showToast('success', res.message);
                     loadImages();
                 } else {
@@ -674,6 +755,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         // Upload Preview Logic for Manage Images
         let uploadSelectedFiles = [];
+
         function resetUploadFormImagePreview() {
             uploadSelectedFiles = [];
             $('#uploadImageInput').val('');
@@ -712,7 +794,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         $('#uploadImageInput').on('change', function() {
             const files = Array.from(this.files);
             uploadSelectedFiles = [];
-            
+
             if (files.length === 0) {
                 renderUploadPreviews();
                 return;
@@ -742,11 +824,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             e.stopPropagation();
             const index = $(this).data('index');
             uploadSelectedFiles.splice(index, 1);
-            
+
             const dt = new DataTransfer();
             uploadSelectedFiles.forEach(f => dt.items.add(f.file));
             $('#uploadImageInput')[0].files = dt.files;
-            
+
             renderUploadPreviews();
         });
 
@@ -756,18 +838,23 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 $(this).find('.banner-order-badge').text(idx + 1);
             });
         }
+
         function refreshReorderButtons() {
             var $cards = $('#imagesGrid .banner-item-card');
             $cards.find('.reorder-btn').prop('disabled', false);
             $cards.first().find('.move-up-btn').prop('disabled', true);
             $cards.last().find('.move-down-btn').prop('disabled', true);
         }
+
         function saveImageOrder() {
             var order = [];
             $('#imagesGrid .banner-item-card').each(function() {
                 order.push($(this).data('id'));
             });
-            $.post(API_URL, { action: 'reorder_images', order: JSON.stringify(order) }, function(res) {
+            $.post(API_URL, {
+                action: 'reorder_images',
+                order: JSON.stringify(order)
+            }, function(res) {
                 if (res.success) showToast('info', 'Image order saved.');
             }, 'json');
         }
@@ -797,7 +884,10 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         window.deleteImage = function(id) {
             if (!confirm('Are you sure you want to delete this image?')) return;
-            $.post(API_URL, { action: 'delete_image', id: id }, function(res) {
+            $.post(API_URL, {
+                action: 'delete_image',
+                id: id
+            }, function(res) {
                 if (res.success) {
                     showToast('success', res.message);
                     loadImages();
@@ -844,4 +934,5 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
     </script>
     <script src="../dist/js/admin_toast.js"></script>
 </body>
+
 </html>

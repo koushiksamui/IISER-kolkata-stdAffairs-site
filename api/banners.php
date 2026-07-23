@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SiSAS-IITG Homepage Banners API
  * Handles CRUD operations for homepage carousel banners.
@@ -6,7 +7,6 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('../admin/login.html');
 require_once __DIR__ . '/../php_utils/_logger.php';
 
 header('Content-Type: application/json');
@@ -50,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? trim($_POST['action']) : '';
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = isset($_GET['action']) ? trim($_GET['action']) : 'get_banners';
+}
+
+// Require Admin authorization for management operations
+if (in_array($action, ['add_banner', 'delete_banner', 'toggle_banner', 'reorder_banners'])) {
+    requireAdmin('../admin/login.php');
 }
 
 switch ($action) {
@@ -146,7 +151,8 @@ switch ($action) {
         $sortRow   = mysqli_fetch_assoc($sortRes);
         $sortOrder = ($sortRow['max_order'] !== null) ? (int)$sortRow['max_order'] + 1 : 0;
 
-        $stmt = mysqli_prepare($conn,
+        $stmt = mysqli_prepare(
+            $conn,
             "INSERT INTO `homepage_banners` (`image_path`, `title`, `description`, `button_text`, `button_link`, `sort_order`, `is_active`)
              VALUES (?, ?, ?, ?, ?, ?, 1)"
         );
@@ -260,7 +266,8 @@ switch ($action) {
         }
 
         // Update database
-        $stmt = mysqli_prepare($conn,
+        $stmt = mysqli_prepare(
+            $conn,
             "UPDATE `homepage_banners` 
              SET `image_path` = ?, `title` = ?, `description` = ?, `button_text` = ?, `button_link` = ? 
              WHERE `id` = ?"

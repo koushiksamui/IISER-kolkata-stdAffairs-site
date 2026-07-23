@@ -5,7 +5,7 @@
  */
 
 require_once 'admin_auth.php';
-requireAdmin('../admin/login.html');
+requireAdmin('../admin/login.php');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 require_once __DIR__ . '/../php_utils/_logger.php';
 
@@ -75,7 +75,7 @@ switch ($action) {
 
         $query = "SELECT * FROM press_releases WHERE $whereClause ORDER BY created_at DESC, id DESC LIMIT $limit OFFSET $offset";
         $result = mysqli_query($conn, $query);
-        
+
         $releases = [];
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -83,7 +83,7 @@ switch ($action) {
             }
         }
         echo json_encode([
-            'success' => true, 
+            'success' => true,
             'data' => $releases,
             'total' => $total,
             'page' => $page,
@@ -159,14 +159,14 @@ switch ($action) {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = __DIR__ . '/../dist/img/pages/inline/';
             if (!is_dir($uploadDir)) mkdir($uploadDir, 0755, true);
-            
+
             $file = $_FILES['image'];
-            
+
             // 1. Type validation (MIME type)
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $file['tmp_name']);
             finfo_close($finfo);
-            
+
             $allowedMimes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
             if (!in_array($mimeType, $allowedMimes)) {
                 echo json_encode(['success' => false, 'message' => 'Invalid file type. Only JPG, PNG, WEBP, and GIF are allowed.']);
@@ -183,7 +183,7 @@ switch ($action) {
             $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
             $newFilename = 'pr_inline_' . time() . '_' . rand(1000, 9999) . '.' . $ext;
             $destPath = $uploadDir . $newFilename;
-            
+
             if (move_uploaded_file($file['tmp_name'], $destPath)) {
                 $url = '../dist/img/pages/inline/' . $newFilename;
                 echo json_encode(['success' => true, 'url' => $url]);

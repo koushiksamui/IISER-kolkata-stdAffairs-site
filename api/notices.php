@@ -5,7 +5,6 @@
  */
 
 require_once 'admin_auth.php';
-requireAdmin('../admin/login.html');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 require_once __DIR__ . '/../php_utils/_logger.php';
 
@@ -30,13 +29,16 @@ if (!mysqli_query($conn, $createTableQuery)) {
     exit;
 }
 
-// Ensure columns exist if table was already created
-$alterColumns = [
-    "other_type_name" => "VARCHAR(50) DEFAULT NULL",
-    "is_pinned" => "TINYINT(1) DEFAULT 0",
-    "pinned_till" => "DATETIME DEFAULT NULL"
+// Add columns if they don't exist
+$columns = [
+    'scheduled_time' => 'DATETIME DEFAULT NULL',
+    'status' => "VARCHAR(20) DEFAULT 'published'",
+    'is_pinned' => 'TINYINT(1) DEFAULT 0',
+    'pinned_till' => 'DATETIME DEFAULT NULL',
+    'display_type' => "VARCHAR(20) DEFAULT 'Public'"
 ];
-foreach ($alterColumns as $col => $def) {
+
+foreach ($columns as $col => $def) {
     $checkCol = mysqli_query($conn, "SHOW COLUMNS FROM notices LIKE '$col'");
     if (mysqli_num_rows($checkCol) == 0) {
         mysqli_query($conn, "ALTER TABLE notices ADD COLUMN $col $def");
@@ -48,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = isset($_GET['action']) ? trim($_GET['action']) : '';
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = isset($_POST['action']) ? trim($_POST['action']) : '';
+}
+
+// Require Admin authorization for management operations
+if (in_array($action, ['save_notice', 'delete_notice', 'toggle_pin', 'unpin_notice'])) {
+    requireAdmin('../admin/login.php');
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -83,10 +90,14 @@ switch ($action) {
         $limit = isset($_GET['limit']) ? max(1, intval($_GET['limit'])) : 10;
         $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, trim($_GET['search'])) : '';
         $public_only = isset($_GET['public_only']) ? (bool)$_GET['public_only'] : false;
-        
+        $type_filter = isset($_GET['type']) ? mysqli_real_escape_string($conn, trim($_GET['type'])) : '';
+
         $whereClause = "1=1";
+        if ($type_filter !== '') {
+            $whereClause .= " AND (type = '$type_filter' OR other_type_name = '$type_filter')";
+        }
         if ($search !== '') {
-            $whereClause .= " AND (title LIKE '%$search%' OR type LIKE '%$search%')";
+            $whereClause .= " AND (title LIKE '%$search%' OR type LIKE '%$search%' OR other_type_name LIKE '%$search%')";
         }
 
         // Auto-scheduling logic for public view
@@ -100,13 +111,13 @@ switch ($action) {
         $total = intval($totalRow['total']);
 
         $offset = ($page - 1) * $limit;
-        
+
         // Failsafe: dynamically unpin expired notices
         mysqli_query($conn, "UPDATE notices SET is_pinned = 0 WHERE is_pinned = 1 AND pinned_till < NOW()");
 
-        $query = "SELECT * FROM notices WHERE $whereClause ORDER BY is_pinned DESC, created_at DESC, id DESC LIMIT $limit OFFSET $offset";
+        $query = "SELECT * FROM notices WHERE $whereClause ORDER BY created_at DESC, id DESC LIMIT $limit OFFSET $offset";
         $result = mysqli_query($conn, $query);
-        
+
         $notices = [];
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -114,12 +125,35 @@ switch ($action) {
             }
         }
         echo json_encode([
-            'success' => true, 
+            'success' => true,
             'data' => $notices,
             'total' => $total,
             'page' => $page,
             'limit' => $limit
         ]);
+        break;
+
+    case 'get_categories':
+        $query = "SELECT DISTINCT type, other_type_name FROM notices WHERE status = 'published' OR (status = 'scheduled' AND scheduled_time <= NOW())";
+        $result = mysqli_query($conn, $query);
+        $categories = [];
+        if ($result) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $t = trim($row['type'] ?? '');
+                $ot = trim($row['other_type_name'] ?? '');
+                if (strtolower($t) === 'other' && !empty($ot)) {
+                    if (!in_array($ot, $categories)) {
+                        $categories[] = $ot;
+                    }
+                } else if (!empty($t) && strtolower($t) !== 'other') {
+                    if (!in_array($t, $categories)) {
+                        $categories[] = $t;
+                    }
+                }
+            }
+        }
+        sort($categories);
+        echo json_encode(['success' => true, 'categories' => $categories]);
         break;
 
     case 'save_notice':
@@ -133,7 +167,7 @@ switch ($action) {
         $status = mysqli_real_escape_string($conn, trim($_POST['status'] ?? 'published'));
         $scheduled_time_raw = trim($_POST['scheduled_time'] ?? '');
         $scheduled_time = !empty($scheduled_time_raw) ? "'" . mysqli_real_escape_string($conn, $scheduled_time_raw) . "'" : "NULL";
-        
+
         $is_pinned = isset($_POST['is_pinned']) ? 1 : 0;
         $pinned_till_raw = trim($_POST['pinned_till'] ?? '');
         $pinned_till = !empty($pinned_till_raw) ? "'" . mysqli_real_escape_string($conn, $pinned_till_raw) . "'" : "NULL";

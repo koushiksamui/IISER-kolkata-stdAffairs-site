@@ -7,7 +7,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

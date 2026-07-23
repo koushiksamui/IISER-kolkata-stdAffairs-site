@@ -5,7 +5,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
 $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
@@ -34,7 +34,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
     <!-- Shared Admin Stylesheet -->
     <link rel="stylesheet" href="../dist/css/admin/dashboard.css">
     <link rel="stylesheet" href="../dist/css/admin/faculty.css">
-    
+
     <style>
         .type-badge {
             display: inline-block;
@@ -43,9 +43,22 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             font-size: 0.75rem;
             font-weight: 700;
         }
-        .type-create { background-color: #e6f4ea; color: #1e8e3e; }
-        .type-update { background-color: #e8f0fe; color: #1a73e8; }
-        .type-delete { background-color: #fce8e6; color: #d93025; }
+
+        .type-create {
+            background-color: #e6f4ea;
+            color: #1e8e3e;
+        }
+
+        .type-update {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+        }
+
+        .type-delete {
+            background-color: #fce8e6;
+            color: #d93025;
+        }
+
         .module-badge {
             font-size: 0.8rem;
             font-weight: 600;
@@ -54,6 +67,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             padding: 2px 6px;
             border-radius: 4px;
         }
+
         td.details-col {
             max-width: 300px;
             white-space: nowrap;
@@ -216,7 +230,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         // --- FUNCTIONS ---
         function loadLogs() {
-            $.getJSON(API_URL, { 
+            $.getJSON(API_URL, {
                 action: 'get_logs',
                 page: currentPage,
                 limit: limit,
@@ -275,9 +289,13 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             if (!dateStr) return '';
             const d = new Date(dateStr);
             if (isNaN(d.getTime())) return dateStr;
-            return d.toLocaleString('en-GB', { 
-                day: '2-digit', month: 'short', year: 'numeric', 
-                hour: '2-digit', minute:'2-digit', second:'2-digit' 
+            return d.toLocaleString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
             });
         }
 
@@ -285,7 +303,11 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             if (!str) return '';
             return str.toString().replace(/[&<>'"]/g, function(tag) {
                 const charsToReplace = {
-                    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
                 };
                 return charsToReplace[tag] || tag;
             });
@@ -315,4 +337,5 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         };
     </script>
 </body>
+
 </html>

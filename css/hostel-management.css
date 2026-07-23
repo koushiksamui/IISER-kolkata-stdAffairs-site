@@ -48,10 +48,14 @@
 }
 
 /* Sidebar Layout */
+.section:has(.hostel-layout) {
+  padding-top: 32px !important;
+}
+
 .hostel-layout {
   display: grid;
   grid-template-columns: 260px 1fr;
-  gap: var(--space-5);
+  gap: 32px;
   align-items: start;
 }
 

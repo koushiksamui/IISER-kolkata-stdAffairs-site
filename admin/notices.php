@@ -5,7 +5,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
 $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
@@ -34,7 +34,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
     <!-- Shared Admin Stylesheet -->
     <link rel="stylesheet" href="../dist/css/admin/dashboard.css">
     <link rel="stylesheet" href="../dist/css/admin/faculty.css">
-    
+
     <style>
         .status-badge {
             display: inline-flex !important;
@@ -46,12 +46,22 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             font-weight: 600;
             white-space: nowrap;
         }
+
         .status-badge i {
             display: inline-block !important;
             margin: 0 !important;
         }
-        .status-published { background-color: #e6f4ea; color: #1e8e3e; }
-        .status-scheduled { background-color: #fef7e0; color: #b06000; }
+
+        .status-published {
+            background-color: #e6f4ea;
+            color: #1e8e3e;
+        }
+
+        .status-scheduled {
+            background-color: #fef7e0;
+            color: #b06000;
+        }
+
         .type-badge {
             font-size: 0.8rem;
             font-weight: bold;
@@ -106,7 +116,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                     <label class="form-label" for="noticeTitle">Title *</label>
                                     <input type="text" name="title" id="noticeTitle" class="form-control" required placeholder="Enter notice title">
                                 </div>
-                                
+
 
 
                                 <div class="form-group">
@@ -133,7 +143,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                     <label class="form-label" for="noticePdf">PDF Upload (Optional)</label>
                                     <input type="file" name="pdf_file" id="noticePdf" class="form-control" accept="application/pdf">
                                 </div>
-                                
+
                                 <div class="form-group full-width">
                                     <label class="form-label">Publishing Mode</label>
                                     <div style="display:flex; gap:20px; align-items:center; margin-top:10px;">
@@ -141,7 +151,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                         <label><input type="radio" name="status" value="scheduled" id="statusScheduled"> Schedule for Later</label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="form-group full-width">
                                     <label style="display:flex; align-items:center; gap:8px;">
                                         <input type="checkbox" name="is_pinned" id="isPinned" value="1">
@@ -240,7 +250,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         });
     </script>
 
-        <script src="../dist/js/admin_toast.js"></script>
+    <script src="../dist/js/admin_toast.js"></script>
     <!-- Main Logic Script -->
     <script>
         // --- GLOBAL STATE ---
@@ -256,7 +266,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         // --- INIT ---
         $(document).ready(function() {
             loadNotices();
-            
+
             // Set minimum date to today for the date picker
             const now = new Date();
             const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
@@ -307,7 +317,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 const dateVal = $('#scheduledDateInput').val();
                 const timeSelect = $('#scheduledTimeInput');
                 const previousVal = timeSelect.val();
-                
+
                 if (!dateVal) {
                     timeSelect.empty().append('<option value="">Select Time</option>');
                     timeSelect.prop('disabled', true);
@@ -320,7 +330,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 const now = new Date();
                 const todayStr = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
                 const isToday = (dateVal === todayStr);
-                
+
                 const currentHour = now.getHours();
                 const currentMinute = now.getMinutes();
 
@@ -335,15 +345,15 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                                 disabled = true;
                             }
                         }
-                        
+
                         let hh = h.toString().padStart(2, '0');
                         let mm = m.toString().padStart(2, '0');
                         let timeStr = `${hh}:${mm}`;
-                        
+
                         let period = h >= 12 ? 'PM' : 'AM';
                         let displayH = h % 12 || 12;
                         let displayTime = `${displayH.toString().padStart(2, '0')}:${mm} ${period}`;
-                        
+
                         // Keep previous value even if disabled, to prevent it from disappearing during edit
                         if (disabled && previousVal !== timeStr) {
                             timeSelect.append(`<option value="${timeStr}" disabled>${displayTime}</option>`);
@@ -353,7 +363,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                         }
                     }
                 }
-                
+
                 if (timeSelect.find('option:selected').prop('disabled')) {
                     timeSelect.val('');
                 }
@@ -374,7 +384,9 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 resetForm();
                 $('#formCardTitle').html('<i class="fa-solid fa-file-circle-plus"></i> Add New Notice');
                 $('#noticeFormCard').addClass('active');
-                $('.main-panel').animate({ scrollTop: 0 }, 300);
+                $('.main-panel').animate({
+                    scrollTop: 0
+                }, 300);
             });
 
             $('#closeFormBtn, #cancelFormBtn').click(function() {
@@ -416,12 +428,12 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                     showToast('error', 'Title is required.');
                     return;
                 }
-                
+
                 if ($('#noticeType').val() === 'Others' && !$('#otherTypeName').val().trim()) {
                     showToast('error', 'Please specify the other type name.');
                     return;
                 }
-                
+
                 if ($('#statusScheduled').is(':checked') && !$('#scheduledTime').val()) {
                     showToast('error', 'Scheduled time is required when scheduling.');
                     return;
@@ -462,7 +474,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
         // --- FUNCTIONS ---
         function loadNotices() {
-            $.getJSON(API_URL, { 
+            $.getJSON(API_URL, {
                 action: 'get_notices',
                 page: currentPage,
                 limit: limit,
@@ -492,7 +504,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             $('#scheduledTimeInput').val('');
             $('#scheduledTime').val('');
             $('#statusPublished').prop('checked', true).trigger('change');
-            
+
             $('#otherTypeNameGroup').hide();
             $('#pinnedTillGroup').hide();
             $('#isPinned').prop('checked', false);
@@ -523,7 +535,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                     attachHtml += ` <a href="${item.link}" target="_blank" title="Open Link"><i class="fa-solid fa-link" style="color:var(--accent-blue);font-size:1.2rem;margin-left:8px;"></i></a>`;
                 }
                 if (!attachHtml) attachHtml = '-';
-                
+
                 let displayType = item.type === 'Others' && item.other_type_name ? escapeHtml(item.other_type_name) : escapeHtml(item.type);
                 let pinHtml = parseInt(item.is_pinned) === 1 ? ' <i class="fa-solid fa-thumbtack" style="color: #dc3545; margin-left: 8px;" title="Pinned"></i>' : '';
 
@@ -550,14 +562,25 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             if (!dateStr) return '';
             const d = new Date(dateStr);
             if (isNaN(d.getTime())) return dateStr;
-            return d.toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+            return d.toLocaleString('en-GB', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            });
         }
 
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>'"]/g, function(tag) {
                 const charsToReplace = {
-                    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
                 };
                 return charsToReplace[tag] || tag;
             });
@@ -586,7 +609,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             }
 
             $('#noticeLink').val(item.link);
-            
+
             if (item.status === 'scheduled') {
                 if (item.scheduled_time) {
                     const dt = new Date(item.scheduled_time);
@@ -594,13 +617,13 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                         const local = new Date(dt.getTime() - dt.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
                         const parts = local.split('T');
                         $('#scheduledDateInput').val(parts[0]);
-                        
+
                         let timeParts = parts[1].split(':');
                         let h = parseInt(timeParts[0], 10);
                         let m = parseInt(timeParts[1], 10);
                         m = m < 30 ? 0 : 30;
                         const timeStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-                        
+
                         $('#scheduledTimeInput').append(`<option value="${timeStr}"></option>`);
                         $('#scheduledTimeInput').val(timeStr);
                     }
@@ -613,12 +636,17 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
 
             $('#formCardTitle').html('<i class="fa-solid fa-pen-to-square"></i> Edit Notice');
             $('#noticeFormCard').addClass('active');
-            $('.main-panel').animate({ scrollTop: 0 }, 300);
+            $('.main-panel').animate({
+                scrollTop: 0
+            }, 300);
         };
 
         window.deleteNotice = function(id) {
             if (!confirm('Are you sure you want to completely delete this notice?')) return;
-            $.post(API_URL, { action: 'delete_notice', id: id }, function(r) {
+            $.post(API_URL, {
+                action: 'delete_notice',
+                id: id
+            }, function(r) {
                 if (r.success) {
                     showToast('success', r.message);
                     loadNotices();
@@ -629,4 +657,5 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         };
     </script>
 </body>
+
 </html>

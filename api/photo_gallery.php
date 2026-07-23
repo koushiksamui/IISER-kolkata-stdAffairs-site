@@ -5,7 +5,7 @@
  */
 
 require_once 'admin_auth.php';
-requireAdmin('../admin/login.html');
+requireAdmin('../admin/login.php');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 require_once __DIR__ . '/../php_utils/_logger.php';
 
@@ -41,6 +41,15 @@ $action = '';
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $action = isset($_GET['action']) ? trim($_GET['action']) : '';
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Catch POST Content-Length overflow before routing
+    if (empty($_POST) && empty($_FILES) && isset($_SERVER['CONTENT_LENGTH']) && $_SERVER['CONTENT_LENGTH'] > 0) {
+        $sizeMB = round($_SERVER['CONTENT_LENGTH'] / (1024 * 1024), 2);
+        echo json_encode([
+            'success' => false,
+            'message' => "Uploaded batch ($sizeMB MB) exceeds the server's post_max_size limit. Please upload fewer photos per batch (e.g., 5–10 photos) or compress large files."
+        ]);
+        exit;
+    }
     $action = isset($_POST['action']) ? trim($_POST['action']) : '';
 }
 
@@ -72,9 +81,16 @@ function uploadMultiplePhotos()
             throw new Exception("File upload error code: $error on file $name");
         }
 
+        $size = is_array($files['size']) ? $files['size'][$i] : $files['size'];
+        $maxSizeBytes = 5 * 1024 * 1024; // 5 MB limit per image
+        if ($size > $maxSizeBytes) {
+            $sizeMB = round($size / (1024 * 1024), 2);
+            throw new Exception("File '$name' ($sizeMB MB) exceeds the maximum allowed limit of 5 MB per image.");
+        }
+
         $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
         $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
-        
+
         if (!in_array($ext, $allowed)) {
             throw new Exception("Invalid file extension: $ext");
         }
@@ -162,7 +178,8 @@ switch ($action) {
                     mysqli_query($conn, "INSERT INTO photo_gallery_images (gallery_id, image_path, display_order) VALUES ($galleryId, '$safePath', $maxOrder)");
                 }
             }
-        } catch (Exception $e) {}
+        } catch (Exception $e) {
+        }
 
         echo json_encode(['success' => true, 'message' => 'Gallery saved successfully.']);
         break;
@@ -205,13 +222,13 @@ switch ($action) {
                 $images[] = $row;
             }
         }
-        
+
         $galQuery = mysqli_query($conn, "SELECT title FROM photo_galleries WHERE id = $gallery_id");
         $galInfo = mysqli_fetch_assoc($galQuery);
         $gallery_title = $galInfo ? $galInfo['title'] : 'Unknown Gallery';
 
         echo json_encode([
-            'success' => true, 
+            'success' => true,
             'data' => $images,
             'gallery_title' => $gallery_title
         ]);
@@ -219,7 +236,7 @@ switch ($action) {
 
     case 'upload_images':
         $gallery_id = isset($_POST['gallery_id']) ? intval($_POST['gallery_id']) : 0;
-        
+
         if ($gallery_id <= 0) {
             echo json_encode(['success' => false, 'message' => 'Invalid gallery ID.']);
             exit;

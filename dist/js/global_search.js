@@ -112,8 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchResults(query) {
         try {
-            const response = await fetch(`api/global_search.php?q=${encodeURIComponent(query)}`);
-            const data = await response.json();
+            const data = await $.ajax({
+                url: `api/global_search.php?q=${encodeURIComponent(query)}`,
+                method: 'GET',
+                dataType: 'json'
+            });
             
             if (data.status === 'success') {
                 renderResults(data.data);

@@ -5,7 +5,7 @@
  */
 
 require_once 'admin_auth.php';
-requireAdmin('../admin/login.html');
+requireAdmin('../admin/login.php');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 require_once __DIR__ . '/../php_utils/_logger.php';
 

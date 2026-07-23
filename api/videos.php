@@ -1,10 +1,10 @@
 <?php
+
 /**
  * SiSAS-IITG Admin API — Videos Management
  */
 
 require_once 'admin_auth.php';
-requireAdmin('../admin/login.html');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 require_once __DIR__ . '/../php_utils/_logger.php';
 
@@ -22,6 +22,11 @@ $createVideosTable = "CREATE TABLE IF NOT EXISTS videos (
 mysqli_query($conn, $createVideosTable);
 
 $action = $_POST['action'] ?? $_GET['action'] ?? '';
+
+// Require Admin authorization for management operations
+if (in_array($action, ['save_video', 'delete_video', 'reorder_videos'])) {
+    requireAdmin('../admin/login.php');
+}
 
 switch ($action) {
     case 'get_videos':
@@ -61,7 +66,7 @@ switch ($action) {
                     echo json_encode(['success' => false, 'message' => 'Please upload a valid MP4/WebM video file.']);
                     exit;
                 }
-                
+
                 $ext = strtolower(pathinfo($_FILES['video_file']['name'], PATHINFO_EXTENSION));
                 if ($ext !== 'mp4' && $ext !== 'webm') {
                     echo json_encode(['success' => false, 'message' => 'Only MP4 and WebM videos are allowed.']);
@@ -143,7 +148,7 @@ switch ($action) {
                     }
                 }
             }
-            
+
             if (mysqli_query($conn, "DELETE FROM videos WHERE id = $id")) {
                 logActivity($conn, 'Videos', 'DELETE', "Deleted video ID $id");
                 echo json_encode(['success' => true, 'message' => 'Video deleted successfully.']);
@@ -181,4 +186,3 @@ switch ($action) {
         echo json_encode(['success' => false, 'message' => 'Invalid action.']);
         break;
 }
-?>

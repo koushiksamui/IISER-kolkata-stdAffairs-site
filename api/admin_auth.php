@@ -22,9 +22,9 @@ function isAdminLoggedIn()
 /**
  * Restricts page access. Redirects to the login page if not logged in.
  *
- * @param string $loginPagePath Path to redirect if unauthorized (default: 'login.html').
+ * @param string $loginPagePath Path to redirect if unauthorized (default: 'login.php').
  */
-function requireAdmin($loginPagePath = 'login.html')
+function requireAdmin($loginPagePath = 'login.php')
 {
     if (!isAdminLoggedIn()) {
         header("Location: " . $loginPagePath);
@@ -187,9 +187,9 @@ function adminLogin($email, $password, $enteredCaptcha, $sessionCaptcha, $conn =
 /**
  * Logs out the administrator, cleans up session variables, and redirects to the login screen.
  *
- * @param string $redirectPath Path to redirect after logout (default: '../admin/login.html').
+ * @param string $redirectPath Path to redirect after logout (default: '../admin/login.php').
  */
-function adminLogout($redirectPath = '../admin/login.html')
+function adminLogout($redirectPath = '../admin/login.php')
 {
     $adminEmail = $_SESSION['admin_email'] ?? 'unknown';
     $role = $_SESSION['admin_role'] ?? 'admin';
@@ -271,7 +271,8 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' &
         if (ini_get('session.use_cookies')) {
             $params = session_get_cookie_params();
             setcookie(
-                session_name(), '',
+                session_name(),
+                '',
                 time() - 42000,
                 $params['path'],
                 $params['domain'],

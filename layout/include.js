@@ -23,14 +23,20 @@
   var ROOT = new URL("..", scriptEl.src).href;
 
   function loadPartial(fileName, targetId) {
+    var target = document.getElementById(targetId);
+    if (!target) return Promise.resolve();
+
     return fetch(ROOT + "layout/" + fileName)
       .then(function (res) {
         if (!res.ok) throw new Error("Failed to load " + fileName);
         return res.text();
       })
       .then(function (html) {
-        var target = document.getElementById(targetId);
-        if (target) target.outerHTML = html.split("%%BASE%%").join(ROOT);
+        var t = document.getElementById(targetId);
+        if (t) t.outerHTML = html.split("%%BASE%%").join(ROOT);
+      })
+      .catch(function (err) {
+        console.warn("Partial load skipped for " + fileName + ":", err);
       });
   }
 
@@ -38,7 +44,11 @@
     document.querySelectorAll(".nav-list > li").forEach(function (li) {
       var btn = li.querySelector("button.nav-top");
       if (!btn) return;
-      btn.addEventListener("click", function () {
+      if (btn.dataset.initialized === "true") return;
+      btn.dataset.initialized = "true";
+
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
         var isOpen = li.classList.contains("open");
         document.querySelectorAll(".nav-list > li.open").forEach(function (o) {
           o.classList.remove("open");
@@ -50,16 +60,34 @@
           btn.setAttribute("aria-expanded", "true");
         }
       });
+
+      li.addEventListener("mouseenter", function () {
+        if (window.innerWidth > 992) {
+          li.classList.add("open");
+          btn.setAttribute("aria-expanded", "true");
+        }
+      });
+
+      li.addEventListener("mouseleave", function () {
+        if (window.innerWidth > 992) {
+          li.classList.remove("open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
     });
-    document.addEventListener("click", function (e) {
-      if (!e.target.closest(".nav-list > li")) {
-        document.querySelectorAll(".nav-list > li.open").forEach(function (o) {
-          o.classList.remove("open");
-          var b = o.querySelector("button.nav-top");
-          if (b) b.setAttribute("aria-expanded", "false");
-        });
-      }
-    });
+
+    if (!window.__megaMenuGlobalClickBound) {
+      window.__megaMenuGlobalClickBound = true;
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".nav-list > li")) {
+          document.querySelectorAll(".nav-list > li.open").forEach(function (o) {
+            o.classList.remove("open");
+            var b = o.querySelector("button.nav-top");
+            if (b) b.setAttribute("aria-expanded", "false");
+          });
+        }
+      });
+    }
   }
 
   function initMobileDrawer() {
@@ -68,6 +96,9 @@
       scrim = document.getElementById("scrim"),
       closeDrawer = document.getElementById("closeDrawer");
     if (!hamburgerBtn || !mobileNav || !scrim || !closeDrawer) return;
+
+    if (hamburgerBtn.dataset.initialized === "true") return;
+    hamburgerBtn.dataset.initialized = "true";
 
     function openDrawer() {
       mobileNav.classList.add("open");
@@ -94,18 +125,31 @@
       fontReset = document.getElementById("fontReset"),
       contrastBtn = document.getElementById("contrastToggle");
 
-    if (fontUp) fontUp.addEventListener("click", function () { fontScale = Math.min(130, fontScale + 10); applyFont(); });
-    if (fontDown) fontDown.addEventListener("click", function () { fontScale = Math.max(80, fontScale - 10); applyFont(); });
-    if (fontReset) fontReset.addEventListener("click", function () { fontScale = 100; applyFont(); });
-    if (contrastBtn) contrastBtn.addEventListener("click", function () {
-      document.body.classList.toggle("hc");
-      contrastBtn.setAttribute("aria-pressed", document.body.classList.contains("hc"));
-    });
+    if (fontUp && !fontUp.dataset.initialized) {
+      fontUp.dataset.initialized = "true";
+      fontUp.addEventListener("click", function () { fontScale = Math.min(130, fontScale + 10); applyFont(); });
+    }
+    if (fontDown && !fontDown.dataset.initialized) {
+      fontDown.dataset.initialized = "true";
+      fontDown.addEventListener("click", function () { fontScale = Math.max(80, fontScale - 10); applyFont(); });
+    }
+    if (fontReset && !fontReset.dataset.initialized) {
+      fontReset.dataset.initialized = "true";
+      fontReset.addEventListener("click", function () { fontScale = 100; applyFont(); });
+    }
+    if (contrastBtn && !contrastBtn.dataset.initialized) {
+      contrastBtn.dataset.initialized = "true";
+      contrastBtn.addEventListener("click", function () {
+        document.body.classList.toggle("hc");
+        contrastBtn.setAttribute("aria-pressed", document.body.classList.contains("hc"));
+      });
+    }
   }
 
   function initGoToTop() {
     var goToTopBtn = document.getElementById("goToTopBtn");
-    if (!goToTopBtn) return;
+    if (!goToTopBtn || goToTopBtn.dataset.initialized === "true") return;
+    goToTopBtn.dataset.initialized = "true";
     window.addEventListener("scroll", function () {
       if (window.scrollY > 300) {
         goToTopBtn.classList.add("show");
@@ -143,19 +187,25 @@
     });
   }
 
-  Promise.all([
+  function runAllInits() {
+    initMegaMenu();
+    initAccessibility();
+    initGoToTop();
+    initScrollSpy();
+  }
 
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", runAllInits);
+  } else {
+    runAllInits();
+  }
+
+  Promise.all([
     loadPartial("mobile-drawer.html", "mobile-drawer-placeholder")
   ])
     .then(function () {
-      initMegaMenu();
+      runAllInits();
       initMobileDrawer();
-      initAccessibility();
-      initGoToTop();
-      initScrollSpy();
       document.dispatchEvent(new CustomEvent("layout:ready"));
-    })
-    .catch(function (err) {
-      console.error("Layout include failed:", err);
     });
 })();

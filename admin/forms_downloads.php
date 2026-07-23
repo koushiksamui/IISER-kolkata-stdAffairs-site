@@ -1,6 +1,6 @@
 <?php
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 
 $active_page = 'forms_downloads';
 ?>
@@ -16,24 +16,26 @@ $active_page = 'forms_downloads';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
+
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Shared Admin Stylesheet -->
     <link rel="stylesheet" href="../dist/css/admin/dashboard.css">
     <link rel="stylesheet" href="../dist/css/admin/faculty.css">
-    
+
     <style>
         .full-width {
             grid-column: 1 / -1;
         }
+
         .file-list {
             display: flex;
             flex-direction: column;
             gap: 8px;
             margin-top: 10px;
         }
+
         .file-item {
             display: flex;
             align-items: center;
@@ -44,23 +46,27 @@ $active_page = 'forms_downloads';
             border-radius: 6px;
             font-size: 0.85rem;
         }
+
         .file-item a {
             color: #2563eb;
             text-decoration: none;
             word-break: break-all;
         }
+
         .file-item a:hover {
             text-decoration: underline;
         }
+
         .file-item .remove-file {
             color: #ef4444;
             cursor: pointer;
             padding: 4px;
         }
+
         .file-item .remove-file:hover {
             color: #b91c1c;
         }
-        
+
         .type-badge {
             display: inline-block;
             padding: 4px 10px;
@@ -68,8 +74,18 @@ $active_page = 'forms_downloads';
             font-size: 0.8rem;
             font-weight: 600;
         }
-        .type-Public { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .type-Internal { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+
+        .type-Public {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+        }
+
+        .type-Internal {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+        }
     </style>
 </head>
 
@@ -119,7 +135,7 @@ $active_page = 'forms_downloads';
                                     <label class="form-label" for="itemTitle">Title *</label>
                                     <input type="text" name="title" id="itemTitle" class="form-control" required maxlength="255" placeholder="Document Title">
                                 </div>
-                                
+
                                 <div class="form-group full-width">
                                     <label class="form-label" for="itemFiles">PDF or Document Upload (can select multiple) *</label>
                                     <input type="file" name="new_files[]" id="itemFiles" class="form-control" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar">
@@ -136,7 +152,7 @@ $active_page = 'forms_downloads';
                                     <input type="date" name="visible_upto" id="visibleUpto" class="form-control">
                                     <small style="color:#64748b;">Leave blank if it doesn't expire.</small>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label class="form-label" for="displayType">Display Type *</label>
                                     <select name="display_type" id="displayType" class="form-select" required>
@@ -185,7 +201,9 @@ $active_page = 'forms_downloads';
                             </thead>
                             <tbody id="tableBody">
                                 <!-- Data injected here -->
-                                <tr><td colspan="4" style="text-align:center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td></tr>
+                                <tr>
+                                    <td colspan="4" style="text-align:center; padding: 20px;"><i class="fa-solid fa-spinner fa-spin"></i> Loading...</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -226,7 +244,7 @@ $active_page = 'forms_downloads';
         let totalPages = 1;
         let searchTerm = '';
         let typeFilter = '';
-        
+
         let currentEditingFiles = [];
 
         $(document).ready(function() {
@@ -242,10 +260,10 @@ $active_page = 'forms_downloads';
                     $('#dataForm')[0].reset();
                     currentEditingFiles = [];
                     renderCurrentFiles();
-                    
+
                     // Set default visible from to today
                     document.getElementById('visibleFrom').valueAsDate = new Date();
-                    
+
                     $('#formCard').hide().addClass('active').slideDown(300);
                     $('#addBtnText').text('Cancel');
                     $(this).html('<i class="fa-solid fa-xmark"></i> <span>Cancel</span>');
@@ -268,7 +286,7 @@ $active_page = 'forms_downloads';
             // Form Submit
             $('#dataForm').submit(function(e) {
                 e.preventDefault();
-                
+
                 // Update hidden input with current existing files
                 $('#existingFilesInput').val(JSON.stringify(currentEditingFiles));
 
@@ -279,12 +297,12 @@ $active_page = 'forms_downloads';
                 const title = fd.get('title').trim();
                 const visible_from = fd.get('visible_from');
                 const newFiles = document.getElementById('itemFiles').files;
-                
+
                 if (!title || !visible_from) {
                     showToast('error', 'Title and Visible From are required.');
                     return;
                 }
-                
+
                 if (currentEditingFiles.length === 0 && newFiles.length === 0) {
                     showToast('error', 'Please upload at least one file.');
                     return;
@@ -463,7 +481,7 @@ $active_page = 'forms_downloads';
         function renderCurrentFiles() {
             const container = $('#currentFilesList');
             container.empty();
-            
+
             if (currentEditingFiles.length > 0) {
                 currentEditingFiles.forEach((f, i) => {
                     container.append(`
@@ -486,7 +504,7 @@ $active_page = 'forms_downloads';
             $('#visibleFrom').val(item.visible_from);
             $('#visibleUpto').val(item.visible_upto || '');
             $('#displayType').val(item.display_type || 'Public');
-            
+
             currentEditingFiles = JSON.parse(JSON.stringify(item.files || []));
             renderCurrentFiles();
 
@@ -502,7 +520,7 @@ $active_page = 'forms_downloads';
 
         window.deleteItem = function(id) {
             if (!confirm('Are you sure you want to delete this item? Associated files will be permanently deleted.')) return;
-            
+
             $.post(API_URL, {
                 action: 'delete_form',
                 id: id
@@ -520,16 +538,16 @@ $active_page = 'forms_downloads';
                 showToast('error', 'Server connection failed.');
             });
         };
-        
+
         // Show Toast function
         function showToast(type, message) {
             const toast = $('<div class="toast toast-' + type + '"><i class="fa-solid ' + (type === 'success' ? 'fa-check-circle' : 'fa-circle-exclamation') + '"></i> ' + escapeHtml(message) + '</div>');
             $('#toastContainer').append(toast);
-            
+
             setTimeout(() => {
                 toast.addClass('show');
             }, 10);
-            
+
             setTimeout(() => {
                 toast.removeClass('show');
                 setTimeout(() => {
@@ -539,4 +557,5 @@ $active_page = 'forms_downloads';
         }
     </script>
 </body>
+
 </html>

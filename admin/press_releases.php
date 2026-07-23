@@ -5,7 +5,7 @@
  */
 
 require_once '../api/admin_auth.php';
-requireAdmin('login.html');
+requireAdmin('login.php');
 require_once __DIR__ . '/../php_utils/_dbConnect.php';
 
 $adminEmail   = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : 'admin@iitg.ac.in';
@@ -186,7 +186,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
         let releaseLimit = 10;
         let releaseTotalPages = 1;
         let releaseSearchTerm = '';
-        
+
         let qContent;
 
         $(document).ready(function() {
@@ -252,9 +252,15 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
                 modules: {
                     toolbar: {
                         container: [
-                            [{ 'header': [1, 2, 3, 4, false] }],
+                            [{
+                                'header': [1, 2, 3, 4, false]
+                            }],
                             ['bold', 'italic', 'underline', 'strike'],
-                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            [{
+                                'list': 'ordered'
+                            }, {
+                                'list': 'bullet'
+                            }],
                             ['link', 'image', 'clean']
                         ],
                         handlers: {
@@ -431,7 +437,7 @@ $adminDisplay = ucfirst(explode('@', $adminEmail)[0]);
             $('#releaseTitle').val(r.title);
             $('#releaseAuthor').val(r.author || '');
             $('#releaseTags').val(r.tags || '');
-            
+
             qContent.root.innerHTML = r.content || '';
             $('#releaseContent').val(r.content || '');
 

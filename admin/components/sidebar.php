@@ -149,10 +149,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     action: 'logout'
                 },
                 success: function() {
-                    window.location.href = 'login.html';
+                    window.location.href = 'login.php';
                 },
                 error: function() {
-                    window.location.href = 'login.html';
+                    window.location.href = 'login.php';
                 }
             });
         }
